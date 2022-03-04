@@ -5,6 +5,6 @@
 @endsection
 
 @section('content')
-form1
+On Field Registration of Candidate
 @endsection
 
