@@ -13,14 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.master');
-});
-
-Route::get('/form1', function () {
-    return view('forms.on_field_reg_of_candidate');
-});
-
+// Route::get('/', function () {
+//     return view('layouts.app');
+// });
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+
+Route::group(['middleware' => ['auth']], function() {
+
+    Route::get('/form1', function () {
+        return view('forms.on_field_reg_of_candidate');
+    });
+
+});
