@@ -46,7 +46,6 @@ class CreateStudentDetailsTable extends Migration
             $table->integer('rsby_card_no')->nullable();
             $table->integer('aay_ration_card')->nullable();
             $table->integer('annual_income')->nullable();
-            $table->integer('aay_ration_card')->nullable();
             $table->enum('is_candidate_a_family_memmber_of_sgh_member', ['no', 'yes'])->default('no');
             $table->string('sgh_name',200)->nullable();
             $table->string('sgh_id',200)->nullable();

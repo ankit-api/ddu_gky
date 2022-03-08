@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OnFieldRegistrationOfCandidateController;
+use App\Http\Controllers\CandidateAdmissionController;
+use App\Http\Controllers\BatchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,5 +30,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/form1', function () {
         return view('forms.on_field_reg_of_candidate');
     });
+    Route::get('/candidate-register', [OnFieldRegistrationOfCandidateController::class,'index'])->name('candidate-register');
+    Route::get('/candidate-admission', [CandidateAdmissionController::class,'index'])->name('candidate-admission');
+    Route::get('/create-batch', [BatchController::class,'index'])->name('create-batch');
 
 });
