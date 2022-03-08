@@ -14,7 +14,7 @@ class OnFieldRegistrationOfCandidateController extends Controller
      */
     public function index()
     {
-        //
+        return view('forms.on_field_reg_of_candidate');
     }
 
     /**
