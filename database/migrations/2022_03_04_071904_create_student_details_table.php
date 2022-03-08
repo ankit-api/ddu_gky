@@ -46,7 +46,6 @@ class CreateStudentDetailsTable extends Migration
             $table->integer('rsby_card_no')->nullable();
             $table->integer('aay_ration_card')->nullable();
             $table->integer('annual_income')->nullable();
-            $table->integer('aay_ration_card')->nullable();
             $table->enum('is_candidate_a_family_memmber_of_sgh_member', ['no', 'yes'])->default('no');
             $table->string('sgh_name',200)->nullable();
             $table->string('sgh_id',200)->nullable();
@@ -55,9 +54,9 @@ class CreateStudentDetailsTable extends Migration
       
             $table->foreign('centre_id')->references('id')->on('centre_details')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('register_id')->references('id')->on('on_field_registration_of_candidates')->onUpdate('cascade')->onDelete('cascade');            
-            $table->foreignId('batch_id')->references('id')->on('batch_details')->onDelete('cascade');
-            $table->foreignId('family_id')->references('id')->on('family_details')->onDelete('cascade');
-            $table->foreignId('aptitude_id')->references('id')->on('can_aptitude_results')->onDelete('cascade');
+            $table->foreign('batch_id')->references('id')->on('batch_details')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('family_id')->references('id')->on('family_details')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('aptitude_id')->references('id')->on('can_aptitude_results')->onUpdate('cascade')->onDelete('cascade');
 
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamp('created_on')->useCurrent();
