@@ -21,7 +21,7 @@ class CreateCentreDetailsTable extends Migration
             $table->string('state',30);
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamp('created_on')->useCurrent();
-            $table->timestamp('updated_on')->nullable();
+            $table->timestamp('updated_on')->useCurrent();
         });
     }
 

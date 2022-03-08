@@ -54,9 +54,9 @@ class CreateStudentDetailsTable extends Migration
       
             $table->foreign('centre_id')->references('id')->on('centre_details')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('register_id')->references('id')->on('on_field_registration_of_candidates')->onUpdate('cascade')->onDelete('cascade');            
-            $table->foreignId('batch_id')->references('id')->on('batch_details')->onDelete('cascade');
-            $table->foreignId('family_id')->references('id')->on('family_details')->onDelete('cascade');
-            $table->foreignId('aptitude_id')->references('id')->on('can_aptitude_results')->onDelete('cascade');
+            $table->foreign('batch_id')->references('id')->on('batch_details')->onDelete('cascade');
+            $table->foreign('family_id')->references('id')->on('family_details')->onDelete('cascade');
+            $table->foreign('aptitude_id')->references('id')->on('can_aptitude_results')->onDelete('cascade');
 
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamp('created_on')->useCurrent();

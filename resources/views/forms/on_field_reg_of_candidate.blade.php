@@ -98,7 +98,7 @@
                 </div>   
                <div class="col-md-6">
                 <label for="" class="m-2">Remarks</label><br>
-                    <textarea name="" id="" class="form-control" cols="10" rows="10" placeholder="Referring Remarks"></textarea>  
+                    <textarea name="" id="" class="form-control"  rows="10" placeholder="Referring Remarks"></textarea>  
                 </div>   
                </div><br>
                <h5>Attachmnet Fields</h5>

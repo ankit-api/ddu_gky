@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OnFieldRegistrationOfCandidateController;
 use App\Http\Controllers\CandidateAdmissionController;
 use App\Http\Controllers\BatchController;
+use App\Http\Controllers\CentreController;
+use App\Http\Controllers\StaffController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,8 +32,10 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/form1', function () {
         return view('forms.on_field_reg_of_candidate');
     });
+    Route::get('/create-centre', [CentreController::class,'index'])->name('create-centre');
+    Route::get('/create-staff', [StaffController::class,'index'])->name('create-staff');
+    Route::get('/create-batch', [BatchController::class,'index'])->name('create-batch');
     Route::get('/candidate-register', [OnFieldRegistrationOfCandidateController::class,'index'])->name('candidate-register');
     Route::get('/candidate-admission', [CandidateAdmissionController::class,'index'])->name('candidate-admission');
-    Route::get('/create-batch', [BatchController::class,'index'])->name('create-batch');
-
+    
 });
