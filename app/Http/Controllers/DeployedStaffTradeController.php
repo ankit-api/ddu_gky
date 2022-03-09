@@ -14,7 +14,7 @@ class DeployedStaffTradeController extends Controller
      */
     public function index()
     {
-        //
+        return view('forms.deployed_staff_trade');
     }
 
     /**

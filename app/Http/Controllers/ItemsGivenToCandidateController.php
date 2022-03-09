@@ -14,7 +14,7 @@ class ItemsGivenToCandidateController extends Controller
      */
     public function index()
     {
-        //
+        return view('forms.items_given_to_candidate');
     }
 
     /**

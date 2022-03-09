@@ -14,7 +14,7 @@ class DailyFailureItemsReportController extends Controller
      */
     public function index()
     {
-        //
+        return view('forms.daily_failure_items_report');
     }
 
     /**

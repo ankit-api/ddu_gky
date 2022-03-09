@@ -29,6 +29,12 @@
   <script src="{{ asset('/star_theme/js/dashboard.js') }}"></script>
   <script src="{{ asset('/star_theme/js/Chart.roundedBarCharts.js') }}"></script>
   <!-- End custom js for this page-->
+<<<<<<< Updated upstream
+=======
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+>>>>>>> Stashed changes
 </body>
 
 </html>

@@ -1,10 +1,24 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+<<<<<<< Updated upstream
 use App\Http\Controllers\OnFieldRegistrationOfCandidateController;
 use App\Http\Controllers\CandidateAdmissionController;
 use App\Http\Controllers\BatchController;
 
+=======
+<<<<<<< Updated upstream
+
+=======
+use App\Http\Controllers\OnFieldRegistrationOfCandidateController;
+use App\Http\Controllers\CandidateAdmissionController;
+use App\Http\Controllers\BatchController;
+use App\Http\Controllers\ItemsGivenToCandidateController;
+use App\Http\Controllers\DailyFailureItemsReportController;
+use App\Http\controllers\DeployedStaffTradeController;
+/*
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,8 +44,21 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/form1', function () {
         return view('forms.on_field_reg_of_candidate');
     });
+<<<<<<< Updated upstream
     Route::get('/candidate-register', [OnFieldRegistrationOfCandidateController::class,'index'])->name('candidate-register');
     Route::get('/candidate-admission', [CandidateAdmissionController::class,'index'])->name('candidate-admission');
     Route::get('/create-batch', [BatchController::class,'index'])->name('create-batch');
 
+=======
+<<<<<<< Updated upstream
+
+=======
+    Route::get('/candidate-register', [OnFieldRegistrationOfCandidateController::class,'index'])->name('candidate-register');
+    Route::get('/candidate-admission', [CandidateAdmissionController::class,'index'])->name('candidate-admission');
+    Route::get('/create-batch', [BatchController::class,'index'])->name('create-batch');
+    Route::get('/items_given', [ItemsGivenToCandidateController::class,'index'])->name('items_given');
+    Route::get('/items_failure', [DailyFailureItemsReportController::class,'index'])->name('items_failure');
+    Route::get('/deployed_staff_trade', [DeployedStaffTradeController::class,'index'])->name('deployed_staff_trade');
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 });
