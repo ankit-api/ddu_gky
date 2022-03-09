@@ -9,20 +9,21 @@
           <!-- <li class="nav-item nav-category">UI Elements</li> -->
 
 
-<!-- Staff Menu -->
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic">
+ <!-- Master Menu -->
+ <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-floor-plan"></i>
-              <span class="menu-title">Staff</span>
+              <span class="menu-title">Master</span>
               <i class="menu-arrow"></i> 
             </a>
-            <div class="collapse" id="ui-basic1">
+            <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Add Staff</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">staff List</a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Add PIA</a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Add Project</a></li>
+                <!-- <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Add Project</a></li> -->
               </ul>
             </div>
-          </li>   
+          </li>  
           
  <!-- Centre Menu -->
           <li class="nav-item">
@@ -33,11 +34,26 @@
             </a>
             <div class="collapse" id="ui-basic2">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Add Centre</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('create-centre')}}">Add Centre</a></li>
                 <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Centre List</a></li>
               </ul>
             </div>
-          </li>         
+          </li> 
+          
+          <!-- Staff Menu -->
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic">
+              <i class="menu-icon mdi mdi-floor-plan"></i>
+              <span class="menu-title">Staff</span>
+              <i class="menu-arrow"></i> 
+            </a>
+            <div class="collapse" id="ui-basic1">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{{ route('create-staff') }}">Add Staff</a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">staff List</a></li>
+              </ul>
+            </div>
+          </li>  
 
 <!-- Student Registration  -->
           <li class="nav-item">
