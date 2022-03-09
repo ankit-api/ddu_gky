@@ -14,7 +14,7 @@ class OjtPlanForBatchController extends Controller
      */
     public function index()
     {
-        //
+        return view('forms.ojt_plan_for_batch');
     }
 
     /**

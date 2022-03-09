@@ -14,7 +14,7 @@ class VerificationForOjtController extends Controller
      */
     public function index()
     {
-        //
+        return view('forms.verification_for_ojt');
     }
 
     /**

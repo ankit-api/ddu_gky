@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Daily Failure Items Report')
+@section('title', 'Centre Status of 15 days')
 @section('admin_dashboard')
 
      
@@ -14,7 +14,7 @@
               <div class="home-tab">
                   
             <div class="container col-sm-12">
-            <h4 class="text-center fw-bold">SF 5.1T: Daily Failure Items Report</h4><br>
+            <h4 class="text-center fw-bold">SF 5.1U: 15 day summary of centre status</h4><br>
             <form action="" method="">
             <div class="row">
                 <div class="col-md-4">
@@ -36,7 +36,7 @@
                             <th>Sno.</th>
                             <th>Name of Equipment</th>
                             <th>Available at the centre/residential facilities</th>
-                            <th>Items reported as failed</th>
+                            <th>Cummulative Days of Failure</th>
                             <th>Remarks</th>
                             <th>Action</th>
                         </thead>
@@ -45,12 +45,9 @@
                                 <td id="1">1</td>
                                 <td><input type="text" name="" id="" class="form-control" placeholder="Enter Name of Equipment"></td>
                                 <td><select class="form-control" style="background-color:white;" name="" id=""><option value="yes">Centre</option><option value="no">Residential</option></select></td>
-                                <td><textarea name="" id="" cols="30" rows="5"></textarea></td>
+                                <td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Cummulative days"></td>
                                 <td><textarea name="" id="" cols="30" rows="5"></textarea></td>
                                 <td><button class="btn btn-info text-white add_more">Add More</button></td>
-                                {{-- <td class="text-center" colspan="10">
-                                    First Select Batch No
-                                </td> --}}
                             </tr>
                         </tbody>
                     </table>
@@ -78,7 +75,7 @@
                     var sno = $('tbody tr:last-child td:first-child').html();
                     sno = parseInt(sno)+1;
                     
-                    $('tbody').append('<tr><td id="'+sno+'">'+sno+'</td><td><input type="text" name="" id="" class="form-control" value="Blackboard"></td><td><select class="form-control" style="background-color:white;" name="" id=""><option value="yes">Centre</option><option value="no">Residential</option></select></td><td><textarea name="" id="" cols="30" rows="5"></textarea></td><td><textarea name="" id="" cols="30" rows="5"></textarea></td><td><button class="btn btn-danger text-white" data-id="'+sno+'" name="remove" data-target="tr">Remove</button></td></tr>');
+                    $('tbody').append('<tr><td id="'+sno+'">'+sno+'</td><td><input type="text" name="" id="" class="form-control"  placeholder="Enter Name of Equipment"></td><td><select class="form-control" style="background-color:white;" name="" id=""><option value="yes">Centre</option><option value="no">Residential</option></select></td><td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Cummulative days"></td><td><textarea name="" id="" cols="30" rows="5"></textarea></td><td><button class="btn btn-danger text-white" data-id="'+sno+'" name="remove" data-target="tr">Remove</button></td></tr>');
 
                     $('button[data-id='+sno+']').click(function(e){
                         e.preventDefault();

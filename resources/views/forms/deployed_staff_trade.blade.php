@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Items Given To Candidates')
+@section('title', 'Deployed Staff Trade')
 @section('admin_dashboard')
 
      
@@ -31,11 +31,11 @@
                <hr>
             <div class="row">
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table table-bordered">
                         <thead>
                             <th>Sno.</th>
                             <th>Name of the trade</th>
-                            <th>Name</th>
+                            <th>Full Name</th>
                             <th>Highest qualification</th>
                             <th>Total Years Of Experience</th>
                             <th>Date of Joining</th>
@@ -53,7 +53,85 @@
                             </tr>
                             <tr>
                                 <td id="2">2</td>
-                                <td>MIS in 2Charge</td>
+                                <td>MIS in Charge</td>
+                                <td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Full Name"></td>
+                                <td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Highesht Qualification"></td>
+                                <td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Total Experience in years"></td>
+                                <td><input type="date" name="" id="" class="form-control" value=""></td>
+                                <td><select class="form-control" style="background-color:white;" name="" id=""><option value="yes">Yes</option><option value="no">No</option></select></td>
+                            </tr>
+                            <tr>
+                                <th colspan="7">Trainer Detail</th>
+                            </tr>
+                            <tr>
+                                <td id="3">3</td>
+                                <td>IT Skills</td>
+                                <td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Full Name"></td>
+                                <td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Highesht Qualification"></td>
+                                <td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Total Experience in years"></td>
+                                <td><input type="date" name="" id="" class="form-control" value=""></td>
+                                <td><select class="form-control" style="background-color:white;" name="" id=""><option value="yes">Yes</option><option value="no">No</option></select></td>
+                            </tr>
+                            <tr>
+                                <td id="4">4</td>
+                                <td>Soft Skills</td>
+                                <td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Full Name"></td>
+                                <td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Highesht Qualification"></td>
+                                <td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Total Experience in years"></td>
+                                <td><input type="date" name="" id="" class="form-control" value=""></td>
+                                <td><select class="form-control" style="background-color:white;" name="" id=""><option value="yes">Yes</option><option value="no">No</option></select></td>
+                            </tr>
+                            <tr>
+                                <td id="5">5</td>
+                                <td>English Skills</td>
+                                <td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Full Name"></td>
+                                <td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Highesht Qualification"></td>
+                                <td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Total Experience in years"></td>
+                                <td><input type="date" name="" id="" class="form-control" value=""></td>
+                                <td><select class="form-control" style="background-color:white;" name="" id=""><option value="yes">Yes</option><option value="no">No</option></select></td>
+                            </tr>
+                            <tr>
+                                <td id="6">6</td>
+                                <td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Domain Name"></td>
+                                <td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Full Name"></td>
+                                <td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Highesht Qualification"></td>
+                                <td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Total Experience in years"></td>
+                                <td><input type="date" name="" id="" class="form-control" value=""></td>
+                                <td><select class="form-control" style="background-color:white;" name="" id=""><option value="yes">Yes</option><option value="no">No</option></select></td>
+                            </tr>
+                            <tr>
+                                <td id="7">7</td>
+                                <td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Domain Name"></td>
+                                <td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Full Name"></td>
+                                <td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Highesht Qualification"></td>
+                                <td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Total Experience in years"></td>
+                                <td><input type="date" name="" id="" class="form-control" value=""></td>
+                                <td><select class="form-control" style="background-color:white;" name="" id=""><option value="yes">Yes</option><option value="no">No</option></select></td>
+                            </tr>
+                            <tr>
+                                <th colspan="7">Other Staff</th>
+                            </tr>
+                            <tr>
+                                <td id="8">8</td>
+                                <td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Staff Designation"></td>
+                                <td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Full Name"></td>
+                                <td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Highesht Qualification"></td>
+                                <td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Total Experience in years"></td>
+                                <td><input type="date" name="" id="" class="form-control" value=""></td>
+                                <td><select class="form-control" style="background-color:white;" name="" id=""><option value="yes">Yes</option><option value="no">No</option></select></td>
+                            </tr>
+                            <tr>
+                                <td id="9">9</td>
+                                <td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Staff Designation"></td>
+                                <td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Full Name"></td>
+                                <td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Highesht Qualification"></td>
+                                <td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Total Experience in years"></td>
+                                <td><input type="date" name="" id="" class="form-control" value=""></td>
+                                <td><select class="form-control" style="background-color:white;" name="" id=""><option value="yes">Yes</option><option value="no">No</option></select></td>
+                            </tr>
+                            <tr>
+                                <td id="10">10</td>
+                                <td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Staff Designation"></td>
                                 <td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Full Name"></td>
                                 <td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Highesht Qualification"></td>
                                 <td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Total Experience in years"></td>

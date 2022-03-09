@@ -14,7 +14,7 @@ class CandidateFeedbackFormController extends Controller
      */
     public function index()
     {
-        //
+        return view('forms.candidate_feedback_form');
     }
 
     /**

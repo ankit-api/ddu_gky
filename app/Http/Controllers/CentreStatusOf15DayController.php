@@ -14,7 +14,7 @@ class CentreStatusOf15DayController extends Controller
      */
     public function index()
     {
-        //
+        return view('forms.centre_status_of_15_days');
     }
 
     /**

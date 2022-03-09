@@ -21,13 +21,9 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="{{ asset('/star_theme/css/vertical-layout-light/style.css') }}">
   <!-- endinject -->
-<<<<<<< Updated upstream
-  <!-- <link rel="shortcut icon" href="{{ asset('/star_theme/images/favicon.png') }}" /> -->
-=======
   {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
   <!-- <link rel="shortcut icon" href="{{ asset('/star_theme/images/favicon.png') }}" /> -->
   
->>>>>>> Stashed changes
 </head>
 <body>
   <div class="container-scroller" > 
