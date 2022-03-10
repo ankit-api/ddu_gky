@@ -14,7 +14,7 @@ class EvaluationAndAssessmentDetailsController extends Controller
      */
     public function index()
     {
-        //
+        return view('forms.evaluation_and_assessment_details');
     }
 
     /**

@@ -128,6 +128,21 @@
               </ul>
             </div>
           </li>
+
+          <!-- Assessment  -->
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic12" aria-expanded="false" aria-controls="ui-basic">
+              <i class="menu-icon mdi mdi-floor-plan"></i>
+              <span class="menu-title">Evaluation and Assessment</span>
+              <i class="menu-arrow"></i> 
+            </a>
+            <div class="collapse" id="ui-basic12">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{{ route('evaluation_and_assessment_details') }}">Assessment Details</a></li>
+              </ul>
+            </div>
+          </li>
+
  <!-- Hostel  -->
  <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic7" aria-expanded="false" aria-controls="ui-basic">
@@ -182,5 +197,20 @@
     </ul>
   </div>
 </li> 
+
+<!-- Assessment  -->
+<li class="nav-item">
+  <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic13" aria-expanded="false" aria-controls="ui-basic">
+    <i class="menu-icon mdi mdi-floor-plan"></i>
+    <span class="menu-title">Inspection</span>
+    <i class="menu-arrow"></i> 
+  </a>
+  <div class="collapse" id="ui-basic13">
+    <ul class="nav flex-column sub-menu">
+      <li class="nav-item"> <a class="nav-link" href="{{ route('inspection_form') }}">Inspection Form</a></li>
+    </ul>
+  </div>
+</li>
+
         </ul>
     </nav>        
