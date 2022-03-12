@@ -16,6 +16,7 @@ use App\Http\Controllers\CandidateFeedbackFormController;
 use App\Http\Controllers\CentreStatusOf15DayController;
 use App\Http\Controllers\EvaluationAndAssessmentDetailsController;
 use App\Http\Controllers\InspectionFormController;
+use App\Http\Controllers\DailyDistributionOfTabletController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +57,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/centre_status_of_15_days', [CentreStatusOf15DayController::class,'index'])->name('centre_status_of_15_days');
     Route::get('/evaluation_and_assessment_details', [EvaluationAndAssessmentDetailsController::class,'index'])->name('evaluation_and_assessment_details');
     Route::get('/inspection_form', [InspectionFormController::class,'index'])->name('inspection_form');
+    Route::get('/daily_distribution_of_tablets', [DailyDistributionOfTabletController::class,'index'])->name('daily_distribution_of_tablets');
 
     Route::get('/create-centre', [CentreController::class,'index'])->name('create-centre');
     Route::get('/create-staff', [StaffController::class,'index'])->name('create-staff');
