@@ -36,6 +36,8 @@ use App\Http\Controllers\DailyDistributionOfTabletController;
 // });
 Auth::routes();
 
+Route::view('/letter-to-srlm', 'forms/letter_to_srlm')->name('letter-to-srlm');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
@@ -47,7 +49,8 @@ Route::group(['middleware' => ['auth']], function() {
     });
     Route::get('/create-pia', [MasterController::class,'createPia'])->name('create-pia');
     Route::get('/create-project', [MasterController::class,'createProject'])->name('create-project');
-
+    Route::get('/create-qteam-member', [MasterController::class,'createQteamMember'])->name('create-qteam-member');
+    Route::get('/create-centre-incharge', [MasterController::class,'createCentreIncharge'])->name('create-centre-incharge');
     
     Route::get('/candidate-register', [OnFieldRegistrationOfCandidateController::class,'index'])->name('candidate-register');
     Route::get('/candidate-admission', [CandidateAdmissionController::class,'index'])->name('candidate-admission');

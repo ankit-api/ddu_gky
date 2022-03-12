@@ -18,5 +18,15 @@ class MasterController extends Controller
         return view('forms.create_project');
     }
 
+    public function createQteamMember()
+    {
+        return view('forms.add_qteam_member');
+    }
+
+    public function createCentreIncharge()
+    {
+        return view('forms.add_centre_incharge');
+    }
+
 
 }
