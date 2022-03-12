@@ -14,7 +14,7 @@
               <div class="home-tab">
                   
         <div class="container col-sm-12">
-                <h4 class="text-center fw-bold">Add Trainer Details</h4><br>
+                <h4 class="text-center fw-bold">SF 5.1E2: Trainers’ profile</h4><br>
         <form action="" method="">
             <div class="row">            
                 <div class="col-md-4">
@@ -35,7 +35,8 @@
                         <option value="prakhar softwares">Centre 1</option>
                     </select> 
                 </div>
-            </div><br>
+            </div><br><br>
+            <h5>Trainer’s profile</h5><hr>
             <div class="row">            
                 <div class="col-md-3">
                     <label for="" class="m-2">Name</label><br>

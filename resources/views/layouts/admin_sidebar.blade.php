@@ -20,6 +20,8 @@
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="{{ route('create-pia') }}">Add PIA</a></li>
                 <li class="nav-item"> <a class="nav-link" href="{{ route('create-project') }}">Add Project</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('create-qteam-member') }}">Add Q-team Member</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('create-centre-incharge') }}">Add Centre Incharge</a></li>
                 <!-- <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Add Project</a></li> -->
               </ul>
             </div>
@@ -212,7 +214,7 @@
     </ul>
   </div>
 </li>
-
+<!-- Certificate -->
 <li class="nav-item">
   <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic13" aria-expanded="false" aria-controls="ui-basic">
     <i class="menu-icon mdi mdi-floor-plan"></i>
@@ -222,6 +224,19 @@
   <div class="collapse" id="ui-basic13">
     <ul class="nav flex-column sub-menu">
       <li class="nav-item"> <a class="nav-link" href="{{ route('create-certificate-distribution') }}">Certificate Distribution</a></li>
+    </ul>
+  </div>
+</li>
+<!-- Letter -->
+<li class="nav-item">
+  <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic13" aria-expanded="false" aria-controls="ui-basic">
+    <i class="menu-icon mdi mdi-floor-plan"></i>
+    <span class="menu-title">Letter</span>
+    <i class="menu-arrow"></i> 
+  </a>
+  <div class="collapse" id="ui-basic13">
+    <ul class="nav flex-column sub-menu">
+      <li class="nav-item"> <a class="nav-link" href="{{ route('letter-to-srlm') }}">Letter to SRLM</a></li>
     </ul>
   </div>
 </li>
