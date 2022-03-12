@@ -16,6 +16,8 @@ use App\Http\Controllers\CandidateFeedbackFormController;
 use App\Http\Controllers\CentreStatusOf15DayController;
 use App\Http\Controllers\EvaluationAndAssessmentDetailsController;
 use App\Http\Controllers\InspectionFormController;
+use App\Http\Controllers\MasterController;
+use App\Http\Controllers\CertificateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +44,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/form1', function () {
         return view('forms.on_field_reg_of_candidate');
     });
+    Route::get('/create-pia', [MasterController::class,'createPia'])->name('create-pia');
+    Route::get('/create-project', [MasterController::class,'createProject'])->name('create-project');
 
     
     Route::get('/candidate-register', [OnFieldRegistrationOfCandidateController::class,'index'])->name('candidate-register');
@@ -58,7 +62,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/inspection_form', [InspectionFormController::class,'index'])->name('inspection_form');
 
     Route::get('/create-centre', [CentreController::class,'index'])->name('create-centre');
-    Route::get('/create-staff', [StaffController::class,'index'])->name('create-staff');
+    Route::get('/create-trainer', [StaffController::class,'index'])->name('create-trainer');
     
+
+    Route::get('/create-certificate-distribution', [CertificateController::class,'createCertificateDistribution'])->name('create-certificate-distribution');
     
 });

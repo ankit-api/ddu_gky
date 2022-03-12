@@ -122,11 +122,11 @@
             </div><br>
             <div class="row">
             <div class="col-md-2">
-                    <label for="" class="m-2">Theory Classroom No.</label><br>
+                    <label for="" class="m-2">Theory Classroom No.</label><br><br>
                     <input type="number" class="form-control" name="" id="" >
                 </div> 
             <div class="col-md-2">
-                    <label for="" class="m-2">IT lab No.</label><br><br>
+                    <label for="" class="m-2">IT lab No.</label><br><br><br>
                     <input type="number" class="form-control" name="" id="" >
             </div>   
             <div class="col-md-2">
@@ -139,7 +139,7 @@
                     <input type="number" class="form-control" name="" id="" >
             </div>   
             <div class="col-md-2">
-                    <label for="" class="m-2">Theory cum IT Lab No.</label><br>
+                    <label for="" class="m-2">Theory cum IT Lab No.</label><br><br>
                     <input type="number" class="form-control" name="" id="" >
             </div>                
             <div class="col-md-2">
@@ -149,11 +149,11 @@
             </div> <br>  
             <div class="row">
             <div class="col-md-2">
-                    <label for="" class="m-2">Theory Classroom No.</label><br>
+                    <label for="" class="m-2">Theory Classroom No.</label><br><br>
                     <input type="number" class="form-control" name="" id="" >
                 </div> 
             <div class="col-md-2">
-                    <label for="" class="m-2">IT lab No.</label><br><br>
+                    <label for="" class="m-2">IT lab No.</label><br><br><br>
                     <input type="number" class="form-control" name="" id="" >
             </div>   
             <div class="col-md-2">
@@ -166,7 +166,7 @@
                     <input type="number" class="form-control" name="" id="" >
             </div>   
             <div class="col-md-2">
-                    <label for="" class="m-2">Theory cum IT Lab No.</label><br>
+                    <label for="" class="m-2">Theory cum IT Lab No.</label><br><br>
                     <input type="number" class="form-control" name="" id="" >
             </div>                
             <div class="col-md-2">

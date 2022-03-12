@@ -18,8 +18,8 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Add PIA</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Add Project</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('create-pia') }}">Add PIA</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('create-project') }}">Add Project</a></li>
                 <!-- <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Add Project</a></li> -->
               </ul>
             </div>
@@ -50,7 +50,7 @@
             </a>
             <div class="collapse" id="ui-basic1">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{ route('create-staff') }}">Add Staff</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('create-trainer') }}">Add Staff</a></li>
                 <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">staff List</a></li>
                 <li class="nav-item"> <a class="nav-link" href="{{ route('deployed_staff_trade') }}">Summary of Staff Deployed</a></li>
               </ul>
@@ -208,6 +208,19 @@
   <div class="collapse" id="ui-basic13">
     <ul class="nav flex-column sub-menu">
       <li class="nav-item"> <a class="nav-link" href="{{ route('inspection_form') }}">Inspection Form</a></li>
+    </ul>
+  </div>
+</li>
+
+<li class="nav-item">
+  <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic13" aria-expanded="false" aria-controls="ui-basic">
+    <i class="menu-icon mdi mdi-floor-plan"></i>
+    <span class="menu-title">Certificate</span>
+    <i class="menu-arrow"></i> 
+  </a>
+  <div class="collapse" id="ui-basic13">
+    <ul class="nav flex-column sub-menu">
+      <li class="nav-item"> <a class="nav-link" href="{{ route('create-certificate-distribution') }}">Certificate Distribution</a></li>
     </ul>
   </div>
 </li>

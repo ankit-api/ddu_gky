@@ -14,7 +14,7 @@ class StaffController extends Controller
      */
     public function index()
     {
-        return view('forms.create_staff');
+        return view('forms.create_trainer');
     }
 
     

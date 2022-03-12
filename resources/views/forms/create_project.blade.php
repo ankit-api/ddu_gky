@@ -24,7 +24,7 @@
                     </select> 
                 </div>
                 <div class="col-md-12">
-                    <label for="" class="m-2">Name of Prject</label><br>
+                    <label for="" class="m-2">Name of Project</label><br>
                     <input type="text" class="form-control" name="" id="" >
                 </div>
             </div><br>                       
@@ -36,5 +36,5 @@
             </div> 
           </div>
         </div>
-        @endsection   
+       
 @endsection
