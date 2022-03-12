@@ -13,7 +13,7 @@ class CertificateController extends Controller
         return view('forms.certificate_distribution_record');
     }
 
-  
+
 
 
 }

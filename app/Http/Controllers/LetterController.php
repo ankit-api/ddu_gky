@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\LetterFromSrlmMobiPlan;
 use Illuminate\Http\Request;
 
-class LetterFromSrlmMobiPlanController extends Controller
+class LetterController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,6 +17,10 @@ class LetterFromSrlmMobiPlanController extends Controller
         //
     }
 
+
+    public function print_srlm_to_cert(){
+        return view('print_layout.certificate_to_srlm_print');
+    }
     /**
      * Show the form for creating a new resource.
      *
