@@ -71,5 +71,8 @@ Route::group(['middleware' => ['auth']], function() {
     
 
     Route::get('/create-certificate-distribution', [CertificateController::class,'createCertificateDistribution'])->name('create-certificate-distribution');
+
+    //Print
+    Route::view('/registration-print', 'print_layout/on_field_reg_of_candidate_print');
     
 });
