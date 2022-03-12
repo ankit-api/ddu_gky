@@ -14,7 +14,7 @@ class DailyDistributionOfTabletController extends Controller
      */
     public function index()
     {
-        //
+        return view('forms.daily_distribution_of_tablets');
     }
 
     /**

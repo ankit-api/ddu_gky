@@ -180,6 +180,7 @@
     <ul class="nav flex-column sub-menu">
       <li class="nav-item"> <a class="nav-link" href="{{ route('items_given')}}">Items Given</a></li>
       <li class="nav-item"> <a class="nav-link" href="{{ route('items_failure')}}">Items Failure</a></li>
+      <li class="nav-item"> <a class="nav-link" href="{{ route('daily_distribution_of_tablets')}}">Daily Tablet Distribution </a></li>
     </ul>
   </div>
 </li> 
