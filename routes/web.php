@@ -19,6 +19,7 @@ use App\Http\Controllers\InspectionFormController;
 use App\Http\Controllers\MasterController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\DailyDistributionOfTabletController;
+use App\Http\Controllers\LetterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,5 +72,8 @@ Route::group(['middleware' => ['auth']], function() {
     
 
     Route::get('/create-certificate-distribution', [CertificateController::class,'createCertificateDistribution'])->name('create-certificate-distribution');
+
+    //Print-Layout Forms
+    Route::get('/print_srlm_to_cert', [LetterController::class,'print_srlm_to_cert'])->name('print_srlm_to_cert');
     
 });
