@@ -15,7 +15,7 @@
             </div>
         </div>
         @yield('print_body_section')
-        <div class="row mt-5">
+        <div class="row mt-5 fixed-bottom">
             <div class="col-12">
                 <img src="{{asset('images/ddu-footer.jpg')}}" class="img-fluid" alt="footer-images">
             </div>

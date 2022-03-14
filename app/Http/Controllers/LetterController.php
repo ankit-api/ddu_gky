@@ -21,6 +21,10 @@ class LetterController extends Controller
     public function print_srlm_to_cert(){
         return view('print_layout.certificate_to_srlm_print');
     }
+
+    public function print_srlm_from_cert(){
+        return view('print_layout.certificate_from_srlm_print');
+    }
     /**
      * Show the form for creating a new resource.
      *

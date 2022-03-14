@@ -77,5 +77,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::view('/registration-print', 'print_layout/on_field_reg_of_candidate_print');
     //Print-Layout Forms
     Route::get('/print_srlm_to_cert', [LetterController::class,'print_srlm_to_cert'])->name('print_srlm_to_cert');
+    Route::get('/print_srlm_from_cert', [LetterController::class,'print_srlm_from_cert'])->name('print_srlm_from_cert');
     
 });

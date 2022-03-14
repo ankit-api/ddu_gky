@@ -16,6 +16,20 @@
             <span style="font-weight: bold">Reference:</span> Your letter No (or MoRD letter No.)________________ dated ___________<br><br>
             Dear Sir,<br><br>
             As per reference cited above, we have been assigned a project to train rural youth in your state with the following district wise break up:<br><br>
+            <table class="table table-bordered">
+                <thead>
+                    <th>S.No.</th>
+                    <th>Name of the district</th>
+                    <th>Target</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Ankit Bisht</td>
+                        <td>Gram Panchayat</td>
+                    </tr>
+                </tbody>
+            </table><br>
             We have already submitted a prospective action plan for undertaking the tasks. In this regard, you are requested to provide us with the list of Gram Panchayats for mobilizing the candidates.<br><br>
             We look forward to your guidance and support in implementing the project.<br><br>
             Yours sincerely,<br><br>
