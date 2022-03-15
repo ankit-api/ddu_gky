@@ -33,6 +33,7 @@ class CreateTrainerDetailsTable extends Migration
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamp('created_on')->useCurrent();
             $table->timestamp('updated_on')->nullable();
+            $table->softDeletes();
         });
     }
 

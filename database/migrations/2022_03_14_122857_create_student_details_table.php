@@ -52,7 +52,7 @@ class CreateStudentDetailsTable extends Migration
             $table->string('name_of_sgh_member',200)->nullable();
            
       
-            $table->foreign('centre_id')->references('id')->on('centre_details')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('centre_id')->references('id')->on('centre')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('register_id')->references('id')->on('on_field_registration_of_candidates')->onUpdate('cascade')->onDelete('cascade');            
             $table->foreign('batch_id')->references('id')->on('batch_details')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('family_id')->references('id')->on('family_details')->onUpdate('cascade')->onDelete('cascade');
@@ -60,7 +60,8 @@ class CreateStudentDetailsTable extends Migration
 
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamp('created_on')->useCurrent();
-            $table->timestamp('updated_on')->nullable();
+            $table->timestamp('updated_on')->useCurrent();
+            $table->softDeletes();
         });
     }
 

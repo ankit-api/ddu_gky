@@ -12,6 +12,15 @@ class MasterController extends Controller
     {
         return view('forms.create_pia');
     }
+    public function postPia(request $req)
+    {
+        // $req->validate([
+           
+        // ]);
+        
+        $pia_name = $req->name;
+        $pia_address = $req->address;
+    }
 
     public function createProject()
     {

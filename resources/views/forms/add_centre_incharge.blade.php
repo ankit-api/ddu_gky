@@ -37,6 +37,10 @@
                     </select> 
                 </div>
                 <div class="col-md-6">
+                    <label for="" class="m-2">Email</label><br>
+                    <input name ="email" type="email" class="form-control">
+                </div>
+                <div class="col-md-6">
                     <label for="" class="m-2">Contact</label><br>
                     <input name ="" type="text" class="form-control">
                 </div> 

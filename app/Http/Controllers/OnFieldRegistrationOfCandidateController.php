@@ -16,70 +16,17 @@ class OnFieldRegistrationOfCandidateController extends Controller
     {
         return view('forms.on_field_reg_of_candidate');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function postRegistration(Request $req)
     {
-        //
+        // $req->validate([
+        //     'w_title' => 'required|max:100',
+        //     'w_desc' => 'required',
+        //     'w_img' => 'required|mimes:png,jpg,jpeg,svg|max:2048',
+        //     'w_start' => 'required',
+        //     'w_end' => 'required',
+        // ]);
+        dd($req);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\OnFieldRegistrationOfCandidate  $onFieldRegistrationOfCandidate
-     * @return \Illuminate\Http\Response
-     */
-    public function show(OnFieldRegistrationOfCandidate $onFieldRegistrationOfCandidate)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\OnFieldRegistrationOfCandidate  $onFieldRegistrationOfCandidate
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(OnFieldRegistrationOfCandidate $onFieldRegistrationOfCandidate)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\OnFieldRegistrationOfCandidate  $onFieldRegistrationOfCandidate
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, OnFieldRegistrationOfCandidate $onFieldRegistrationOfCandidate)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\OnFieldRegistrationOfCandidate  $onFieldRegistrationOfCandidate
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(OnFieldRegistrationOfCandidate $onFieldRegistrationOfCandidate)
-    {
-        //
-    }
+   
 }

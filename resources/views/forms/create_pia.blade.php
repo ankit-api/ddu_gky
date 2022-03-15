@@ -19,11 +19,11 @@
             <div class="row">            
                 <div class="col-md-12">
                     <label for="" class="m-2">Name of PIA</label><br>
-                    <input name ="project_name" type="text" class="form-control">
+                    <input name ="name" type="text" class="form-control">
                 </div>
                 <div class="col-md-12">
                     <label for="" class="m-2">Address of PIA</label><br>
-                    <input name ="project_name" type="text" class="form-control">
+                    <input name ="address" type="text" class="form-control">
                 </div> 
               </div><br>     
                <button type="submit" class="text-light btn btn-lg btn-success btn-icon-text">

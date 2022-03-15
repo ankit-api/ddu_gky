@@ -54,6 +54,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/create-centre-incharge', [MasterController::class,'createCentreIncharge'])->name('create-centre-incharge');
     
     Route::get('/candidate-register', [OnFieldRegistrationOfCandidateController::class,'index'])->name('candidate-register');
+    Route::post('/post-candidate-register', [OnFieldRegistrationOfCandidateController::class,'postRegistration'])->name('post-candidate-register');
     Route::get('/candidate-admission', [CandidateAdmissionController::class,'index'])->name('candidate-admission');
     Route::get('/create-batch', [BatchController::class,'index'])->name('create-batch');
     Route::get('/items_given', [ItemsGivenToCandidateController::class,'index'])->name('items_given');

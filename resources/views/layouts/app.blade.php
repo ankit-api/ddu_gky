@@ -6,6 +6,23 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="{{ asset('/star_theme/vendors/feather/feather.css') }}">
+  <link rel="stylesheet" href="{{ asset('/star_theme/vendors/mdi/css/materialdesignicons.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('/star_theme/vendors/ti-icons/css/themify-icons.css') }}">
+  <link rel="stylesheet" href="{{ asset('/star_theme/vendors/typicons/typicons.css') }}">
+  <link rel="stylesheet" href="{{ asset('/star_theme/vendors/simple-line-icons/css/simple-line-icons.css') }}">
+  <link rel="stylesheet" href="{{ asset('/star_theme/vendors/css/vendor.bundle.base.css') }}">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="{{ asset('/star_theme/vendors/datatables.net-bs4/dataTables.bootstrap4.css') }}">
+  <link rel="stylesheet" href="{{ asset('/star_theme/js/select.dataTables.min.css') }}">
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="{{ asset('/star_theme/css/vertical-layout-light/style.css') }}">
+  
+  <!-- endinject -->
+  {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
+  <!-- <link rel="shortcut icon" href="{{ asset('/star_theme/images/favicon.png') }}" /> -->
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -80,4 +97,28 @@
         </main>
     </div>
 </body>
+
+<script src="{{ asset('/star_theme/vendors/js/vendor.bundle.base.js') }}"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="{{ asset('/star_theme/vendors/chart.js/Chart.min.js') }}"></script>
+  <script src="{{ asset('/star_theme/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
+  <script src="{{ asset('/star_theme/vendors/progressbar.js/progressbar.min.js') }}"></script>
+
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="{{ asset('/star_theme/js/off-canvas.js') }}"></script>
+  <script src="{{ asset('/star_theme/js/hoverable-collapse.js') }}"></script>
+  <script src="{{ asset('/star_theme/js/template.js') }}"></script>
+  <script src="{{ asset('/star_theme/js/settings.js') }}"></script>
+  <script src="{{ asset('/star_theme/js/todolist.js') }}"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="{{ asset('/star_theme/js/dashboard.js') }}"></script>
+  <script src="{{ asset('/star_theme/js/Chart.roundedBarCharts.js') }}"></script>
+  <!-- End custom js for this page-->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+
 </html>
