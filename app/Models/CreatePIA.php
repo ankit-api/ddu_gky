@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CenterDetails extends Model
+class CreatePIA extends Model
 {
     use HasFactory;
 
-    protected $table = 'centre';
+    protected $table = 'pia';
     public $timestamps = false;
 }

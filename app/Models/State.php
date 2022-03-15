@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CenterDetails extends Model
+class State extends Model
 {
     use HasFactory;
 
-    protected $table = 'centre';
+    protected $table = 'states';
     public $timestamps = false;
 }

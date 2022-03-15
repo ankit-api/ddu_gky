@@ -18,11 +18,11 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{ route('create-pia') }}">Add PIA</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ route('create-project') }}">Add Project</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ route('create-centre')}}">Add Centre</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ route('create-qteam-member') }}">Add Q-team Member</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ route('create-centre-incharge') }}">Add Centre Incharge</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('pia_form') }}">Add PIA</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('project_form') }}">Add Project</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('centre_form')}}">Add Centre</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('q_team_member_form') }}">Add Q-team Member</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('centre_incharge_form') }}">Add Centre Incharge</a></li>
                 <!-- <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Add Project</a></li> -->
               </ul>
             </div>
@@ -37,7 +37,7 @@
             </a>
             <div class="collapse" id="ui-basic2">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{ route('create-centre')}}">Add Centre</a></li>
+                {{-- <li class="nav-item"> <a class="nav-link" href="{{ route('create-centre')}}">Add Centre</a></li> --}}
                 <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Centre List</a></li>
                 <li class="nav-item"> <a class="nav-link" href="{{ route('centre_status_of_15_days')}}">Centre Status</a></li>
               </ul>

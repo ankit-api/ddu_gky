@@ -48,10 +48,17 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/form1', function () {
         return view('forms.on_field_reg_of_candidate');
     });
-    Route::get('/create-pia', [MasterController::class,'createPia'])->name('create-pia');
-    Route::get('/create-project', [MasterController::class,'createProject'])->name('create-project');
-    Route::get('/create-qteam-member', [MasterController::class,'createQteamMember'])->name('create-qteam-member');
-    Route::get('/create-centre-incharge', [MasterController::class,'createCentreIncharge'])->name('create-centre-incharge');
+    Route::get('/pia_form', [MasterController::class,'piaForm'])->name('pia_form');
+    Route::post('/create_pia', [MasterController::class,'createPia'])->name('create_pia');
+
+    Route::get('/project_form', [MasterController::class,'projectForm'])->name('project_form');
+    Route::post('/create_project', [MasterController::class,'createProject'])->name('create_project');
+
+    Route::get('/q_team_member_form', [MasterController::class,'qteamMemberForm'])->name('q_team_member_form');
+    Route::post('/create_qteam_member', [MasterController::class,'createQteamMember'])->name('create_qteam_member');
+
+    Route::get('/centre_incharge_form', [MasterController::class,'centreInchargeForm'])->name('centre_incharge_form');
+    Route::post('/create_centre_incharge', [MasterController::class,'createCentreIncharge'])->name('create_centre_incharge');
     
     Route::get('/candidate-register', [OnFieldRegistrationOfCandidateController::class,'index'])->name('candidate-register');
     Route::post('/post-candidate-register', [OnFieldRegistrationOfCandidateController::class,'postRegistration'])->name('post-candidate-register');
@@ -68,7 +75,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/inspection_form', [InspectionFormController::class,'index'])->name('inspection_form');
     Route::get('/daily_distribution_of_tablets', [DailyDistributionOfTabletController::class,'index'])->name('daily_distribution_of_tablets');
 
-    Route::get('/create-centre', [CentreController::class,'index'])->name('create-centre');
+    Route::get('/centre_form', [CentreController::class,'index'])->name('centre_form');
+    Route::post('/create_centre', [CentreController::class,'createCentre'])->name('create_centre');
+    
     Route::get('/create-trainer', [StaffController::class,'index'])->name('create-trainer');
     
 

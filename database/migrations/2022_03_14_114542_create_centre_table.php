@@ -18,7 +18,8 @@ class CreateCentreTable extends Migration
             $table->integer('pia_id')->unsigned()->foriegn(); 
             $table->foreign('pia_id')->references('id')->on('pia')->onUpdate('cascade')->onDelete('cascade');
             $table->string('center_code',50);           
-            $table->string('state',100);
+            $table->integer('state')->unsigned();
+            $table->integer('city')->unsigned();
             $table->string('centre_name',100);
             $table->text('address');
             $table->enum('status', ['active', 'inactive'])->default('active');
