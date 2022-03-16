@@ -9,6 +9,8 @@ use App\Models\QTeamMembersDetail;
 use App\Models\Project;
 use App\Models\CenterDetails;
 use App\Models\CenterIncharge;
+use App\Models\State;
+use App\Models\District;
 
 class MasterController extends Controller
 {
@@ -44,8 +46,10 @@ class MasterController extends Controller
     public function projectForm()
     {
         $get_project = CreatePIA::all();
+        $get_state = State::all();
+        $get_district = District::all();
         // dd($get_project);
-        return view('admin.create_project.create_project', compact("get_project"));
+        return view('admin.create_project.create_project', compact("get_project", "get_state", "get_district"));
     }
 
     public function createProject(Request $req)
@@ -53,17 +57,23 @@ class MasterController extends Controller
         session(['pia_id' => '1']);
         $this->validate($req, [
             'pia_name' => 'required',
-            'proj_name' => 'required|max:100'
+            'proj_name' => 'required|max:100',
+            'state_id' => 'required',
+            'district_id' => 'required'
         ]);
 
         $get_pia_id = $req->session()->get('pia_id');
+        $added_by = $req->session()->get('pia_id');
 
-        $Pia = new Project();
-        $Pia->pia_id = $get_pia_id;
-        $Pia->name = $req->proj_name;
-        $Pia->duration = $req->proj_duration;
-        $Pia->description = $req->proj_description;
-        $Pia->save();
+        $Project = new Project();
+        $Project->pia_id = $get_pia_id;
+        $Project->name = $req->proj_name;
+        $Project->duration = $req->proj_duration;
+        $Project->state_id = $req->state_id;
+        $Project->district_id = $req->district_id;
+        $Project->description = $req->proj_description;
+        $Project->added_by = $added_by;
+        $Project->save();
 
         return redirect()->back()->with('alert_status','Project Added Successfully');
     }
@@ -82,6 +92,7 @@ class MasterController extends Controller
         ]);
 
         $get_pia_id = $req->session()->get('pia_id');
+        $added_by = $req->session()->get('pia_id');
 
         $QTeam = new QTeamMembersDetail();
         $QTeam->pia_id = $get_pia_id;
@@ -92,6 +103,7 @@ class MasterController extends Controller
         $QTeam->email = $req->email;
         $QTeam->reporting_office = $req->reporting_off;
         $QTeam->address = $req->address;
+        $QTeam->added_by = $added_by;
         $QTeam->save();
 
         return redirect()->back()->with('alert_status','Q Team Member Added Successfully');
@@ -108,7 +120,7 @@ class MasterController extends Controller
         return view('public.centre incharge.add_centre_incharge', compact("get_centre"));
     }
 
-    public function createCentreIncharge()
+    public function createCentreIncharge(Request $req)
     {
         $this->validate($req, [
             'centre_id' => 'required',
@@ -131,13 +143,14 @@ class MasterController extends Controller
         // }
 
         $Cen_Inch = new CenterIncharge();
-        $Cen_Inch->centre_id = $centre_id;
+        $Cen_Inch->centre_id = $req->centre_id;
         $Cen_Inch->name = $req->name;
         $Cen_Inch->email = $req->email;
         $Cen_Inch->contact = $req->contact_no;
         $Cen_Inch->address = $req->address;
-        $Cen_Inch->gender = $req->email;
+        $Cen_Inch->gender = $req->gender;
         $Cen_Inch->qualification = $req->qualification;
+        $Cen_Inch->added_by = $req->added_by;
         $Cen_Inch->save();
 
         return redirect()->back()->with('alert_status','Centre Incharge Added Successfully');

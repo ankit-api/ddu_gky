@@ -42,15 +42,15 @@
                     <label for="" class="m-2">State</label><br>
                     <select name="state_id" id="state_id" class="form-control" style="background-color:white;">
                         @foreach($get_state as $state)
-                            <option value="{{ $state->id }}">{{ $state->state }}</option>
+                            <option value="{{ $state->id }}">{{ $state->state_name }}</option>
                         @endforeach
                     </select> 
                 </div>
                 <div class="col-md-3">
-                    <label for="" class="m-2">City</label><br>
-                    <select name="city_id" id="city_id" class="form-control" style="background-color:white;">
-                        @foreach($get_city as $city)
-                            <option value="{{ $city->id }}">{{ $city->city_name }}</option>
+                    <label for="" class="m-2">District</label><br>
+                    <select name="district_id" id="district_id" class="form-control" style="background-color:white;">
+                        @foreach($get_district as $district)
+                            <option value="{{ $district->id }}">{{ $district->district_name }}</option>
                         @endforeach
                     </select> 
                 </div>

@@ -28,6 +28,7 @@ class CreateCentreInchargeDetailsTable extends Migration
             $table->text('address');
             $table->enum('gender', ['male', 'female', 'others'])->default('male');
             $table->string('qualification',255);
+            $table->integer('added_by')->unsigned()->nullable();
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamp('created_on')->nullable();
             $table->timestamp('updated_on')->nullable();

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CreatePIA;
 use App\Models\State;
-use App\Models\City;
+use App\Models\District;
 use App\Models\CenterDetails;
 
 use Illuminate\Http\Request;
@@ -20,8 +20,8 @@ class CentreController extends Controller
     {
         $get_project = CreatePIA::all();
         $get_state = State::all();
-        $get_city = City::all();
-        return view('admin.create_centre.create_centre', compact("get_project","get_state","get_city"));
+        $get_district = District::all();
+        return view('admin.create_centre.create_centre', compact("get_project","get_state","get_district"));
     }
 
     
@@ -39,6 +39,7 @@ class CentreController extends Controller
             'pia_id' => 'required',
             'name_of_centre' => 'required|max:100',
             'state_id' => 'required',
+            'district_id' => 'required',
             'address' => 'required'
         ]);
 
@@ -53,14 +54,16 @@ class CentreController extends Controller
         }
 
         $get_pia_id = $req->session()->get('pia_id');
+        $added_by = $req->session()->get('pia_id');
 
         $center = new CenterDetails();
         $center->pia_id = $get_pia_id;
         $center->center_code = $cntr_code;
         $center->state = $req->state_id;
-        $center->city = $req->city_id;
+        $center->district_id = $req->district_id;
         $center->centre_name = $req->name_of_centre;
         $center->address = $req->address;
+        $center->added_by = $added_by;
         $center->save();
 
         return redirect()->back()->with('alert_status','Centre Added Successfully');

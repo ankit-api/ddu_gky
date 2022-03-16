@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Add Q-Team member')
+@section('title', 'Add Centre Incharge')
 @section('admin_dashboard')
 
      
@@ -14,8 +14,9 @@
               <div class="home-tab">
                   
         <div class="container col-sm-12 mx-auto">
-                <h4 class="text-center fw-bold">Create Centre Incharge</h4><br>
-        <form action="" method="">
+                <h4 class="text-center fw-bold">Add Centre Incharge</h4><br>
+        <form action="{{ route('create_centre_incharge') }}" method="post">
+            @csrf
             <div class="row">  
                 @if (session('alert_status'))
                     <h6 class="alert alert-success">{{ session('alert_status') }}</h6>
@@ -49,7 +50,7 @@
                 </div>
                 <div class="col-md-6">
                     <label for="" class="m-2">Contact</label><br>
-                    <input name ="contact_no" type="text" class="form-control" placeholder="Enter Contact No.">
+                    <input name ="contact_no" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" maxlength="10" placeholder="Enter Contact No." class="form-control">
                 </div> 
                 <div class="col-md-6">
                     <label for="" class="m-2">Address</label><br>

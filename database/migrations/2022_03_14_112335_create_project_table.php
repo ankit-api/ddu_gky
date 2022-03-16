@@ -19,7 +19,10 @@ class CreateProjectTable extends Migration
             $table->foreign('pia_id')->references('id')->on('pia')->onUpdate('cascade')->onDelete('cascade');
             $table->string('name',100);
             $table->string('duration',20);
+            $table->integer('state')->unsigned();
+            $table->integer('district')->unsigned();
             $table->text('description');
+            $table->integer('added_by')->unsigned()->nullable();
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamp('created_on')->useCurrent();
             $table->timestamp('updated_on')->useCurrent();

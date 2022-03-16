@@ -24,7 +24,8 @@ class CreateQTeamMembersDetailsTable extends Migration
             $table->text('address');
             $table->enum('gender', ['male', 'female', 'others'])->default('male');
             $table->enum('designation', ['head', 'member'])->default('member');
-            $table->string('reporting_office',50);        
+            $table->string('reporting_office',50);       
+            $table->integer('added_by')->unsigned()->nullable(); 
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamp('created_on')->nullable();
             $table->timestamp('updated_on')->nullable();
