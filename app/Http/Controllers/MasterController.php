@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers;
 
-
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Models\CreatePIA;
+use App\Models\PIA;
 use App\Models\QTeamMembersDetail;
 use App\Models\Project;
 use App\Models\CenterDetails;
 use App\Models\CenterIncharge;
 use App\Models\State;
 use App\Models\District;
+use App\Models\User;
+use Mail;
 
 class MasterController extends Controller
 {
@@ -21,7 +24,6 @@ class MasterController extends Controller
     }
     public function createPia(Request $req)
     {
-        // dd($req->all());
         $this->validate($req, [
             'name' => 'required|min:3|max:50',
             'contact_no' => 'required|max:10',
@@ -31,7 +33,18 @@ class MasterController extends Controller
 
         ]);
 
-        $Pia = new CreatePIA();
+        $total_rows = PIA::orderBy('id', 'desc')->count();
+        
+        $pia_code = "PIA/";
+        if($total_rows==0){
+            $pia_code .= '0001';
+        }else{
+            $last_id = PIA::orderBy('id', 'desc')->first()->id;
+            $pia_code .= sprintf("%'04d",$last_id + 1);
+        }
+
+        $Pia = new PIA();
+        $Pia->pia_code = $pia_code;
         $Pia->pia_name = $req->name;
         $Pia->landline_no = $req->landline_no;
         $Pia->phone_no = $req->contact_no;
@@ -39,13 +52,39 @@ class MasterController extends Controller
         $Pia->address = $req->address;
         $Pia->save();
 
+        $random_password =  Str::random(8);
+        
+        $hashed_random_password = Hash::make($random_password);
+
+        $toEmail = 'disha.bhandari@prakharsoftwares.com';
+        $from=env('MAIL_USERNAME'); 
+        $data= 
+        [  
+            'otp'=>$random_password,
+        ];                
+
+        Mail::send('mail.otp', $data, function ($message) use ($toEmail,$from) {
+        $message->to($toEmail)
+        ->subject('Mail');
+        $message->from(env('MAIL_USERNAME'), env('APP_NAME'));
+        });
+
+
+        $user = new User();
+        $user->role_id = '2';
+        $user->user_code = $pia_code;
+        $user->name = $req->name;
+        $user->email = $req->official_email;
+        $user->password = $hashed_random_password;
+        $user->save();
+       
         return redirect()->back()->with('alert_status','PIA Added Successfully');
 
     }
 
     public function projectForm()
     {
-        $get_project = CreatePIA::all();
+        $get_project = PIA::all();
         $get_state = State::all();
         $get_district = District::all();
         // dd($get_project);

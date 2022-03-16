@@ -22,6 +22,7 @@ class CreateCentreInchargeDetailsTable extends Migration
             // $table->string('accretion',50);
             // $table->string('deletion',50);
             // $table->string('no_of_staff_at_closing',50);
+            $table->string('centre_incharge_code',50);
             $table->string('name',50);
             $table->string('email',50);
             $table->string('contact',50);
