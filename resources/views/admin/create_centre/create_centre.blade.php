@@ -14,7 +14,7 @@
               <div class="home-tab">
                   
         <div class="container col-sm-12">
-                <h4 class="text-center fw-bold">Create Centre</h4><br>
+                <h4 class="text-center fw-bold">Add New Centre</h4><br>
         <form action="{{ route('create_centre') }}" method="post">
             @csrf
             <div class="row">   
