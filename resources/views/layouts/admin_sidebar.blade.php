@@ -18,12 +18,66 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{ route('pia_form') }}">Add PIA</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ route('project_form') }}">Add Project</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ route('centre_form')}}">Add Centre</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ route('q_team_member_form') }}">Add Q-team Member</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ route('centre_incharge_form') }}">Add Centre Incharge</a></li>
-                <!-- <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Add Project</a></li> -->
+                {{-- <li class="nav-item"> <a class="nav-link" href="{{ route('pia_form') }}">Add PIA</a></li> --}}
+                <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic16" aria-expanded="false" aria-controls="ui-basic">
+                  <span class="menu-title">PIA</span>
+                  <i class="menu-arrow"></i> 
+                </a>
+                <div class="collapse" id="ui-basic16">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('pia_form')}}">Add PIA</a></li>
+                  </ul>
+                </div></li>
+                {{-- <li class="nav-item"> <a class="nav-link" href="{{ route('project_form') }}">Add Project</a></li> --}}
+                <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic15" aria-expanded="false" aria-controls="ui-basic">
+                  <span class="menu-title">Project</span>
+                  <i class="menu-arrow"></i> 
+                </a>
+                <div class="collapse" id="ui-basic15">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('project_form')}}">Add Project</a></li>
+                  </ul>
+                </div></li>
+                {{-- <li class="nav-item"> <a class="nav-link" href="{{ route('centre_form')}}">Add Centre</a></li> --}}
+                <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic14" aria-expanded="false" aria-controls="ui-basic">
+                  <span class="menu-title">Centre</span>
+                  <i class="menu-arrow"></i> 
+                </a>
+                <div class="collapse" id="ui-basic14">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('centre_form')}}">Add Centre</a></li>
+                  </ul>
+                </div></li>
+                {{-- <li class="nav-item"> <a class="nav-link" href="{{ route('mobilizer_form')}}">Add Mobilizer</a></li> --}}
+                <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic17" aria-expanded="false" aria-controls="ui-basic">
+                  <span class="menu-title">Mobilizer</span>
+                  <i class="menu-arrow"></i> 
+                </a>
+                <div class="collapse" id="ui-basic17">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('mobilizer_form')}}">Add Mobilizer</a></li>
+                  </ul>
+                </div></li>
+                {{-- <li class="nav-item"> <a class="nav-link" href="{{ route('q_team_member_form') }}">Add Q-team Member</a></li> --}}
+                <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic18" aria-expanded="false" aria-controls="ui-basic">
+                  <span class="menu-title">Q-team Member</span>
+                  <i class="menu-arrow"></i> 
+                </a>
+                <div class="collapse" id="ui-basic18">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('q_team_member_form')}}">Add Q-team Member</a></li>
+                  </ul>
+                </div></li>
+                {{-- <li class="nav-item"> <a class="nav-link" href="{{ route('centre_incharge_form') }}">Add Centre Incharge</a></li> --}}
+                <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic19" aria-expanded="false" aria-controls="ui-basic">
+                  <span class="menu-title">Centre Incharge</span>
+                  <i class="menu-arrow"></i> 
+                </a>
+                <div class="collapse" id="ui-basic19">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('centre_incharge_form')}}">Add Centre Incharge</a></li>
+                  </ul>
+                </div></li>
               </ul>
             </div>
           </li>  

@@ -60,7 +60,7 @@ class CentreController extends Controller
         $center->pia_id = $get_pia_id;
         $center->center_code = $cntr_code;
         $center->state = $req->state_id;
-        $center->district_id = $req->district_id;
+        $center->district = $req->district_id;
         $center->centre_name = $req->name_of_centre;
         $center->address = $req->address;
         $center->added_by = $added_by;

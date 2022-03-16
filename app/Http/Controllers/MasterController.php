@@ -11,6 +11,7 @@ use App\Models\CenterDetails;
 use App\Models\CenterIncharge;
 use App\Models\State;
 use App\Models\District;
+use App\Models\CreateMobilizer;
 
 class MasterController extends Controller
 {
@@ -122,6 +123,7 @@ class MasterController extends Controller
 
     public function createCentreIncharge(Request $req)
     {
+        session(['pia_id' => '1']);
         $this->validate($req, [
             'centre_id' => 'required',
             'name' => 'required|max:40',
@@ -132,6 +134,7 @@ class MasterController extends Controller
             'qualification' => 'required|max:120'
         ]);
 
+        $added_by = $req->session()->get('pia_id');
         // $total_rows = CenterIncharge::orderBy('id', 'desc')->count();
         
         // $cntr_inch_code = "CNTRIN/";
@@ -156,5 +159,47 @@ class MasterController extends Controller
         return redirect()->back()->with('alert_status','Centre Incharge Added Successfully');
     }
 
+    public function mobilizerForm()
+    {
+        $get_centre = CenterDetails::all();
+        return view('public.mobilizer.add_mobilizer', compact("get_centre"));
+    }
+
+    public function createMobilizer(Request $req)
+    {
+        session(['pia_id' => '1']);
+        $this->validate($req, [
+            'centre_id' => 'required',
+            'name' => 'required|max:40',
+            'gender' => 'required',
+            'email' => 'required|email',
+            'contact_no' => 'required',
+            'address' => 'required|min:10|max:255'
+        ]);
+
+        $added_by = $req->session()->get('pia_id');
+        $total_rows = CreateMobilizer::orderBy('id', 'desc')->count();
+        
+        $mob_code = "MOB/";
+        if($total_rows==0){
+            $mob_code .= '0001';
+        }else{
+            $last_id = CreateMobilizer::orderBy('id', 'desc')->first()->id;
+            $mob_code .= sprintf("%'04d",$last_id + 1);
+        }
+
+        $Cen_Inch = new CreateMobilizer();
+        $Cen_Inch->centre_id = $req->centre_id;
+        $Cen_Inch->mob_id = $mob_code;
+        $Cen_Inch->name = $req->name;
+        $Cen_Inch->email = $req->email;
+        $Cen_Inch->contact = $req->contact_no;
+        $Cen_Inch->address = $req->address;
+        $Cen_Inch->gender = $req->gender;
+        $Cen_Inch->added_by = $added_by;
+        $Cen_Inch->save();
+
+        return redirect()->back()->with('alert_status','Mobilizer Added Successfully');
+    }
 
 }
