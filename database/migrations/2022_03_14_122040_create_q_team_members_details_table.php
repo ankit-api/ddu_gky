@@ -17,7 +17,7 @@ class CreateQTeamMembersDetailsTable extends Migration
             $table->increments('id');
             $table->integer('pia_id')->unsigned()->foriegn(); 
             $table->foreign('pia_id')->references('id')->on('pia')->onUpdate('cascade')->onDelete('cascade');
-            // $table->string('employee_id',50);
+            $table->string('qteam_member_code',50);
             $table->string('name',50);
             $table->string('email',50);
             $table->string('contact',50);

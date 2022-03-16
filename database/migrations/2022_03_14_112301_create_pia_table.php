@@ -15,7 +15,7 @@ class CreatePiaTable extends Migration
     {
         Schema::create('pia', function (Blueprint $table) {
             $table->increments('id'); 
-            // $table->string('pia_code',50);
+            $table->string('pia_code',50);
             $table->string('pia_name',100);
             $table->bigInteger('landline_no')->unique();
             $table->bigInteger('phone_no');
