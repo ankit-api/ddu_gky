@@ -1,7 +1,7 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar" style="background-color:#c6cbc6;">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('home') }}">
+            <a class="nav-link" href="index.html">
               <i class="mdi mdi-grid-large menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
@@ -20,16 +20,6 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                {{-- <li class="nav-item"> <a class="nav-link" href="{{ route('pia_form') }}">Add PIA</a></li> --}}
-                <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic16" aria-expanded="false" aria-controls="ui-basic">
-                  <span class="menu-title">PIA</span>
-                  <i class="menu-arrow"></i> 
-                </a>
-                <div class="collapse" id="ui-basic16">
-                  <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('pia_form')}}">Add PIA</a></li>
-                  </ul>
-                </div></li>
                 {{-- <li class="nav-item"> <a class="nav-link" href="{{ route('project_form') }}">Add Project</a></li> --}}
                 <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic15" aria-expanded="false" aria-controls="ui-basic">
                   <span class="menu-title">Project</span>

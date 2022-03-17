@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title', 'Add PIA')
-@section('admin_dashboard')
+@section('dashboard')
 
      
       <!-- partial -->

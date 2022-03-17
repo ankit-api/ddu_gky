@@ -135,7 +135,7 @@
               <div class="dropdown-header text-center">
                 <img class="img-md rounded-circle" src="{{ asset('/star_theme/images/faces/face8.jpg') }}" alt="Profile image">
                 <p class="mb-1 mt-3 font-weight-semibold">{{ Auth::user()->name }}</p>
-                <p class="fw-light text-muted mb-0">Centre Incharge</p>
+                <p class="fw-light text-muted mb-0">{{ Auth::user()->user_role->role_name }}</p>
               </div>
               <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My Profile <span class="badge badge-pill badge-danger">1</span></a>
               {{-- <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-message-text-outline text-primary me-2"></i> Messages</a>

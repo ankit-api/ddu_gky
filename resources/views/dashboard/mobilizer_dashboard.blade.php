@@ -2,7 +2,7 @@
 @section('title', 'Dashboard')
 
 {{-- @section('sidebar')
-@include('layouts.admin_sidebar')
+@include('layouts.pia_sidebar')
 @endsection --}}
 
 @section('dashboard')
@@ -18,7 +18,7 @@
             <div class="col-sm-12">
               <div class="home-tab">
                   
-                <h2>Admin Dashboard here</h2>
+                <h2>Mobilizer Dashboard Here</h2>
 
                
               </div>

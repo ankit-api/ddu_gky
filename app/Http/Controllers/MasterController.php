@@ -15,6 +15,7 @@ use App\Models\District;
 use App\Models\CreateMobilizer;
 use App\Models\User;
 use Mail;
+use Auth;
 
 class MasterController extends Controller
 {
@@ -51,13 +52,14 @@ class MasterController extends Controller
         $Pia->phone_no = $req->contact_no;
         $Pia->email = $req->official_email;
         $Pia->address = $req->address;
+        $Pia->added_by = Auth::user()->id;
         $Pia->save();
 
         $random_password =  Str::random(8);
         
         $hashed_random_password = Hash::make($random_password);
 
-        $toEmail = 'disha.bhandari@prakharsoftwares.com';
+        $toEmail = 'ankit.bisht@prakharsoftwares.com';
         $from=env('MAIL_USERNAME'); 
         $data= 
         [  
@@ -103,16 +105,15 @@ class MasterController extends Controller
         ]);
 
         $get_pia_id = $req->session()->get('pia_id');
-        $added_by = $req->session()->get('pia_id');
 
         $Project = new Project();
         $Project->pia_id = $get_pia_id;
         $Project->name = $req->proj_name;
         $Project->duration = $req->proj_duration;
-        $Project->state_id = $req->state_id;
-        $Project->district_id = $req->district_id;
+        $Project->state = $req->state_id;
+        $Project->district = $req->district_id;
         $Project->description = $req->proj_description;
-        $Project->added_by = $added_by;
+        $Project->added_by = Auth::user()->id;
         $Project->save();
 
         return redirect()->back()->with('alert_status','Project Added Successfully');
@@ -132,7 +133,6 @@ class MasterController extends Controller
         ]);
 
         $get_pia_id = $req->session()->get('pia_id');
-        $added_by = $req->session()->get('pia_id');
 
         $QTeam = new QTeamMembersDetail();
         $QTeam->pia_id = $get_pia_id;
@@ -143,7 +143,7 @@ class MasterController extends Controller
         $QTeam->email = $req->email;
         $QTeam->reporting_office = $req->reporting_off;
         $QTeam->address = $req->address;
-        $QTeam->added_by = $added_by;
+        $QTeam->added_by = Auth::user()->id;
         $QTeam->save();
 
         return redirect()->back()->with('alert_status','Q Team Member Added Successfully');
@@ -162,7 +162,6 @@ class MasterController extends Controller
 
     public function createCentreIncharge(Request $req)
     {
-        session(['pia_id' => '1']);
         $this->validate($req, [
             'centre_id' => 'required',
             'name' => 'required|max:40',
@@ -173,7 +172,6 @@ class MasterController extends Controller
             'qualification' => 'required|max:120'
         ]);
 
-        $added_by = $req->session()->get('pia_id');
         // $total_rows = CenterIncharge::orderBy('id', 'desc')->count();
         
         // $cntr_inch_code = "CNTRIN/";
@@ -206,7 +204,6 @@ class MasterController extends Controller
 
     public function createMobilizer(Request $req)
     {
-        session(['pia_id' => '1']);
         $this->validate($req, [
             'centre_id' => 'required',
             'name' => 'required|max:40',
@@ -216,7 +213,6 @@ class MasterController extends Controller
             'address' => 'required|min:10|max:255'
         ]);
 
-        $added_by = $req->session()->get('pia_id');
         $total_rows = CreateMobilizer::orderBy('id', 'desc')->count();
         
         $mob_code = "MOB/";
@@ -227,16 +223,42 @@ class MasterController extends Controller
             $mob_code .= sprintf("%'04d",$last_id + 1);
         }
 
-        $Cen_Inch = new CreateMobilizer();
-        $Cen_Inch->centre_id = $req->centre_id;
-        $Cen_Inch->mob_id = $mob_code;
-        $Cen_Inch->name = $req->name;
-        $Cen_Inch->email = $req->email;
-        $Cen_Inch->contact = $req->contact_no;
-        $Cen_Inch->address = $req->address;
-        $Cen_Inch->gender = $req->gender;
-        $Cen_Inch->added_by = $added_by;
-        $Cen_Inch->save();
+        $Mobi = new CreateMobilizer();
+        $Mobi->centre_id = $req->centre_id;
+        $Mobi->mob_id = $mob_code;
+        $Mobi->name = $req->name;
+        $Mobi->email = $req->email;
+        $Mobi->contact = $req->contact_no;
+        $Mobi->address = $req->address;
+        $Mobi->gender = $req->gender;
+        $Mobi->added_by = Auth::user()->id;
+        $Mobi->save();
+
+        $random_password =  Str::random(8);
+        
+        $hashed_random_password = Hash::make($random_password);
+
+        $toEmail = 'ankit.bisht@prakharsoftwares.com';
+        $from=env('MAIL_USERNAME'); 
+        $data= 
+        [  
+            'otp'=>$random_password,
+        ];                
+
+        Mail::send('mail.otp', $data, function ($message) use ($toEmail,$from) {
+        $message->to($toEmail)
+        ->subject('Mail');
+        $message->from(env('MAIL_USERNAME'), env('APP_NAME'));
+        });
+
+
+        $user = new User();
+        $user->role_id = '4';
+        $user->user_code = $mob_code;
+        $user->name = $req->name;
+        $user->email = $req->email;
+        $user->password = $hashed_random_password;
+        $user->save();
 
         return redirect()->back()->with('alert_status','Mobilizer Added Successfully');
     }
