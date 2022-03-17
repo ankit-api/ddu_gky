@@ -7,6 +7,6 @@
     <title>OTP</title>
 </head>
 <body>
-    <h3>{{$otp}}</h3>
+    <h2>{{$user}}</h2><h3>{{$otp}}</h3>
 </body>
 </html>

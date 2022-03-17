@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CreatePIA;
+use App\Models\PIA;
 use App\Models\State;
 use App\Models\District;
 use App\Models\CenterDetails;
@@ -18,7 +18,7 @@ class CentreController extends Controller
      */
     public function index()
     {
-        $get_project = CreatePIA::all();
+        $get_project = PIA::all();
         $get_state = State::all();
         $get_district = District::all();
         return view('admin.create_centre.create_centre', compact("get_project","get_state","get_district"));
@@ -60,7 +60,7 @@ class CentreController extends Controller
         $center->pia_id = $get_pia_id;
         $center->center_code = $cntr_code;
         $center->state = $req->state_id;
-        $center->district_id = $req->district_id;
+        $center->district = $req->district_id;
         $center->centre_name = $req->name_of_centre;
         $center->address = $req->address;
         $center->added_by = $added_by;

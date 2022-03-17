@@ -61,6 +61,7 @@ class MasterController extends Controller
         $data= 
         [  
             'otp'=>$random_password,
+            'user'=>'PIA',
         ];                
 
         Mail::send('mail.otp', $data, function ($message) use ($toEmail,$from) {
@@ -130,11 +131,22 @@ class MasterController extends Controller
             'reporting_off' => 'required|max:150'
         ]);
 
+        $total_rows = QTeamMembersDetail::orderBy('id', 'desc')->count();
+        
+        $q_code = "QTEAM/";
+        if($total_rows==0){
+            $q_code .= '0001';
+        }else{
+            $last_id = QTeamMembersDetail::orderBy('id', 'desc')->first()->id;
+            $q_code .= sprintf("%'04d",$last_id + 1);
+        }
+
         $get_pia_id = $req->session()->get('pia_id');
         $added_by = $req->session()->get('pia_id');
 
         $QTeam = new QTeamMembersDetail();
         $QTeam->pia_id = $get_pia_id;
+        $QTeam->qteam_member_code = $q_code;
         $QTeam->name = $req->name;
         $QTeam->gender = $req->gender;
         $QTeam->contact = $req->contact;
@@ -144,6 +156,33 @@ class MasterController extends Controller
         $QTeam->address = $req->address;
         $QTeam->added_by = $added_by;
         $QTeam->save();
+
+        $random_password =  Str::random(8);
+        
+        $hashed_random_password = Hash::make($random_password);
+
+        $toEmail = 'disha.bhandari@prakharsoftwares.com';
+        $from=env('MAIL_USERNAME'); 
+        $data= 
+        [  
+            'otp'=>$random_password,
+            'user'=>'Q-Team Member',
+        ];                
+
+        Mail::send('mail.otp', $data, function ($message) use ($toEmail,$from) {
+        $message->to($toEmail)
+        ->subject('Mail');
+        $message->from(env('MAIL_USERNAME'), env('APP_NAME'));
+        });
+
+
+        $user = new User();
+        $user->role_id = '3';
+        $user->user_code = $q_code;
+        $user->name = $req->name;
+        $user->email = $req->email;
+        $user->password = $hashed_random_password;
+        $user->save();
 
         return redirect()->back()->with('alert_status','Q Team Member Added Successfully');
     }
@@ -171,18 +210,19 @@ class MasterController extends Controller
             'qualification' => 'required|max:120'
         ]);
 
-        // $total_rows = CenterIncharge::orderBy('id', 'desc')->count();
+        $total_rows = CenterIncharge::orderBy('id', 'desc')->count();
         
-        // $cntr_inch_code = "CNTRIN/";
-        // if($total_rows==0){
-        //     $cntr_inch_code .= '0001';
-        // }else{
-        //     $last_id = CenterIncharge::orderBy('id', 'desc')->first()->id;
-        //     $cntr_inch_code .= sprintf("%'04d",$last_id + 1);
-        // }
+        $ci_code = "CENINCH/";
+        if($total_rows==0){
+            $ci_code .= '0001';
+        }else{
+            $last_id = CenterIncharge::orderBy('id', 'desc')->first()->id;
+            $ci_code .= sprintf("%'04d",$last_id + 1);
+        }
 
         $Cen_Inch = new CenterIncharge();
         $Cen_Inch->centre_id = $req->centre_id;
+        $Cen_Inch->centre_incharge_code = $ci_code;
         $Cen_Inch->name = $req->name;
         $Cen_Inch->email = $req->email;
         $Cen_Inch->contact = $req->contact_no;
@@ -191,6 +231,31 @@ class MasterController extends Controller
         $Cen_Inch->qualification = $req->qualification;
         $Cen_Inch->added_by = $req->added_by;
         $Cen_Inch->save();
+
+        $random_password =  Str::random(8);        
+        $hashed_random_password = Hash::make($random_password);
+
+        $toEmail = 'disha.bhandari@prakharsoftwares.com';
+        $from=env('MAIL_USERNAME'); 
+        $data= 
+        [  
+            'otp'=>$random_password,
+            'user'=>'Centre Incharge',
+        ];                
+
+        Mail::send('mail.otp', $data, function ($message) use ($toEmail,$from) {
+        $message->to($toEmail)
+        ->subject('Mail');
+        $message->from(env('MAIL_USERNAME'), env('APP_NAME'));
+        });
+
+        $user = new User();
+        $user->role_id = '5';
+        $user->user_code = $ci_code;
+        $user->name = $req->name;
+        $user->email = $req->email;
+        $user->password = $hashed_random_password;
+        $user->save();
 
         return redirect()->back()->with('alert_status','Centre Incharge Added Successfully');
     }
