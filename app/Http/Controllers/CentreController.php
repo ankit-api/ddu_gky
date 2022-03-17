@@ -6,6 +6,7 @@ use App\Models\PIA;
 use App\Models\State;
 use App\Models\District;
 use App\Models\CenterDetails;
+use Auth;
 
 use Illuminate\Http\Request;
 
@@ -54,7 +55,6 @@ class CentreController extends Controller
         }
 
         $get_pia_id = $req->session()->get('pia_id');
-        $added_by = $req->session()->get('pia_id');
 
         $center = new CenterDetails();
         $center->pia_id = $get_pia_id;
@@ -63,7 +63,7 @@ class CentreController extends Controller
         $center->district = $req->district_id;
         $center->centre_name = $req->name_of_centre;
         $center->address = $req->address;
-        $center->added_by = $added_by;
+        $center->added_by = Auth::user()->id;
         $center->save();
 
         return redirect()->back()->with('alert_status','Centre Added Successfully');

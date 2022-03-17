@@ -27,7 +27,7 @@
                           <div class="col-md-6">
                               <label for="" class="m-2">Name of PIA</label><br>
                               <select name="pia_name" id="" class="form-control" style="background-color:white;">
-                                  @foreach($get_project as $name)
+                                  @foreach($get_pia as $name)
                                     <option value="{{ $name->id }}">{{ $name->pia_name }}</option>
                                   @endforeach
                               </select> 

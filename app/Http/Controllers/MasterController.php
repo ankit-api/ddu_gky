@@ -88,11 +88,11 @@ class MasterController extends Controller
 
     public function projectForm()
     {
-        $get_project = PIA::all();
+        $get_pia = PIA::all();
         $get_state = State::all();
         $get_district = District::all();
         // dd($get_project);
-        return view('admin.create_project.create_project', compact("get_project", "get_state", "get_district"));
+        return view('admin.create_project.create_project', compact("get_pia", "get_state", "get_district"));
     }
 
     public function createProject(Request $req)
@@ -162,7 +162,7 @@ class MasterController extends Controller
         
         $hashed_random_password = Hash::make($random_password);
 
-        $toEmail = 'disha.bhandari@prakharsoftwares.com';
+        $toEmail = 'ankit.bisht@prakharsoftwares.com';
         $from=env('MAIL_USERNAME'); 
         $data= 
         [  
@@ -230,13 +230,13 @@ class MasterController extends Controller
         $Cen_Inch->address = $req->address;
         $Cen_Inch->gender = $req->gender;
         $Cen_Inch->qualification = $req->qualification;
-        $Cen_Inch->added_by = $req->added_by;
+        $Cen_Inch->added_by = Auth::user()->id;
         $Cen_Inch->save();
 
         $random_password =  Str::random(8);        
         $hashed_random_password = Hash::make($random_password);
 
-        $toEmail = 'disha.bhandari@prakharsoftwares.com';
+        $toEmail = 'ankit.bisht@prakharsoftwares.com';
         $from=env('MAIL_USERNAME'); 
         $data= 
         [  
@@ -308,6 +308,7 @@ class MasterController extends Controller
         $data= 
         [  
             'otp'=>$random_password,
+            'user'=>'Mobilizer',
         ];                
 
         Mail::send('mail.otp', $data, function ($message) use ($toEmail,$from) {
