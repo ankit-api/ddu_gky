@@ -60,6 +60,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/centre_incharge_form', [MasterController::class,'centreInchargeForm'])->name('centre_incharge_form');
     Route::post('/create_centre_incharge', [MasterController::class,'createCentreIncharge'])->name('create_centre_incharge');
     
+    Route::get('/mobilizer_form', [MasterController::class,'mobilizerForm'])->name('mobilizer_form');
+    Route::post('/create_mobilizer_form', [MasterController::class,'createMobilizer'])->name('create_mobilizer_form');
+
     Route::get('/candidate-register', [OnFieldRegistrationOfCandidateController::class,'index'])->name('candidate-register');
     Route::post('/post-candidate-register', [OnFieldRegistrationOfCandidateController::class,'postRegistration'])->name('post-candidate-register');
     Route::get('/candidate-admission', [CandidateAdmissionController::class,'index'])->name('candidate-admission');

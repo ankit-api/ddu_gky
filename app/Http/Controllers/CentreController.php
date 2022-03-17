@@ -18,10 +18,10 @@ class CentreController extends Controller
      */
     public function index()
     {
-        $get_project = PIA::all();
+        $get_pia = PIA::all();
         $get_state = State::all();
         $get_district = District::all();
-        return view('admin.create_centre.create_centre', compact("get_project","get_state","get_district"));
+        return view('admin.create_centre.create_centre', compact("get_pia","get_state","get_district"));
     }
 
     

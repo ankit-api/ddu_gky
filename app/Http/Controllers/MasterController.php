@@ -12,8 +12,10 @@ use App\Models\CenterDetails;
 use App\Models\CenterIncharge;
 use App\Models\State;
 use App\Models\District;
+use App\Models\CreateMobilizer;
 use App\Models\User;
 use Mail;
+use Auth;
 
 class MasterController extends Controller
 {
@@ -50,13 +52,14 @@ class MasterController extends Controller
         $Pia->phone_no = $req->contact_no;
         $Pia->email = $req->official_email;
         $Pia->address = $req->address;
+        $Pia->added_by = Auth::user()->id;
         $Pia->save();
 
         $random_password =  Str::random(8);
         
         $hashed_random_password = Hash::make($random_password);
 
-        $toEmail = 'disha.bhandari@prakharsoftwares.com';
+        $toEmail = 'ankit.bisht@prakharsoftwares.com';
         $from=env('MAIL_USERNAME'); 
         $data= 
         [  
@@ -103,16 +106,15 @@ class MasterController extends Controller
         ]);
 
         $get_pia_id = $req->session()->get('pia_id');
-        $added_by = $req->session()->get('pia_id');
 
         $Project = new Project();
         $Project->pia_id = $get_pia_id;
         $Project->name = $req->proj_name;
         $Project->duration = $req->proj_duration;
-        $Project->state_id = $req->state_id;
-        $Project->district_id = $req->district_id;
+        $Project->state = $req->state_id;
+        $Project->district = $req->district_id;
         $Project->description = $req->proj_description;
-        $Project->added_by = $added_by;
+        $Project->added_by = Auth::user()->id;
         $Project->save();
 
         return redirect()->back()->with('alert_status','Project Added Successfully');
@@ -142,7 +144,6 @@ class MasterController extends Controller
         }
 
         $get_pia_id = $req->session()->get('pia_id');
-        $added_by = $req->session()->get('pia_id');
 
         $QTeam = new QTeamMembersDetail();
         $QTeam->pia_id = $get_pia_id;
@@ -154,7 +155,7 @@ class MasterController extends Controller
         $QTeam->email = $req->email;
         $QTeam->reporting_office = $req->reporting_off;
         $QTeam->address = $req->address;
-        $QTeam->added_by = $added_by;
+        $QTeam->added_by = Auth::user()->id;
         $QTeam->save();
 
         $random_password =  Str::random(8);
@@ -260,5 +261,71 @@ class MasterController extends Controller
         return redirect()->back()->with('alert_status','Centre Incharge Added Successfully');
     }
 
+    public function mobilizerForm()
+    {
+        $get_centre = CenterDetails::all();
+        return view('public.mobilizer.add_mobilizer', compact("get_centre"));
+    }
+
+    public function createMobilizer(Request $req)
+    {
+        $this->validate($req, [
+            'centre_id' => 'required',
+            'name' => 'required|max:40',
+            'gender' => 'required',
+            'email' => 'required|email',
+            'contact_no' => 'required',
+            'address' => 'required|min:10|max:255'
+        ]);
+
+        $total_rows = CreateMobilizer::orderBy('id', 'desc')->count();
+        
+        $mob_code = "MOB/";
+        if($total_rows==0){
+            $mob_code .= '0001';
+        }else{
+            $last_id = CreateMobilizer::orderBy('id', 'desc')->first()->id;
+            $mob_code .= sprintf("%'04d",$last_id + 1);
+        }
+
+        $Mobi = new CreateMobilizer();
+        $Mobi->centre_id = $req->centre_id;
+        $Mobi->mob_id = $mob_code;
+        $Mobi->name = $req->name;
+        $Mobi->email = $req->email;
+        $Mobi->contact = $req->contact_no;
+        $Mobi->address = $req->address;
+        $Mobi->gender = $req->gender;
+        $Mobi->added_by = Auth::user()->id;
+        $Mobi->save();
+
+        $random_password =  Str::random(8);
+        
+        $hashed_random_password = Hash::make($random_password);
+
+        $toEmail = 'ankit.bisht@prakharsoftwares.com';
+        $from=env('MAIL_USERNAME'); 
+        $data= 
+        [  
+            'otp'=>$random_password,
+        ];                
+
+        Mail::send('mail.otp', $data, function ($message) use ($toEmail,$from) {
+        $message->to($toEmail)
+        ->subject('Mail');
+        $message->from(env('MAIL_USERNAME'), env('APP_NAME'));
+        });
+
+
+        $user = new User();
+        $user->role_id = '4';
+        $user->user_code = $mob_code;
+        $user->name = $req->name;
+        $user->email = $req->email;
+        $user->password = $hashed_random_password;
+        $user->save();
+
+        return redirect()->back()->with('alert_status','Mobilizer Added Successfully');
+    }
 
 }

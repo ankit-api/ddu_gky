@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title', 'Add Centre Incharge')
-@section('admin_dashboard')
+@section('dashboard')
 
      
       <!-- partial -->

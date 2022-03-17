@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title', 'Add Staff')
-@section('admin_dashboard')
+@section('dashboard')
 
      
       <!-- partial -->

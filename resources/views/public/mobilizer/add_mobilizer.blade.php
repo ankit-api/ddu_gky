@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Add Q-Team member')
+@section('title', 'Add Mobilizer')
 @section('dashboard')
 
      
@@ -14,25 +14,31 @@
               <div class="home-tab">
                   
         <div class="container col-sm-12 mx-auto">
-                <h4 class="text-center fw-bold">Create Q-Team Member</h4><br>
-        <form action="{{ route('create_qteam_member') }}" method="post">
+                <h4 class="text-center fw-bold">Add Mobilizer</h4><br>
+        <form action="{{ route('create_mobilizer_form') }}" method="post">
             @csrf
-            <div class="row">    
+            <div class="row">  
                 @if (session('alert_status'))
                     <h6 class="alert alert-success">{{ session('alert_status') }}</h6>
                 @endif      
                 @if ($errors->any())
-                    {{-- @foreach ($errors->all() as $error) --}}
                         <div class="alert alert-danger">{{$errors->first()}}</div>
-                    {{-- @endforeach --}}
-                @endif         
+                @endif                   
                 <div class="col-md-6">
-                    <label for="" class="m-2">Name</label><br>
-                    <input name ="name" type="text" placeholder="Enter Full Name" class="form-control">
+                    <label for="" class="m-2">Centre Name</label><br>
+                    <select name="centre_id" id="" class="form-control" style="background-color:white;">
+                        @foreach($get_centre as $name)
+                            <option value="{{ $name->id }}">{{ $name->centre_name }}</option>
+                        @endforeach
+                    </select> 
                 </div>
                 <div class="col-md-6">
+                    <label for="" class="m-2">Name</label><br>
+                    <input name ="name" type="text" class="form-control" placeholder="Enter Full Name">
+                </div> 
+                <div class="col-md-6">
                     <label for="" class="m-2">Gender</label><br>
-                    <select name="gender" id="" class="form-control" style="background-color:white;">
+                    <select name="gender" class="form-control" style="background-color:white;">
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                         <option value="others">Others</option>
@@ -40,27 +46,17 @@
                 </div>
                 <div class="col-md-6">
                     <label for="" class="m-2">Email</label><br>
-                    <input name ="email" type="text" placeholder="Enter Email" class="form-control">
-                </div> 
+                    <input name ="email" type="email" class="form-control" placeholder="Enter Email">
+                </div>
                 <div class="col-md-6">
                     <label for="" class="m-2">Contact</label><br>
-                    <input name ="contact" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" maxlength="10" placeholder="Enter Contact No." class="form-control">
+                    <input name ="contact_no" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" maxlength="10" placeholder="Enter Contact No." class="form-control">
                 </div> 
                 <div class="col-md-6">
                     <label for="" class="m-2">Address</label><br>
-                    <input name ="address" type="text" placeholder="Enter Complete Address" class="form-control">
+                    <input name ="address" type="text" class="form-control" placeholder="Enter Complete Address">
                 </div>
-                <div class="col-md-6">
-                    <label for="" class="m-2">Designation</label><br>
-                    <select name="desig" id="" class="form-control" style="background-color:white;">
-                        <option value="head">Q-Team Head</option>
-                        <option value="member">Q-Team Member</option>
-                    </select> 
-                </div> 
-                <div class="col-md-6">
-                    <label for="" class="m-2">Reporting Office</label><br>
-                    <input name ="reporting_off" type="text" placeholder="Enter Reporting Office" class="form-control">
-                </div> 
+                 
               </div><br>     
                <button type="submit" class="text-light btn btn-lg btn-success btn-icon-text">
                           <i class="ti-upload btn-icon-prepend"></i>
