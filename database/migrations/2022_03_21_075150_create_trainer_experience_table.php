@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTrainerExperiencesTable extends Migration
+class CreateTrainerExperienceTable extends Migration
 {
     /**
      * Run the migrations.
@@ -22,9 +22,11 @@ class CreateTrainerExperiencesTable extends Migration
             $table->string('start_designation',30);
             $table->string('last_designation',30);
             $table->string('last_salary_drawn',10)->nullable();
+            $table->integer('added_by')->unsigned()->nullable();
             $table->enum('status', ['active', 'inactive'])->default('active');
-            $table->timestamp('created_on')->nullable();
-            $table->timestamp('updated_on')->nullable();
+            $table->timestamp('created_on')->useCurrent();
+            $table->timestamp('updated_on')->useCurrent();
+            $table->softDeletes();
         });
     }
 
@@ -35,6 +37,6 @@ class CreateTrainerExperiencesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('trainer_experiences');
+        Schema::dropIfExists('trainer_experience');
     }
 }

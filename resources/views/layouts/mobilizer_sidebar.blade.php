@@ -10,7 +10,7 @@
 
 
  <!-- Master Menu -->
- <hr>
+ <!-- <hr>
  <h4 style="padding:10px 0px 0px 20px;">Master</h4>
  <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
@@ -73,9 +73,9 @@
               </ul>
             </div>
           </li>  
-          
+           -->
  <!-- Centre Menu -->
-          <hr>
+          <!-- <hr>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-floor-plan"></i>
@@ -89,10 +89,10 @@
                 <li class="nav-item"> <a class="nav-link" href="{{ route('centre_status_of_15_days')}}">Centre Status</a></li>
               </ul>
             </div>
-          </li> 
+          </li>  -->
           
           <!-- Staff Menu -->
-          <hr>
+          <!-- <hr>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-floor-plan"></i>
@@ -106,10 +106,10 @@
                 <li class="nav-item"> <a class="nav-link" href="{{ route('deployed_staff_trade') }}">Summary of Staff Deployed</a></li>
               </ul>
             </div>
-          </li>  
+          </li>   -->
 
           <!-- Candidate Menu -->
-          <hr>
+          <!-- <hr>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic11" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-floor-plan"></i>
@@ -122,7 +122,7 @@
                 <li class="nav-item"> <a class="nav-link" href="{{ route('candidate_feedback') }}">Candidate Feedback Form</a></li>
               </ul>
             </div>
-          </li>  
+          </li>   -->
 
 <!-- Student Registration  -->
           <hr>
@@ -140,7 +140,7 @@
             </div>
           </li>
 <!-- Aptitude  -->
-          <hr>
+          <!-- <hr>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-floor-plan"></i>
@@ -149,13 +149,13 @@
             </a>
             <div class="collapse" id="ui-basic4">
               <ul class="nav flex-column sub-menu">
-                <!-- <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Student Register</a></li> -->
+                 <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Student Register</a></li> 
                 <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Apptitude Result List</a></li>
               </ul>
             </div>
-          </li>
+          </li> -->
 <!-- Batch  -->
-          <hr>
+          <!-- <hr>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic5" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-floor-plan"></i>
@@ -168,9 +168,9 @@
                 <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Batch List</a></li>
               </ul>
             </div>
-          </li>
+          </li> -->
 <!-- Addmission  -->
-          <hr>
+          <!-- <hr>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic6" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-floor-plan"></i>
@@ -183,10 +183,10 @@
                 <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Addmission List</a></li>
               </ul>
             </div>
-          </li>
+          </li> -->
 
           <!-- Assessment  -->
-          <hr>
+          <!-- <hr>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic12" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-floor-plan"></i>
@@ -198,10 +198,10 @@
                 <li class="nav-item"> <a class="nav-link" href="{{ route('evaluation_and_assessment_details') }}">Assessment Details</a></li>
               </ul>
             </div>
-          </li>
+          </li> -->
 
  <!-- Hostel  -->
- <hr>
+ <!-- <hr>
  <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic7" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-floor-plan"></i>
@@ -213,9 +213,9 @@
                 <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Hostel Details</a></li>
               </ul>
             </div>
-          </li>  
+          </li>   -->
  <!-- Study Material  -->
- <hr>
+ <!-- <hr>
  <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic8" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-floor-plan"></i>
@@ -227,9 +227,9 @@
                 <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Study Material  List</a></li>
               </ul>
             </div>
-          </li> 
+          </li>  -->
           <!-- Items Material  -->
-          <hr>
+          <!-- <hr>
  <li class="nav-item">
   <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic9" aria-expanded="false" aria-controls="ui-basic">
     <i class="menu-icon mdi mdi-floor-plan"></i>
@@ -243,9 +243,9 @@
       <li class="nav-item"> <a class="nav-link" href="{{ route('daily_distribution_of_tablets')}}">Daily Tablet Distribution </a></li>
     </ul>
   </div>
-</li> 
+</li>  -->
 <!-- OJT Section  -->
-<hr>
+<!-- <hr>
 <li class="nav-item">
   <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic10" aria-expanded="false" aria-controls="ui-basic">
     <i class="menu-icon mdi mdi-floor-plan"></i>
@@ -258,10 +258,10 @@
       <li class="nav-item"> <a class="nav-link" href="{{ route('verification_for_ojt')}}">OJT verification</a></li>
     </ul>
   </div>
-</li> 
+</li>  -->
 
 <!-- Assessment  -->
-<hr>
+<!-- <hr>
 <li class="nav-item">
   <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic13" aria-expanded="false" aria-controls="ui-basic">
     <i class="menu-icon mdi mdi-floor-plan"></i>
@@ -273,9 +273,9 @@
       <li class="nav-item"> <a class="nav-link" href="{{ route('inspection_form') }}">Inspection Form</a></li>
     </ul>
   </div>
-</li>
+</li> -->
 <!-- Certificate -->
-<hr>
+<!-- <hr>
 <li class="nav-item">
   <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic13" aria-expanded="false" aria-controls="ui-basic">
     <i class="menu-icon mdi mdi-floor-plan"></i>
@@ -287,9 +287,9 @@
       <li class="nav-item"> <a class="nav-link" href="{{ route('create-certificate-distribution') }}">Certificate Distribution</a></li>
     </ul>
   </div>
-</li>
+</li> -->
 <!-- Letter -->
-<hr>
+<!-- <hr>
 <li class="nav-item">
   <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic13" aria-expanded="false" aria-controls="ui-basic">
     <i class="menu-icon mdi mdi-floor-plan"></i>
@@ -301,7 +301,7 @@
       <li class="nav-item"> <a class="nav-link" href="{{ route('letter-to-srlm') }}">Letter to SRLM</a></li>
     </ul>
   </div>
-</li>
+</li> -->
 
         </ul>
     </nav>        

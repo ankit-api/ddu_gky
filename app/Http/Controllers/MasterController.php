@@ -59,7 +59,8 @@ class MasterController extends Controller
         
         $hashed_random_password = Hash::make($random_password);
 
-        $toEmail = 'ankit.bisht@prakharsoftwares.com';
+        // $toEmail = 'ankit.bisht@prakharsoftwares.com';
+        $toEmail = 'bhandaridisha0309@gmail.com';
         $from=env('MAIL_USERNAME'); 
         $data= 
         [  
@@ -162,7 +163,8 @@ class MasterController extends Controller
         
         $hashed_random_password = Hash::make($random_password);
 
-        $toEmail = 'ankit.bisht@prakharsoftwares.com';
+        // $toEmail = 'ankit.bisht@prakharsoftwares.com';
+        $toEmail = 'bhandaridisha0309@gmail.com';
         $from=env('MAIL_USERNAME'); 
         $data= 
         [  
@@ -236,7 +238,8 @@ class MasterController extends Controller
         $random_password =  Str::random(8);        
         $hashed_random_password = Hash::make($random_password);
 
-        $toEmail = 'ankit.bisht@prakharsoftwares.com';
+        // $toEmail = 'ankit.bisht@prakharsoftwares.com';
+        $toEmail = 'bhandaridisha0309@gmail.com';
         $from=env('MAIL_USERNAME'); 
         $data= 
         [  
@@ -303,7 +306,8 @@ class MasterController extends Controller
         
         $hashed_random_password = Hash::make($random_password);
 
-        $toEmail = 'ankit.bisht@prakharsoftwares.com';
+        // $toEmail = 'ankit.bisht@prakharsoftwares.com';
+        $toEmail = 'bhandaridisha0309@gmail.com';
         $from=env('MAIL_USERNAME'); 
         $data= 
         [  

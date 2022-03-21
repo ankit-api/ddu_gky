@@ -26,7 +26,7 @@
                         @endif                  
                           <div class="col-md-6">
                               <label for="" class="m-2">Name of PIA</label><br>
-                              <select name="pia_name" id="" class="form-control" style="background-color:white;">
+                              <select name="pia_name" id="" class="form-control" required style="background-color:white;">
                                   @foreach($get_pia as $name)
                                     <option value="{{ $name->id }}">{{ $name->pia_name }}</option>
                                   @endforeach
@@ -34,7 +34,7 @@
                           </div>
                           <div class="col-md-6">
                               <label for="" class="m-2">Name of Project</label><br>
-                              <input type="text" class="form-control" name="proj_name" placeholder="Enter Project Name" >
+                              <input type="text" class="form-control" name="proj_name" required ="Enter Project Name" >
                           </div>
                           <div class="col-md-4">
                             <label for="" class="m-2">State</label><br>
@@ -46,7 +46,7 @@
                           </div>
                           <div class="col-md-4">
                             <label for="" class="m-2">District</label><br>
-                            <select name="district_id" id="district_id" class="form-control" style="background-color:white;">
+                            <select name="district_id" id="district_id" class="form-control" required style="background-color:white;">
                                 @foreach($get_district as $dist)
                                     <option value="{{ $dist->id }}">{{ $dist->district_name }}</option>
                                 @endforeach
@@ -54,11 +54,11 @@
                           </div>
                           <div class="col-md-4">
                             <label for="" class="m-2">Project Duration</label><br>
-                            <input type="text" class="form-control" name="proj_duration" placeholder="Enter Project Duration" >
+                            <input type="text" class="form-control" name="proj_duration" required placeholder="Enter Project Duration" >
                           </div>
                           <div class="col-md-12">
                             <label for="" class="m-2">Description</label><br>
-                            <input type="text" class="form-control" name="proj_description" placeholder="Enter Project Description">
+                            <input type="text" class="form-control" name="proj_description" required placeholder="Enter Project Description">
                           </div>
                       </div><br>                       
                       <button type="submit" class="text-light btn btn-lg btn-success btn-icon-text">

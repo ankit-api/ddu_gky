@@ -10,7 +10,7 @@
 
 
  <!-- Master Menu -->
- <hr>
+ <!-- <hr>
  <h4 style="padding:10px 0px 0px 20px;">Master</h4>
  <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
@@ -30,7 +30,7 @@
                     <li class="nav-item"> <a class="nav-link" href="{{ route('project_form')}}">Add Project</a></li>
                   </ul>
                 </div></li>
-                {{-- <li class="nav-item"> <a class="nav-link" href="{{ route('centre_form')}}">Add Centre</a></li> --}}
+                <li class="nav-item"> <a class="nav-link" href="{{ route('centre_form')}}">Add Centre</a></li> 
                 <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic14" aria-expanded="false" aria-controls="ui-basic">
                   <span class="menu-title">Centre</span>
                   <i class="menu-arrow"></i> 
@@ -40,7 +40,7 @@
                     <li class="nav-item"> <a class="nav-link" href="{{ route('centre_form')}}">Add Centre</a></li>
                   </ul>
                 </div></li>
-                {{-- <li class="nav-item"> <a class="nav-link" href="{{ route('mobilizer_form')}}">Add Mobilizer</a></li> --}}
+              <li class="nav-item"> <a class="nav-link" href="{{ route('mobilizer_form')}}">Add Mobilizer</a></li> 
                 <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic17" aria-expanded="false" aria-controls="ui-basic">
                   <span class="menu-title">Mobilizer</span>
                   <i class="menu-arrow"></i> 
@@ -50,7 +50,7 @@
                     <li class="nav-item"> <a class="nav-link" href="{{ route('mobilizer_form')}}">Add Mobilizer</a></li>
                   </ul>
                 </div></li>
-                {{-- <li class="nav-item"> <a class="nav-link" href="{{ route('q_team_member_form') }}">Add Q-team Member</a></li> --}}
+                 <li class="nav-item"> <a class="nav-link" href="{{ route('q_team_member_form') }}">Add Q-team Member</a></li> --}}
                 <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic18" aria-expanded="false" aria-controls="ui-basic">
                   <span class="menu-title">Q-team Member</span>
                   <i class="menu-arrow"></i> 
@@ -60,7 +60,7 @@
                     <li class="nav-item"> <a class="nav-link" href="{{ route('q_team_member_form')}}">Add Q-team Member</a></li>
                   </ul>
                 </div></li>
-                {{-- <li class="nav-item"> <a class="nav-link" href="{{ route('centre_incharge_form') }}">Add Centre Incharge</a></li> --}}
+                 <li class="nav-item"> <a class="nav-link" href="{{ route('centre_incharge_form') }}">Add Centre Incharge</a></li> 
                 <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic19" aria-expanded="false" aria-controls="ui-basic">
                   <span class="menu-title">Centre Incharge</span>
                   <i class="menu-arrow"></i> 
@@ -72,10 +72,10 @@
                 </div></li>
               </ul>
             </div>
-          </li>  
+          </li>   -->
           
  <!-- Centre Menu -->
-          <hr>
+          <!-- <hr>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-floor-plan"></i>
@@ -89,10 +89,10 @@
                 <li class="nav-item"> <a class="nav-link" href="{{ route('centre_status_of_15_days')}}">Centre Status</a></li>
               </ul>
             </div>
-          </li> 
+          </li>  -->
           
           <!-- Staff Menu -->
-          <hr>
+          <!-- <hr>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-floor-plan"></i>
@@ -106,7 +106,7 @@
                 <li class="nav-item"> <a class="nav-link" href="{{ route('deployed_staff_trade') }}">Summary of Staff Deployed</a></li>
               </ul>
             </div>
-          </li>  
+          </li>   -->
 
           <!-- Candidate Menu -->
           <hr>
@@ -134,7 +134,7 @@
             </a>
             <div class="collapse" id="ui-basic3">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{ route('candidate-register') }}">Student Register</a></li>
+                <!-- <li class="nav-item"> <a class="nav-link" href="{{ route('candidate-register') }}">Student Register</a></li> -->
                 <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Student Register List</a></li>
               </ul>
             </div>

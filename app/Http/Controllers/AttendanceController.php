@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ParentConsentForm;
+use App\Models\InsTrainerAttendance;
 use Illuminate\Http\Request;
 
-class ParentConsentFormController extends Controller
+class AttendanceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class ParentConsentFormController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ParentConsentForm  $parentConsentForm
+     * @param  \App\Models\InsTrainerAttendance  $insTrainerAttendance
      * @return \Illuminate\Http\Response
      */
-    public function show(ParentConsentForm $parentConsentForm)
+    public function show(InsTrainerAttendance $insTrainerAttendance)
     {
         //
     }
@@ -52,10 +52,10 @@ class ParentConsentFormController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ParentConsentForm  $parentConsentForm
+     * @param  \App\Models\InsTrainerAttendance  $insTrainerAttendance
      * @return \Illuminate\Http\Response
      */
-    public function edit(ParentConsentForm $parentConsentForm)
+    public function edit(InsTrainerAttendance $insTrainerAttendance)
     {
         //
     }
@@ -64,10 +64,10 @@ class ParentConsentFormController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ParentConsentForm  $parentConsentForm
+     * @param  \App\Models\InsTrainerAttendance  $insTrainerAttendance
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ParentConsentForm $parentConsentForm)
+    public function update(Request $request, InsTrainerAttendance $insTrainerAttendance)
     {
         //
     }
@@ -75,10 +75,10 @@ class ParentConsentFormController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ParentConsentForm  $parentConsentForm
+     * @param  \App\Models\InsTrainerAttendance  $insTrainerAttendance
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ParentConsentForm $parentConsentForm)
+    public function destroy(InsTrainerAttendance $insTrainerAttendance)
     {
         //
     }

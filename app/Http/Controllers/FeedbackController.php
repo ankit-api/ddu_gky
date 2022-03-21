@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\InsTrainerAttendance;
+use App\Models\CandidateFeedbackForm;
 use Illuminate\Http\Request;
 
-class InsTrainerAttendanceController extends Controller
+class FeedbackController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class InsTrainerAttendanceController extends Controller
      */
     public function index()
     {
-        //
+        return view('forms.candidate_feedback_form');
     }
 
     /**
@@ -41,10 +41,10 @@ class InsTrainerAttendanceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\InsTrainerAttendance  $insTrainerAttendance
+     * @param  \App\Models\CandidateFeedbackForm  $candidateFeedbackForm
      * @return \Illuminate\Http\Response
      */
-    public function show(InsTrainerAttendance $insTrainerAttendance)
+    public function show(CandidateFeedbackForm $candidateFeedbackForm)
     {
         //
     }
@@ -52,10 +52,10 @@ class InsTrainerAttendanceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\InsTrainerAttendance  $insTrainerAttendance
+     * @param  \App\Models\CandidateFeedbackForm  $candidateFeedbackForm
      * @return \Illuminate\Http\Response
      */
-    public function edit(InsTrainerAttendance $insTrainerAttendance)
+    public function edit(CandidateFeedbackForm $candidateFeedbackForm)
     {
         //
     }
@@ -64,10 +64,10 @@ class InsTrainerAttendanceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\InsTrainerAttendance  $insTrainerAttendance
+     * @param  \App\Models\CandidateFeedbackForm  $candidateFeedbackForm
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, InsTrainerAttendance $insTrainerAttendance)
+    public function update(Request $request, CandidateFeedbackForm $candidateFeedbackForm)
     {
         //
     }
@@ -75,10 +75,10 @@ class InsTrainerAttendanceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\InsTrainerAttendance  $insTrainerAttendance
+     * @param  \App\Models\CandidateFeedbackForm  $candidateFeedbackForm
      * @return \Illuminate\Http\Response
      */
-    public function destroy(InsTrainerAttendance $insTrainerAttendance)
+    public function destroy(CandidateFeedbackForm $candidateFeedbackForm)
     {
         //
     }

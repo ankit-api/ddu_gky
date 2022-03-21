@@ -80,6 +80,15 @@
                     <li class="nav-item"> <a class="nav-link" href="{{ route('centre_incharge_form')}}">Add Centre Incharge</a></li>
                   </ul>
                 </div></li>
+                <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic20" aria-expanded="false" aria-controls="ui-basic">
+                  <span class="menu-title">Trainer</span>
+                  <i class="menu-arrow"></i> 
+                </a>
+                <div class="collapse" id="ui-basic20">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('trainer_form')}}"> Add Trainer</a></li>
+                  </ul>
+                </div></li>
               </ul>
             </div>
           </li>  
@@ -102,7 +111,7 @@
           </li> 
           
           <!-- Staff Menu -->
-          <hr>
+          <!-- <hr>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-floor-plan"></i>
@@ -111,12 +120,12 @@
             </a>
             <div class="collapse" id="ui-basic1">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{ route('create-trainer') }}">Add Staff</a></li>
+               
                 <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">staff List</a></li>
                 <li class="nav-item"> <a class="nav-link" href="{{ route('deployed_staff_trade') }}">Summary of Staff Deployed</a></li>
               </ul>
             </div>
-          </li>  
+          </li>   -->
 
           <!-- Candidate Menu -->
           <hr>
@@ -184,7 +193,7 @@
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic6" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-floor-plan"></i>
-              <span class="menu-title">Addmission</span>
+              <span class="menu-title">Admission</span>
               <i class="menu-arrow"></i> 
             </a>
             <div class="collapse" id="ui-basic6">

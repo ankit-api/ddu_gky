@@ -3,16 +3,16 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\OnFieldRegistrationOfCandidateController;
-use App\Http\Controllers\CandidateAdmissionController;
+use App\Http\Controllers\AdmissionController;
 use App\Http\Controllers\BatchController;
 use App\Http\Controllers\CentreController;
-use App\Http\Controllers\StaffController;
+use App\Http\Controllers\TrainerController;
 use App\Http\Controllers\ItemsGivenToCandidateController;
 use App\Http\Controllers\DailyFailureItemsReportController;
 use App\Http\controllers\DeployedStaffTradeController;
-use App\Http\Controllers\OjtPlanForBatchController;
+use App\Http\Controllers\OJTController;
 use App\Http\Controllers\VerificationForOjtController;
-use App\Http\Controllers\CandidateFeedbackFormController;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\CentreStatusOf15DayController;
 use App\Http\Controllers\EvaluationAndAssessmentDetailsController;
 use App\Http\Controllers\InspectionFormController;
@@ -63,16 +63,19 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/mobilizer_form', [MasterController::class,'mobilizerForm'])->name('mobilizer_form');
     Route::post('/create_mobilizer_form', [MasterController::class,'createMobilizer'])->name('create_mobilizer_form');
 
+    Route::get('/trainer_form', [TrainerController::class,'trainerForm'])->name('trainer_form');
+    Route::post('/create_trainer', [TrainerController::class,'createTrainer'])->name('create_trainer');
+
     Route::get('/candidate-register', [OnFieldRegistrationOfCandidateController::class,'index'])->name('candidate-register');
     Route::post('/post-candidate-register', [OnFieldRegistrationOfCandidateController::class,'postRegistration'])->name('post-candidate-register');
-    Route::get('/candidate-admission', [CandidateAdmissionController::class,'index'])->name('candidate-admission');
+    Route::get('/candidate-admission', [AdmissionController::class,'index'])->name('candidate-admission');
     Route::get('/create-batch', [BatchController::class,'index'])->name('create-batch');
     Route::get('/items_given', [ItemsGivenToCandidateController::class,'index'])->name('items_given');
     Route::get('/items_failure', [DailyFailureItemsReportController::class,'index'])->name('items_failure');
     Route::get('/deployed_staff_trade', [DeployedStaffTradeController::class,'index'])->name('deployed_staff_trade');
-    Route::get('/ojt_plan_for_batch', [OjtPlanForBatchController::class,'index'])->name('ojt_plan_for_batch');
+    Route::get('/ojt_plan_for_batch', [OJTController::class,'index'])->name('ojt_plan_for_batch');
     Route::get('/verification_for_ojt', [VerificationForOjtController::class,'index'])->name('verification_for_ojt');
-    Route::get('/candidate_feedback', [CandidateFeedbackFormController::class,'index'])->name('candidate_feedback');
+    Route::get('/candidate_feedback', [FeedbackController::class,'index'])->name('candidate_feedback');
     Route::get('/centre_status_of_15_days', [CentreStatusOf15DayController::class,'index'])->name('centre_status_of_15_days');
     Route::get('/evaluation_and_assessment_details', [EvaluationAndAssessmentDetailsController::class,'index'])->name('evaluation_and_assessment_details');
     Route::get('/inspection_form', [InspectionFormController::class,'index'])->name('inspection_form');
@@ -81,7 +84,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/centre_form', [CentreController::class,'index'])->name('centre_form');
     Route::post('/create_centre', [CentreController::class,'createCentre'])->name('create_centre');
     
-    Route::get('/create-trainer', [StaffController::class,'index'])->name('create-trainer');
+
     
 
     Route::get('/create-certificate-distribution', [CertificateController::class,'createCertificateDistribution'])->name('create-certificate-distribution');

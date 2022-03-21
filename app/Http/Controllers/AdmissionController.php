@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class CandidateAdmissionController extends Controller
+class AdmissionController extends Controller
 {
     /**
      * Display a listing of the resource.
