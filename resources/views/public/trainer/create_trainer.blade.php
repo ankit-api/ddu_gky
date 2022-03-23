@@ -53,11 +53,11 @@
             </div><br><br>
             <h5>Trainer’s profile</h5><hr>
             <div class="row">            
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <label for="" class="m-2">Name</label><br>
                     <input type="text" name="name" class="form-control" required placeholder="Enter name">
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <label for="" class="m-2">Relation</label><br>
                     <select name="relation_name" id="" class="form-control" style="background-color:white;">
                         <option value="father">Father</option>
@@ -65,26 +65,32 @@
                         <option value="husband">Husband</option>
                     </select> 
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <label for="" class="m-2">Relative Name</label><br>
                     <input type="text" name="relative_name" class="form-control" required placeholder="Enter relative's name">
                 </div>
-                <div class="col-md-3">
+                </div><br>
+                <div class="row">            
+                <div class="col-md-6">
                     <label for="" class="m-2">If Trainer, Domain(Course)</label><br>
                     <input type="text" name="domain" class="form-control"  placeholder="Enter ">
                 </div>
-            </div><br>
-             <div class="row">            
                 <div class="col-md-6">
                     <label for="" class="m-2">If not the domain trainer or with additional skill</label><br>  
-                    <input type="checkbox"  class="" id="" name="add_skill" value="computer skills">
+                    <input type="checkbox"  class="" id="" name="add_skill[]" value="computer skills">
                     <label class="mx-2"> Computer skills </label>
-                    <input type="checkbox"  class="" id="" name="add_skill" value="soft skills">
+                    <input type="checkbox"  class="" id="" name="add_skill[]" value="soft skills">
                     <label class="mx-2"> Soft skills </label>
-                    <input type="checkbox"  class="" id="" name="add_skill" value="english skills">
+                    <input type="checkbox"  class="" id="" name="add_skill[]" value="english skills">
                     <label class="mx-2"> English skills </label>
-                    <input type="checkbox"  class="" id="" name="add_skill" value="others">
+                    <input type="checkbox"  class="" id="" name="add_skill[]" value="others">
                     <label class="mx-2"> Others </label>
+                </div>
+            </div><br>
+             <div class="row">            
+             <div class="col-md-3">
+                    <label for="" class="m-2">Email</label><br>
+                  <input type="email" name="email" class="form-control" required placeholder="Enter Email">
                 </div>
                 <div class="col-md-3">
                     <label for="" class="m-2">Gender</label><br>
@@ -98,9 +104,13 @@
                     <label for="" class="m-2">Date of Birth</label><br>
                    <input type="date" name="dob"  required class="form-control">
                 </div>
+                <div class="col-md-3">
+                    <label for="" class="m-2">Adhaar no </label><br>
+                  <input type="number" name="adhaar" min="12" max="12" class="form-control" required placeholder="Enter adhaar no.">
+                </div>
             </div><br>
             <div class="row">            
-                <div class="col-md-3">
+                <div class="col-md-4">
                 <label for="" class="m-2">Category</label><br>
                     <select name="category" id="" class="form-control" style="background-color:white;">
                         <option value="gn">General</option>
@@ -109,21 +119,18 @@
                         <option value="obc">OBC</option>
                     </select> 
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <label for="" class="m-2">Physical Disability</label><br>
                     <select name="pwd" id="" class="form-control" style="background-color:white;">
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select> 
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <label for="" class="m-2">Physical Disability Category</label><br>
                    <input type="text" name="pwd_type" class="form-control"  placeholder="Enter type of disability">
                 </div>
-                <div class="col-md-3">
-                    <label for="" class="m-2">Adhaar no </label><br>
-                  <input type="text" name="adhaar" class="form-control" required placeholder="Enter adhaar no.">
-                </div>
+                
             </div><br><br>
             <h5>Education Qualification</h5><hr> 
             <div class="row">            
@@ -260,7 +267,7 @@
 
                     e.preventDefault();
                     // sno = parseInt(sno)+1;
-                    $('tbody').append('<tr><td id="'+sno+'">'+sno+'</td> <td><input type="date" name="" id="" class="form-control" value="" placeholder=""></td>  <td><input type="date" name="" id="" class="form-control" value="" placeholder=""></td>  <td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Company Name "></td>  <td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Starting designation"></td>  <td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Last designation"></td>  <td><input type="text" name="" id="" class="form-control" value="" placeholder="Enter Last salary drawn"></td>  <td><button class="btn btn-danger text-white rem_data1" data-id="'+sno+'" name="remove1" data-target="tr">Remove</button></div></tr>');
+                    $('tbody').append('<tr><td id="'+sno+'">'+sno+'</td> <td><input type="date" name="from[]" id="" class="form-control" value=""  placeholder=""></td><td><input type="date" name="to[]" id="" class="form-control" value=""  placeholder=""></td><td><input type="text" name="c_name[]" id="" class="form-control" value=""  placeholder="Enter Company Name "></td><td><input type="text" name="s_desg[]" id="" class="form-control" value=""  placeholder="Enter Starting designation"></td><td><input type="text" name="l_desg[]" id="" class="form-control" value=""  placeholder="Enter Last designation"></td><td><input type="text" name="l_salary[]" id="" class="form-control" value=""  placeholder="Enter Last salary drawn"></td>  <td><button class="btn btn-danger text-white rem_data1" data-id="'+sno+'" name="remove1" data-target="tr">Remove</button></div></tr>');
 
                     
                     $('button[data-id='+sno+']').click(function(e){

@@ -12,7 +12,7 @@ use App\Models\CenterDetails;
 use App\Models\CenterIncharge;
 use App\Models\State;
 use App\Models\District;
-use App\Models\CreateMobilizer;
+use App\Models\Mobilizer;
 use App\Models\User;
 use Mail;
 use Auth;
@@ -281,17 +281,17 @@ class MasterController extends Controller
             'address' => 'required|min:10|max:255'
         ]);
 
-        $total_rows = CreateMobilizer::orderBy('id', 'desc')->count();
+        $total_rows = Mobilizer::orderBy('id', 'desc')->count();
         
         $mob_code = "MOB/";
         if($total_rows==0){
             $mob_code .= '0001';
         }else{
-            $last_id = CreateMobilizer::orderBy('id', 'desc')->first()->id;
+            $last_id = Mobilizer::orderBy('id', 'desc')->first()->id;
             $mob_code .= sprintf("%'04d",$last_id + 1);
         }
 
-        $Mobi = new CreateMobilizer();
+        $Mobi = new Mobilizer();
         $Mobi->centre_id = $req->centre_id;
         $Mobi->mob_id = $mob_code;
         $Mobi->name = $req->name;

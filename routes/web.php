@@ -45,9 +45,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 
 Route::group(['middleware' => ['auth']], function() {
 
-    Route::get('/form1', function () {
-        return view('forms.on_field_reg_of_candidate');
-    });
+    
     Route::get('/pia_form', [MasterController::class,'piaForm'])->name('pia_form');
     Route::post('/create_pia', [MasterController::class,'createPia'])->name('create_pia');
 
@@ -66,8 +64,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/trainer_form', [TrainerController::class,'trainerForm'])->name('trainer_form');
     Route::post('/create_trainer', [TrainerController::class,'createTrainer'])->name('create_trainer');
 
-    Route::get('/candidate-register', [OnFieldRegistrationOfCandidateController::class,'index'])->name('candidate-register');
+    Route::get('/candidate-register', [OnFieldRegistrationOfCandidateController::class,'registrationForm'])->name('candidate-register');
     Route::post('/post-candidate-register', [OnFieldRegistrationOfCandidateController::class,'postRegistration'])->name('post-candidate-register');
+    
     Route::get('/candidate-admission', [AdmissionController::class,'index'])->name('candidate-admission');
     Route::get('/create-batch', [BatchController::class,'index'])->name('create-batch');
     Route::get('/items_given', [ItemsGivenToCandidateController::class,'index'])->name('items_given');

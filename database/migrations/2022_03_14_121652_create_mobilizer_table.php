@@ -13,7 +13,7 @@ class CreateMobilizerTable extends Migration
      */
     public function up()
     {
-        Schema::create('mobilizer', function (Blueprint $table) {
+        Schema::create('mobilizers', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('centre_id')->unsigned()->foriegn(); 
             $table->foreign('centre_id')->references('id')->on('centre')->onUpdate('cascade')->onDelete('cascade');

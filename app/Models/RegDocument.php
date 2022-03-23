@@ -5,9 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TrainerExperience extends Model
+class RegDocument extends Model
 {
     use HasFactory;
-    protected $table = 'trainer_experiences';
+
+    protected $table = 'reg_documents';
     public $timestamps = false;
 }

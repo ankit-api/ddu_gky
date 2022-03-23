@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title', 'Create Batch')
-@section('admin_dashboard')
+@section('dashboard')
 
      
       <!-- partial -->

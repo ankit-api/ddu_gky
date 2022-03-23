@@ -14,7 +14,7 @@ class BatchController extends Controller
      */
     public function index()
     {
-        return view('forms.create_batch');
+        return view('admin.create_batch.create_batch');
     }
 
     /**

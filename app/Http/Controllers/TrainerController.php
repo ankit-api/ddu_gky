@@ -54,13 +54,11 @@ class TrainerController extends Controller
             'adhaar' => 'required',
             // 'district_id' => 'required'
         ]);
-        // dd($req);
 
-        $get_pia_id = $req->session()->get('pia_id');
-
-        $total_rows = Trainer::orderBy('id', 'desc')->count();
+        $get_pia_id = $req->session()->get('pia_id');        
         
         //Trainer Code
+        $total_rows = Trainer::orderBy('id', 'desc')->count();
         $trainer_code = "Trainer/";
         if($total_rows==0){
             $trainer_code .= '0001';
@@ -69,54 +67,63 @@ class TrainerController extends Controller
             $trainer_code .= sprintf("%'04d",$last_id + 1);
         }
 
+        //Skill array to string 
+        if(!empty($req->add_skill))
+        {
+            $skill = implode(",",$req->add_skill);
+        } else {
+            $skill = 'NULL';
+        }
+       
         $trainer = new Trainer();
-        $trainer->centre_id = $_POST['centre_name'];
+        $trainer->centre_id = $req->centre_name;
         $trainer->trainer_code  = $trainer_code;
-        $trainer->name =  $_POST['name'];
-        $trainer->relation = $_POST['relation_name'];
-        $trainer->relative_name = $_POST['relative_name'];
-        !empty($_POST['domain'] ) ? $trainer->domain = $_POST['domain'] : $trainer->domain = 'NULL';
-        !empty($_POST['add_skill']) ? $trainer->additional_skill = $_POST['add_skill'] : $trainer->additional_skill = 'NULL';
-        $trainer->gender = $_POST['gender'];
-        $trainer->dob = $_POST['dob'];
-        $trainer->category = $_POST['category'];
-        $trainer->pwd = $_POST['pwd'];
-        !empty($_POST['pwd_type'] ) ? $trainer->pwd_type = $_POST['pwd_type'] : $trainer->pwd_type = 'NULL';
-        $trainer->aadhaar_no = $_POST['adhaar'];
-        $trainer->other_info = $_POST['other_info'];
+        $trainer->name =  $req->name;
+        $trainer->relation = $req->relation_name;
+        $trainer->relative_name = $req->relative_name;
+        !empty($req->domain ) ? $trainer->domain = $req->domain : $trainer->domain = 'NULL';
+        $trainer->additional_skill = $skill;
+        $trainer->gender = $req->gender;
+        $trainer->dob = $req->dob;
+        $trainer->category = $req->category;
+        $trainer->pwd = $req->pwd;
+        !empty($req->pwd_type ) ? $trainer->pwd_type = $req->pwd_type : $trainer->pwd_type = 'NULL';
+        $trainer->aadhaar_no = $req->adhaar;
+        !empty($req->other_info ) ? $trainer->other_info = $req->other_info : $trainer->other_info = 'NULL';
         $trainer->added_by = Auth::user()->id;
         $trainer->save();
         $insertedId = $trainer->id;
-        // dd( $insertedId);
-
+     
         //Add Trainer Qualification
-        $i = count($_POST['qualification']);        
+        $i = count($req->qualification);        
         for ($j = 0; $j < $i; $j++) {        
           $trainer_edu = new TrainerEducation();
           $trainer_edu->trainer_id = $insertedId;
-          $trainer_edu->qualification = $_POST['qualification'][$j];
-          $trainer_edu->qualification_details = $_POST['q_detail'][$j];
-          $trainer_edu->board = $_POST['university'][$j];
-          $trainer_edu->subject = $_POST['subject'][$j];
-          $trainer_edu->year_of_passing = $_POST['yop'][$j];
-          $trainer_edu->percentage = $_POST['percentage'][$j];
+          $trainer_edu->qualification = $req->qualification[$j];
+          ($req->q_detail[$j]!= NULL) ? $trainer_edu->qualification_details = $req->q_detail[$j] : $trainer_edu->qualification_details = 'NULL';
+          $trainer_edu->board = $req->university[$j];
+          $trainer_edu->subject = $req->subject[$j];
+          $trainer_edu->year_of_passing = $req->yop[$j];
+          $trainer_edu->percentage = $req->percentage[$j];
           $trainer_edu->added_by = Auth::user()->id;         
           $trainer_edu->save();          
         }
 
         //Add Trainer Experience
-        $i = count($_POST['from']);        
+        $i = count($req->from);   
         for ($j = 0; $j < $i; $j++) {
+        if($req->from[$j]!= NULL){
           $trainer_exp = new TrainerExperience();
           $trainer_exp->trainer_id = $insertedId;          
-          $trainer_exp->from =
-          $trainer_exp->to =
-          $trainer_exp->company_name =
-          $trainer_exp->start_designation =
-          $trainer_exp->last_designation =
-          $trainer_exp->last_salary_drawn =
+          $trainer_exp->from = $req->from[$j];
+          $trainer_exp->to = $req->to[$j];
+          $trainer_exp->company_name = $req->c_name[$j];
+          $trainer_exp->start_designation = $req->s_desg[$j];
+          $trainer_exp->last_designation = $req->l_desg[$j];
+          $trainer_exp->last_salary_drawn = $req->l_salary[$j];
           $trainer_exp->added_by = Auth::user()->id;          
-          $trainer_exp->save();          
+          $trainer_exp->save();   
+        }       
         }
 
         // Random Password generate
@@ -145,7 +152,7 @@ class TrainerController extends Controller
         $user->role_id = '6';
         $user->user_code = $trainer_code;
         $user->name = $req->name;
-        $user->email = $req->official_email;
+        $user->email = $req->email;
         $user->password = $hashed_random_password;
         $user->save();
        
