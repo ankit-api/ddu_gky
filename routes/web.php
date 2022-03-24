@@ -48,39 +48,53 @@ Route::group(['middleware' => ['auth']], function() {
     //Pia Route
     Route::get('/pia_form', [MasterController::class,'piaForm'])->name('pia_form');
     Route::post('/create_pia', [MasterController::class,'createPia'])->name('create_pia');
+    Route::get('/pia_list', [MasterController::class,'piaList'])->name('pia_list');
 
     //Project Route
     Route::get('/project_form', [MasterController::class,'projectForm'])->name('project_form');
     Route::post('/create_project', [MasterController::class,'createProject'])->name('create_project');
-
+    Route::get('/project_list', [MasterController::class,'projectList'])->name('project_list');
+    
+     //Centre Route
+    Route::get('/centre_form', [MasterController::class,'centreForm'])->name('centre_form');
+    Route::post('/create_centre', [MasterController::class,'createCentre'])->name('create_centre');
+    // Route::get('/centre_list', [MasterController::class,'CentreList'])->name('centre_list');
+   
     //Q-Team Member Route
     Route::get('/q_team_member_form', [MasterController::class,'qteamMemberForm'])->name('q_team_member_form');
     Route::post('/create_qteam_member', [MasterController::class,'createQteamMember'])->name('create_qteam_member');
-
+    // Route::get('/q_team_member_list', [MasterController::class,'qteamMemberList'])->name('q_team_member_list');
+    
     //Centre Incharge Route
     Route::get('/centre_incharge_form', [MasterController::class,'centreInchargeForm'])->name('centre_incharge_form');
     Route::post('/create_centre_incharge', [MasterController::class,'createCentreIncharge'])->name('create_centre_incharge');
+    // Route::get('/centre_incharge_list', [MasterController::class,'centreInchargeList'])->name('centre_incharge_list');
     
     //Mobilizer Route
     Route::get('/mobilizer_form', [MasterController::class,'mobilizerForm'])->name('mobilizer_form');
     Route::post('/create_mobilizer_form', [MasterController::class,'createMobilizer'])->name('create_mobilizer_form');
-
+    // Route::get('/mobilizer_list', [MasterController::class,'mobilizerList'])->name('mobilizer_list');
+    
     //Trainer Route
     Route::get('/trainer_form', [TrainerController::class,'trainerForm'])->name('trainer_form');
     Route::post('/create_trainer', [TrainerController::class,'createTrainer'])->name('create_trainer');
-
+    // Route::get('/trainer_list', [TrainerController::class,'trainerList'])->name('trainer_list');
+    
     //Registartion Route
     Route::get('/candidate-register', [OnFieldRegistrationOfCandidateController::class,'registrationForm'])->name('candidate-register');
     Route::post('/post-candidate-register', [OnFieldRegistrationOfCandidateController::class,'postRegistration'])->name('post-candidate-register');
+    // Route::get('/candidate-register-list', [OnFieldRegistrationOfCandidateController::class,'registrationList'])->name('candidate-register-list');
     
     //Batch Route
     Route::get('/batch_form', [BatchController::class,'batchForm'])->name('batch_form');
     Route::post('/create_batch', [BatchController::class,'createBatch'])->name('create_batch');
-
+    // Route::get('/batch_list', [BatchController::class,'batchList'])->name('batch_list');
+    
     //Admission Route
     Route::get('/candidate-admission', [AdmissionController::class,'admissionForm'])->name('candidate-admission');
     Route::post('/post-candidate-admission', [AdmissionController::class,'postAdmission'])->name('post-candidate-admission');
-   
+    // Route::get('/candidate-admission-list', [AdmissionController::class,'admissionList'])->name('candidate-admission-list');
+    
 
     
     Route::get('/items_given', [ItemsGivenToCandidateController::class,'index'])->name('items_given');
@@ -94,9 +108,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/inspection_form', [InspectionFormController::class,'index'])->name('inspection_form');
     Route::get('/daily_distribution_of_tablets', [DailyDistributionOfTabletController::class,'index'])->name('daily_distribution_of_tablets');
 
-    Route::get('/centre_form', [CentreController::class,'index'])->name('centre_form');
-    Route::post('/create_centre', [CentreController::class,'createCentre'])->name('create_centre');
-    
+   
 
     
 

@@ -58,7 +58,7 @@
                           </div>
                           <div class="col-md-12">
                             <label for="" class="m-2">Description</label><br>
-                            <input type="text" class="form-control" name="proj_description" required placeholder="Enter Project Description">
+                            <textarea name="proj_description" required placeholder="  " rows="3" style="width:100%; border-radius: 4px; border:1px solid #dee2e6;"></textarea>
                           </div>
                       </div><br>                       
                       <button type="submit" class="text-light btn btn-lg btn-success btn-icon-text">

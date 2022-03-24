@@ -27,6 +27,8 @@ class CreateFamilyDetailsTable extends Migration
             $table->enum('is_married', ['yes', 'no'])->default('no');
             $table->enum('is_earning', ['yes', 'no'])->default('no');
             $table->string('occupation',50);
+            $table->enum('is_shg_member', ['yes', 'no'])->default('no');
+            $table->string('shg_id',25)->nullable();
             $table->integer('added_by')->unsigned()->nullable();
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamp('created_on')->useCurrent();

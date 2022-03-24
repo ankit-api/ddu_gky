@@ -18,32 +18,35 @@ class CreateAdmissionDetailsTable extends Migration
             $table->string('student_code',50);
             $table->integer('register_id')->unsigned()->foriegn(); 
             $table->integer('batch_id')->unsigned()->foriegn();  
-            $table->integer('aptitude_id')->unsigned()->foriegn(); 
+            // $table->integer('aptitude_id')->unsigned()->foriegn(); 
 
             
            $table->foreign('register_id')->references('id')->on('on_field_registration_of_candidates')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('batch_id')->references('id')->on('batch_details')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('aptitude_id')->references('id')->on('can_aptitude_results')->onUpdate('cascade')->onDelete('cascade');
+            // $table->foreign('aptitude_id')->references('id')->on('can_aptitude_results')->onUpdate('cascade')->onDelete('cascade');
 
-            $table->integer('state_id');
+            // $table->integer('state_id');
             $table->string('name',50);
+            $table->string('father_husband_name',50);
+            $table->string('mother_name',50);
             $table->enum('gender', ['male', 'female', 'others'])->default('male');
             $table->date('dob');
             $table->integer('age');
+            $table->string('individual_identity_no',25);
             $table->string('highest_qualification',70);
-            $table->integer('contact');
-            $table->integer('alternate_contact')->nullable();
-            $table->string('email',200);
+            $table->bigInteger('contact');
+            $table->bigInteger('alternate_contact')->nullable();
+            $table->string('email',200)->nullable();
             $table->string('alternate_email',200)->nullable();
-            $table->string('village',150);
-            $table->text('address');
+            // $table->string('village',150);
+            $table->text('present_address');
             $table->text('permanent_address')->nullable();
-            $table->enum('category', ['general', 'sc', 'st','obc'])->default('general');
+            $table->enum('category', ['gn', 'sc', 'st','ob','mn'])->default('gn');
             $table->enum('pwd', ['no', 'yes'])->default('no');
             $table->string('pwd_type',200)->nullable();
-            $table->enum('minority', ['no', 'yes'])->default('no');
             $table->string('religion',50);
-            $table->string('other_group',200)->nullable();
+            $table->enum('other_group', ['no', 'yes'])->default('no');
+            $table->string('other_group_type',200)->nullable();
             $table->integer('sess_no')->nullable();
             $table->integer('bpl_ration_card_no')->nullable();
             $table->integer('job_card_no')->nullable();

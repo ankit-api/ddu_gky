@@ -20,27 +20,28 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                {{-- <li class="nav-item"> <a class="nav-link" href="{{ route('pia_form') }}">Add PIA</a></li> --}}
-                <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic16" aria-expanded="false" aria-controls="ui-basic">
+                  <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic16" aria-expanded="false" aria-controls="ui-basic">
                   <span class="menu-title">PIA</span>
                   <i class="menu-arrow"></i> 
                 </a>
                 <div class="collapse" id="ui-basic16">
                   <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="{{ route('pia_form')}}">Add PIA</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('pia_list')}}">PIA List</a></li>
                   </ul>
                 </div></li>
-                {{-- <li class="nav-item"> <a class="nav-link" href="{{ route('project_form') }}">Add Project</a></li> --}}
-                <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic15" aria-expanded="false" aria-controls="ui-basic">
+                 <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic15" aria-expanded="false" aria-controls="ui-basic">
                   <span class="menu-title">Project</span>
                   <i class="menu-arrow"></i> 
                 </a>
                 <div class="collapse" id="ui-basic15">
                   <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="{{ route('project_form')}}">Add Project</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('project_list')}}">Project List</a></li>
+                 
                   </ul>
                 </div></li>
-                {{-- <li class="nav-item"> <a class="nav-link" href="{{ route('centre_form')}}">Add Centre</a></li> --}}
+               
                 <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic14" aria-expanded="false" aria-controls="ui-basic">
                   <span class="menu-title">Centre</span>
                   <i class="menu-arrow"></i> 
@@ -93,22 +94,7 @@
             </div>
           </li>  
           
- <!-- Centre Menu -->
-          <hr>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic">
-              <i class="menu-icon mdi mdi-floor-plan"></i>
-              <span class="menu-title">Centre</span>
-              <i class="menu-arrow"></i> 
-            </a>
-            <div class="collapse" id="ui-basic2">
-              <ul class="nav flex-column sub-menu">
-                {{-- <li class="nav-item"> <a class="nav-link" href="{{ route('create-centre')}}">Add Centre</a></li> --}}
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Centre List</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ route('centre_status_of_15_days')}}">Centre Status</a></li>
-              </ul>
-            </div>
-          </li> 
+ 
           
           <!-- Staff Menu -->
           <!-- <hr>

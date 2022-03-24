@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\CenterDetails;
 use App\Models\OnFieldRegistrationOfCandidate;
 use App\Models\RegDocument;
+use App\Models\DocType;
 use Carbon\Carbon;
 use Auth;
 
@@ -18,8 +19,9 @@ class OnFieldRegistrationOfCandidateController extends Controller
      */
     public function registrationForm()
     {
-        $get_centre = CenterDetails::all();     
-        return view('admin.on_field_reg_of_candidate.on_field_reg_of_candidate', compact("get_centre" ));
+        $get_centre = CenterDetails::all(); 
+        $get_doc_type = DocType::all();      
+        return view('admin.on_field_reg_of_candidate.on_field_reg_of_candidate', compact("get_centre","get_doc_type" ));
     }
 
     public function postRegistration(Request $req)
@@ -69,7 +71,7 @@ class OnFieldRegistrationOfCandidateController extends Controller
         !empty($req->pwd ) ? $register->pwd = $req->pwd : $register->pwd = 'NULL';
         $register->minority = $req->minority;
         $register->high_edu = $req->qualification;
-        $register->referring_stk = $req->ref;
+        !empty($req->ref ) ? $register->referring_stk = $req->ref : $register->referring_stk = 'NULL';
         $register->address = $req->address;
         $register->contact = $req->contact;
         $register->counselling_status = $req->counsel;
@@ -88,7 +90,7 @@ class OnFieldRegistrationOfCandidateController extends Controller
             
                 $reg_doc = new RegDocument();
                 $reg_doc->register_id = $insertedId;
-                $reg_doc->type_of_document = $req->doc_type[$j];
+                $reg_doc->doc_type_id = $req->doc_type[$j];
                 $reg_doc->file = $filename;
                 $reg_doc->added_by = Auth::user()->id;         
                 $reg_doc->save();     

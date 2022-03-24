@@ -87,6 +87,12 @@ class MasterController extends Controller
 
     }
 
+    public function piaList()
+    {
+        $pia = PIA::all();
+        return view('public.pia.pia_list', compact('pia'));
+    }
+
     public function projectForm()
     {
         $get_pia = PIA::all();
@@ -120,6 +126,59 @@ class MasterController extends Controller
 
         return redirect()->back()->with('alert_status','Project Added Successfully');
     }
+
+    public function projectList()
+    {
+        // $project = Project::all();
+        // $project = new Project;
+        $project_data = Project::all()->getProjectList;
+        return view('admin.create_project.project_list', compact('project'));
+    }
+
+    public function centreForm()
+    {
+        $get_pia = PIA::all();
+        $get_state = State::all();
+        $get_district = District::all();
+        return view('admin.create_centre.create_centre', compact("get_pia","get_state","get_district"));
+    }
+
+    public function createCentre(Request $req)
+    {
+        session(['pia_id' => '1']);
+        $this->validate($req, [
+            'pia_id' => 'required',
+            'name_of_centre' => 'required|max:100',
+            'state_id' => 'required',
+            'district_id' => 'required',
+            'address' => 'required'
+        ]);
+
+        $total_rows = CenterDetails::orderBy('id', 'desc')->count();
+        
+        $cntr_code = "CNTR/";
+        if($total_rows==0){
+            $cntr_code .= '0001';
+        }else{
+            $last_id = CenterDetails::orderBy('id', 'desc')->first()->id;
+            $cntr_code .= sprintf("%'04d",$last_id + 1);
+        }
+
+        $get_pia_id = $req->session()->get('pia_id');
+
+        $center = new CenterDetails();
+        $center->pia_id = $get_pia_id;
+        $center->center_code = $cntr_code;
+        $center->state = $req->state_id;
+        $center->district = $req->district_id;
+        $center->centre_name = $req->name_of_centre;
+        $center->address = $req->address;
+        $center->added_by = Auth::user()->id;
+        $center->save();
+
+        return redirect()->back()->with('alert_status','Centre Added Successfully');
+    }
+
 
     public function createQteamMember(Request $req)
     {

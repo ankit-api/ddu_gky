@@ -11,4 +11,8 @@ class Project extends Model
 
     protected $table = 'project';
     public $timestamps = false;
+
+    function getProjectList(){
+        return $this->hasOne(PIA::class, 'pia_id','id');
+    }
 }

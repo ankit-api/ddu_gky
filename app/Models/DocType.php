@@ -5,11 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Admission extends Model
+class DocType extends Model
 {
     use HasFactory;
 
-    protected $table = 'admission_details';
+    protected $table = 'doc_types';
     public $timestamps = false;
-
 }

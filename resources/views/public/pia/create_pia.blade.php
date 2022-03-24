@@ -13,7 +13,7 @@
             <div class="col-sm-12">
               <div class="home-tab">
                   
-                <div class="container col-sm-12 mx-auto">
+                <div class="container col-sm-12 mx-auto" >
                   <h4 class="text-center fw-bold">Create PIA</h4><br>
                   <form action="{{ route('create_pia') }}" method="post">
                     @csrf

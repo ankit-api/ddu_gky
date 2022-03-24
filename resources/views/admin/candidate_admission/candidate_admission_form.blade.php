@@ -15,7 +15,7 @@
                   
             <div class="container col-sm-12">
             <h4 class="text-center fw-bold">SF 6.2A3: Candidate application form</h4><br>
-            <form action="{{ route('post-candidate-admission')}}" method="post">
+            <form action="{{ route('post-candidate-admission')}}" method="post" enctype="multipart/form-data"> 
             @csrf
             <div class="row">  
                         @if (session('alert_status'))
@@ -49,7 +49,7 @@
 
                 <div class="col-md-4">
                     <label for="" class="m-2">Trade</label><br>
-                    <input name="trade"type="text" class="form-control">
+                    <input name="trade" required type="text" class="form-control">
                 </div>
                 
                 <!-- <div class="col-md-4">
@@ -58,7 +58,7 @@
                 </div>-->
                 <div class="col-md-4">
                     <label for="" class="m-2">Training Duration</label><br>
-                    <input type="text" name="duration" class="form-control" name="" id="" >
+                    <input type="text" required name="duration" class="form-control" name="" id="" >
                 </div>
             </div><br> <br>
             <h5>Trainee Profile</h5>
@@ -67,7 +67,7 @@
             <div class="row">
                 <div class="col-md-3">
                     <label for="" class="m-2">Registration ID</label><br>
-                    <select name="reg_code" id="" class="form-control" style="background-color:white;">
+                    <select name="reg_id" id="" class="form-control" style="background-color:white;">
                     @foreach($reg_can as $reg_can)
                         <option value="{{ $reg_can->id }}">{{ $reg_can->reg_code }}</option>
                     @endforeach
@@ -75,44 +75,44 @@
                 </div>
                 <div class="col-md-3">
                     <label for="" class="m-2">Name of Candidates</label><br>
-                    <input type="text" class="form-control" name="name" id="" placeholder="Enter Candidate Name">
+                    <input type="text" required class="form-control" name="name" id="" placeholder="Enter Candidate Name">
                 </div>
                 <div class="col-md-3">
                     <label for="" class="m-2">Father/Husband's Name</label><br>
-                    <input type="text" class="form-control" name="father/husband_name" id="" placeholder="Enter Father/Husband's Name">
+                    <input type="text" required class="form-control" name="father_husband_name" id="" placeholder="Enter Father/Husband's Name">
                 </div>
                 <div class="col-md-3">
                     <label for="" class="m-2">Mother's Name</label><br>
-                    <input type="text" class="form-control" name="mother_name" id="" placeholder="Enter Mother's Name">
+                    <input type="text" required class="form-control" name="mother_name" id="" placeholder="Enter Mother's Name">
                 </div>
             </div><br>
             <div class="row">
                 <div class="col-md-3">
                     <label for="" class="m-2">Gender</label><br>
                     <select name="gender" id="" class="form-control" style="background-color:white;">
-                        <option value="">Male</option>
-                        <option value="">Female</option>
-                        <option value="">Others</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Others</option>
                     </select>            
                 </div>
                 <div class="col-md-3">
                     <label for="" class="m-2">Date of Birth</label><br>
-                    <input type="text" class="form-control" name="dob" id="" >
+                    <input type="date" required class="form-control" name="dob" id="" >
                 </div>
                 <div class="col-md-3">
                         <label for="" class="m-2">Age</label><br>
-                        <input type="number" class="form-control" name="age" id="" placeholder="Enter Age">
+                        <input type="number" required class="form-control" name="age" id="" placeholder="Enter Age">
                 </div>                 
                 <div class="col-md-3">
                         <label for="" class="m-2">Individual Identity No.</label><br>
-                        <input type="text" class="form-control" name="identity_no" id="" placeholder="Enter Individual Identity No.">
+                        <input type="text" required class="form-control" name="identity_no" id="" placeholder="Enter Individual Identity No.">
                 </div>               
             </div><br>
           
             <div class="row">
             <div class="col-md-3">
                         <label for="" class="m-2">Contact</label><br>
-                        <input type="text" class="form-control" name="contact" id="" required placeholder="Enter Contact ">
+                        <input type="text" required class="form-control" name="contact" id="" required placeholder="Enter Contact ">
                 </div>
                 <div class="col-md-3">
                     <label for="" class="m-2">Alternative Contact</label><br>
@@ -130,16 +130,17 @@
             <div class="row">
                 <div class="col-md-6">
                         <label for="" class="m-2">Present Address</label><br>
-                        <textarea name="pre_address" class="form-control" rows="3" required></textarea>
+                       
+                        <textarea name="pre_address" required rows="3" style="width:100%; border-radius: 4px; border:1px solid #dee2e6;"> </textarea>
                 </div>
                 <div class="col-md-6">
                     <label for="" class="m-2">Permanent Address</label><br>
-                    <textarea name="per_address" class="form-control" rows="5"></textarea>
+                    <textarea name="per_address" rows="3" style="width:100%; border-radius: 4px; border:1px solid #dee2e6;"></textarea>
                 </div>                
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <label for="" class="m-2"Education Qualification></label><br>
+                    <label for="" class="m-2">Education Qualification</label><br>
                     <input type="text" name="qualification" class="form-control" placeholder="Enter Education Qualification ">
                 </div>
                 <div class="col-md-4">
@@ -169,8 +170,8 @@
             <div class="col-md-3">
                     <label for="" class="m-2">PWD</label><br>
                     <select name="pwd" id="" class="form-control" style="background-color:white;">
-                        <option value="">No</option>
-                        <option value="">Yes</option>
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
                     </select>
                 </div>
                 <div class="col-md-3">
@@ -180,8 +181,8 @@
                 <div class="col-md-3">
                     <label for="" class="m-2">Other vulnerable group</label><br>
                     <select name="other_vul_group" id="" class="form-control" style="background-color:white;">
-                        <option value="">No</option>
-                        <option value="">Yes</option>
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
                     </select>
                 </div>
                 <div class="col-md-3">
@@ -221,8 +222,8 @@
             <div class="col-md-3">
                     <label for="" class="m-2">Is candidate a family member of a SHG member? ## </label><br>
                     <select name="c_sgh" id="" class="form-control" style="background-color:white;">
-                        <option value="">No</option>
-                        <option value="">Yes</option>
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
                     </select>
                 </div>
                 <div class="col-md-3">
@@ -243,19 +244,19 @@
             <div class="row">   
                 <div class="col-md-3">
                 <label for="" class="m-2">Name of the head of family</label><br><br>
-                    <input type="text" name="h_name" class="form-control" >    
+                    <input type="text" name="h_name" required class="form-control" >    
                 </div>    
                 <div class="col-md-3">
                     <label for="" class="m-2">Highest education of the head of family</label><br>
-                    <input type="text" name="h_qualification" class="form-control">
+                    <input type="text" name="h_qualification" required class="form-control">
                 </div>
                 <div class="col-md-3">
                 <label for="" class="m-2">Yearly Income of the family(Rs.)</label><br>
-                    <input type="text" name="fam_income" class="form-control" >    
+                    <input type="text" name="fam_income" required class="form-control" >    
                 </div> 
                 <div class="col-md-3">
                     <label for="" class="m-2">Number of member in the family </label><br>
-                    <input type="number" name="fam_mem_no"class="form-control" > </option>
+                    <input type="number" name="fam_mem_no" required class="form-control" > </option>
                     </select>
                 </div>                
             </div><br><br>
@@ -264,70 +265,72 @@
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
-                            <th>S NO.</th>
-                            <th>Name</th>
-                            <th>Relation</th>
-                            <th>Age</th>
-                            <th>Gender</th>
-                            <th>Maritial Status</th>
-                            <th>Whether earning?</th>
-                            <th>Source of Income/Occupation</th>
-                            <th>Is SHG member</th>
-                            <th>SHG ID</th>
+                            <tr>
+                                <th>S NO.</th>
+                                <th style="padding:0 90px;">Name </th></span>
+                                <th style="padding:0 50px;">Relation</th>
+                                <th style="padding:0 90px;">Age</th>
+                                <th>Gender</th>
+                                <th>Maritial Status</th>
+                                <th>Whether earning?</th>
+                                <th>Source of Income/Occupation</th>
+                                <th>Is SHG member</th>
+                                <th>SHG ID</th>
+                            </tr>
                         </thead>
                         <tbody id="member-div">
                          
                         <tr>
                             <td><label>1</label></td>
-                            <td> <input type="text" class="form-control" ></td>
+                            <td  style="width:100px;"> <input type="text" name="m_name[]" class="form-control" placeholder="Enter member name"></td>
                             <td>
                                 <select name="relation[]" id="" class="form-control" style="background-color:white;">
-                                    <option value="">Fatherr</option>
-                                    <option value="">Mother</option>
-                                    <option value="">Grand Father</option>
-                                    <option value="">Grand Mother</option>                               
-                                    <option value="">Husband</option>
-                                    <option value="">Wife</option>
-                                    <option value="">Brother</option>
-                                    <option value="">Sister</option>
-                                    <option value="">Son</option>
-                                    <option value="">Daughter</option>
-                                    <option value="">Brother-in-law</option>
-                                    <option value="">Sister-in-law</option>
+                                    <option value="father">Father</option>
+                                    <option value="mother">Mother</option>
+                                    <option value="grand-father">Grand Father</option>
+                                    <option value="grand-mother">Grand Mother</option>                               
+                                    <option value="husband">Husband</option>
+                                    <option value="wife">Wife</option>
+                                    <option value="brother">Brother</option>
+                                    <option value="sister">Sister</option>
+                                    <option value="son">Son</option>
+                                    <option value="daughter">Daughter</option>
+                                    <option value="brother-in-law">Brother-in-law</option>
+                                    <option value="sister-in-law">Sister-in-law</option>
                                    
                                 </select>
                             </td>
-                            <td> <input type="number" class="form-control" ></td>
+                            <td> <input type="number" name="m_age[]" placeholder="Enter age" class="form-control" ></td>
                             <td>
                                 <select name="m_gender[]" id="" class="form-control" style="background-color:white;">
-                                    <option value="">Female</option>
-                                    <option value="">Male</option>
-                                    <option value="">Others</option>
+                                    <option value="female">Female</option>
+                                    <option value="male">Male</option>
+                                    <option value="other">Others</option>
                                 </select>
                             </td>
                             <td>
                                 <select name="m_status[]" id="" class="form-control" style="background-color:white;">
-                                    <option value="">Single</option>
-                                    <option value="">Married</option>
-                                    <option value="">Widowed</option>
-                                    <option value="">Separated</option>
-                                    <option value="">Divorced</option>
+                                    <option value="single">Single</option>
+                                    <option value="married">Married</option>
+                                    <option value="widowed">Widowed</option>
+                                    <option value="separated">Separated</option>
+                                    <option value="divorced">Divorced</option>
                                 </select>
                             </td>
                             <td>
                                 <select name="m_earn[]" id="" class="form-control" style="background-color:white;">
-                                    <option value="">No</option>
-                                    <option value="">Yes</option>
+                                    <option value="no">No</option>
+                                    <option value="yes">Yes</option>
                                 </select>
                             </td>
-                            <td> <input type="text" name="m_occupation" class="form-control" ></td>
+                            <td> <input type="text" name="m_occupation[]" class="form-control" placeholder="Enter member occupation" ></td>
                             <td>
                                 <select name="m_sgh[]" id="" class="form-control" style="background-color:white;">
-                                    <option value="">No</option>
-                                    <option value="">Yes</option>
+                                    <option value="no">No</option>
+                                    <option value="yes">Yes</option>
                                 </select>
                             </td>
-                            <td> <input type="text" name="m_sgh_id[]"class="form-control" ></td>
+                            <td> <input type="text" name="m_sgh_id[]" class="form-control" placeholder="Enter SHG Id"></td>
                             <td>
                             <button type="button" class="text-light btn  btn-info btn-icon-text member-more">
                                 <!-- <i class="ti-plus btn-icon-prepend"></i> -->
@@ -350,11 +353,12 @@
                     </div>-->
                     <div class="col-md-6">
                         <label for="" class="m-2">Allocated Trade</label><br>
-                        <input type="text" class="form-control">
+                        <input type="text" name="allocate_trade"class="form-control">
                     </div>
+                    
                     <div class="col-md-6">
                         <label for="" class="m-2">Comments if any</label><br>
-                        <textarea name="" id="" class="form-control"></textarea>
+                        <textarea rows="3" name="comment" id="" style="width:100%; border-radius: 4px; border:1px solid #dee2e6;"></textarea>
                     </div>
                 </div>
             </div><br><br>
@@ -364,14 +368,15 @@
                <div class="row">
                <div class="col-md-5">
                 <label for="" class="m-2">Document Type</label><br>
-                     <select name="" id="" class="form-control" style="background-color:white;">
-                        <option value="">Adhaar</option>
-                        <option value="">Education</option>
+                     <select name="doc_type[]" id="" class="form-control" style="background-color:white;">
+                    @foreach($get_doc_type as $doc_type)
+                        <option value="{{ $doc_type->id }}">{{ $doc_type->doc_type_name }}</option>
+                    @endforeach
                     </select>      
                 </div>   
                <div class="col-md-5">
                 <label for="" class="m-2">Document</label><br>
-                <input type="file" class="form-control " style="background-color:white;" >
+                <input type="file" name="doc[]" accept="application/pdf" class="form-control " style="background-color:white;" >
                </div>
                <div class="col-md-2 mt-4 pt-2">
                   
@@ -381,13 +386,14 @@
                 </button>
                </div>
 </div>
-            </form>
+            
                
               </div><br>
               <button type="submit" class="text-light btn btn-lg btn-success btn-icon-text">
                           <i class="ti-upload btn-icon-prepend"></i>
                           Submit
                 </button>
+                </form>
             </div> 
           </div>
         </div>
@@ -405,7 +411,7 @@
                   
                     // sno = parseInt(sno)+1;
                     no1 = no1+1;
-                    $('#doc-div').append(' <div class="row" id="'+no1+'"><div class="col-md-5"><select name="doc_type[]" id=""  class="form-control" style="background-color:white;" required>  <option value="adhaar">Adhaar</option><option value="education">Education</option> </select>  </div>  <div class="col-md-5"><input type="file" name="doc[]" accept="application/pdf" required class="form-control " style="background-color:white;" >  </div>  <div class="col-md-1"><button type="button" class="btn btn-danger text-white rem_doc1" data-id="'+no1+'" name="remove" data-target="tr">Remove</button></div></div>');
+                    $('#doc-div').append(' <div class="row" id="'+no1+'"><div class="col-md-5"><select name="doc_type[]" id=""  class="form-control" style="background-color:white;" required>   @foreach($get_doc_type as $doc_type)<option value="{{ $doc_type->id }}">{{ $doc_type->doc_type_name }}</option> @endforeach </select>  </div>  <div class="col-md-5"><input type="file" name="doc[]" accept="application/pdf" required class="form-control " style="background-color:white;" >  </div>  <div class="col-md-1"><button type="button" class="btn btn-danger text-white rem_doc1" data-id="'+no1+'" name="remove" data-target="tr">Remove</button></div></div>');
 
                    
                     $('.rem_doc1').click(function(e){
@@ -423,7 +429,7 @@
                   
                     // sno = parseInt(sno)+1;
                     no2 = no2+1;
-                    $('#member-div').append(' <tr><td><label>'+no2+'</label></td><td> <input type="text" class="form-control" ></td><td><select name="relation[]" id="" class="form-control" style="background-color:white;"><option value="">Fatherr</option><option value="">Mother</option><option value="">Grand Father</option><option value="">Grand Mother</option>   <option value="">Husband</option><option value="">Wife</option><option value="">Brother</option><option value="">Sister</option><option value="">Son</option><option value="">Daughter</option><option value="">Brother-in-law</option><option value="">Sister-in-law</option>   </select></td><td> <input type="number" class="form-control" ></td><td><select name="m_gender[]" id="" class="form-control" style="background-color:white;"><option value="">Female</option><option value="">Male</option><option value="">Others</option></select></td><td><select name="m_status[]" id="" class="form-control" style="background-color:white;"><option value="">Single</option><option value="">Married</option><option value="">Widowed</option><option value="">Separated</option><option value="">Divorced</option></select></td><td><select name="m_earn[]" id="" class="form-control" style="background-color:white;"><option value="">No</option><option value="">Yes</option></select></td><td> <input type="text" name="m_occupation" class="form-control" ></td><td><select name="m_sgh[]" id="" class="form-control" style="background-color:white;"><option value="">No</option><option value="">Yes</option></select></td><td> <input type="text" name="m_sgh_id[]"class="form-control" ></td><td><button type="button" class="btn btn-danger text-white rem_doc2" data-id="'+no2+'" name="remove" data-target="tr">Remove</button></td></tr>');
+                    $('#member-div').append(' <tr><td><label>'+no2+'</label></td><td><td> <input type="text" name="m_name[]" placeholder="Enter member name" class="form-control" ></td><td><select name="relation[]" id="" class="form-control" style="background-color:white;"><option value="father">Father</option><option value="mother">Mother</option><option value="grand-father">Grand Father</option><option value="grand-mother">Grand Mother</option><option value="husband">Husband</option><option value="wife">Wife</option><option value="brother">Brother</option><option value="sister">Sister</option><option value="son">Son</option><option value="daughter">Daughter</option><option value="brother-in-law">Brother-in-law</option><option value="sister-in-law">Sister-in-law</option></select></td><td> <input type="number" name="m_age[]" class="form-control" ></td><td><select name="m_gender[]" id="" class="form-control" style="background-color:white;"><option value="female">Female</option><option value="male">Male</option><option value="other">Others</option></select></td><td><select name="m_status[]" id="" class="form-control" style="background-color:white;"><option value="single">Single</option><option value="married">Married</option><option value="widowed">Widowed</option><option value="separated">Separated</option><option value="divorced">Divorced</option></select></td><td><select name="m_earn[]" id="" class="form-control" style="background-color:white;"><option value="no">No</option><option value="yes">Yes</option></select></td><td> <input type="text" name="m_occupation[]" placeholder="Enter member occupation" > class="form-control" ></td><td><select name="m_sgh[]" id="" class="form-control" style="background-color:white;"><option value="no">No</option><option value="yes">Yes</option></select></td><td> <input type="text" name="m_sgh_id[]" placeholder="Enter SHG Id" class="form-control" ></td><td> <button type="button" class="btn btn-danger text-white rem_doc2" data-id="'+no2+'" name="remove" data-target="tr">Remove</button></td></tr>');
 
                    
                     $('.rem_doc2').click(function(e){

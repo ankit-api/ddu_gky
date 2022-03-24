@@ -115,7 +115,7 @@
             <div class="row">
                <div class="col-md-6">
                 <label for="" class="m-2">Referring Stakeholder</label><br>
-                    <input type="text" name="ref" class="form-control"required  placeholder="Enter Referring Stakeholder">  
+                    <input type="text" name="ref" class="form-control"  placeholder="Enter Referring Stakeholder">  
                 </div>   
                <div class="col-md-6">
                 <label for="" class="m-2">Remarks</label><br>
@@ -137,11 +137,10 @@
             <div class="row">
                <div class="col-md-5">
                <select name="doc_type[]" id="" class="form-control"  style="background-color:white;" >
-                        <option value="adhaar">Adhaar</option>
-                        <option value="education">Education</option>
-                        <!-- <option value=""></option>
-                        <option value="">OBC</option> -->
-                    </select>  
+               @foreach($get_doc_type as $doc_type)
+                        <option value="{{ $doc_type->id }}">{{ $doc_type->doc_type_name }}</option>
+                @endforeach
+                </select>  
                </div>
                <div class="col-md-5">
                 <input type="file" name="doc[]"  accept="application/pdf" class="form-control " style="background-color:white;" >
@@ -160,7 +159,7 @@
                           <i class="ti-upload btn-icon-prepend"></i>
                           Submit
                 </button>
-
+        </form>
             </div> 
           </div>
         </div>
@@ -179,7 +178,7 @@
                   
                     // sno = parseInt(sno)+1;
                     no = no+1;
-                    $('#more-div').append(' <div class="row" id="'+no+'"><div class="col-md-5">               <select name="doc_type[]" id=""  class="form-control" style="background-color:white;" required>  <option value="adhaar">Adhaar</option><option value="education">Education</option> </select>  </div>  <div class="col-md-5"><input type="file" name="doc[]" accept="application/pdf" required class="form-control " style="background-color:white;" >  </div>  <div class="col-md-1"><button type="button" class="btn btn-danger text-white rem_data" data-id="'+no+'" name="remove" data-target="tr">Remove</button></div></div>');
+                    $('#more-div').append(' <div class="row" id="'+no+'"><div class="col-md-5"><select name="doc_type[]" id=""  class="form-control" style="background-color:white;" required>   @foreach($get_doc_type as $doc_type)<option value="{{ $doc_type->id }}">{{ $doc_type->doc_type_name }}</option> @endforeach </select>  </div>  <div class="col-md-5"><input type="file" name="doc[]" accept="application/pdf" required class="form-control " style="background-color:white;" >  </div>  <div class="col-md-1"><button type="button" class="btn btn-danger text-white rem_data" data-id="'+no+'" name="remove" data-target="tr">Remove</button></div></div>');
 
                    
                     $('.rem_data').click(function(e){
