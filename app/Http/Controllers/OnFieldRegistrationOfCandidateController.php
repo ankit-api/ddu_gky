@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\CenterDetails;
 use App\Models\OnFieldRegistrationOfCandidate;
 use App\Models\RegDocument;
+use Carbon\Carbon;
 use Auth;
 
 class OnFieldRegistrationOfCandidateController extends Controller
@@ -23,7 +24,7 @@ class OnFieldRegistrationOfCandidateController extends Controller
 
     public function postRegistration(Request $req)
     {
-        session(['mob_id' => '3']);
+        session(['mob_id' => '1']);
         $this->validate($req, [
             'name' => 'required',
             'village' => 'required',
@@ -74,7 +75,7 @@ class OnFieldRegistrationOfCandidateController extends Controller
         $register->counselling_status = $req->counsel;
         !empty($req->remark ) ? $register->remarks = $req->remark : $register->remarks = 'NULL';
         $register->added_by = Auth::user()->id; 
-        $register->registered_on = 
+        $register->registered_on = Carbon::now();
         $register->save();
         $insertedId = $register->id;
 

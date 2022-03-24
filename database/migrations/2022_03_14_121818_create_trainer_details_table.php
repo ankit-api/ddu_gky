@@ -15,8 +15,12 @@ class CreateTrainerDetailsTable extends Migration
     {
         Schema::create('trainer_details', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('centre_id',60);
             $table->string('trainer_code',50);
+            
+            $table->integer('centre_id')->unsigned()->foriegn(); 
+            $table->foreign('centre_id')->references('id')->on('centre')->onUpdate('cascade')->onDelete('cascade');
+           
+
             $table->string('name',50);
             $table->string('relation',50)->nullable();
             $table->string('relative_name',100)->nullable();

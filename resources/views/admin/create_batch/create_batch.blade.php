@@ -15,178 +15,150 @@
                   
         <div class="container col-sm-12">
                 <h4 class="text-center fw-bold">SF 6.3A1: Batch details</h4><br>
-        <form action="" method="">
+        <form action="{{ route('create_batch') }}" method="post">
+        @csrf
+        <div class="row">  
+                        @if (session('alert_status'))
+                            <h6 class="alert alert-success">{{ session('alert_status') }}</h6>
+                        @endif      
+                        @if ($errors->any())
+                                <div class="alert alert-danger">{{$errors->first()}}</div>
+                        @endif 
+        </div>               
             <div class="row">            
                 <div class="col-md-4">
                     <label for="" class="m-2">Nature of training</label><br>
-                    <select name="" id="" class="form-control" style="background-color:white;">
-                        <option value="">Full-time</option>
-                        <option value="">Part-time</option>
-                        <option value="">Week-ends</option>
+                    <select name="nature_of_training" id="" class="form-control" style="background-color:white;">
+                        <option value="fulltime">Full-time</option>
+                        <option value="parttime">Part-time</option>
+                        <option value="weekends">Week-ends</option>
                     </select> 
                 </div>
                 <div class="col-md-4">
-                    <label for="" class="m-2">Class Duration per day</label><br>
-                    <input type="text" class="form-control">
+                    <label for="" class="m-2">Trainer Name</label><br>
+                    <select name="t_name" id="" class="form-control" style="background-color:white;">
+                    @foreach($get_trainer as $trainer)
+                        <option value="{{ $trainer->id }}">{{ $trainer->name }}</option>
+                    @endforeach
+                    </select>            
                 </div>
                 <div class="col-md-4">
+                    <label for="" class="m-2">Class Duration per day</label><br>
+                    <input type="text" required class="form-control" name="duration_per_day">
+                </div>
+                <!-- <div class="col-md-3">
                     <label for="" class="m-2">Date of mobilization</label><br>
                     <input type="date" class="form-control" name="" id="" >
-                </div>
+                </div> -->
             </div>
             <div class="row"> 
             <div class="col-md-6">
                     <label for="" class="m-2">Batch Start Date</label><br>
-                    <input type="date" class="form-control">
+                    <input type="date" required name="b_start_date" class="form-control">
                 </div>
                 <div class="col-md-6">
-                    <label for="" class="m-2">Batch End Date</label><br>
-                    <input type="date" class="form-control" name="" id="" >
+                    <label for="" class="m-2">Expected Batch End Date</label><br>
+                    <input type="date" required name="ex_b_end_date" class="form-control" name="" id="" >
                 </div>
             </div> <br>
             <div class="row">
             <div class="col-md-6">
                     <label for="" class="m-2">Maximum permissible batch size</label><br>
-                    <input type="text" class="form-control" name="" id="" >
+                    <input type="text" required name="b_size" class="form-control" placeholder="35"  value="35">
                 </div> 
             <div class="col-md-6">
                     <label for="" class="m-2">Will the batch be run in two shift</label><br>
-                    <select name="" id="" class="form-control" style="background-color:white;">
-                        <option value="">No</option>
-                        <option value="">Yes</option>
+                    <select name="shift" id="" onchange="getShift(this);"  class="form-control" style="background-color:white;">
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
                     </select> 
                 </div>               
             </div> <br> 
-            <div class="row">
-            <div class="col-md-3">
-                    <label for="" class="m-2">Start Time (Shift-1)</label><br>
-                    <input type="time" class="form-control" name="" id="" >
-                </div> 
-            <div class="col-md-3">
-                    <label for="" class="m-2">End Time (Shift-1)</label><br>
-                    <input type="time" class="form-control" name="" id="" >
-            </div>   
-            <div class="col-md-3">
-                    <label for="" class="m-2">Start Time (Shift-2)</label><br>
-                    <input type="time" class="form-control" name="" id="" >
-                </div> 
-            <div class="col-md-3">
-                    <label for="" class="m-2">End Time (Shift-2)</label><br>
-                    <input type="time" class="form-control" name="" id="" >
-                </div>                
-            </div> <br>     
-            <div class="row">
-            <div class="col-md-4">
-                    <label for="" class="m-2">Will OJT be given?</label><br>
-                    <select name="" id="" class="form-control" style="background-color:white;">
-                        <option value="">No</option>
-                        <option value="">Yes</option>
-                    </select> 
-                </div> 
-            <div class="col-md-4">
-                    <label for="" class="m-2">Expected OJT start date</label><br>
-                    <input type="date" class="form-control" name="" id="" >
-            </div>   
-            <div class="col-md-4">
-                    <label for="" class="m-2">No. of OJT days:</label><br>
-                    <input type="number" class="form-control" name="" id="" >
-                </div>                
-            </div> <br>  
+            <div class="shift-div" id="shift-div">
+            </div>    
             <div class="row">
             <div class="col-md-6">
-                    <label for="" class="m-2">Will the batch be split for training at the same Training Centre? </label><br>
-                    <select name="" id="" class="form-control" style="background-color:white;">
-                        <option value="">No</option>
-                        <option value="">Yes</option>
-                    </select> 
-                </div> 
-            <div class="col-md-3">
-                    <label for="" class="m-2">Section A- No of Candidates</label><br>
-                    <input type="number" class="form-control" name="" id="" >
-            </div>   
-            <div class="col-md-3">
-                    <label for="" class="m-2">Section B- No of Candidates</label><br>
-                    <input type="number" class="form-control" name="" id="" >
-                </div>                
-            </div> <br>
+                <label for="" class="m-2">Will OJT be given?</label>                   
+                </div>
+                <div class="col-md-6">
+                <select name="ojt_given" onchange="getOjt(this);" id="" class="form-control" style="background-color:white;">
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>     
+                </div>  
+            </div>     
+            <div class="ojt-div" id="ojt-div">
+
+            </div>
+            <br>  
+        
+            <div class="row mb-3" >
+                <div class="col-md-6">
+                <label for="" class="m-2">Will the batch be split for training at the same Training Centre? </label>                     
+                </div>
+                <div class="col-md-6">
+                    <select name="split" id="" onchange="getSection(this);" class="form-control" style="background-color:white;">
+                            <option value="no">No</option>
+                            <option value="yes">Yes</option>
+                        </select>     
+                </div>                             
+            </div> 
+            <div class="section-div" id="section-div">
+            </div>
             <div class="row">
             <div class="col-md-4">
             <label for="" class="m-2"> Activity cum Lesson planner for </label>
             </div>
             <div class="col-md-8">
-                    <select name="" id="" class="form-control" style="background-color:white;">
-                        <option value="">each section</option>    
-                        <option value="">batch</option>
+                    <select name="lesson_planner" id="" onchange="getClassType(this);" class="form-control" style="background-color:white;">
+                        <option value="batch">Batch</option>
+                        <option value="section">Each section</option>  
                     </select>       
             </div>
             </div><br>
-            <div class="row">
-            <div class="col-md-2">
-                    <label for="" class="m-2">Theory Classroom No.</label><br><br>
-                    <input type="number" class="form-control" name="" id="" >
+            <div class="classtype-div" id="classtype-div">
+                <div class="row">
+                    <div class="col-md-2">
+                            <label for="" class="m-2">Theory Classroom No.</label><br>
+                            <input type="number" class="form-control" name="theory_class[]" id="" >
+                        </div> 
+                    <div class="col-md-2">
+                            <label for="" class="m-2">IT lab No.</label><br><br>
+                            <input type="number" class="form-control" name="it_lab[]" id="" >
+                    </div>   
+                    <div class="col-md-2">
+                            <label for="" class="m-2">Practical lab No.</label><br><br>
+                            <input type="number" class="form-control" name="practical_lab[]" id="" >
+                    </div> 
+                    <div class="col-md-2">
+                            <label for="" class="m-2">Theory cum Practical Lab No.
+                            </label><br>
+                            <input type="number" class="form-control" name="theory_cum_class[]" id="" >
+                    </div>   
+                    <div class="col-md-2">
+                            <label for="" class="m-2">Theory cum IT Lab No.</label><br>
+                            <input type="number" class="form-control" name="it_cum_lab[]" id="" >
+                    </div>                
+                    <div class="col-md-2">
+                            <label for="" class="m-2">IT cum Practical Lab No.</label><br>
+                            <input type="number" class="form-control" name="practical_cum_lab[]" id="" >
+                    </div>                     
                 </div> 
-            <div class="col-md-2">
-                    <label for="" class="m-2">IT lab No.</label><br><br><br>
-                    <input type="number" class="form-control" name="" id="" >
-            </div>   
-            <div class="col-md-2">
-                    <label for="" class="m-2">Practical lab No.</label><br><br>
-                    <input type="number" class="form-control" name="" id="" >
-            </div> 
-            <div class="col-md-2">
-                    <label for="" class="m-2">Theory cum Practical Lab No.
-                    </label><br>
-                    <input type="number" class="form-control" name="" id="" >
-            </div>   
-            <div class="col-md-2">
-                    <label for="" class="m-2">Theory cum IT Lab No.</label><br><br>
-                    <input type="number" class="form-control" name="" id="" >
-            </div>                
-            <div class="col-md-2">
-                    <label for="" class="m-2">IT cum Practical Lab No.</label><br>
-                    <input type="number" class="form-control" name="" id="" >
-            </div>                     
-            </div> <br>  
-            <div class="row">
-            <div class="col-md-2">
-                    <label for="" class="m-2">Theory Classroom No.</label><br><br>
-                    <input type="number" class="form-control" name="" id="" >
-                </div> 
-            <div class="col-md-2">
-                    <label for="" class="m-2">IT lab No.</label><br><br><br>
-                    <input type="number" class="form-control" name="" id="" >
-            </div>   
-            <div class="col-md-2">
-                    <label for="" class="m-2">Practical lab No.</label><br><br>
-                    <input type="number" class="form-control" name="" id="" >
-            </div> 
-            <div class="col-md-2">
-                    <label for="" class="m-2">Theory cum Practical Lab No.
-                    </label><br>
-                    <input type="number" class="form-control" name="" id="" >
-            </div>   
-            <div class="col-md-2">
-                    <label for="" class="m-2">Theory cum IT Lab No.</label><br><br>
-                    <input type="number" class="form-control" name="" id="" >
-            </div>                
-            <div class="col-md-2">
-                    <label for="" class="m-2">IT cum Practical Lab No.</label><br>
-                    <input type="number" class="form-control" name="" id="" >
-            </div>                     
-            </div> <br>
-            <h5>Trainer Detail</h5>
-               <hr>
+            </div>  
+             <br>
+           <!-- <h5>Trainer Detail</h5>
+                <hr>
                <div class="row">
                 <div class="col-md-3">
-                    <label for="" class="m-2">Trainer</label><br>
+                    <label for="" class="m-2">Trainer Name</label><br>
                     <select name="" id="" class="form-control" style="background-color:white;">
-                        <option value="">Trainer 1</option>
-                        <option value="">Trainer 2</option>
-                        <option value="">Trainer 3</option>
+                    @foreach($get_trainer as $trainer)
+                        <option value="{{ $trainer->id }}">{{ $trainer->name }}</option>
+                    @endforeach
                     </select>            
                 </div>
                 <div class="col-md-3">
-                        <label for="" class="m-2">Trainer Name</label><br>
+                        <label for="" class="m-2">Trainer Skill</label><br>
                         <input type="text" class="form-control" name="" id="" placeholder="Enter Age">
                 </div>  
                 <div class="col-md-3">
@@ -203,7 +175,7 @@
                         <option value="">Part time</option>
                     </select>  
                 </div>                          
-            </div><br>
+            </div><br> -->
                <button type="submit" class="text-light btn btn-lg btn-success btn-icon-text">
                           <i class="ti-upload btn-icon-prepend"></i>
                           Submit
@@ -213,3 +185,64 @@
           </div>
         </div>
         @endsection   
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript">
+       
+
+        function getShift(shift)
+        { 
+            if(shift.value == 'yes')
+            {
+                $('#shift-div').append('  <div class="row mb-4" id="append-shift"><div class="col-md-3"><label for="" class="m-2">Start Time (Shift-1)</label><br><input type="time" class="form-control" name=start1"" id="" > </div> <div class="col-md-3"><label for="" class="m-2">End Time (Shift-1)</label><br><input type="time" class="form-control" name="end1" id="" ></div>   <div class="col-md-3"><label for="" class="m-2">Start Time (Shift-2)</label><br><input type="time" class="form-control" name="start2" id="" > </div> <div class="col-md-3"><label for="" class="m-2">End Time (Shift-2)</label><br><input type="time" class="form-control" name="end2" id="" ></div></div>  ');
+            }
+            
+            if(shift.value == 'no')
+            {
+               $('#append-shift').remove();
+            }    
+        }
+
+        function getOjt(ojt)
+        { 
+            if(ojt.value == 'yes')
+            {
+                $('#ojt-div').append('  <div class="row" id="append-ojt"><div class="col-md-6"><label for="" class="m-2">Expected OJT start date</label><br> <input type="date" class="form-control" name="o_start_date" id="" > </div> <div class="col-md-6"> <label for="" class="m-2">No. of OJT days:</label><br> <input type="number" class="form-control" name="ojt_days" id="" ></div>   </div></div>  ');
+            }
+            
+            if(ojt.value == 'no')
+            {
+               $('#append-ojt').remove();
+            }    
+        }
+
+        function getSection(section)
+        {
+            if(section.value == 'yes')
+            {
+                $('#section-div').append('  <div class="row mb-4" id="append-section"> <div class="col-md-6" ><label for="" class="m-2">Section A- No of Candidates</label><br><input type="number" class="form-control" name="sec1_can_no" id="" ></div><div class="col-md-6"><label for="" class="m-2">Section B- No of Candidates</label><br><input type="number" class="form-control" name="sec2_can_no" id="" ></div></div>   ');
+            }
+            
+            if(section.value == 'no')
+            {
+               $('#append-section').remove();
+            }    
+        }
+
+
+        function getClassType(classType)
+        { 
+            if(classType.value == 'section')
+            {
+                $('#classtype-div').append('  <div class="row" id="append-classType"> <div class="col-md-2"> <label for="" class="m-2">Theory Classroom No.</label><br>    <input type="number" class="form-control" name="theory_class[]" id="" > </div> <div class="col-md-2">     <label for="" class="m-2">IT lab No.</label><br><br><input type="number" class="form-control" name="it_lab[]" id="" ></div>   <div class="col-md-2"><label for="" class="m-2">Practical lab No.</label><br><br><input type="number" class="form-control" name="practical_lab[]" id="" ></div> <div class="col-md-2"><label for="" class="m-2">Theory cum Practical Lab No.</label><br><input type="number" class="form-control" name="theory_cum_class[]" id="" ></div>   <div class="col-md-2"><label for="" class="m-2">Theory cum IT Lab No.</label><br><input type="number" class="form-control" name="it_cum_lab[]" id="" ></div>                <div class="col-md-2"><label for="" class="m-2">IT cum Practical Lab No.</label><br><input type="number" class="form-control" name="practical_cum_lab[]" id="" ></div> </div> ');
+            }
+            
+            if(classType.value == 'batch')
+            {
+               $('#append-classType').remove();
+            }    
+        }
+           
+            
+        </script>

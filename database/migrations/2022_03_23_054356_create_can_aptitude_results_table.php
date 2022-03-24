@@ -15,13 +15,18 @@ class CreateCanAptitudeResultsTable extends Migration
     {
         Schema::create('can_aptitude_results', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('candidate_id',60);
-            $table->string('marks',50);
-            $table->string('result',30);
-            $table->string('apt_ques_id',50);
+
+            $table->integer('register_id')->unsigned()->foriegn();  
+            $table->foreign('register_id')->references('id')->on('on_field_registration_of_candidates')->onUpdate('cascade')->onDelete('cascade');       
+            
+            $table->string('marks',3);
+            $table->enum('result', ['wait','pass', 'fail'])->default('wait');
+            $table->integer('added_by')->unsigned()->nullable();
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamp('test_date')->nullable();
-            $table->timestamp('updated_on')->nullable();
+            $table->timestamp('created_on')->useCurrent();
+            $table->timestamp('updated_on')->useCurrent();
+            $table->softDeletes();
         });
     }
 

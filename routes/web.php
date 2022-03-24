@@ -45,30 +45,44 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 
 Route::group(['middleware' => ['auth']], function() {
 
-    
+    //Pia Route
     Route::get('/pia_form', [MasterController::class,'piaForm'])->name('pia_form');
     Route::post('/create_pia', [MasterController::class,'createPia'])->name('create_pia');
 
+    //Project Route
     Route::get('/project_form', [MasterController::class,'projectForm'])->name('project_form');
     Route::post('/create_project', [MasterController::class,'createProject'])->name('create_project');
 
+    //Q-Team Member Route
     Route::get('/q_team_member_form', [MasterController::class,'qteamMemberForm'])->name('q_team_member_form');
     Route::post('/create_qteam_member', [MasterController::class,'createQteamMember'])->name('create_qteam_member');
 
+    //Centre Incharge Route
     Route::get('/centre_incharge_form', [MasterController::class,'centreInchargeForm'])->name('centre_incharge_form');
     Route::post('/create_centre_incharge', [MasterController::class,'createCentreIncharge'])->name('create_centre_incharge');
     
+    //Mobilizer Route
     Route::get('/mobilizer_form', [MasterController::class,'mobilizerForm'])->name('mobilizer_form');
     Route::post('/create_mobilizer_form', [MasterController::class,'createMobilizer'])->name('create_mobilizer_form');
 
+    //Trainer Route
     Route::get('/trainer_form', [TrainerController::class,'trainerForm'])->name('trainer_form');
     Route::post('/create_trainer', [TrainerController::class,'createTrainer'])->name('create_trainer');
 
+    //Registartion Route
     Route::get('/candidate-register', [OnFieldRegistrationOfCandidateController::class,'registrationForm'])->name('candidate-register');
     Route::post('/post-candidate-register', [OnFieldRegistrationOfCandidateController::class,'postRegistration'])->name('post-candidate-register');
     
-    Route::get('/candidate-admission', [AdmissionController::class,'index'])->name('candidate-admission');
-    Route::get('/create-batch', [BatchController::class,'index'])->name('create-batch');
+    //Batch Route
+    Route::get('/batch_form', [BatchController::class,'batchForm'])->name('batch_form');
+    Route::post('/create_batch', [BatchController::class,'createBatch'])->name('create_batch');
+
+    //Admission Route
+    Route::get('/candidate-admission', [AdmissionController::class,'admissionForm'])->name('candidate-admission');
+    Route::post('/post-candidate-admission', [AdmissionController::class,'postAdmission'])->name('post-candidate-admission');
+   
+
+    
     Route::get('/items_given', [ItemsGivenToCandidateController::class,'index'])->name('items_given');
     Route::get('/items_failure', [DailyFailureItemsReportController::class,'index'])->name('items_failure');
     Route::get('/deployed_staff_trade', [DeployedStaffTradeController::class,'index'])->name('deployed_staff_trade');

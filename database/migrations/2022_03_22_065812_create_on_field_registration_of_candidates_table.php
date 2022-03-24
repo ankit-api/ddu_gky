@@ -15,8 +15,10 @@ class CreateOnFieldRegistrationOfCandidatesTable extends Migration
     {
         Schema::create('on_field_registration_of_candidates', function (Blueprint $table) {
             $table->increments('id');            
-            $table->string('mob_id',50)->nullable(true);
-            $table->string('aptitude_id',50)->nullable(true);            
+
+            $table->integer('mob_id')->unsigned()->foriegn();  
+            $table->foreign('mob_id')->references('id')->on('mobilizers')->onUpdate('cascade')->onDelete('cascade');
+            
             $table->string('reg_code',60);
             $table->string('name',50);
             $table->string('village',30);

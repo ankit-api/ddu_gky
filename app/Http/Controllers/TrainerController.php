@@ -87,6 +87,8 @@ class TrainerController extends Controller
         $trainer->dob = $req->dob;
         $trainer->category = $req->category;
         $trainer->pwd = $req->pwd;
+        $trainer->type_of_engagement = $req->engagement_type;
+        $trainer->training_type = $req->training_type;
         !empty($req->pwd_type ) ? $trainer->pwd_type = $req->pwd_type : $trainer->pwd_type = 'NULL';
         $trainer->aadhaar_no = $req->adhaar;
         !empty($req->other_info ) ? $trainer->other_info = $req->other_info : $trainer->other_info = 'NULL';

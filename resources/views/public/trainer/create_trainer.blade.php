@@ -50,7 +50,24 @@
                     @endforeach
                     </select> 
                 </div>
-            </div><br><br>
+            </div><br>
+            <div class="row">            
+                <div class="col-md-6">
+                    <label for="" class="m-2">Training Type</label><br>
+                    <select name="training_type" id="" class="form-control" style="background-color:white;">
+                        <option value="primary">Primary</option>
+                        <option value="secondary">Secondary</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="" class="m-2">Type of Engagement</label><br>
+                    <select name="engagement_type" id="" class="form-control" style="background-color:white;">
+                        <option value="fulltime">Full-Time</option>
+                        <option value="parttime">Part-Time</option>
+                        <option value="weekends">Week-Ends</option>
+                    </select> 
+                </div>
+            </div><br>  <br>
             <h5>Trainer’s profile</h5><hr>
             <div class="row">            
                 <div class="col-md-4">

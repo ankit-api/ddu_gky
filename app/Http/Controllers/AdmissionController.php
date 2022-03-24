@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
-
 use Illuminate\Http\Request;
+use App\Models\Batch;
+use App\Models\State;
+use App\Models\District;
+use App\Models\OnFieldRegistrationOfCandidate;
 
 class AdmissionController extends Controller
 {
@@ -12,29 +14,17 @@ class AdmissionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function admissionForm()
     {
-        return view('forms.candidate_admission_form');
+        $batch = Batch::all();    
+        $state = State::all();
+        $district = District::all();
+        $reg_can = OnFieldRegistrationOfCandidate::all();
+        return view('admin.candidate_admission.candidate_admission_form', compact("batch",'state','reg_can'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function postAdmission(Request $req)
     {
-        //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 }
