@@ -104,13 +104,13 @@ class AdmissionController extends Controller
          !empty($req->aay_ration_no ) ? $student->aay_ration_card = $req->aay_ration_no : $student->aay_ration_card = NULL;
         
          !empty($req->a_income ) ? $student->annual_income = $req->a_income : $student->annual_income = NULL;
-         $student->is_candidate_a_family_memmber_of_sgh_member =  $req->c_sgh;
+         $student->is_candidate_a_family_member_of_shg_member =  $req->c_shg;
         
-         !empty($req->c_sgh_name ) ? $student->sgh_name = $req->c_sgh_name : $student->sgh_name = 'NULL';
+         !empty($req->c_shg_name ) ? $student->shg_name = $req->c_shg_name : $student->shg_name = 'NULL';
         
-         !empty($req->c_sgh_id ) ? $student->sgh_id = $req->c_sgh_id : $student->sgh_id = 'NULL';
+         !empty($req->c_shg_id ) ? $student->shg_id = $req->c_shg_id : $student->shg_id = 'NULL';
          
-         !empty($req->sgh_member_name ) ? $student->name_of_sgh_member = $req->sgh_member_name : $student->name_of_sgh_member = 'NULL';
+         !empty($req->shg_member_name ) ? $student->name_of_shg_member = $req->shg_member_name : $student->name_of_shg_member = 'NULL';
          $student->family_head_name =  $req->h_name;
          $student->family_head_highest_education =  $req->h_qualification;
          $student->family_annual_income =  $req->fam_income;
@@ -130,13 +130,12 @@ class AdmissionController extends Controller
             $family->relation = $req->relation[$j];
             $family->gender = $req->m_gender[$j];
             $family->age = $req->m_age[$j];
-            $family->is_married = $req->m_status[$j];
+            $family->marital_status = $req->m_status[$j];
             $family->is_earning = $req->m_earn[$j];
             $family->occupation = $req->m_occupation[$j];
-            $family->is_sgh_member = $req->m_sgh[$j];
-            ($req->m_sgh_id[$j]!= NULL) ? $student->sgh_id = $req->m_sgh_id[$j] : $student->sgh_id = 'NULL';
-          
-         
+            $family->is_shg_member = $req->m_shg[$j];
+            // !empty($req->m_shg_id ) ? $student->shg_id = $req->m_shg_id[$j] : $student->shg_id = 'NULL';
+            ($req->m_shg_id[$j]!= NULL) ? $student->shg_id = $req->m_shg_id[$j] : $student->shg_id = 'NULL';
             $family->added_by = Auth::user()->id; 
             $family->save();
         }
@@ -150,8 +149,9 @@ class AdmissionController extends Controller
                     return redirect()->back()->with('alert_status','Duplicate File!');
                    }    else {     
                     $reg_code = OnFieldRegistrationOfCandidate::select('reg_code')->find($req->reg_id);
-                    $file = $req->file('doc')[$j];                
-                    $filename = $reg_code['reg_code'].'/'.$req->doc_type[$j].'.'.$file->getClientOriginalExtension();;
+                    $file = $req->file('doc')[$j];    
+                    $doc_type_name = DocType::find($req->doc_type[$j])->doc_type_name;   
+                    $filename = $reg_code['reg_code'].'/'.$doc_type_name.'.'.$file->getClientOriginalExtension();;
                 
                     $reg_doc = new RegDocument();
                     // $reg_doc->register_id = $insertedId;
@@ -162,7 +162,8 @@ class AdmissionController extends Controller
                     $reg_doc->save();    
                 
                     $path = 'document/reg_doc';
-                    $file->move($path,$file->getClientOriginalName());
+                    $file->move($path,$filename);
+                    // $req->file($filename)->storeAs($path,$filename);
                 }
             }
         }

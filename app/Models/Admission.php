@@ -12,4 +12,8 @@ class Admission extends Model
     protected $table = 'admission_details';
     public $timestamps = false;
 
+    public function doc_type(){
+        return $this->hasOne(DocType::class,'id','doc_type_id');
+    }
+
 }
