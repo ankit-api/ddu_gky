@@ -104,7 +104,6 @@ class MasterController extends Controller
 
     public function createProject(Request $req)
     {
-        session(['pia_id' => '1']);
         $this->validate($req, [
             'pia_name' => 'required',
             'proj_name' => 'required|max:100',
@@ -112,7 +111,7 @@ class MasterController extends Controller
             'district_id' => 'required'
         ]);
 
-        $get_pia_id = $req->session()->get('pia_id');
+        $get_pia_id = Auth::user()->id;
 
         $Project = new Project();
         $Project->pia_id = $get_pia_id;
@@ -145,7 +144,6 @@ class MasterController extends Controller
 
     public function createCentre(Request $req)
     {
-        session(['pia_id' => '1']);
         $this->validate($req, [
             'pia_id' => 'required',
             'name_of_centre' => 'required|max:100',
@@ -164,7 +162,7 @@ class MasterController extends Controller
             $cntr_code .= sprintf("%'04d",$last_id + 1);
         }
 
-        $get_pia_id = $req->session()->get('pia_id');
+        $get_pia_id = Auth::user()->id;
 
         $center = new CenterDetails();
         $center->pia_id = $get_pia_id;
@@ -182,7 +180,6 @@ class MasterController extends Controller
 
     public function createQteamMember(Request $req)
     {
-        session(['pia_id' => '1']);
         $this->validate($req, [
             'name' => 'required|min:3|max:50',
             'gender' => 'required',
@@ -203,7 +200,7 @@ class MasterController extends Controller
             $q_code .= sprintf("%'04d",$last_id + 1);
         }
 
-        $get_pia_id = $req->session()->get('pia_id');
+        $get_pia_id = Auth::user()->id;
 
         $QTeam = new QTeamMembersDetail();
         $QTeam->pia_id = $get_pia_id;

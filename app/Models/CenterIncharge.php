@@ -11,4 +11,5 @@ class CenterIncharge extends Model
 
     protected $table = 'centre_incharge_details';
     public $timestamps = false;
+
 }

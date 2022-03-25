@@ -6,6 +6,7 @@ use App\Models\Batch;
 use App\Models\BatchLessonPlanner;;
 use Auth;
 use Illuminate\Http\Request;
+use App\Models\CenterIncharge;
 
 class BatchController extends Controller
 {
@@ -23,8 +24,7 @@ class BatchController extends Controller
    
     public function createBatch(Request $req)
     {
-        session(['incharge_id' => '1']);
-        session(['centre_id' => '1']);
+        // session(['incharge_id' => '1']);
 
         $this->validate($req, [
             // 'nature_of_training' => 'required',
@@ -41,9 +41,10 @@ class BatchController extends Controller
             'lesson_planner' => 'required',
         ]);
 
-        $centre_id = $req->session()->get('centre_id');
-        $incharge_id = $req->session()->get('incharge_id');    
-
+        // $centre_id = $req->session()->get('centre_id');
+        // $incharge_id = $req->session()->get('incharge_id');
+        // $centre_id = CenterIncharge::where('centre_incharge_code',Auth::user()->user_code)->first();
+        // dd($centre_id->centre_incharge_code);
          //batch Code
          $total_rows = Batch::orderBy('id', 'desc')->count();
          $batch_code = "Batch/";
@@ -55,7 +56,7 @@ class BatchController extends Controller
          }
 
         $batch = new Batch();
-        $batch->incharge_id = $incharge_id;
+        $batch->incharge_id = Auth::user()->id;
         $batch->batch_code = $batch_code;
         $batch->trainer_id = $req->t_name;
         $batch->nature_of_training = $req->nature_of_training;
