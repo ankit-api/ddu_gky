@@ -195,7 +195,7 @@
         { 
             if(shift.value == 'yes')
             {
-                $('#shift-div').append('  <div class="row mb-4" id="append-shift"><div class="col-md-3"><label for="" class="m-2">Start Time (Shift-1)</label><br><input type="time" class="form-control" name=start1"" id="" > </div> <div class="col-md-3"><label for="" class="m-2">End Time (Shift-1)</label><br><input type="time" class="form-control" name="end1" id="" ></div>   <div class="col-md-3"><label for="" class="m-2">Start Time (Shift-2)</label><br><input type="time" class="form-control" name="start2" id="" > </div> <div class="col-md-3"><label for="" class="m-2">End Time (Shift-2)</label><br><input type="time" class="form-control" name="end2" id="" ></div></div>  ');
+                $('#shift-div').append('  <div class="row mb-4" id="append-shift"><div class="col-md-3"><label for="" class="m-2">Start Time (Shift-1)</label><br><input type="time" class="form-control" name="start1" id="" > </div> <div class="col-md-3"><label for="" class="m-2">End Time (Shift-1)</label><br><input type="time" class="form-control" name="end1" id="" ></div>   <div class="col-md-3"><label for="" class="m-2">Start Time (Shift-2)</label><br><input type="time" class="form-control" name="start2" id="" > </div> <div class="col-md-3"><label for="" class="m-2">End Time (Shift-2)</label><br><input type="time" class="form-control" name="end2" id="" ></div></div>  ');
             }
             
             if(shift.value == 'no')

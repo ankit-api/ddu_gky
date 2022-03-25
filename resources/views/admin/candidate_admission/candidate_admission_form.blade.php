@@ -221,22 +221,22 @@
             <div class="row">
             <div class="col-md-3">
                     <label for="" class="m-2">Is candidate a family member of a SHG member? ## </label><br>
-                    <select name="c_sgh" id="" class="form-control" style="background-color:white;">
+                    <select name="c_shg" id="" class="form-control" style="background-color:white;">
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
                 </div>
                 <div class="col-md-3">
                 <label for="" class="m-2">Name of SHG </label><br><br>
-                    <input type="text" name="c_sgh_name" class="form-control" >    
+                    <input type="text" name="c_shg_name" class="form-control" >    
                 </div>    
                 <div class="col-md-3">
                     <label for="" class="m-2">SHG ID</label><br><br>
-                    <input type="text" name="c_sgh_id" class="form-control">
+                    <input type="text" name="c_shg_id" class="form-control">
                 </div>
                 <div class="col-md-3">
                 <label for="" class="m-2">Name of SHG member</label><br><br>
-                    <input type="text" name="sgh_member_name" class="form-control" >    
+                    <input type="text" name="shg_member_name" class="form-control" >    
                 </div>                
             </div><br><br>
             <h5>Family Head Details</h5>
@@ -325,12 +325,12 @@
                             </td>
                             <td> <input type="text" name="m_occupation[]" class="form-control" placeholder="Enter member occupation" ></td>
                             <td>
-                                <select name="m_sgh[]" id="" class="form-control" style="background-color:white;">
+                                <select name="m_shg[]" id="" class="form-control" style="background-color:white;">
                                     <option value="no">No</option>
                                     <option value="yes">Yes</option>
                                 </select>
                             </td>
-                            <td> <input type="text" name="m_sgh_id[]" class="form-control" placeholder="Enter SHG Id"></td>
+                            <td> <input type="text" name="m_shg_id[]" class="form-control" placeholder="Enter SHG Id"></td>
                             <td>
                             <button type="button" class="text-light btn  btn-info btn-icon-text member-more">
                                 <!-- <i class="ti-plus btn-icon-prepend"></i> -->
@@ -429,7 +429,7 @@
                   
                     // sno = parseInt(sno)+1;
                     no2 = no2+1;
-                    $('#member-div').append(' <tr><td><label>'+no2+'</label></td><td><td> <input type="text" name="m_name[]" placeholder="Enter member name" class="form-control" ></td><td><select name="relation[]" id="" class="form-control" style="background-color:white;"><option value="father">Father</option><option value="mother">Mother</option><option value="grand-father">Grand Father</option><option value="grand-mother">Grand Mother</option><option value="husband">Husband</option><option value="wife">Wife</option><option value="brother">Brother</option><option value="sister">Sister</option><option value="son">Son</option><option value="daughter">Daughter</option><option value="brother-in-law">Brother-in-law</option><option value="sister-in-law">Sister-in-law</option></select></td><td> <input type="number" name="m_age[]" class="form-control" ></td><td><select name="m_gender[]" id="" class="form-control" style="background-color:white;"><option value="female">Female</option><option value="male">Male</option><option value="other">Others</option></select></td><td><select name="m_status[]" id="" class="form-control" style="background-color:white;"><option value="single">Single</option><option value="married">Married</option><option value="widowed">Widowed</option><option value="separated">Separated</option><option value="divorced">Divorced</option></select></td><td><select name="m_earn[]" id="" class="form-control" style="background-color:white;"><option value="no">No</option><option value="yes">Yes</option></select></td><td> <input type="text" name="m_occupation[]" placeholder="Enter member occupation" > class="form-control" ></td><td><select name="m_sgh[]" id="" class="form-control" style="background-color:white;"><option value="no">No</option><option value="yes">Yes</option></select></td><td> <input type="text" name="m_sgh_id[]" placeholder="Enter SHG Id" class="form-control" ></td><td> <button type="button" class="btn btn-danger text-white rem_doc2" data-id="'+no2+'" name="remove" data-target="tr">Remove</button></td></tr>');
+                    $('#member-div').append(' <tr><td><label>'+no2+'</label></td><td><td> <input type="text" name="m_name[]" placeholder="Enter member name" class="form-control" ></td><td><select name="relation[]" id="" class="form-control" style="background-color:white;"><option value="father">Father</option><option value="mother">Mother</option><option value="grand-father">Grand Father</option><option value="grand-mother">Grand Mother</option><option value="husband">Husband</option><option value="wife">Wife</option><option value="brother">Brother</option><option value="sister">Sister</option><option value="son">Son</option><option value="daughter">Daughter</option><option value="brother-in-law">Brother-in-law</option><option value="sister-in-law">Sister-in-law</option></select></td><td> <input type="number" name="m_age[]" class="form-control" ></td><td><select name="m_gender[]" id="" class="form-control" style="background-color:white;"><option value="female">Female</option><option value="male">Male</option><option value="other">Others</option></select></td><td><select name="m_status[]" id="" class="form-control" style="background-color:white;"><option value="single">Single</option><option value="married">Married</option><option value="widowed">Widowed</option><option value="separated">Separated</option><option value="divorced">Divorced</option></select></td><td><select name="m_earn[]" id="" class="form-control" style="background-color:white;"><option value="no">No</option><option value="yes">Yes</option></select></td><td> <input type="text" name="m_occupation[]" placeholder="Enter member occupation" > class="form-control" ></td><td><select name="m_shg[]" id="" class="form-control" style="background-color:white;"><option value="no">No</option><option value="yes">Yes</option></select></td><td> <input type="text" name="m_shg_id[]" placeholder="Enter SHG Id" class="form-control" ></td><td> <button type="button" class="btn btn-danger text-white rem_doc2" data-id="'+no2+'" name="remove" data-target="tr">Remove</button></td></tr>');
 
                    
                     $('.rem_doc2').click(function(e){

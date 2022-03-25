@@ -24,7 +24,7 @@ class CreateFamilyDetailsTable extends Migration
             $table->string('relation',30);
             $table->enum('gender', ['male', 'female', 'others'])->default('male');
             $table->integer('age');
-            $table->enum('is_married', ['yes', 'no'])->default('no');
+            $table->string('marital_status', 30)->nullable();
             $table->enum('is_earning', ['yes', 'no'])->default('no');
             $table->string('occupation',50);
             $table->enum('is_shg_member', ['yes', 'no'])->default('no');
