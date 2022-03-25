@@ -49,6 +49,7 @@
                 <div class="collapse" id="ui-basic14">
                   <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="{{ route('centre_form')}}">Add Centre</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('centre_list')}}">Centre List</a></li>
                   </ul>
                 </div></li>
                 {{-- <li class="nav-item"> <a class="nav-link" href="{{ route('mobilizer_form')}}">Add Mobilizer</a></li> --}}

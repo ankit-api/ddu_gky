@@ -58,7 +58,7 @@ Route::group(['middleware' => ['auth']], function() {
      //Centre Route
     Route::get('/centre_form', [MasterController::class,'centreForm'])->name('centre_form');
     Route::post('/create_centre', [MasterController::class,'createCentre'])->name('create_centre');
-    // Route::get('/centre_list', [MasterController::class,'CentreList'])->name('centre_list');
+    Route::get('/centre_list', [MasterController::class,'CentreList'])->name('centre_list');
    
     //Q-Team Member Route
     Route::get('/q_team_member_form', [MasterController::class,'qteamMemberForm'])->name('q_team_member_form');
@@ -73,7 +73,7 @@ Route::group(['middleware' => ['auth']], function() {
     //Mobilizer Route
     Route::get('/mobilizer_form', [MasterController::class,'mobilizerForm'])->name('mobilizer_form');
     Route::post('/create_mobilizer_form', [MasterController::class,'createMobilizer'])->name('create_mobilizer_form');
-    // Route::get('/mobilizer_list', [MasterController::class,'mobilizerList'])->name('mobilizer_list');
+    Route::get('/mobilizer_list', [MasterController::class,'mobilizerList'])->name('mobilizer_list');
     
     //Trainer Route
     Route::get('/trainer_form', [TrainerController::class,'trainerForm'])->name('trainer_form');

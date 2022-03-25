@@ -11,4 +11,11 @@ class PIA extends Model
 
     protected $table = 'pia';
     public $timestamps = false;
+
+    
+
+    // function state()
+    // {
+    //     return $this->hasOneThrough(State::class, Project::class, 'state', 'id')->with('getProjectList');
+    // }
 }

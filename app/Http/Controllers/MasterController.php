@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\PIA;
 use App\Models\QTeamMembersDetail;
 use App\Models\Project;
-use App\Models\CenterDetails;
+use App\Models\CentreDetails;
 use App\Models\CenterIncharge;
 use App\Models\State;
 use App\Models\District;
@@ -128,18 +128,20 @@ class MasterController extends Controller
 
     public function projectList()
     {
-        // $project = Project::all();
-        // $project = new Project;
-        $project_data = Project::all()->getProjectList;
-        return view('admin.create_project.project_list', compact('project'));
+        $project_data = Project::with('getProjectList','getState','getDistrict')->get();
+        // dd($project_data);
+        return view('admin.create_project.project_list', compact('project_data'));
     }
 
     public function centreForm()
     {
         $get_pia = PIA::all();
+        
+        $get_project = Project::all();
         $get_state = State::all();
         $get_district = District::all();
-        return view('admin.create_centre.create_centre', compact("get_pia","get_state","get_district"));
+        $project_data = Project::with('getProjectList','getState')->get();
+        return view('admin.create_centre.create_centre', compact("get_pia","project_data" , "get_state","get_district"));
     }
 
     public function createCentre(Request $req)
@@ -152,21 +154,22 @@ class MasterController extends Controller
             'address' => 'required'
         ]);
 
-        $total_rows = CenterDetails::orderBy('id', 'desc')->count();
+        $total_rows = CentreDetails::orderBy('id', 'desc')->count();
         
         $cntr_code = "CNTR/";
         if($total_rows==0){
             $cntr_code .= '0001';
         }else{
-            $last_id = CenterDetails::orderBy('id', 'desc')->first()->id;
+            $last_id = CentreDetails::orderBy('id', 'desc')->first()->id;
             $cntr_code .= sprintf("%'04d",$last_id + 1);
         }
 
         $get_pia_id = Auth::user()->id;
 
-        $center = new CenterDetails();
+        $center = new CentreDetails();
+        $center->project_id = $req->project_id;
         $center->pia_id = $get_pia_id;
-        $center->center_code = $cntr_code;
+        $center->centre_code = $cntr_code;
         $center->state = $req->state_id;
         $center->district = $req->district_id;
         $center->centre_name = $req->name_of_centre;
@@ -175,6 +178,13 @@ class MasterController extends Controller
         $center->save();
 
         return redirect()->back()->with('alert_status','Centre Added Successfully');
+    }
+
+    public function centreList()
+    {
+        $centre_data = CentreDetails::with('getProjectName', 'getState','getDistrict')->get();
+        // dd($centre_data);
+        return view('admin.create_centre.centre_list', compact('centre_data'));
     }
 
 
@@ -253,7 +263,7 @@ class MasterController extends Controller
 
     public function centreInchargeForm()
     {
-        $get_centre = CenterDetails::all();
+        $get_centre = CentreDetails::all();
         return view('public.centre incharge.add_centre_incharge', compact("get_centre"));
     }
 
@@ -322,7 +332,7 @@ class MasterController extends Controller
 
     public function mobilizerForm()
     {
-        $get_centre = CenterDetails::all();
+        $get_centre = CentreDetails::all();
         return view('public.mobilizer.add_mobilizer', compact("get_centre"));
     }
 

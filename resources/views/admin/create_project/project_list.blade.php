@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'PIA List')
+@section('title', 'Project List')
 @section('dashboard')
 
      
@@ -14,9 +14,9 @@
               <div class="home-tab">
                   
                 <div class="container col-sm-12 mx-auto">
-                  <h4 class="text-center fw-bold">PIA List</h4><br>
+                  <h4 class="text-center fw-bold">Project List</h4><br>
                     <div class="container col-sm-12 mx-auto" style="overflow:scroll;">
-                        <table class="table table-bordered" id="table">
+                        <table class="table table-bordered" id="table1">
                             <thead>
                                 <tr>
                                     <th>PIA Code</th>
@@ -24,20 +24,24 @@
                                     <th>Project Name</th>
                                     <th>State</th>
                                     <th>District</th>
-                                    <th>PIA Address</th>
+                                    <th>Project Duration</th>
+                                    <th>Project Description</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($project as $project)
+                                @foreach($project_data as $project)
                                 <tr>
-                                    <td>{{ $project->pia->pia_code }}</td>
-                                    <td>{{ $project->pia->pia_name }}</td>
-                                    <td>{{ $project->name }}</td>
-                                    <td>{{ $project->phone_no }}</td>
-                                    <td>{{ $project->email }}</td>
-                                    <td>{{ $project->address }}</td>
-                                    <td></td>
+                                <td>{{ $project->getProjectList->pia_code }}</td>
+                                <td>{{ $project->getProjectList->pia_name }}</td>                          -->
+                                <td>{{ $project->name }}</td>
+                                <td>{{ $project->getState->state_name }}</td>
+                                <td>{{ $project->getDistrict->district_name }}</td>
+                                <td>{{ $project->duration }}</td>
+                                <td>{{ $project->description }}</td>
+                                <td>
+                                  <button class="text-light btn btn-info">Edit</button><button class="text-light btn btn-danger">Delete</button>
+                                </td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -54,6 +58,6 @@
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('#table').dataTable();
+        $('#table1').dataTable();
     });
 </script>

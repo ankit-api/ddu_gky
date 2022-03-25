@@ -24,7 +24,7 @@
                 @if ($errors->any())
                         <div class="alert alert-danger">{{$errors->first()}}</div>
                 @endif         
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <label for="" class="m-2">Name of PIA</label><br>
                     <select name="pia_id" id="" class="form-control" style="background-color:white;">
                         @foreach($get_pia as $name)
@@ -32,7 +32,15 @@
                         @endforeach
                     </select> 
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
+                    <label for="" class="m-2">Name of Project</label><br>
+                    <select name="project_id" id="" class="form-control" style="background-color:white;">
+                        @foreach($project_data as $project)
+                            <option value="{{ $project->id }}">{{ $project->name }}( {{ $project->getState->state_name}} )</option>
+                        @endforeach
+                    </select> 
+                </div>
+                <div class="col-md-4">
                     <label for="" class="m-2">Name of Training Centre</label><br>
                     <input type="text" class="form-control" name="name_of_centre" placeholder="Enter Training Centre Name">
                 </div>
