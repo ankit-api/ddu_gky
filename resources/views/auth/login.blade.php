@@ -81,8 +81,8 @@
         <div class="row w-100 mx-0">
           <div class="col-lg-4 mx-auto">
             <div class="auth-form-light text-left py-5 px-4 px-sm-5">
-              <div class="brand-logo">
-                <img src="" alt="logo">
+              <div class="logo mb-5">
+                <img src="{{asset('images/ddu-header.jpg')}}" class="img-fluid" alt="logo">
               </div>
               <h4>Hello! let's get started</h4>
               <h6 class="fw-light">Sign in to continue.</h6>
@@ -99,13 +99,13 @@
                 <div class="mt-3">
                   <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" > {{ __('Login') }}</button>
                 </div>
-                <div class="my-2 d-flex justify-content-between align-items-center">
-                  <div class="form-check">
+                <div class="my-2 d-flex justify-content-center align-items-center">
+                  {{-- <div class="form-check">
                     <label class="form-check-label text-muted">
                       <input type="checkbox" class="form-check-input">
                       Keep me signed in
                     </label>
-                  </div>
+                  </div> --}}
 
                   @if (Route::has('password.request'))
                                     <a class="btn btn-link"class="auth-link text-black"  href="{{ route('password.request') }}">
@@ -115,9 +115,9 @@
                  
                 </div>
                 
-                <div class="text-center mt-4 fw-light">
+                {{-- <div class="text-center mt-4 fw-light">
                   Don't have an account? <a href="register.html" class="text-primary">Create</a>
-                </div>
+                </div> --}}
               </form>
             </div>
           </div>

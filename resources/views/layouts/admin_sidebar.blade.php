@@ -124,7 +124,7 @@
             <div class="collapse" id="ui-basic3">
               <ul class="nav flex-column sub-menu">
                 <!-- <li class="nav-item"> <a class="nav-link" href="{{ route('candidate-register') }}">Candidate Register</a></li> -->
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Candidate Register List</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('candidate_register_list') }}">Candidate Register List</a></li>
               </ul>
             </div>
           </li>

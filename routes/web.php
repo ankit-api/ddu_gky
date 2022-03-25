@@ -83,7 +83,7 @@ Route::group(['middleware' => ['auth']], function() {
     //Registartion Route
     Route::get('/candidate-register', [OnFieldRegistrationOfCandidateController::class,'registrationForm'])->name('candidate-register');
     Route::post('/post-candidate-register', [OnFieldRegistrationOfCandidateController::class,'postRegistration'])->name('post-candidate-register');
-    // Route::get('/candidate-register-list', [OnFieldRegistrationOfCandidateController::class,'registrationList'])->name('candidate-register-list');
+    Route::get('/candidate_register_list', [OnFieldRegistrationOfCandidateController::class,'registrationList'])->name('candidate_register_list');
     
     //Batch Route
     Route::get('/batch_form', [BatchController::class,'batchForm'])->name('batch_form');

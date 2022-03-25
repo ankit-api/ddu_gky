@@ -102,5 +102,11 @@ class OnFieldRegistrationOfCandidateController extends Controller
         
         return redirect()->back()->with('alert_status','Candidate Registered Successfully!');
     }
+
+    public function registrationList(){
+        $candidate_data = OnFieldRegistrationOfCandidate::all();      
+        return view('admin.on_field_reg_of_candidate.registration_list', compact("candidate_data"));
+    }
 }
+
 
