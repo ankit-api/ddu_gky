@@ -17,7 +17,9 @@ class CreateCentreTable extends Migration
              $table->increments('id'); 
             $table->integer('pia_id')->unsigned()->foriegn(); 
             $table->foreign('pia_id')->references('id')->on('pia')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('center_code',50);           
+            $table->integer('project_id')->unsigned()->foriegn(); 
+            $table->foreign('project_id')->references('id')->on('project')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('centre_code',50);           
             $table->integer('state')->unsigned();
             $table->integer('district')->unsigned();
             $table->string('centre_name',100);

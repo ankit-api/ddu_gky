@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Project extends Model
+class CentreDetails extends Model
 {
     use HasFactory;
 
-    protected $table = 'project';
+    protected $table = 'centre';
     public $timestamps = false;
 
-    function getProjectList(){
-        return $this->hasOne(Pia::class, 'id', 'pia_id');
+    function getProjectName(){
+        return $this->hasOne(Project::class, 'id', 'project_id');
     }
 
     function getState(){
@@ -23,8 +23,4 @@ class Project extends Model
     function getDistrict(){
         return $this->hasOne(District::class, 'id', 'district');
     }
-
-    // public function getState({
-    //     return $this->hasOne(Project::class, 'pia_id', 'id');
-    // })
 }

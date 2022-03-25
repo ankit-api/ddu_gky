@@ -122,19 +122,20 @@ class AdmissionController extends Controller
          $student->save();
          $insertedId = $student->id;
 
-        $i = count($req->name);        
+        $i = count($req->m_name);        
         for ($j = 0; $j < $i; $j++) {     
             $family = new FamilyDetail();
             $family->admission_id = $insertedId;
-            $family->name = $req->m_name;
-            $family->relation = $req->relation;
-            $family->gender = $req->m_gender;
-            $family->age = $req->m_age;
-            $family->is_married = $req->m_status;
-            $family->is_earning = $req->m_earn;
-            $family->occupation = $req->m_occupation;
-            $family->is_sgh_member = $req->m_sgh;
-            !empty($req->m_sgh_id ) ? $student->sgh_id = $req->m_sgh_id : $student->sgh_id = 'NULL';
+            $family->name = $req->m_name[$j];
+            $family->relation = $req->relation[$j];
+            $family->gender = $req->m_gender[$j];
+            $family->age = $req->m_age[$j];
+            $family->is_married = $req->m_status[$j];
+            $family->is_earning = $req->m_earn[$j];
+            $family->occupation = $req->m_occupation[$j];
+            $family->is_sgh_member = $req->m_sgh[$j];
+            ($req->m_sgh_id[$j]!= NULL) ? $student->sgh_id = $req->m_sgh_id[$j] : $student->sgh_id = 'NULL';
+          
          
             $family->added_by = Auth::user()->id; 
             $family->save();
