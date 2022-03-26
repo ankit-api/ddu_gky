@@ -36,7 +36,7 @@
                                                 <td>{{ $candidate->village }}</td>
                                                 <td>{{ $candidate->date_of_birth }}</td>
                                                 <td>{{ $candidate->gender }}</td>
-                                                <td>{{ $candidate->mob_id }}</td>
+                                                <td>{{ $candidate->mob_name->name }}</td>
                                                 <td>
                                                     <button class="text-light btn btn-info">Edit</button>
                                                 </td>

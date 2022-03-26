@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Models\PIA;
 use App\Models\Project;
-use App\Models\CenterDetails;
+use App\Models\CentreDetails;
 use App\Models\State;
 use App\Models\District;
 use App\Models\User;
@@ -30,7 +30,7 @@ class TrainerController extends Controller
     {
         $get_pia = PIA::all();
         $get_project = Project::all();
-        $get_centre = CenterDetails::all();      
+        $get_centre = CentreDetails::all();      
         $get_state = State::all();
         $get_district = District::all();
         return view('public.trainer.create_trainer', compact("get_pia", "get_project", "get_centre", "get_state", "get_district"));
@@ -58,14 +58,14 @@ class TrainerController extends Controller
         $get_pia_id = $req->session()->get('pia_id');        
         
         //Trainer Code
-        $total_rows = Trainer::orderBy('id', 'desc')->count();
-        $trainer_code = "Trainer/";
-        if($total_rows==0){
-            $trainer_code .= '0001';
-        }else{
-            $last_id = Trainer::orderBy('id', 'desc')->first()->id;
-            $trainer_code .= sprintf("%'04d",$last_id + 1);
-        }
+        // $total_rows = Trainer::orderBy('id', 'desc')->count();
+        // $trainer_code = "Trainer/";
+        // if($total_rows==0){
+        //     $trainer_code .= '0001';
+        // }else{
+        //     $last_id = Trainer::orderBy('id', 'desc')->first()->id;
+        //     $trainer_code .= sprintf("%'04d",$last_id + 1);
+        // }
 
         //Skill array to string 
         if(!empty($req->add_skill))
@@ -77,7 +77,7 @@ class TrainerController extends Controller
        
         $trainer = new Trainer();
         $trainer->centre_id = $req->centre_name;
-        $trainer->trainer_code  = $trainer_code;
+        $trainer->trainer_code  = $req->trainer_code;
         $trainer->name =  $req->name;
         $trainer->relation = $req->relation_name;
         $trainer->relative_name = $req->relative_name;

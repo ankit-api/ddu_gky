@@ -5,14 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Trainer extends Model
+class MIS extends Model
 {
     use HasFactory;
 
-    protected $table = 'trainer_details';
+    protected $table = 'm_i_s';
     public $timestamps = false;
 
-    public function centreCode(){
-        return $this->hasOne(CentreDetails::class,'id','centre_id');
-    }
 }

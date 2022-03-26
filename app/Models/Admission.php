@@ -16,4 +16,12 @@ class Admission extends Model
         return $this->hasOne(DocType::class,'id','doc_type_id');
     }
 
+    public function cenInchName(){
+        return $this->hasOne(User::class,'id','added_by');
+    }
+
+    public function batchCode(){
+        return $this->hasOne(Batch::class,'id','batch_id');
+    }
+
 }

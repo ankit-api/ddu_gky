@@ -25,6 +25,10 @@
                         <div class="alert alert-danger">{{$errors->first()}}</div>
                 @endif         
                 <div class="col-md-4">
+                    <label for="" class="m-2">Centre Code</label><br>
+                    <input type="text" class="form-control" name="cntr_code" placeholder="Enter Centre Code">
+                </div>
+                <div class="col-md-4">
                     <label for="" class="m-2">Name of PIA</label><br>
                     <select name="pia_id" id="" class="form-control" style="background-color:white;">
                         @foreach($get_pia as $name)
@@ -40,13 +44,13 @@
                         @endforeach
                     </select> 
                 </div>
+            </div><br>
+            <div class="row">
                 <div class="col-md-4">
                     <label for="" class="m-2">Name of Training Centre</label><br>
                     <input type="text" class="form-control" name="name_of_centre" placeholder="Enter Training Centre Name">
                 </div>
-            </div><br>
-            <div class="row">            
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <label for="" class="m-2">State</label><br>
                     <select name="state_id" id="state_id" class="form-control" style="background-color:white;">
                         @foreach($get_state as $state)
@@ -54,7 +58,7 @@
                         @endforeach
                     </select> 
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <label for="" class="m-2">District</label><br>
                     <select name="district_id" id="district_id" class="form-control" style="background-color:white;">
                         @foreach($get_district as $district)
@@ -62,6 +66,8 @@
                         @endforeach
                     </select> 
                 </div>
+            </div><br>
+            <div class="row">       
                 <div class="col-md-6">
                     <label for="" class="m-2">Address of Training Centre</label><br>
                     <textarea name="address" class="form-control" cols="30" rows="10" placeholder="Enter Complete Address"></textarea>

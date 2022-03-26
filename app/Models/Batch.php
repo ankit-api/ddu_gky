@@ -11,4 +11,12 @@ class Batch extends Model
 
     protected $table = 'batch_details';
     public $timestamps = false;
+
+    public function addedBy(){
+        return $this->hasOne(User::class,'id','added_by');
+    }
+
+    public function trainerDetails(){
+        return $this->hasOne(Trainer::class,'id','trainer_id');
+    }
 }

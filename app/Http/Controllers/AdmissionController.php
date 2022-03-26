@@ -151,7 +151,7 @@ class AdmissionController extends Controller
                     $reg_code = OnFieldRegistrationOfCandidate::select('reg_code')->find($req->reg_id);
                     $file = $req->file('doc')[$j];    
                     $doc_type_name = DocType::find($req->doc_type[$j])->doc_type_name;   
-                    $filename = $reg_code['reg_code'].'/'.$doc_type_name.'.'.$file->getClientOriginalExtension();;
+                    $filename = $reg_code['reg_code'].'/'.$doc_type_name.'.'.$file->getClientOriginalExtension();
                 
                     $reg_doc = new RegDocument();
                     // $reg_doc->register_id = $insertedId;
@@ -169,6 +169,11 @@ class AdmissionController extends Controller
         }
         
         return redirect()->back()->with('alert_status','Admission done Successfully!');
+    }
+
+    public function admissionList(){
+        $candidate_data = Admission::with('batchCode')->get();      
+        return view('admin.candidate_admission.admission_list', compact("candidate_data"));
     }
 
 }

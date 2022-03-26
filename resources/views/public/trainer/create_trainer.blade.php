@@ -49,17 +49,21 @@
                         <option value="{{ $centre->id }}">{{ $centre->centre_name }}</option>
                     @endforeach
                     </select> 
-                </div>
+                </div>   
             </div><br>
-            <div class="row">            
-                <div class="col-md-6">
+            <div class="row"> 
+                <div class="col-md-4">
+                    <label for="" class="m-2">Trainer Code</label><br>
+                    <input type="text" name="trainer_code" class="form-control" required placeholder="Enter Trainer Code">
+                </div>
+                <div class="col-md-4">
                     <label for="" class="m-2">Training Type</label><br>
                     <select name="training_type" id="" class="form-control" style="background-color:white;">
                         <option value="primary">Primary</option>
                         <option value="secondary">Secondary</option>
                     </select>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <label for="" class="m-2">Type of Engagement</label><br>
                     <select name="engagement_type" id="" class="form-control" style="background-color:white;">
                         <option value="fulltime">Full-Time</option>

@@ -104,4 +104,9 @@ class BatchController extends Controller
 
         return redirect()->back()->with('alert_status','Batch Created Successfully!');
     }
+
+    public function batchList(){
+        $batch_data = Batch::all();      
+        return view('admin.create_batch.batch_list', compact("batch_data"));
+    }
 }

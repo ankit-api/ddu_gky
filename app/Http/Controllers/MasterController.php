@@ -35,18 +35,18 @@ class MasterController extends Controller
 
         ]);
 
-        $total_rows = PIA::orderBy('id', 'desc')->count();
+        // $total_rows = PIA::orderBy('id', 'desc')->count();
         
-        $pia_code = "PIA/";
-        if($total_rows==0){
-            $pia_code .= '0001';
-        }else{
-            $last_id = PIA::orderBy('id', 'desc')->first()->id;
-            $pia_code .= sprintf("%'04d",$last_id + 1);
-        }
+        // $pia_code = "PIA/";
+        // if($total_rows==0){
+        //     $pia_code .= '0001';
+        // }else{
+        //     $last_id = PIA::orderBy('id', 'desc')->first()->id;
+        //     $pia_code .= sprintf("%'04d",$last_id + 1);
+        // }
 
         $Pia = new PIA();
-        $Pia->pia_code = $pia_code;
+        $Pia->pia_code = $req->pia_code;
         $Pia->pia_name = $req->name;
         $Pia->landline_no = $req->landline_no;
         $Pia->phone_no = $req->contact_no;
@@ -154,22 +154,22 @@ class MasterController extends Controller
             'address' => 'required'
         ]);
 
-        $total_rows = CentreDetails::orderBy('id', 'desc')->count();
+        // $total_rows = CentreDetails::orderBy('id', 'desc')->count();
         
-        $cntr_code = "CNTR/";
-        if($total_rows==0){
-            $cntr_code .= '0001';
-        }else{
-            $last_id = CentreDetails::orderBy('id', 'desc')->first()->id;
-            $cntr_code .= sprintf("%'04d",$last_id + 1);
-        }
+        // $cntr_code = "CNTR/";
+        // if($total_rows==0){
+        //     $cntr_code .= '0001';
+        // }else{
+        //     $last_id = CentreDetails::orderBy('id', 'desc')->first()->id;
+        //     $cntr_code .= sprintf("%'04d",$last_id + 1);
+        // }
 
         $get_pia_id = Auth::user()->id;
 
         $center = new CentreDetails();
         $center->project_id = $req->project_id;
         $center->pia_id = $get_pia_id;
-        $center->centre_code = $cntr_code;
+        $center->centre_code = $req->cntr_code;
         $center->state = $req->state_id;
         $center->district = $req->district_id;
         $center->centre_name = $req->name_of_centre;
@@ -200,21 +200,21 @@ class MasterController extends Controller
             'reporting_off' => 'required|max:150'
         ]);
 
-        $total_rows = QTeamMembersDetail::orderBy('id', 'desc')->count();
+        // $total_rows = QTeamMembersDetail::orderBy('id', 'desc')->count();
         
-        $q_code = "QTEAM/";
-        if($total_rows==0){
-            $q_code .= '0001';
-        }else{
-            $last_id = QTeamMembersDetail::orderBy('id', 'desc')->first()->id;
-            $q_code .= sprintf("%'04d",$last_id + 1);
-        }
+        // $q_code = "QTEAM/";
+        // if($total_rows==0){
+        //     $q_code .= '0001';
+        // }else{
+        //     $last_id = QTeamMembersDetail::orderBy('id', 'desc')->first()->id;
+        //     $q_code .= sprintf("%'04d",$last_id + 1);
+        // }
 
         $get_pia_id = Auth::user()->id;
 
         $QTeam = new QTeamMembersDetail();
         $QTeam->pia_id = $get_pia_id;
-        $QTeam->qteam_member_code = $q_code;
+        $QTeam->qteam_member_code = $req->q_code;
         $QTeam->name = $req->name;
         $QTeam->gender = $req->gender;
         $QTeam->contact = $req->contact;
@@ -279,19 +279,19 @@ class MasterController extends Controller
             'qualification' => 'required|max:120'
         ]);
 
-        $total_rows = CenterIncharge::orderBy('id', 'desc')->count();
+        // $total_rows = CenterIncharge::orderBy('id', 'desc')->count();
         
-        $ci_code = "CENINCH/";
-        if($total_rows==0){
-            $ci_code .= '0001';
-        }else{
-            $last_id = CenterIncharge::orderBy('id', 'desc')->first()->id;
-            $ci_code .= sprintf("%'04d",$last_id + 1);
-        }
+        // $ci_code = "CENINCH/";
+        // if($total_rows==0){
+        //     $ci_code .= '0001';
+        // }else{
+        //     $last_id = CenterIncharge::orderBy('id', 'desc')->first()->id;
+        //     $ci_code .= sprintf("%'04d",$last_id + 1);
+        // }
 
         $Cen_Inch = new CenterIncharge();
         $Cen_Inch->centre_id = $req->centre_id;
-        $Cen_Inch->centre_incharge_code = $ci_code;
+        $Cen_Inch->centre_incharge_code = $req->ci_code;
         $Cen_Inch->name = $req->name;
         $Cen_Inch->email = $req->email;
         $Cen_Inch->contact = $req->contact_no;
@@ -347,19 +347,19 @@ class MasterController extends Controller
             'address' => 'required|min:10|max:255'
         ]);
 
-        $total_rows = Mobilizer::orderBy('id', 'desc')->count();
+        // $total_rows = Mobilizer::orderBy('id', 'desc')->count();
         
-        $mob_code = "MOB/";
-        if($total_rows==0){
-            $mob_code .= '0001';
-        }else{
-            $last_id = Mobilizer::orderBy('id', 'desc')->first()->id;
-            $mob_code .= sprintf("%'04d",$last_id + 1);
-        }
+        // $mob_code = "MOB/";
+        // if($total_rows==0){
+        //     $mob_code .= '0001';
+        // }else{
+        //     $last_id = Mobilizer::orderBy('id', 'desc')->first()->id;
+        //     $mob_code .= sprintf("%'04d",$last_id + 1);
+        // }
 
         $Mobi = new Mobilizer();
         $Mobi->centre_id = $req->centre_id;
-        $Mobi->mob_id = $mob_code;
+        $Mobi->mob_id = $req->mob_code;
         $Mobi->name = $req->name;
         $Mobi->email = $req->email;
         $Mobi->contact = $req->contact_no;

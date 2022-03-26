@@ -33,6 +33,10 @@
                     </select> 
                 </div>
                 <div class="col-md-6">
+                    <label for="" class="m-2">Mobilizer Code</label><br>
+                    <input name ="mob_code" type="text" class="form-control" placeholder="Enter Mobilizer Code">
+                </div> 
+                <div class="col-md-6">
                     <label for="" class="m-2">Name</label><br>
                     <input name ="name" type="text" class="form-control" placeholder="Enter Full Name">
                 </div> 

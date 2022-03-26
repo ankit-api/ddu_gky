@@ -20,6 +20,7 @@ use App\Http\Controllers\MasterController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\DailyDistributionOfTabletController;
 use App\Http\Controllers\LetterController;
+use App\Http\Controllers\MISController;
 
 /*
 |--------------------------------------------------------------------------
@@ -88,12 +89,17 @@ Route::group(['middleware' => ['auth']], function() {
     //Batch Route
     Route::get('/batch_form', [BatchController::class,'batchForm'])->name('batch_form');
     Route::post('/create_batch', [BatchController::class,'createBatch'])->name('create_batch');
-    // Route::get('/batch_list', [BatchController::class,'batchList'])->name('batch_list');
+    Route::get('/batch_list', [BatchController::class,'batchList'])->name('batch_list');
+
+    //MIS Route
+    Route::get('/mis_form', [MISController::class,'misForm'])->name('mis_form');
+    Route::post('/create_mis', [MISController::class,'createMis'])->name('create_mis');
+    Route::get('/mis_list', [MISController::class,'misList'])->name('mis_list');
     
     //Admission Route
     Route::get('/candidate-admission', [AdmissionController::class,'admissionForm'])->name('candidate-admission');
     Route::post('/post-candidate-admission', [AdmissionController::class,'postAdmission'])->name('post-candidate-admission');
-    // Route::get('/candidate-admission-list', [AdmissionController::class,'admissionList'])->name('candidate-admission-list');
+    Route::get('/admission_list', [AdmissionController::class,'admissionList'])->name('admission_list');
     
 
     

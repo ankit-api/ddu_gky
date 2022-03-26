@@ -23,7 +23,11 @@
                 @endif      
                 @if ($errors->any())
                         <div class="alert alert-danger">{{$errors->first()}}</div>
-                @endif                   
+                @endif   
+                <div class="col-md-6">
+                    <label for="" class="m-2">Centre Incharge Code</label><br>
+                    <input name ="ci_code" type="text" class="form-control" placeholder="Enter Centre Incharge Code">
+                </div>                
                 <div class="col-md-6">
                     <label for="" class="m-2">Centre Name</label><br>
                     <select name="centre_id" id="" class="form-control" style="background-color:white;">
@@ -31,7 +35,7 @@
                             <option value="{{ $name->id }}">{{ $name->centre_name }}</option>
                         @endforeach
                     </select> 
-                </div>
+                </div> 
                 <div class="col-md-6">
                     <label for="" class="m-2">Name</label><br>
                     <input name ="name" type="text" class="form-control" placeholder="Enter Full Name">

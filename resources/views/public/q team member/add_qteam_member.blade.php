@@ -25,7 +25,11 @@
                     {{-- @foreach ($errors->all() as $error) --}}
                         <div class="alert alert-danger">{{$errors->first()}}</div>
                     {{-- @endforeach --}}
-                @endif         
+                @endif        
+                <div class="col-md-6">
+                    <label for="" class="m-2">Q-Team Member Code</label><br>
+                    <input name ="q_code" type="text" required placeholder="Enter Q-Team Member Code" class="form-control">
+                </div> 
                 <div class="col-md-6">
                     <label for="" class="m-2">Name</label><br>
                     <input name ="name" type="text" required placeholder="Enter Full Name" class="form-control">

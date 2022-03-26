@@ -11,4 +11,8 @@ class OnFieldRegistrationOfCandidate extends Model
 
     protected $table = 'on_field_registration_of_candidates';
     public $timestamps = false;
+
+    public function mob_name(){
+        return $this->hasOne(Mobilizer::class,'id','mob_id');
+    }
 }

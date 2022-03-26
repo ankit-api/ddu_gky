@@ -27,6 +27,10 @@
                           {{-- @endforeach --}}
                       @endif 
                       <div class="col-md-6">
+                        <label for="" class="m-2">PIA Code</label><br>
+                        <input name="pia_code" type="text" placeholder="Enter PIA Code" class="form-control">
+                      </div>
+                      <div class="col-md-6">
                           <label for="" class="m-2">Name of PIA</label><br>
                           <input name ="name" type="text" placeholder="Enter PIA Name" class="form-control">
                       </div>
