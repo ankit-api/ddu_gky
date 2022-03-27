@@ -20,6 +20,7 @@ class CreateProjectTable extends Migration
             $table->integer('scheme_id')->unsigned()->foriegn();
             $table->foreign('scheme_id')->references('id')->on('schemes')->onUpdate('cascade')->onDelete('cascade');
             $table->string('sanction_order_no',30);
+            $table->string('name',30);
             $table->date('sanction_date');
             $table->string('proposal_code',30);
             $table->date('pac_date');

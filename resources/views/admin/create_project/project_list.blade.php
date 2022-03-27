@@ -24,8 +24,9 @@
                                             <th>Project Name</th>
                                             <th>State</th>
                                             <th>District</th>
-                                            <th>Project Duration</th>
-                                            <th>Project Description</th>
+                                            <th>Project Duration<br>(in months)</th>
+                                            <th>Sanction Date</th>
+                                            <th>Project Cost</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -37,11 +38,11 @@
                                                 <td>{{ $project->name }}</td>
                                                 <td>{{ $project->getState->state_name }}</td>
                                                 <td>{{ $project->getDistrict->district_name }}</td>
-                                                <td>{{ $project->duration }}</td>
-                                                <td>{{ $project->description }}</td>
+                                                <td>{{ $project->project_duration }} months</td>
+                                                <td>{{ $project->sanction_date }}</td>
+                                                <td>Rs. {{ $project->project_cost }}</td>
                                                 <td>
-                                                    <button class="text-light btn btn-info">Edit</button><button
-                                                        class="text-light btn btn-danger">Delete</button>
+                                                    <button class="text-light btn btn-info">Edit</button>
                                                 </td>
                                             </tr>
                                         @endforeach

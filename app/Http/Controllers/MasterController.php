@@ -110,6 +110,7 @@ class MasterController extends Controller
         $this->validate($req, [
             'pia_name' => 'required',
             'scheme_id' => 'required|max:40',
+            'proj_name' => 'required|max:30',
             'sac_order_no' => 'required|max:30',
             'sac_order_date' => 'required',
             'pro_code' => 'required',
@@ -123,6 +124,7 @@ class MasterController extends Controller
         $Project = new Project();
         $Project->pia_id = $req->pia_name;
         $Project->scheme_id = $req->scheme_id;
+        $Project->name = $req->proj_name;
         $Project->sanction_order_no = $req->sac_order_no;
         $Project->sanction_date = $req->sac_order_date;
         $Project->proposal_code = $req->pro_code;
