@@ -14,6 +14,8 @@ use App\Models\State;
 use App\Models\District;
 use App\Models\Mobilizer;
 use App\Models\User;
+use App\Models\Scheme;
+use App\Models\CategoryType;
 use Mail;
 use Auth;
 
@@ -98,31 +100,65 @@ class MasterController extends Controller
         $get_pia = PIA::all();
         $get_state = State::all();
         $get_district = District::all();
+        $get_scheme = Scheme::all();
         // dd($get_project);
-        return view('admin.create_project.create_project', compact("get_pia", "get_state", "get_district"));
+        return view('admin.create_project.create_project', compact("get_pia", "get_state", "get_district", "get_scheme"));
     }
 
     public function createProject(Request $req)
     {
         $this->validate($req, [
             'pia_name' => 'required',
-            'proj_name' => 'required|max:100',
+            'scheme_id' => 'required|max:40',
+            'sac_order_no' => 'required|max:30',
+            'sac_order_date' => 'required',
+            'pro_code' => 'required',
             'state_id' => 'required',
             'district_id' => 'required'
         ]);
 
-        $get_pia_id = Auth::user()->id;
+        $file = $req->file('project_doc');
+        $filename = $req->sac_order_no.'.'.$file->getClientOriginalExtension();
 
         $Project = new Project();
-        $Project->pia_id = $get_pia_id;
-        $Project->name = $req->proj_name;
-        $Project->duration = $req->proj_duration;
+        $Project->pia_id = $req->pia_name;
+        $Project->scheme_id = $req->scheme_id;
+        $Project->sanction_order_no = $req->sac_order_no;
+        $Project->sanction_date = $req->sac_order_date;
+        $Project->proposal_code = $req->pro_code;
+        $Project->pac_date = $req->pac_date;
         $Project->state = $req->state_id;
         $Project->district = $req->district_id;
-        $Project->description = $req->proj_description;
+        $Project->project_duration = $req->proj_duration;
+        $Project->total_target = $req->total_target;
+        $Project->placement_target = $req->place_target;
+        $Project->project_cost = $req->proj_cost;
+        $Project->central_share = $req->central_share;
+        $Project->state_share = $req->state_share;
+        $Project->mpr_project_id = $req->mpr_proj_id;
+        $Project->consortium = $req->con_part;
+        $Project->consortium_prn = $req->con_part_no;
+        $Project->project_doc = $filename;
         $Project->added_by = Auth::user()->id;
         $Project->save();
 
+        for($i=0;$i<2;$i++){
+            $cat = new CategoryType();
+            $cat->san_order_no = $req->sac_order_no;
+            $cat->category_type = $req->cat_type[$i];
+            $cat->target_no = $req->target_no[$i];
+            $cat->sc_no = $req->sc_no[$i];
+            $cat->st_no = $req->st_no[$i];
+            $cat->others_no = $req->others_no[$i];
+            $cat->minorities_no = $req->minorities_no[$i];
+            $cat->women_no = $req->women_no[$i];
+            $cat->placement_no = $req->placement_no[$i];
+            $cat->added_by = Auth::user()->id;
+            $cat->save();
+        }
+
+        $path = 'document/Project_File';
+        $file->move($path,$filename);
         return redirect()->back()->with('alert_status','Project Added Successfully');
     }
 

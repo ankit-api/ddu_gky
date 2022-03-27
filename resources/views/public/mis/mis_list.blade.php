@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'PIA List')
+@section('title', 'MIS List')
 @section('dashboard')
 
 
@@ -14,29 +14,29 @@
                     <div class="home-tab">
 
                         <div class="container col-sm-12 mx-auto">
-                            <h4 class="text-center fw-bold">PIA List</h4><br>
+                            <h4 class="text-center fw-bold">MIS List</h4><br>
                             <div class="container col-sm-12 mx-auto" style="overflow:scroll;">
                                 <table class="table table-bordered" id="table">
                                     <thead>
                                         <tr>
-                                            <th>PIA Code</th>
-                                            <th>PIA Name</th>
-                                            <th>PIA Landline No.</th>
-                                            <th>PIA Alternate Contact</th>
-                                            <th> PIA Email</th>
-                                            <th>PIA Address</th>
+                                            <th>MIS Code</th>
+                                            <th>MIS Name</th>
+                                            <th>MIS Type</th>
+                                            <th>MIS Email</th>
+                                            <th>MIS Contact</th>
+                                            <th>MIS Address</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($pia as $pia)
+                                        @foreach ($mis_data as $mis)
                                             <tr>
-                                                <td>{{ $pia->pia_code }}</td>
-                                                <td>{{ $pia->pia_name }}</td>
-                                                <td>{{ $pia->landline_no }}</td>
-                                                <td>{{ $pia->phone_no }}</td>
-                                                <td>{{ $pia->email }}</td>
-                                                <td>{{ $pia->address }}</td>
+                                                <td>{{ $mis->mis_code }}</td>
+                                                <td>{{ $mis->name }}</td>
+                                                <td>{{ $mis->getUserType->role_name }}</td>
+                                                <td>{{ $mis->email }}</td>
+                                                <td>{{ $mis->phone_no }}</td>
+                                                <td>{{ $mis->address }}</td>
                                                 <td><button class="text-light btn btn-info">Edit</button></td>
                                             </tr>
                                         @endforeach

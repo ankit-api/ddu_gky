@@ -35,28 +35,29 @@ class MISController extends Controller
 
         $file1 = $req->file('image_doc');
         $file2 = $req->file('sign_doc');
-        $filename1 = $req->mis_code.'_image_'.$file1->getClientOriginalExtension();
-        $filename2 = $req->mis_code.'_sign_'.$file2->getClientOriginalExtension();
+        $filename1 = $req->mis_code.'_image.'.$file1->getClientOriginalExtension();
+        $filename2 = $req->mis_code.'_sign.'.$file2->getClientOriginalExtension();
+
+        $req->mis_type=="mis_head" ? $role_id="7" : $role_id="8";
 
         $mis = new MIS();
         $mis->mis_code = $req->mis_code;
-        $mis->mis_type = $req->mis_type;
+        $mis->mis_type = $role_id;
         $mis->name = $req->name;
         $mis->email = $req->email;
         $mis->phone_no = $req->contact_no;
         $mis->address = $req->address;
-        $mis->photo = $req->filename1;
-        $mis->signature = $req->filename2;
+        $mis->photo = $filename1;
+        $mis->signature = $filename2;
         $mis->added_by = Auth::user()->id;
         $mis->save();
 
-        $req->mis_type=="mis_head" ? $role_id="7" : $role_id="8";
         $random_password =  Str::random(8);
         
         $hashed_random_password = Hash::make($random_password);
 
         // $toEmail = 'ankit.bisht@prakharsoftwares.com';
-        $toEmail = 'bhandaridisha0309@gmail.com';
+        $toEmail = 'bishtsonu251011@gmail.com';
         $from=env('MAIL_USERNAME'); 
         $data= 
         [  
@@ -69,7 +70,6 @@ class MISController extends Controller
         ->subject('Mail');
         $message->from(env('MAIL_USERNAME'), env('APP_NAME'));
         });
-
 
         $user = new User();
         $user->role_id = $role_id;
@@ -86,59 +86,8 @@ class MISController extends Controller
         return redirect()->back()->with('alert_status','MIS Added Successfully');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\MIS  $mIS
-     * @return \Illuminate\Http\Response
-     */
-    public function show(MIS $mIS)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\MIS  $mIS
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(MIS $mIS)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\MIS  $mIS
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, MIS $mIS)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\MIS  $mIS
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(MIS $mIS)
-    {
-        //
+    public function misList(){
+        $mis_data = MIS::with('getUserType')->get();      
+        return view('public.mis.mis_list', compact("mis_data"));
     }
 }
