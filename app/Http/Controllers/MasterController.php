@@ -183,7 +183,6 @@ class MasterController extends Controller
     public function centreList()
     {
         $centre_data = CentreDetails::with('getProjectName', 'getState','getDistrict')->get();
-        // dd($centre_data);
         return view('admin.create_centre.centre_list', compact('centre_data'));
     }
 
@@ -397,6 +396,14 @@ class MasterController extends Controller
         $user->save();
 
         return redirect()->back()->with('alert_status','Mobilizer Added Successfully');
+    }
+
+    public function mobilizerList()
+    {
+     
+        $mobilizer_data = Mobilizer::with('getCentreName', 'getProjectName', 'getStateName' )->get();
+        dd($mobilizer_data);
+        return view('public.mobilizer.mobilizer_list', compact('mobilizer_data'));
     }
 
 }
