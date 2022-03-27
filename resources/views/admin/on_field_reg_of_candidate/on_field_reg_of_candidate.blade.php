@@ -122,6 +122,12 @@
                 <textarea name="remark" id="" class="form-control"   rows="10" placeholder="Referring Remarks"></textarea>  
                 </div>   
             </div><br>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="" class="m-2">Attach Signature Document</label><br>
+                    <input type="file" name="sign_doc" accept="image/png, image/gif, image/jpeg" class="form-control " style="background-color:white;" >
+                </div>
+            </div><br><br>
                <h5>Attachmnet Fields</h5>
                <hr>
             <div class="row">

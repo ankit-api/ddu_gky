@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\CenterDetails;
+use App\Models\CentreDetails;
 use App\Models\OnFieldRegistrationOfCandidate;
 use App\Models\RegDocument;
 use App\Models\DocType;
@@ -19,7 +19,7 @@ class OnFieldRegistrationOfCandidateController extends Controller
      */
     public function registrationForm()
     {
-        $get_centre = CenterDetails::all(); 
+        $get_centre = CentreDetails::all(); 
         $get_doc_type = DocType::all();      
         return view('admin.on_field_reg_of_candidate.on_field_reg_of_candidate', compact("get_centre","get_doc_type" ));
     }
@@ -42,8 +42,7 @@ class OnFieldRegistrationOfCandidateController extends Controller
             'contact' => 'required',
             'address' => 'required',
             'ref' => 'required',
-            // 'remark' => 'required',
-            // 'doc' => 'required|mimes:png,jpg,jpeg,svg|max:2048'           
+            'sign_doc' => 'required|mimes:png,jpg,jpeg,svg|max:1024'           
         ]);
         
         $mob_id = $req->session()->get('mob_id');
@@ -57,6 +56,9 @@ class OnFieldRegistrationOfCandidateController extends Controller
             $last_id = OnFieldRegistrationOfCandidate::orderBy('id', 'desc')->first()->id;
             $register_code .= sprintf("%'04d",$last_id + 1);
         }
+
+        $file = $req->file('sign_doc');               
+        $signdoc = $file->getClientOriginalName();
 
         $register = new OnFieldRegistrationOfCandidate();
         $register->mob_id = $mob_id;
@@ -76,17 +78,24 @@ class OnFieldRegistrationOfCandidateController extends Controller
         $register->contact = $req->contact;
         $register->counselling_status = $req->counsel;
         !empty($req->remark ) ? $register->remarks = $req->remark : $register->remarks = 'NULL';
+        $register->signature_file = $signdoc;
         $register->added_by = Auth::user()->id; 
         $register->registered_on = Carbon::now();
         $register->save();
         $insertedId = $register->id;
 
+        $file_reg_code = str_replace("/", "_", $register_code);
+        $file_loc = "Documents/Registration/$file_reg_code";
+        if (!file_exists($file_loc)) {
+            mkdir("Documents/Registration/$file_reg_code", 0777, true);
+        }
+        $file->move($file_loc,$signdoc);
 
         $i = count($req->doc_type);        
         for ($j = 0; $j < $i; $j++) {  
             if(isset($req->file('doc')[$j])){  
                 $file = $req->file('doc')[$j];                
-                $filename = $register_code.'/'.$req->doc_type[$j].'.'.$file->getClientOriginalExtension();;
+                $filename = $req->doc_type[$j].'.'.$file->getClientOriginalExtension();
             
                 $reg_doc = new RegDocument();
                 $reg_doc->register_id = $insertedId;
@@ -95,8 +104,7 @@ class OnFieldRegistrationOfCandidateController extends Controller
                 $reg_doc->added_by = Auth::user()->id;         
                 $reg_doc->save();     
                 
-                $path = 'document/reg_doc';
-                $file->move($path,$file->getClientOriginalName());
+                $file->move($file_loc,$file->getClientOriginalName());
             }
         }
         

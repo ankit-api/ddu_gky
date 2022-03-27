@@ -361,6 +361,12 @@
                         <textarea rows="3" name="comment" id="" style="width:100%; border-radius: 4px; border:1px solid #dee2e6;"></textarea>
                     </div>
                 </div>
+            </div><br>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="" class="m-2">Attach Photo Document</label><br>
+                    <input type="file" name="photo_doc" accept="image/png, image/gif, image/jpeg" class="form-control " style="background-color:white;" >
+                </div>
             </div><br><br>
             <h5>Attachmnet Fields</h5>
                <hr>

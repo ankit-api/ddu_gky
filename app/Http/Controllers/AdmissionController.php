@@ -61,6 +61,9 @@ class AdmissionController extends Controller
              $last_id = Admission::orderBy('id', 'desc')->first()->id;
              $stu_code .= sprintf("%'04d",$last_id + 1);
          }
+         
+        $file = $req->file('photo_doc');               
+        $photodoc = $file->getClientOriginalName();
 
          $student = new Admission();
          $student->student_code = $stu_code;
@@ -118,9 +121,18 @@ class AdmissionController extends Controller
          $student->trade =  $req->trade;
          $student->allocated_trade =  $req->allocate_trade;
          !empty($req->comment ) ? $student->comment = $req->comment : $student->comment = 'NULL';
+         $student->photo_doc = $photodoc;
          $student->added_by = Auth::user()->id; 
          $student->save();
          $insertedId = $student->id;
+
+         $reg_code = OnFieldRegistrationOfCandidate::select('reg_code')->find($req->reg_id);
+        $file_reg_code = str_replace("/", "_", $reg_code['reg_code']);
+        $file_loc = "Documents/Registration/$file_reg_code";
+        if (!file_exists($file_loc)) {
+            mkdir("Documents/Registration/$file_reg_code", 0777, true);
+        }
+        $file->move($file_loc,$photodoc);
 
         $i = count($req->m_name);        
         for ($j = 0; $j < $i; $j++) {     
@@ -151,7 +163,7 @@ class AdmissionController extends Controller
                     $reg_code = OnFieldRegistrationOfCandidate::select('reg_code')->find($req->reg_id);
                     $file = $req->file('doc')[$j];    
                     $doc_type_name = DocType::find($req->doc_type[$j])->doc_type_name;   
-                    $filename = $reg_code['reg_code'].'/'.$doc_type_name.'.'.$file->getClientOriginalExtension();
+                    $filename = $doc_type_name.'.'.$file->getClientOriginalExtension();
                 
                     $reg_doc = new RegDocument();
                     // $reg_doc->register_id = $insertedId;
@@ -161,8 +173,8 @@ class AdmissionController extends Controller
                     $reg_doc->added_by = Auth::user()->id;         
                     $reg_doc->save();    
                 
-                    $path = 'document/reg_doc';
-                    $file->move($path,$filename);
+                    // $path = 'document/reg_doc';
+                    $file->move($file_loc,$file->getClientOriginalName());
                     // $req->file($filename)->storeAs($path,$filename);
                 }
             }

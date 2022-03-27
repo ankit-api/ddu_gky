@@ -53,10 +53,10 @@ class CreateAdmissionDetailsTable extends Migration
             $table->integer('rsby_card_no')->nullable();
             $table->integer('aay_ration_card')->nullable();
             $table->integer('annual_income')->nullable();
-            $table->enum('is_candidate_a_family_memmber_of_sgh_member', ['no', 'yes'])->default('no');
-            $table->string('sgh_name',200)->nullable();
-            $table->string('sgh_id',200)->nullable();
-            $table->string('name_of_sgh_member',200)->nullable();
+            $table->enum('is_candidate_a_family_memmber_of_shg_member', ['no', 'yes'])->default('no');
+            $table->string('shg_name',200)->nullable();
+            $table->string('shg_id',200)->nullable();
+            $table->string('name_of_shg_member',200)->nullable();
 
             $table->string('family_head_name',200)->nullable();
             $table->string('family_head_highest_education',100)->nullable();
@@ -66,7 +66,7 @@ class CreateAdmissionDetailsTable extends Migration
             $table->string('trade',100);
             $table->string('allocated_trade',100);
             $table->text('comment');
-           
+            $table->string('photo_doc',50);
             $table->integer('added_by')->unsigned()->nullable();
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamp('created_on')->useCurrent();
