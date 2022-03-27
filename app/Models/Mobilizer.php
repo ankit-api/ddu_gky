@@ -20,8 +20,6 @@ class Mobilizer extends Model
         return $this->hasOneThrough(Project::class, CentreDetails::class,  'project_id', 'id');
     }
 
-    function getStateName(){
-        return $this->hasOneThrough( State::class, Project::class , 'state' , 'id');
-    }
+    
 
 }

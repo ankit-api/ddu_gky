@@ -19,7 +19,7 @@
                         <table class="table table-bordered" id="table1">
                             <thead>
                                 <tr>                                    
-                                    <th>Project Name</th>
+                                    <th>Sanction Order No.</th>
                                     <th>Centre Code</th>
                                     <th>Centre Name</th>
                                     <th>Mobilzer Code</th>
@@ -34,8 +34,8 @@
                             <tbody>
                                 @foreach($mobilizer_data as $mobilizer)
                                 <tr>
-                                <td>{{ $mobilizer->getProjectName->name }}</td> 
-                                <td>{{ $mobilizer->getCentreName->centre_code }}</td> 
+                                <td>{{ $mobilizer->getProjectName->sanction_order_no }}</td> 
+                                <td>{{ $mobilizer->getCentreName->center_code }}</td> 
                                 <td>{{ $mobilizer->getCentreName->centre_name }}</td> 
                                 <td>{{ $mobilizer->mob_id }}</td>
                                 <td>{{ $mobilizer->name }}</td>

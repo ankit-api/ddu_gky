@@ -159,7 +159,12 @@ class TrainerController extends Controller
         $user->save();
        
         return redirect()->back()->with('alert_status','Trainer Added Successfully!');
+    }
 
+    public function trainerList()
+    {     
+        $trainer_data = Trainer::with('getCentreName')->get();       
+        return view('public.trainer.trainer_list', compact('trainer_data'));
     }
    
 }

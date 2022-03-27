@@ -64,12 +64,12 @@ Route::group(['middleware' => ['auth']], function() {
     //Q-Team Member Route
     Route::get('/q_team_member_form', [MasterController::class,'qteamMemberForm'])->name('q_team_member_form');
     Route::post('/create_qteam_member', [MasterController::class,'createQteamMember'])->name('create_qteam_member');
-    // Route::get('/q_team_member_list', [MasterController::class,'qteamMemberList'])->name('q_team_member_list');
+    Route::get('/q_team_member_list', [MasterController::class,'qteamMemberList'])->name('q_team_member_list');
     
     //Centre Incharge Route
     Route::get('/centre_incharge_form', [MasterController::class,'centreInchargeForm'])->name('centre_incharge_form');
     Route::post('/create_centre_incharge', [MasterController::class,'createCentreIncharge'])->name('create_centre_incharge');
-    // Route::get('/centre_incharge_list', [MasterController::class,'centreInchargeList'])->name('centre_incharge_list');
+    Route::get('/centre_incharge_list', [MasterController::class,'centreInchargeList'])->name('centre_incharge_list');
     
     //Mobilizer Route
     Route::get('/mobilizer_form', [MasterController::class,'mobilizerForm'])->name('mobilizer_form');
@@ -79,7 +79,7 @@ Route::group(['middleware' => ['auth']], function() {
     //Trainer Route
     Route::get('/trainer_form', [TrainerController::class,'trainerForm'])->name('trainer_form');
     Route::post('/create_trainer', [TrainerController::class,'createTrainer'])->name('create_trainer');
-    // Route::get('/trainer_list', [TrainerController::class,'trainerList'])->name('trainer_list');
+    Route::get('/trainer_list', [TrainerController::class,'trainerList'])->name('trainer_list');
     
     //Registartion Route
     Route::get('/candidate-register', [OnFieldRegistrationOfCandidateController::class,'registrationForm'])->name('candidate-register');

@@ -12,7 +12,7 @@ class Trainer extends Model
     protected $table = 'trainer_details';
     public $timestamps = false;
 
-    public function centreCode(){
+    public function getCentreName(){
         return $this->hasOne(CentreDetails::class,'id','centre_id');
     }
 }

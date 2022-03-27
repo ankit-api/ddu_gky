@@ -225,6 +225,11 @@ class MasterController extends Controller
     }
 
 
+    public function qteamMemberForm()
+    {
+        return view('public.q team member.add_qteam_member');
+    }
+
     public function createQteamMember(Request $req)
     {
         $this->validate($req, [
@@ -293,10 +298,12 @@ class MasterController extends Controller
         return redirect()->back()->with('alert_status','Q Team Member Added Successfully');
     }
 
-    public function qteamMemberForm()
-    {
-        return view('public.q team member.add_qteam_member');
+    public function qteamMemberList()
+    {     
+        $qteam_data = QTeamMembersDetail::with('getPiaName', 'getProjectName' )->get();       
+        return view('public.q team member.q_team_list', compact('qteam_data'));
     }
+
 
     public function centreInchargeForm()
     {
@@ -366,6 +373,16 @@ class MasterController extends Controller
 
         return redirect()->back()->with('alert_status','Centre Incharge Added Successfully');
     }
+
+    public function centreInchargeList()
+    {
+     
+        $centre_incharge_data = CenterIncharge::with('getCentreName', 'getProjectName' )->get();
+       
+        return view('public.centre incharge.centre_incharge_list', compact('centre_incharge_data'));
+    }
+
+
 
     public function mobilizerForm()
     {
@@ -439,8 +456,7 @@ class MasterController extends Controller
     public function mobilizerList()
     {
      
-        $mobilizer_data = Mobilizer::with('getCentreName', 'getProjectName', 'getStateName' )->get();
-       
+        $mobilizer_data = Mobilizer::with('getCentreName', 'getProjectName' )->get();       
         return view('public.mobilizer.mobilizer_list', compact('mobilizer_data'));
     }
 

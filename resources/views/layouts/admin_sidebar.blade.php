@@ -69,6 +69,7 @@
                 <div class="collapse" id="ui-basic18">
                   <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="{{ route('q_team_member_form')}}">Add Q-team Member</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('q_team_member_list')}}">Q-team Member List</a></li>
                   </ul>
                 </div></li>
                 <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic19" aria-expanded="false" aria-controls="ui-basic">
@@ -78,16 +79,18 @@
                 <div class="collapse" id="ui-basic19">
                   <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="{{ route('centre_incharge_form')}}">Add Centre Incharge</a></li>
-                  </ul>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('centre_incharge_list')}}">Centre Incharge List</a></li>
+                 </ul>
                 </div></li>
                 <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic20" aria-expanded="false" aria-controls="ui-basic">
                   <span class="menu-title">Trainer</span>
                   <i class="menu-arrow"></i> 
                 </a>
                 <div class="collapse" id="ui-basic20">
-                  <ul class="nav flex-column sub-menu">
+                   <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="{{ route('trainer_form')}}"> Add Trainer</a></li>
-                  </ul>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('trainer_list')}}">Trainer List</a></li>
+                 </ul>
                 </div></li>
                 <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic21" aria-expanded="false" aria-controls="ui-basic">
                   <span class="menu-title">MIS</span>

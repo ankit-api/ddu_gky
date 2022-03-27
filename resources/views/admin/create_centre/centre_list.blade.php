@@ -21,7 +21,7 @@
                                 <tr>
                                     <!-- <th>PIA Code</th>
                                     <th>PIA Name</th> -->
-                                    <th>Project Name</th>
+                                    <th>Sanction Order No.</th>
                                     <th>Centre Code</th>
                                     <th>Centre Name</th> 
                                     <th>State</th>
@@ -33,8 +33,8 @@
                             <tbody>
                                 @foreach($centre_data as $centre)
                                 <tr>
-                                <td>{{ $centre->getProjectName->name }}</td> 
-                                <td>{{ $centre->centre_code }}</td>                        
+                                <td>{{ $centre->getProjectName->sanction_order_no }}</td> 
+                                <td>{{ $centre->center_code }}</td>                        
                                 <td>{{ $centre->centre_name }}</td>
                                 <td>{{ $centre->getState->state_name }}</td>
                                 <td>{{ $centre->getDistrict->district_name }}</td>                              

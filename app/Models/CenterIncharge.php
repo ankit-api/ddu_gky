@@ -12,4 +12,12 @@ class CenterIncharge extends Model
     protected $table = 'centre_incharge_details';
     public $timestamps = false;
 
+    function getCentreName(){
+        return $this->hasOne(CentreDetails::class, 'id', 'centre_id');
+    }
+
+    function getProjectName(){
+        return $this->hasOneThrough(Project::class, CentreDetails::class,  'project_id', 'id');
+    }
+
 }

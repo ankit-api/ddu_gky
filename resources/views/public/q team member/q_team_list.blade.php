@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'PIA List')
+@section('title', 'Q-Team Member List')
 @section('dashboard')
 
      
@@ -14,30 +14,42 @@
               <div class="home-tab">
                   
                 <div class="container col-sm-12 mx-auto">
-                  <h4 class="text-center fw-bold">PIA List</h4><br>
+                  <h4 class="text-center fw-bold">Q-Team Member List</h4><br>
                     <div class="container col-sm-12 mx-auto" style="overflow:scroll;">
                         <table class="table table-bordered" id="table">
                             <thead>
                                 <tr>
                                     <th>PIA Code</th>
-                                    <th>PIA NAme</th>
-                                    <th>Pia Landline No.</th>
-                                    <th>PIA Alternate Contact</th>
-                                    <th> PIA Email</th>
-                                    <th>PIA Address</th>
+                                    <th>PIA Name</th>
+                                    <th>Sanction Order No.</th>
+                                    <th>Q-Team Member Designation</th>
+                                    <th>Q-Team Member Reporting Office</th>
+                                    <th>Q-Team Member Code</th>
+                                    <th>Q-Team Member Name</th>
+                                    <th>Gender</th>
+                                    <th>Email</th>
+                                    <th>Contact</th>
+                                    <th>Address</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($pia as $pia)
+                                @foreach($qteam_data as $qteam)
                                 <tr>
-                                    <td>{{ $pia->pia_code }}</td>
-                                    <td>{{ $pia->pia_name }}</td>
-                                    <td>{{ $pia->landline_no }}</td>
-                                    <td>{{ $pia->phone_no }}</td>
-                                    <td>{{ $pia->email }}</td>
-                                    <td>{{ $pia->address }}</td>
-                                    <td></td>
+                                    <td>{{ $qteam->getPiaName->pia_code }}</td>
+                                    <td>{{ $qteam->getPiaName->pia_name }}</td>
+                                    <td>{{ $qteam->getProjectName->sanction_order_no }}</td>
+                                    <td>{{ $qteam->designation }}</td>
+                                    <td>{{ $qteam->reporting_office }}</td>
+                                    <td>{{ $qteam->qteam_member_code }}</td>
+                                    <td>{{ $qteam->name }}</td>
+                                    <td>{{ $qteam->gender }}</td>
+                                    <td>{{ $qteam->email }}</td>
+                                    <td>{{ $qteam->contact }}</td>
+                                    <td>{{ $qteam->address }}</td>
+                                    <td>
+                                  <button class="text-light btn btn-info">Edit</button><button class="text-light btn btn-danger">Delete</button>
+                                </td>
                                 </tr>
                                 @endforeach
                             </tbody>
