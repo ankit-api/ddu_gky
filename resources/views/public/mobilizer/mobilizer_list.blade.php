@@ -34,7 +34,7 @@
                             <tbody>
                                 @foreach($mobilizer_data as $mobilizer)
                                 <tr>
-                                <td>{{ $mobilizer->getProjectName->name }}({{ $mobilizer->getStateName->state_name }})</td> 
+                                <td>{{ $mobilizer->getProjectName->name }}</td> 
                                 <td>{{ $mobilizer->getCentreName->centre_code }}</td> 
                                 <td>{{ $mobilizer->getCentreName->centre_name }}</td> 
                                 <td>{{ $mobilizer->mob_id }}</td>
