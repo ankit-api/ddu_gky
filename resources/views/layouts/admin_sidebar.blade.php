@@ -52,11 +52,7 @@
                     <li class="nav-item"> <a class="nav-link" href="{{ route('centre_list')}}">Centre List</a></li>
                   </ul>
                 </div></li>
-<<<<<<< Updated upstream
                 <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic17" aria-expanded="false" aria-controls="ui-basic">
-=======
-                 <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic17" aria-expanded="false" aria-controls="ui-basic">
->>>>>>> Stashed changes
                   <span class="menu-title">Mobilizer</span>
                   <i class="menu-arrow"></i> 
                 </a>
