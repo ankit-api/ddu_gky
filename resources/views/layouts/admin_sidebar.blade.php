@@ -52,13 +52,18 @@
                     <li class="nav-item"> <a class="nav-link" href="{{ route('centre_list')}}">Centre List</a></li>
                   </ul>
                 </div></li>
+<<<<<<< Updated upstream
                 <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic17" aria-expanded="false" aria-controls="ui-basic">
+=======
+                 <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic17" aria-expanded="false" aria-controls="ui-basic">
+>>>>>>> Stashed changes
                   <span class="menu-title">Mobilizer</span>
                   <i class="menu-arrow"></i> 
                 </a>
                 <div class="collapse" id="ui-basic17">
                   <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="{{ route('mobilizer_form')}}">Add Mobilizer</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('mobilizer_list')}}">Mobilizer List</a></li>
                   </ul>
                 </div></li>
                 <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic18" aria-expanded="false" aria-controls="ui-basic">

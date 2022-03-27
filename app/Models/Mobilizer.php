@@ -12,15 +12,16 @@ class Mobilizer extends Model
     protected $table = 'mobilizers';
     public $timestamps = false;
 
-    function getProject(){
-        return $this->hasOne(Pia::class, 'id', 'pia_id');
+    function getCentreName(){
+        return $this->hasOne(CentreDetails::class, 'id', 'centre_id');
     }
 
-    function getState(){
-        return $this->hasOne(State::class, 'id', 'state');
+    function getProjectName(){
+        return $this->hasOneThrough(Project::class, CentreDetails::class,  'project_id', 'id');
     }
 
-    function getDistrict(){
-        return $this->hasOne(District::class, 'id', 'district');
+    function getStateName(){
+        return $this->hasOneThrough( State::class, Project::class , 'state' , 'id');
     }
+
 }

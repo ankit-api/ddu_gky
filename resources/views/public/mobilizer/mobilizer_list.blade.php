@@ -27,22 +27,22 @@
                                     <th>Gender</th>
                                     <th>Email</th>
                                     <th>Contact</th>
-                                    <th>State</th>
-                                    <th>District</th>
                                     <th>Address</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($project_data as $project)
+                                @foreach($mobilizer_data as $mobilizer)
                                 <tr>
-                                <td>{{ $project->getProjectList->pia_code }}</td>
-                                <td>{{ $project->getProjectList->pia_name }}</td>                          -->
-                                <td>{{ $project->name }}</td>
-                                <td>{{ $project->getState->state_name }}</td>
-                                <td>{{ $project->getDistrict->district_name }}</td>
-                                <td>{{ $project->duration }}</td>
-                                <td>{{ $project->description }}</td>
+                                <td>{{ $mobilizer->getProjectName->name }}({{ $mobilizer->getStateName->state_name }})</td> 
+                                <td>{{ $mobilizer->getCentreName->centre_code }}</td> 
+                                <td>{{ $mobilizer->getCentreName->centre_name }}</td> 
+                                <td>{{ $mobilizer->mob_id }}</td>
+                                <td>{{ $mobilizer->name }}</td>
+                                <td>{{ $mobilizer->gender }}</td>
+                                <td>{{ $mobilizer->email }}</td>
+                                <td>{{ $mobilizer->contact }}</td>
+                                <td>{{ $mobilizer->address }}</td>
                                 <td>
                                   <button class="text-light btn btn-info">Edit</button><button class="text-light btn btn-danger">Delete</button>
                                 </td>
