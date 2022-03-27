@@ -438,7 +438,7 @@ class MasterController extends Controller
     {
      
         $mobilizer_data = Mobilizer::with('getCentreName', 'getProjectName', 'getStateName' )->get();
-        dd($mobilizer_data);
+       
         return view('public.mobilizer.mobilizer_list', compact('mobilizer_data'));
     }
 
