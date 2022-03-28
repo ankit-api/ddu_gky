@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Models\User;
+use App\Models\Project;
 use Mail;
 use Auth;
 
@@ -19,7 +20,8 @@ class MISController extends Controller
      */
     public function misForm()
     {
-        return view('public.mis.create_mis');
+        $get_project = Project::all();
+        return view('public.mis.create_mis',compact('get_project'));
     }
 
     public function createMis(Request $req)
@@ -42,6 +44,7 @@ class MISController extends Controller
 
         $mis = new MIS();
         $mis->mis_code = $req->mis_code;
+        $mis->project_id = $req->project_id;
         $mis->mis_type = $role_id;
         $mis->name = $req->name;
         $mis->email = $req->email;

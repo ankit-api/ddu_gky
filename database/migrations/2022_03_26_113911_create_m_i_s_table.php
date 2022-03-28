@@ -16,6 +16,8 @@ class CreateMISTable extends Migration
         Schema::create('m_i_s', function (Blueprint $table) {
             $table->increments('id'); 
             $table->string('mis_code',50);
+            $table->integer('project_id')->unsigned()->foriegn(); 
+            $table->foreign('project_id')->references('id')->on('project')->onUpdate('cascade')->onDelete('cascade');
             $table->string('mis_type',20);
             $table->string('name',100);
             $table->bigInteger('phone_no');

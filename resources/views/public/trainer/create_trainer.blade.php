@@ -29,14 +29,16 @@
                 <div class="col-md-4">
                     <label for="" class="m-2">Name PIA</label><br>
                     <select name="pia_name" id="" class="form-control" style="background-color:white;">
+                        <option value="Not Selected">Select PIA</option>
                     @foreach($get_pia as $pia)
                         <option value="{{ $pia->id }}">{{ $pia->pia_name }}</option>
                     @endforeach
                     </select> 
                 </div>
                 <div class="col-md-4">
-                    <label for="" class="m-2">Project Code</label><br>
+                    <label for="" class="m-2">Project ID/Sanctioned Order No.</label><br>
                     <select name="project_name" id="" class="form-control" style="background-color:white;">
+                        <option value="Not Selected">Select Sanctioned Order No.</option>
                     @foreach($get_project as $project)
                         <option value="{{ $project->id }}">{{ $project->name }}</option>
                     @endforeach
@@ -45,6 +47,7 @@
                 <div class="col-md-4">
                     <label for="" class="m-2">Name of Training Centre</label><br>
                     <select name="centre_name" id="" class="form-control" style="background-color:white;">
+                        <option value="Not Selected">Select Training Centre</option>
                     @foreach($get_centre as $centre)
                         <option value="{{ $centre->id }}">{{ $centre->centre_name }}</option>
                     @endforeach
@@ -59,6 +62,7 @@
                 <div class="col-md-4">
                     <label for="" class="m-2">Training Type</label><br>
                     <select name="training_type" id="" class="form-control" style="background-color:white;">
+                        <option value="Not Selected">Select Training Type</option>
                         <option value="primary">Primary</option>
                         <option value="secondary">Secondary</option>
                     </select>
@@ -66,6 +70,7 @@
                 <div class="col-md-4">
                     <label for="" class="m-2">Type of Engagement</label><br>
                     <select name="engagement_type" id="" class="form-control" style="background-color:white;">
+                        <option value="Not Selected">Select Type of Engagement</option>
                         <option value="fulltime">Full-Time</option>
                         <option value="parttime">Part-Time</option>
                         <option value="weekends">Week-Ends</option>
@@ -81,6 +86,7 @@
                 <div class="col-md-4">
                     <label for="" class="m-2">Relation</label><br>
                     <select name="relation_name" id="" class="form-control" style="background-color:white;">
+                        <option value="Not Selected">Select Relation</option>
                         <option value="father">Father</option>
                         <option value="mother">Mother</option>
                         <option value="husband">Husband</option>
@@ -116,6 +122,7 @@
                 <div class="col-md-3">
                     <label for="" class="m-2">Gender</label><br>
                     <select name="gender" id="" class="form-control" style="background-color:white;">
+                        <option value="Not Selected">Select Gender</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                         <option value="other">Others</option>
@@ -127,13 +134,14 @@
                 </div>
                 <div class="col-md-3">
                     <label for="" class="m-2">Adhaar no </label><br>
-                  <input type="number" name="adhaar" min="12" max="12" class="form-control" required placeholder="Enter adhaar no.">
+                  <input type="number" name="adhaar" min="12" class="form-control" required placeholder="Enter adhaar no.">
                 </div>
             </div><br>
             <div class="row">            
                 <div class="col-md-4">
                 <label for="" class="m-2">Category</label><br>
                     <select name="category" id="" class="form-control" style="background-color:white;">
+                        <option value="Not Selected">Select Category Type</option>
                         <option value="gn">General</option>
                         <option value="sc">SC</option>
                         <option value="st">ST</option>
@@ -181,6 +189,7 @@
             <div class="row" id="1">      
                 <div class="col-md-2">
                     <select name="qualification[]" id="" class="form-control" style="background-color:white;">
+                        <option value="Not Selected">Select Qualification Type</option>
                         <option value="10th">10th</option>
                         <option value="12th">12th</option>
                         <option value="graduation">Graduation</option>

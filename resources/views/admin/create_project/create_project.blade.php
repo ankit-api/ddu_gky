@@ -14,7 +14,7 @@
                     <div class="home-tab">
 
                         <div class="container col-sm-12">
-                            <h4 class="text-center fw-bold">Sanction Order Details</h4><br>
+                            <h4 class="text-center fw-bold">Project/Sanction Order Details</h4><br>
                             <form action="{{ route('create_project') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
@@ -37,6 +37,7 @@
                                     <div class="col-md-6">
                                         <label for="" class="m-2">Scheme Name</label><br>
                                         <select name="scheme_id" class="form-control" style="background-color:white;">
+                                            <option value="Not Selected">Select Scheme Name</option>
                                             @foreach ($get_scheme as $scheme)
                                                 <option value="{{ $scheme->id }}">{{ $scheme->scheme_name }}</option>
                                             @endforeach
@@ -69,6 +70,7 @@
                                         <label for="" class="m-2">State</label><br>
                                         <select name="state_id" id="state_id" class="form-control"
                                             style="background-color:white;">
+                                            <option value="Not Selected">Select State Name</option>
                                             @foreach ($get_state as $state)
                                                 <option value="{{ $state->id }}">{{ $state->state_name }}</option>
                                             @endforeach
@@ -78,8 +80,19 @@
                                         <label for="" class="m-2">District</label><br>
                                         <select name="district_id" id="district_id" class="form-control" required
                                             style="background-color:white;">
+                                            <option value="Not Selected">Select District Name</option>
                                             @foreach ($get_district as $dist)
                                                 <option value="{{ $dist->id }}">{{ $dist->district_name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="" class="m-2">Block</label><br>
+                                        <select name="block_id" id="block_id" class="form-control" required
+                                            style="background-color:white;">
+                                            <option value="Not Selected">Select Block Name</option>
+                                            @foreach ($get_block as $block)
+                                                <option value="{{ $block->id }}">{{ $block->block_name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -159,26 +172,26 @@
                                         <tbody>
                                             <tr>
                                                 <th><input type="hidden" name="cat_type[]" value="Sanctioned">Sanctioned</th>
-                                                <td><input type="number" name="target_no[]" class="form-control"></td>
-                                                <td><input type="number" name="sc_no[]" class="form-control"></td>
-                                                <td><input type="number" name="st_no[]" class="form-control"></td>
-                                                <td><input type="number" name="others_no[]" class="form-control"></td>
-                                                <td><input type="number" name="minorities_no[]" class="form-control">
+                                                <td><input type="number" min="0" name="target_no[]" class="form-control"></td>
+                                                <td><input type="number" min="0" name="sc_no[]" class="form-control"></td>
+                                                <td><input type="number" min="0" name="st_no[]" class="form-control"></td>
+                                                <td><input type="number" min="0" name="others_no[]" class="form-control"></td>
+                                                <td><input type="number" min="0" name="minorities_no[]" class="form-control">
                                                 </td>
-                                                <td><input type="number" name="women_no[]" class="form-control"></td>
-                                                <td><input type="number" name="placement_no[]" class="form-control">
+                                                <td><input type="number" min="0" name="women_no[]" class="form-control"></td>
+                                                <td><input type="number" min="0" name="placement_no[]" class="form-control">
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th><input type="hidden" name="cat_type[]" value="Proposed">Proposed</th>
-                                                <td><input type="number" name="target_no[]" class="form-control"></td>
-                                                <td><input type="number" name="sc_no[]" class="form-control"></td>
-                                                <td><input type="number" name="st_no[]" class="form-control"></td>
-                                                <td><input type="number" name="others_no[]" class="form-control"></td>
-                                                <td><input type="number" name="minorities_no[]" class="form-control">
+                                                <td><input type="number" min="0" name="target_no[]" class="form-control"></td>
+                                                <td><input type="number" min="0" name="sc_no[]" class="form-control"></td>
+                                                <td><input type="number" min="0" name="st_no[]" class="form-control"></td>
+                                                <td><input type="number" min="0" name="others_no[]" class="form-control"></td>
+                                                <td><input type="number" min="0" name="minorities_no[]" class="form-control">
                                                 </td>
-                                                <td><input type="number" name="women_no[]" class="form-control"></td>
-                                                <td><input type="number" name="placement_no[]" class="form-control">
+                                                <td><input type="number" min="0" name="women_no[]" class="form-control"></td>
+                                                <td><input type="number" min="0" name="placement_no[]" class="form-control">
                                                 </td>
                                             </tr>
                                         </tbody>

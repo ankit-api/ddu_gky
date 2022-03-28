@@ -25,16 +25,18 @@
                         <div class="alert alert-danger">{{$errors->first()}}</div>
                 @endif   
                 <div class="col-md-6">
-                    <label for="" class="m-2">Project Name</label><br>
-                    <select name="project_id" id="" class="form-control" style="background-color:white;">
-                        @foreach($get_project as $project)
-                            <option value="{{ $project->id }}">{{ $project->sanction_order_no }}</option>
-                        @endforeach
+                    <label for="" class="m-2">Project ID/Sanctioned Order No.</label><br>
+                        <select name="project_id" id="" class="form-control" style="background-color:white;">
+                          <option value="Not Selected">Select Sanctioned Order No.</option>
+                            @foreach($get_project as $project)
+                                <option value="{{ $project->id }}">{{ $project->sanction_order_no }}</option>
+                            @endforeach
                     </select> 
                 </div>                
                 <div class="col-md-6">
                     <label for="" class="m-2">Centre Name</label><br>
                     <select name="centre_id" id="" class="form-control" style="background-color:white;">
+                        <option value="Not Selected">Select Centre Name</option>
                         @foreach($get_centre as $name)
                             <option value="{{ $name->id }}">{{ $name->centre_name }}</option>
                         @endforeach
@@ -51,6 +53,7 @@
                 <div class="col-md-6">
                     <label for="" class="m-2">Gender</label><br>
                     <select name="gender" class="form-control" style="background-color:white;">
+                        <option value="Not Selected">Select Gender</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                         <option value="others">Others</option>
@@ -68,6 +71,7 @@
                     <label for="" class="m-2">State</label><br>
                     <select name="state_id" id="state_id" class="form-control"
                         style="background-color:white;">
+                        <option value="Not Selected">Select State</option>
                         @foreach ($get_state as $state)
                             <option value="{{ $state->id }}">{{ $state->state_name }}</option>
                         @endforeach
@@ -77,6 +81,7 @@
                     <label for="" class="m-2">District</label><br>
                     <select name="district_id" id="district_id" class="form-control" required
                         style="background-color:white;">
+                        <option value="Not Selected">Select District</option>
                         @foreach ($get_district as $dist)
                             <option value="{{ $dist->id }}">{{ $dist->district_name }}</option>
                         @endforeach

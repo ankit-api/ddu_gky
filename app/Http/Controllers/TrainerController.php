@@ -152,7 +152,7 @@ class TrainerController extends Controller
 
         $user = new User();
         $user->role_id = '6';
-        $user->user_code = $trainer_code;
+        $user->user_code = $req->trainer_code;
         $user->name = $req->name;
         $user->email = $req->email;
         $user->password = $hashed_random_password;
@@ -163,7 +163,7 @@ class TrainerController extends Controller
 
     public function trainerList()
     {     
-        $trainer_data = Trainer::with('getCentreName')->get();       
+        $trainer_data = Trainer::with('getCentreName','getProjectName')->get();  
         return view('public.trainer.trainer_list', compact('trainer_data'));
     }
    

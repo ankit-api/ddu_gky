@@ -36,9 +36,9 @@
                             <tbody>
                                 @foreach($trainer_data as $trainer)
                                 <tr>
-                                    <td>{{ $trainer->getCentreName->center_code }}</td>
+                                    <td>{{ $trainer->getCentreName->centre_code }}</td>
                                     <td>{{ $trainer->getCentreName->centre_name }}</td>
-                                    <td></td>                                    
+                                    <td>{{ $trainer->getProjectName->sanction_order_no }}</td>                                    
                                     <td>{{ $trainer->trainer_code }}</td>
                                     <td>{{ $trainer->name }}</td>
                                     <td>{{ $trainer->type_of_engagement }}</td>

@@ -19,8 +19,8 @@
                         <table class="table table-bordered" id="table">
                             <thead>
                                 <tr>
-                                    <th>PIA Code</th>
-                                    <th>PIA Name</th>
+                                    {{-- <th>PIA Code</th> --}}
+                                    {{-- <th>PIA Name</th> --}}
                                     <th>Sanction Order No.</th>
                                     <th>Q-Team Member Designation</th>
                                     <th>Q-Team Member Reporting Office</th>
@@ -36,8 +36,8 @@
                             <tbody>
                                 @foreach($qteam_data as $qteam)
                                 <tr>
-                                    <td>{{ $qteam->getPiaName->pia_code }}</td>
-                                    <td>{{ $qteam->getPiaName->pia_name }}</td>
+                                    {{-- <td>{{ $qteam->getPiaName->pia_code }}</td> --}}
+                                    {{-- <td>{{ $qteam->getPiaName->pia_name }}</td> --}}
                                     <td>{{ $qteam->getProjectName->sanction_order_no }}</td>
                                     <td>{{ $qteam->designation }}</td>
                                     <td>{{ $qteam->reporting_office }}</td>

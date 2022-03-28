@@ -27,16 +27,26 @@
                     {{-- @endforeach --}}
                 @endif        
                 <div class="col-md-6">
+                    <label for="" class="m-2">Project ID/Sanctioned Order No.</label><br>
+                    <select name="project_id" id="" class="form-control" style="background-color:white;">
+                      <option value="Not Selected">Select Sanctioned Order No.</option>
+                        @foreach($get_project as $project)
+                            <option value="{{ $project->id }}">{{ $project->sanction_order_no }}</option>
+                        @endforeach
+                    </select> 
+                  </div>
+                <div class="col-md-6">
                     <label for="" class="m-2">Q-Team Member Code</label><br>
                     <input name ="q_code" type="text" required placeholder="Enter Q-Team Member Code" class="form-control">
                 </div> 
                 <div class="col-md-6">
-                    <label for="" class="m-2">Name</label><br>
+                    <label for="" class="m-2">Full Name</label><br>
                     <input name ="name" type="text" required placeholder="Enter Full Name" class="form-control">
                 </div>
                 <div class="col-md-6">
                     <label for="" class="m-2">Gender</label><br>
                     <select name="gender" id="" class="form-control" required style="background-color:white;">
+                        <option value="Not Selected">Select Gender</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                         <option value="others">Others</option>
@@ -57,6 +67,7 @@
                 <div class="col-md-6">
                     <label for="" class="m-2">Designation</label><br>
                     <select name="desig" id="" class="form-control" required style="background-color:white;">
+                        <option value="Not Selected">Select Designation</option>
                         <option value="head">Q-Team Head</option>
                         <option value="member">Q-Team Member</option>
                     </select> 

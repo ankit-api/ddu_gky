@@ -19,14 +19,15 @@ class CreateProjectTable extends Migration
             $table->foreign('pia_id')->references('id')->on('pia')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('scheme_id')->unsigned()->foriegn();
             $table->foreign('scheme_id')->references('id')->on('schemes')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('sanction_order_no',30);
+            $table->string('sanction_order_no',70);
             $table->string('name',30);
             $table->date('sanction_date');
-            $table->string('proposal_code',30);
+            $table->string('proposal_code',70);
             $table->date('pac_date');
             $table->integer('state')->unsigned();
             $table->integer('district')->unsigned();
-            $table->string('project_duration',20);
+            $table->integer('block')->unsigned();
+            $table->integer('project_duration')->unsigned();
             $table->integer('total_target')->unsigned();
             $table->integer('placement_target')->unsigned();
             $table->integer('project_cost')->unsigned();

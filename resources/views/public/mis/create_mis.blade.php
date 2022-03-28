@@ -27,6 +27,15 @@
                           {{-- @endforeach --}}
                       @endif 
                       <div class="col-md-4">
+                        <label for="" class="m-2">Project ID/Sanctioned Order No.</label><br>
+                        <select name="project_id" id="" class="form-control" style="background-color:white;">
+                          <option value="Not Selected">Select Sanctioned Order No.</option>
+                            @foreach($get_project as $project)
+                                <option value="{{ $project->id }}">{{ $project->sanction_order_no }}</option>
+                            @endforeach
+                        </select> 
+                      </div>  
+                      <div class="col-md-4">
                         <label for="" class="m-2">MIS Code/Unique ID</label><br>
                         <input name="mis_code" type="text" placeholder="Enter MIS Code" class="form-control">
                       </div>

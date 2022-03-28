@@ -16,6 +16,7 @@ use App\Models\Mobilizer;
 use App\Models\User;
 use App\Models\Scheme;
 use App\Models\CategoryType;
+use App\Models\Block;
 use Mail;
 use Auth;
 
@@ -100,9 +101,10 @@ class MasterController extends Controller
         $pia = User::where('user_code',Auth::user()->user_code)->with('getPia')->get();
         $get_state = State::all();
         $get_district = District::all();
+        $get_block = Block::all();
         $get_scheme = Scheme::all();
         // dd($get_project);
-        return view('admin.create_project.create_project', compact("pia", "get_state", "get_district", "get_scheme"));
+        return view('admin.create_project.create_project', compact("pia", "get_state", "get_district", "get_scheme","get_block"));
     }
 
     public function createProject(Request $req)
@@ -130,6 +132,7 @@ class MasterController extends Controller
         $Project->pac_date = $req->pac_date;
         $Project->state = $req->state_id;
         $Project->district = $req->district_id;
+        $Project->block = $req->block_id;
         $Project->project_duration = $req->proj_duration;
         $Project->total_target = $req->total_target;
         $Project->placement_target = $req->place_target;
@@ -230,7 +233,8 @@ class MasterController extends Controller
 
     public function qteamMemberForm()
     {
-        return view('public.q team member.add_qteam_member');
+        $get_project = Project::all();
+        return view('public.q team member.add_qteam_member',compact('get_project'));
     }
 
     public function createQteamMember(Request $req)
@@ -255,10 +259,11 @@ class MasterController extends Controller
         //     $q_code .= sprintf("%'04d",$last_id + 1);
         // }
 
-        $get_pia_id = Auth::user()->id;
+        // $get_pia_id = Auth::user()->id;
 
         $QTeam = new QTeamMembersDetail();
-        $QTeam->pia_id = $get_pia_id;
+        // $QTeam->pia_id = $get_pia_id;
+        $QTeam->project_id = $req->project_id;
         $QTeam->qteam_member_code = $req->q_code;
         $QTeam->name = $req->name;
         $QTeam->gender = $req->gender;
@@ -292,7 +297,7 @@ class MasterController extends Controller
 
         $user = new User();
         $user->role_id = '3';
-        $user->user_code = $q_code;
+        $user->user_code = $req->q_code;
         $user->name = $req->name;
         $user->email = $req->email;
         $user->password = $hashed_random_password;
@@ -310,8 +315,9 @@ class MasterController extends Controller
 
     public function centreInchargeForm()
     {
+        $get_project = Project::all();
         $get_centre = CentreDetails::all();
-        return view('public.centre incharge.add_centre_incharge', compact("get_centre"));
+        return view('public.centre incharge.add_centre_incharge', compact("get_centre","get_project"));
     }
 
     public function createCentreIncharge(Request $req)
@@ -338,6 +344,7 @@ class MasterController extends Controller
 
         $Cen_Inch = new CenterIncharge();
         $Cen_Inch->centre_id = $req->centre_id;
+        $Cen_Inch->project_id = $req->project_id;
         $Cen_Inch->centre_incharge_code = $req->ci_code;
         $Cen_Inch->name = $req->name;
         $Cen_Inch->email = $req->email;
@@ -368,7 +375,7 @@ class MasterController extends Controller
 
         $user = new User();
         $user->role_id = '5';
-        $user->user_code = $ci_code;
+        $user->user_code = $req->ci_code;
         $user->name = $req->name;
         $user->email = $req->email;
         $user->password = $hashed_random_password;

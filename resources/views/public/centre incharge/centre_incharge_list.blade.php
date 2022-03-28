@@ -36,7 +36,7 @@
                                 @foreach($centre_incharge_data as $centre_incharge)
                                 <tr>
                                 <td>{{ $centre_incharge->getProjectName->sanction_order_no }}</td> 
-                                <td>{{ $centre_incharge->getCentreName->center_code }}</td> 
+                                <td>{{ $centre_incharge->getCentreName->centre_code }}</td> 
                                 <td>{{ $centre_incharge->getCentreName->centre_name }}</td> 
                                 <td>{{ $centre_incharge->centre_incharge_code }}</td>
                                 <td>{{ $centre_incharge->name }}</td>

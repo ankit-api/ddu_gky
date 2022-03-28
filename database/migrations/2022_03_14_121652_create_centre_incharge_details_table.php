@@ -17,6 +17,8 @@ class CreateCentreInchargeDetailsTable extends Migration
             $table->increments('id');
             $table->integer('centre_id')->unsigned()->foriegn(); 
             $table->foreign('centre_id')->references('id')->on('centre')->onUpdate('cascade')->onDelete('cascade');
+            $table->integer('project_id')->unsigned()->foriegn(); 
+            $table->foreign('project_id')->references('id')->on('project')->onUpdate('cascade')->onDelete('cascade');
             // $table->string('category_of_staff',40);
             // $table->string('no_of_staff_at_beg',50);
             // $table->string('accretion',50);
