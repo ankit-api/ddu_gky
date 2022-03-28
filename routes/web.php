@@ -21,6 +21,7 @@ use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\DailyDistributionOfTabletController;
 use App\Http\Controllers\LetterController;
 use App\Http\Controllers\MISController;
+use App\Http\Controllers\AuthenticationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,11 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 
 Route::group(['middleware' => ['auth']], function() {
 
+    //Change Password
+     //Pia Route
+     Route::get('/change_password', [AuthenticationController::class,'changePassword'])->name('change_password');
+     Route::post('/post_change_password', [AuthenticationController::class,'postChangePAssword'])->name('post_change_password');
+  
     //Pia Route
     Route::get('/pia_form', [MasterController::class,'piaForm'])->name('pia_form');
     Route::post('/create_pia', [MasterController::class,'createPia'])->name('create_pia');
