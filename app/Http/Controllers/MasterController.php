@@ -171,6 +171,10 @@ class MasterController extends Controller
         return view('admin.create_project.project_list', compact('project_data'));
     }
 
+    // public function viewProject(){
+    //     $project_data = 
+    // }
+
     public function centreForm()
     {
         $get_pia = PIA::all();

@@ -61,6 +61,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/project_form', [MasterController::class,'projectForm'])->name('project_form');
     Route::post('/create_project', [MasterController::class,'createProject'])->name('create_project');
     Route::get('/project_list', [MasterController::class,'projectList'])->name('project_list');
+    // Route::get('/view_project', [MasterController::class,'viewProject'])->name('view_project');
+
     
      //Centre Route
     Route::get('/centre_form', [MasterController::class,'centreForm'])->name('centre_form');
