@@ -35,8 +35,9 @@ class AuthenticationController extends Controller
             $user = User::find(Auth::user()->id); 
             $user->password = Hash::make($req->new_pass);             
             $user->save();
-
-            return redirect()->back()->with('alert_status','Password has been changes successfully !');
+            $req->session()->flush();
+            $req->session()->regenerate();
+            return redirect('/login')->with('alert_status','Password has been changes successfully !');
             
         } else {
             return redirect()->back()->with('alert_status','Incorrect Current Password !'); 

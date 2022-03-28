@@ -84,6 +84,14 @@
               <div class="logo mb-5">
                 <img src="{{asset('images/ddu-header.jpg')}}" class="img-fluid" alt="logo">
               </div>
+              <div class="row">  
+                @if (session('alert_status'))
+                    <h6 class="alert alert-success">{{ session('alert_status') }}</h6>
+                @endif      
+                @if ($errors->any())
+                    <div class="alert alert-danger">{{$errors->first()}}</div>
+                    @endif
+            </div>
               <h4>Hello! let's get started</h4>
               <h6 class="fw-light">Sign in to continue.</h6>
               <form method="POST" action="{{ route('login') }}" class="pt-3">
