@@ -48,4 +48,17 @@ class User extends Authenticatable
     public function user_role(){
         return $this->hasOne(Role::class,'id','role_id');
     }
+
+    public function getPia(){
+        return $this->hasOne(PIA::class,'pia_code','user_code');
+    }
+
+    public function getCentreIncharge(){
+        return $this->hasOne(CenterIncharge::class,'centre_incharge_code','user_code');
+    }
+
+    public function getTrainer(){
+        return $this->hasOne(CenterIncharge::class,'trainer_code','user_code');
+    }
+
 }

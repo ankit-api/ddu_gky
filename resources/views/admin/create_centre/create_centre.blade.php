@@ -30,11 +30,11 @@
                 </div>
                 <div class="col-md-4">
                     <label for="" class="m-2">Name of PIA</label><br>
-                    <select name="pia_id" id="" class="form-control" style="background-color:white;">
-                        @foreach($get_pia as $name)
-                            <option value="{{ $name->id }}">{{ $name->pia_name }}</option>
-                        @endforeach
-                    </select> 
+                    @foreach ($pia as $pia)
+                        <input type="hidden" name="pia_id" value="{{ $pia->getPia->id }}">
+                        <input type="text" name="pia_names" value="{{ $pia->getPia->pia_name }}" readonly class="form-control">
+                    @endforeach
+                                     
                 </div>
                 <div class="col-md-4">
                     <label for="" class="m-2">Sanction Order No.</label><br>
@@ -70,7 +70,7 @@
             <div class="row">       
                 <div class="col-md-6">
                     <label for="" class="m-2">Address of Training Centre</label><br>
-                    <textarea name="address" class="form-control" cols="30" rows="10" placeholder="Enter Complete Address"></textarea>
+                    <textarea name="address"  cols="30" rows="3" placeholder="Enter Complete Address" style="font-size:14px; width:100%; border-radius: 4px; border:1px solid #dee2e6;"></textarea>
                 </div>
             </div><br>                       
                <button type="submit" class="text-light btn btn-lg btn-success btn-icon-text">

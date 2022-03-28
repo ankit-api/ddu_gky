@@ -26,12 +26,13 @@
                                     @endif
                                     <div class="col-md-4">
                                         <label for="" class="m-2">Name of PIA</label><br>
-                                        <select name="pia_name" id="" class="form-control" required
-                                            style="background-color:white;">
-                                            @foreach ($get_pia as $name)
-                                                <option value="{{ $name->id }}">{{ $name->pia_name }}</option>
+                                      
+                                       
+                                            @foreach ($pia as $pia)
+                                            <input type="hidden" name="pia_id" value="{{ $pia->getPia->id }}">
+                                            <input type="text" name="pia_names" value="{{ $pia->getPia->pia_name }}" readonly class="form-control">
                                             @endforeach
-                                        </select>
+                                     
                                     </div>
                                     <div class="col-md-4">
                                         <label for="" class="m-2">Scheme Name</label><br>
