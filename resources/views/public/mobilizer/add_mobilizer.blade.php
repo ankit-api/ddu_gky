@@ -23,7 +23,15 @@
                 @endif      
                 @if ($errors->any())
                         <div class="alert alert-danger">{{$errors->first()}}</div>
-                @endif                   
+                @endif   
+                <div class="col-md-6">
+                    <label for="" class="m-2">Project Name</label><br>
+                    <select name="project_id" id="" class="form-control" style="background-color:white;">
+                        @foreach($get_project as $project)
+                            <option value="{{ $project->id }}">{{ $project->sanction_order_no }}</option>
+                        @endforeach
+                    </select> 
+                </div>                
                 <div class="col-md-6">
                     <label for="" class="m-2">Centre Name</label><br>
                     <select name="centre_id" id="" class="form-control" style="background-color:white;">
@@ -57,8 +65,26 @@
                     <input name ="contact_no" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" maxlength="10" placeholder="Enter Contact No." class="form-control">
                 </div> 
                 <div class="col-md-6">
+                    <label for="" class="m-2">State</label><br>
+                    <select name="state_id" id="state_id" class="form-control"
+                        style="background-color:white;">
+                        @foreach ($get_state as $state)
+                            <option value="{{ $state->id }}">{{ $state->state_name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="" class="m-2">District</label><br>
+                    <select name="district_id" id="district_id" class="form-control" required
+                        style="background-color:white;">
+                        @foreach ($get_district as $dist)
+                            <option value="{{ $dist->id }}">{{ $dist->district_name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-md-6">
                     <label for="" class="m-2">Address</label><br>
-                    <input name ="address" type="text" class="form-control" placeholder="Enter Complete Address">
+                    <textarea  name ="address"placeholder="Enter Complete Address"  style="font-size:14px; width:100%; border-radius: 4px; border:1px solid #dee2e6;"></textarea>
                 </div>
                  
               </div><br>     

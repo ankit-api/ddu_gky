@@ -79,7 +79,7 @@ class MasterController extends Controller
 
         $user = new User();
         $user->role_id = '2';
-        $user->user_code = $pia_code;
+        $user->user_code = $req->pia_code;
         $user->name = $req->name;
         $user->email = $req->official_email;
         $user->password = $hashed_random_password;
@@ -91,27 +91,26 @@ class MasterController extends Controller
 
     public function piaList()
     {
-        $pia = PIA::all();
+        $pia = PIA::where('status', 'active')->get();
         return view('public.pia.pia_list', compact('pia'));
     }
 
     public function projectForm()
     {
-        $get_pia = PIA::all();
+        $pia = User::where('user_code',Auth::user()->user_code)->with('getPia')->get();
         $get_state = State::all();
         $get_district = District::all();
         $get_scheme = Scheme::all();
         // dd($get_project);
-        return view('admin.create_project.create_project', compact("get_pia", "get_state", "get_district", "get_scheme"));
+        return view('admin.create_project.create_project', compact("pia", "get_state", "get_district", "get_scheme"));
     }
 
     public function createProject(Request $req)
     {
         $this->validate($req, [
-            'pia_name' => 'required',
             'scheme_id' => 'required|max:40',
-            'proj_name' => 'required|max:30',
-            'sac_order_no' => 'required|max:30',
+            // 'proj_name' => 'required|max:30',
+            'sac_order_no' => 'required',
             'sac_order_date' => 'required',
             'pro_code' => 'required',
             'state_id' => 'required',
@@ -122,9 +121,9 @@ class MasterController extends Controller
         $filename = $req->sac_order_no.'.'.$file->getClientOriginalExtension();
 
         $Project = new Project();
-        $Project->pia_id = $req->pia_name;
+        $Project->pia_id = $req->pia_id;
         $Project->scheme_id = $req->scheme_id;
-        $Project->name = $req->proj_name;
+        $Project->name = $req->sac_order_no;
         $Project->sanction_order_no = $req->sac_order_no;
         $Project->sanction_date = $req->sac_order_date;
         $Project->proposal_code = $req->pro_code;
@@ -177,13 +176,13 @@ class MasterController extends Controller
 
     public function centreForm()
     {
-        $get_pia = PIA::all();
+        $pia = User::where('user_code',Auth::user()->user_code)->with('getPia')->get();
         
         $get_project = Project::all();
         $get_state = State::all();
         $get_district = District::all();
         $project_data = Project::with('getProjectList','getState')->get();
-        return view('admin.create_centre.create_centre', compact("get_pia","project_data" , "get_state","get_district"));
+        return view('admin.create_centre.create_centre', compact("pia","project_data" , "get_state","get_district"));
     }
 
     public function createCentre(Request $req)
@@ -210,7 +209,7 @@ class MasterController extends Controller
 
         $center = new CentreDetails();
         $center->project_id = $req->project_id;
-        $center->pia_id = $get_pia_id;
+        $center->pia_id = $req->pia_id;
         $center->centre_code = $req->cntr_code;
         $center->state = $req->state_id;
         $center->district = $req->district_id;
@@ -391,7 +390,10 @@ class MasterController extends Controller
     public function mobilizerForm()
     {
         $get_centre = CentreDetails::all();
-        return view('public.mobilizer.add_mobilizer', compact("get_centre"));
+        $get_project = Project::all();
+        $get_state = State::all();
+        $get_district = District::all();
+        return view('public.mobilizer.add_mobilizer', compact("get_centre","get_project","get_state","get_district"));
     }
 
     public function createMobilizer(Request $req)
@@ -417,6 +419,7 @@ class MasterController extends Controller
 
         $Mobi = new Mobilizer();
         $Mobi->centre_id = $req->centre_id;
+        $Mobi->project_id = $req->project_id;
         $Mobi->mob_id = $req->mob_code;
         $Mobi->name = $req->name;
         $Mobi->email = $req->email;
@@ -448,7 +451,7 @@ class MasterController extends Controller
 
         $user = new User();
         $user->role_id = '4';
-        $user->user_code = $mob_code;
+        $user->user_code = $req->mob_code;
         $user->name = $req->name;
         $user->email = $req->email;
         $user->password = $hashed_random_password;
@@ -460,7 +463,8 @@ class MasterController extends Controller
     public function mobilizerList()
     {
      
-        $mobilizer_data = Mobilizer::with('getCentreName', 'getProjectName' )->get();       
+        $mobilizer_data = Mobilizer::with('getCentreName', 'getProjectName' )->get();   
+            
         return view('public.mobilizer.mobilizer_list', compact('mobilizer_data'));
     }
 

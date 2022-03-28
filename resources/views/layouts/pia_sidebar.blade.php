@@ -8,6 +8,8 @@
           </li>
           <!-- <li class="nav-item nav-category">UI Elements</li> -->
 
+ 
+
 
  <!-- Master Menu -->
  <!-- <hr>
@@ -73,9 +75,29 @@
               </ul>
             </div>
           </li>  -->
-          
- <!-- Centre Menu -->
-          <hr>
+
+          <!-- Master Menu -->
+ <hr>
+ <h4 style="padding:10px 0px 0px 20px;">Master</h4>
+  <!-- Project Menu -->
+  <hr>
+          <li class="nav-item">
+          <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic15" aria-expanded="false" aria-controls="ui-basic">
+              <i class="menu-icon mdi mdi-floor-plan"></i>
+            <span class="menu-title">Project/Sanction Order</span>
+                  <i class="menu-arrow"></i> 
+                </a>
+                <div class="collapse" id="ui-basic15">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('project_form')}}">Add Project</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('project_list')}}">Project List</a></li>
+                 
+                  </ul>
+                </div>
+          </li> 
+
+<!-- Centre Menu -->
+<hr>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-floor-plan"></i>
@@ -85,11 +107,83 @@
             <div class="collapse" id="ui-basic2">
               <ul class="nav flex-column sub-menu">
                 {{-- <li class="nav-item"> <a class="nav-link" href="{{ route('create-centre')}}">Add Centre</a></li> --}}
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Centre List</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ route('centre_status_of_15_days')}}">Centre Status</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('centre_form')}}">Add Centre</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('centre_list')}}">Centre List</a></li>
               </ul>
             </div>
           </li> 
+
+ <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <i class="menu-icon mdi mdi-floor-plan"></i>
+              <span class="menu-title">User Manager</span>
+              <i class="menu-arrow"></i> 
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                  
+                
+               
+               
+                <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic17" aria-expanded="false" aria-controls="ui-basic">
+                  <span class="menu-title">Mobilizer</span>
+                  <i class="menu-arrow"></i> 
+                </a>
+                <div class="collapse" id="ui-basic17">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('mobilizer_form')}}">Add Mobilizer</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('mobilizer_list')}}">Mobilizer List</a></li>
+                  </ul>
+                </div></li>
+                <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic18" aria-expanded="false" aria-controls="ui-basic">
+                  <span class="menu-title">Q-team Member</span>
+                  <i class="menu-arrow"></i> 
+                </a>
+                <div class="collapse" id="ui-basic18">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('q_team_member_form')}}">Add Q-team Member</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('q_team_member_list')}}">Q-team Member List</a></li>
+                  </ul>
+                </div></li>
+                <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic19" aria-expanded="false" aria-controls="ui-basic">
+                  <span class="menu-title">Centre Incharge</span>
+                  <i class="menu-arrow"></i> 
+                </a>
+                <div class="collapse" id="ui-basic19">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('centre_incharge_form')}}">Add Centre Incharge</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('centre_incharge_list')}}">Centre Incharge List</a></li>
+                 </ul>
+                </div></li>
+                <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic20" aria-expanded="false" aria-controls="ui-basic">
+                  <span class="menu-title">Trainer</span>
+                  <i class="menu-arrow"></i> 
+                </a>
+                <div class="collapse" id="ui-basic20">
+                   <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('trainer_form')}}"> Add Trainer</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('trainer_list')}}">Trainer List</a></li>
+                 </ul>
+                </div></li>
+                <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic21" aria-expanded="false" aria-controls="ui-basic">
+                  <span class="menu-title">MIS</span>
+                  <i class="menu-arrow"></i> 
+                </a>
+                <div class="collapse" id="ui-basic21">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('mis_form')}}">Add MIS</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('mis_list')}}">MIS List</a></li>
+                  </ul>
+                </div></li>
+              </ul>
+            </div>
+          </li>
+          
+
+         
+ 
+          
+          
           
           <!-- Staff Menu -->
           <hr>

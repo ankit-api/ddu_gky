@@ -14,7 +14,7 @@
                     <div class="home-tab">
 
                         <div class="container col-sm-12 mx-auto">
-                            <h4 class="text-center fw-bold">Project List</h4><br>
+                            <h4 class="text-center fw-bold">Sanction Order List</h4><br>
                             <div class="container col-sm-12 mx-auto" style="overflow:scroll;">
                                 <table class="table table-bordered" id="table1">
                                     <thead>
@@ -43,6 +43,7 @@
                                                 <td>Rs. {{ $project->project_cost }}</td>
                                                 <td>
                                                     <button class="text-light btn btn-info">Edit</button>
+                                                    <button class="text-light btn btn-primary">View</button>
                                                 </td>
                                             </tr>
                                         @endforeach

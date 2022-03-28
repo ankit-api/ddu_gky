@@ -24,16 +24,17 @@
                                     @if ($errors->any())
                                         <div class="alert alert-danger">{{ $errors->first() }}</div>
                                     @endif
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <label for="" class="m-2">Name of PIA</label><br>
-                                        <select name="pia_name" id="" class="form-control" required
-                                            style="background-color:white;">
-                                            @foreach ($get_pia as $name)
-                                                <option value="{{ $name->id }}">{{ $name->pia_name }}</option>
+                                      
+                                       
+                                            @foreach ($pia as $pia)
+                                            <input type="hidden" name="pia_id" value="{{ $pia->getPia->id }}">
+                                            <input type="text" name="pia_names" value="{{ $pia->getPia->pia_name }}" readonly class="form-control">
                                             @endforeach
-                                        </select>
+                                     
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <label for="" class="m-2">Scheme Name</label><br>
                                         <select name="scheme_id" class="form-control" style="background-color:white;">
                                             @foreach ($get_scheme as $scheme)
@@ -41,11 +42,11 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="col-md-4">
-                                      <label for="" class="m-2">Project Name</label><br>
+                                    <!-- <div class="col-md-4">
+                                      <label for="" class="m-2">Project Name (same as sanction )</label><br>
                                       <input type="text" class="form-control" name="proj_name"
                                           placeholder="Enter Project Name">
-                                    </div>
+                                    </div> -->
                                     <div class="col-md-6">
                                         <label for="" class="m-2">Sanction Order No.</label><br>
                                         <input type="text" class="form-control" name="sac_order_no"
@@ -84,32 +85,32 @@
                                     </div>
                                     <div class="col-md-4">
                                         <label for="" class="m-2">Total Project Duration(In Months)</label><br>
-                                        <input type="text" class="form-control" name="proj_duration" required
+                                        <input type="number" min="0" class="form-control" name="proj_duration" required
                                             placeholder="Enter Project Duration">
                                     </div>
                                     <div class="col-md-4">
                                         <label for="" class="m-2">Total Target</label><br>
-                                        <input type="number" class="form-control" name="total_target" required
+                                        <input type="number" min="0" class="form-control" name="total_target" required
                                             placeholder="Enter Total Target">
                                     </div>
                                     <div class="col-md-4">
                                         <label for="" class="m-2">Placement Target</label><br>
-                                        <input type="number" class="form-control" name="place_target" required
+                                        <input type="number" min="0" class="form-control" name="place_target" required
                                             placeholder="Enter Placement Target">
                                     </div>
                                     <div class="col-md-4">
                                         <label for="" class="m-2">Total Project Cost(In Rs)</label><br>
-                                        <input type="number" class="form-control" name="proj_cost" required
+                                        <input type="number" min="0" class="form-control" name="proj_cost" required
                                             placeholder="Enter Total Project Cost">
                                     </div>
                                     <div class="col-md-4">
                                         <label for="" class="m-2">Central Share(In Rs)</label><br>
-                                        <input type="number" class="form-control" name="central_share" required
+                                        <input type="number" min="0" class="form-control" name="central_share" required
                                             placeholder="Enter Centre Share">
                                     </div>
                                     <div class="col-md-4">
                                         <label for="" class="m-2">State Share(In Rs)</label><br>
-                                        <input type="number" class="form-control" name="state_share" required
+                                        <input type="number"  min="0" class="form-control" name="state_share" required
                                             placeholder="Enter State Share">
                                     </div>
                                     <div class="col-md-4">
