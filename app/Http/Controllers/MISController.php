@@ -79,7 +79,7 @@ class MISController extends Controller
         $user->password = $hashed_random_password;
         $user->save();
 
-        $path = 'document/MIS';
+        $path = 'Documents/MIS';
         $file1->move($path,$filename1);
         $file2->move($path,$filename2);
 

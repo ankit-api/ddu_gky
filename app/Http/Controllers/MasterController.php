@@ -159,7 +159,7 @@ class MasterController extends Controller
             $cat->save();
         }
 
-        $path = 'document/Project_File';
+        $path = 'Documents/Project_File';
         $file->move($path,$filename);
         return redirect()->back()->with('alert_status','Project Added Successfully');
     }

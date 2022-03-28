@@ -42,6 +42,12 @@ class HomeController extends Controller
         else if(Auth::user()->role_id=='6'){
             return view('dashboard.trainer_dashboard');
         }
+        else if(Auth::user()->role_id=='7'){
+            return view('dashboard.mis_head_dashboard');
+        }
+        else if(Auth::user()->role_id=='8'){
+            return view('dashboard.mis_exe_dashboard');
+        }
         
     }
 }

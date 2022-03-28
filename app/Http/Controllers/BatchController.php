@@ -56,7 +56,8 @@ class BatchController extends Controller
          }
 
         $batch = new Batch();
-        $batch->incharge_id = Auth::user()->id;
+        $get_centre_inc_id = CenterIncharge::where('centre_incharge_code',Auth::user()->user_code)->first();
+        $batch->incharge_id = $get_centre_inc_id->id;
         $batch->batch_code = $batch_code;
         $batch->trainer_id = $req->t_name;
         $batch->nature_of_training = $req->nature_of_training;

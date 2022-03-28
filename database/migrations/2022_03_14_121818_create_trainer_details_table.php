@@ -35,6 +35,8 @@ class CreateTrainerDetailsTable extends Migration
             $table->text('other_info')->nullable();
             $table->enum('type_of_engagement', ['fulltime', 'parttime','weekends'])->default('fulltime');
             $table->enum('training_type', ['primary', 'secondary'])->default('primary');
+            $table->string('photo',50)->nullable();
+            $table->string('signature',50)->nullable();
             $table->integer('added_by')->unsigned()->nullable();           
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamp('created_on')->useCurrent();
