@@ -84,7 +84,7 @@
           <li class="nav-item">
           <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic15" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-floor-plan"></i>
-            <span class="menu-title">Project</span>
+            <span class="menu-title">Project/Sanction Order</span>
                   <i class="menu-arrow"></i> 
                 </a>
                 <div class="collapse" id="ui-basic15">
@@ -95,6 +95,24 @@
                   </ul>
                 </div>
           </li> 
+
+<!-- Centre Menu -->
+<hr>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic">
+              <i class="menu-icon mdi mdi-floor-plan"></i>
+              <span class="menu-title">Centre</span>
+              <i class="menu-arrow"></i> 
+            </a>
+            <div class="collapse" id="ui-basic2">
+              <ul class="nav flex-column sub-menu">
+                {{-- <li class="nav-item"> <a class="nav-link" href="{{ route('create-centre')}}">Add Centre</a></li> --}}
+                <li class="nav-item"> <a class="nav-link" href="{{ route('centre_form')}}">Add Centre</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('centre_list')}}">Centre List</a></li>
+              </ul>
+            </div>
+          </li> 
+
  <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-floor-plan"></i>
@@ -164,22 +182,7 @@
 
          
  
-          <!-- Centre Menu -->
-          <hr>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic">
-              <i class="menu-icon mdi mdi-floor-plan"></i>
-              <span class="menu-title">Centre</span>
-              <i class="menu-arrow"></i> 
-            </a>
-            <div class="collapse" id="ui-basic2">
-              <ul class="nav flex-column sub-menu">
-                {{-- <li class="nav-item"> <a class="nav-link" href="{{ route('create-centre')}}">Add Centre</a></li> --}}
-                <li class="nav-item"> <a class="nav-link" href="{{ route('centre_form')}}">Add Centre</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ route('centre_list')}}">Centre List</a></li>
-              </ul>
-            </div>
-          </li> 
+          
           
           
           <!-- Staff Menu -->

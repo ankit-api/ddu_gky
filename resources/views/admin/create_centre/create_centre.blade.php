@@ -40,7 +40,7 @@
                     <label for="" class="m-2">Sanction Order No.</label><br>
                     <select name="project_id" id="" class="form-control" style="background-color:white;">
                         @foreach($project_data as $project)
-                            <option value="{{ $project->id }}">{{ $project->sanction_order_no }}( {{ $project->getState->state_name}} )</option>
+                            <option value="{{ $project->id }}">{{ $project->sanction_order_no }}</option>
                         @endforeach
                     </select> 
                 </div>

@@ -17,6 +17,8 @@ class CreateMobilizerTable extends Migration
             $table->increments('id');
             $table->integer('centre_id')->unsigned()->foriegn(); 
             $table->foreign('centre_id')->references('id')->on('centre')->onUpdate('cascade')->onDelete('cascade');
+            $table->integer('project_id')->unsigned()->foriegn(); 
+            $table->foreign('project_id')->references('id')->on('project')->onUpdate('cascade')->onDelete('cascade');
             $table->string('mob_id',80);
             $table->string('name',50);
             $table->string('email',50);
