@@ -33,7 +33,7 @@
                                             <tr>
                                                 <td>{{ $batch_data->batch_code }}</td>
                                                 <td>{{ $batch_data->trainerDetails->name }}</td>
-                                                <td>{{ $batch_data->trainerDetails->centreCode->center_code }}</td>
+                                                <td>{{ $batch_data->trainerDetails->getCentreName->centre_code }}</td>
                                                 <td>{{ $batch_data->nature_of_training }}</td>
                                                 <td>{{ $batch_data->batch_start_date.' - '.$batch_data->batch_end_date }}</td>
                                                 <td>{{ ucwords($batch_data->batch_summary_status) }}</td>

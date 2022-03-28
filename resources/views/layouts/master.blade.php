@@ -17,6 +17,12 @@
 @elseif(Auth::user()->role_id=='6')
     @include('layouts.trainer_sidebar')
 
+@elseif(Auth::user()->role_id=='7')
+    @include('layouts.mis_head_sidebar')
+
+@elseif(Auth::user()->role_id=='8')
+    @include('layouts.mis_exe_sidebar')
+
 @endif
 @yield('dashboard')
 @include('layouts.footer')

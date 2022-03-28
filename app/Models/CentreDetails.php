@@ -16,6 +16,10 @@ class CentreDetails extends Model
         return $this->hasOne(Project::class, 'id', 'project_id');
     }
 
+    function getPiaName(){
+        return $this->hasOne(PIA::class, 'id', 'pia_id');
+    }
+
     function getState(){
         return $this->hasOne(State::class, 'id', 'state');
     }

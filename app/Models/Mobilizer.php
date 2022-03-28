@@ -18,6 +18,7 @@ class Mobilizer extends Model
 
     function getProjectName(){
         return $this->hasOneThrough(Project::class, CentreDetails::class,  'project_id', 'id');
+        
     }
 
     

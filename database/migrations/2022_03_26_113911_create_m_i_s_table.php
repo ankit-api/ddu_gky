@@ -21,8 +21,8 @@ class CreateMISTable extends Migration
             $table->bigInteger('phone_no');
             $table->string('email',50);
             $table->text('address');
-            $table->string('photo',50)->nullable();;
-            $table->string('signature',50)->nullable();;
+            $table->string('photo',50)->nullable();
+            $table->string('signature',50)->nullable();
             $table->integer('added_by')->unsigned()->nullable();
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamp('created_on')->useCurrent();
