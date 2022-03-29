@@ -24,7 +24,7 @@
   <!-- endinject -->
   {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
   <!-- <link rel="shortcut icon" href="{{ asset('/star_theme/images/favicon.png') }}" /> -->
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   
   
 </head>
@@ -140,7 +140,7 @@
                 <p class="fw-light text-muted mb-0">{{ Auth::user()->user_role->role_name }}</p>
               </div>
               <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My Profile <span class="badge badge-pill badge-danger">1</span></a>
-              <a href="{{ route('change_password') }}"class="dropdown-item"><i class="dropdown-item-icon fas fa-user text-primary me-2"></i> Change Password</a>
+              <a href="{{ route('change_password') }}"class="dropdown-item"><i class="dropdown-item-icon fa fa-unlock-alt text-primary me-2"></i> Change Password</a>
                {{--<a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-calendar-check-outline text-primary me-2"></i> Activity</a>
               <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-help-circle-outline text-primary me-2"></i> FAQ</a> --}}
               <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>

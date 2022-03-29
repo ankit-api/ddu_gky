@@ -124,7 +124,7 @@
                   
                 
                
-               
+{{--                
                 <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic17" aria-expanded="false" aria-controls="ui-basic">
                   <span class="menu-title">Mobilizer</span>
                   <i class="menu-arrow"></i> 
@@ -164,7 +164,7 @@
                     <li class="nav-item"> <a class="nav-link" href="{{ route('trainer_form')}}"> Add Trainer</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('trainer_list')}}">Trainer List</a></li>
                  </ul>
-                </div></li>
+                </div></li> --}}
                 <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic21" aria-expanded="false" aria-controls="ui-basic">
                   <span class="menu-title">MIS</span>
                   <i class="menu-arrow"></i> 
@@ -186,7 +186,7 @@
           
           
           <!-- Staff Menu -->
-          <hr>
+          {{-- <hr>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-floor-plan"></i>
@@ -199,7 +199,7 @@
                 <li class="nav-item"> <a class="nav-link" href="{{ route('deployed_staff_trade') }}">Summary of Staff Deployed</a></li>
               </ul>
             </div>
-          </li>  
+          </li>   --}}
 
           <!-- Candidate Menu -->
           <hr>

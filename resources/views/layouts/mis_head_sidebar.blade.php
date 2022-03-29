@@ -106,7 +106,6 @@
       </a>
       <div class="collapse" id="ui-basic2">
         <ul class="nav flex-column sub-menu">
-          {{-- <li class="nav-item"> <a class="nav-link" href="{{ route('create-centre')}}">Add Centre</a></li> --}}
           {{-- <li class="nav-item"> <a class="nav-link" href="{{ route('centre_form')}}">Add Centre</a></li> --}}
           <li class="nav-item"> <a class="nav-link" href="{{ route('centre_list')}}">Centre List</a></li>
         </ul>
@@ -274,6 +273,21 @@
         <ul class="nav flex-column sub-menu">
           <li class="nav-item"> <a class="nav-link" href="{{ route('candidate-admission') }}">Candidate Addmission </a></li>
           <li class="nav-item"> <a class="nav-link" href="{{ route('admission_list') }}">Addmission List</a></li>
+        </ul>
+      </div>
+    </li>
+
+    <!-- Candidate Dossier  -->
+    <hr>
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic22" aria-expanded="false" aria-controls="ui-basic">
+        <i class="menu-icon mdi mdi-floor-plan"></i>
+        <span class="menu-title">Candidate Dossier</span>
+        <i class="menu-arrow"></i> 
+      </a>
+      <div class="collapse" id="ui-basic22">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="{{ route('candidate_dossier_list') }}">Candidate Dossier List</a></li>
         </ul>
       </div>
     </li>
