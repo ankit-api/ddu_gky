@@ -89,7 +89,7 @@
           </a>
           <div class="collapse" id="ui-basic15">
             <ul class="nav flex-column sub-menu">
-              <li class="nav-item"> <a class="nav-link" href="{{ route('project_form')}}">Add Project</a></li>
+              {{-- <li class="nav-item"> <a class="nav-link" href="{{ route('project_form')}}">Add Project</a></li> --}}
               <li class="nav-item"> <a class="nav-link" href="{{ route('project_list')}}">Project List</a></li>
            
             </ul>
@@ -107,7 +107,7 @@
       <div class="collapse" id="ui-basic2">
         <ul class="nav flex-column sub-menu">
           {{-- <li class="nav-item"> <a class="nav-link" href="{{ route('create-centre')}}">Add Centre</a></li> --}}
-          <li class="nav-item"> <a class="nav-link" href="{{ route('centre_form')}}">Add Centre</a></li>
+          {{-- <li class="nav-item"> <a class="nav-link" href="{{ route('centre_form')}}">Add Centre</a></li> --}}
           <li class="nav-item"> <a class="nav-link" href="{{ route('centre_list')}}">Centre List</a></li>
         </ul>
       </div>
@@ -186,7 +186,7 @@
     
     
     <!-- Staff Menu -->
-    <hr>
+    {{-- <hr>
     <li class="nav-item">
       <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic">
         <i class="menu-icon mdi mdi-floor-plan"></i>
@@ -199,7 +199,7 @@
           <li class="nav-item"> <a class="nav-link" href="{{ route('deployed_staff_trade') }}">Summary of Staff Deployed</a></li>
         </ul>
       </div>
-    </li>  
+    </li>   --}}
 
     <!-- Candidate Menu -->
     <hr>
@@ -227,8 +227,8 @@
       </a>
       <div class="collapse" id="ui-basic3">
         <ul class="nav flex-column sub-menu">
-          <!-- <li class="nav-item"> <a class="nav-link" href="{{ route('candidate-register') }}">Student Register</a></li> -->
-          <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Student Register List</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{{ route('candidate-register') }}">Student Register</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{{ route('candidate_register_list') }}">Student Register List</a></li>
         </ul>
       </div>
     </li>
@@ -257,6 +257,7 @@
       </a>
       <div class="collapse" id="ui-basic5">
         <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="{{ route('batch_form')}}">Create Batch</a></li>
           <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Batch List</a></li>
         </ul>
       </div>
@@ -271,8 +272,8 @@
       </a>
       <div class="collapse" id="ui-basic6">
         <ul class="nav flex-column sub-menu">
-          <!-- <li class="nav-item"> <a class="nav-link" href="{{ route('candidate-admission') }}">Candidate Addmission </a></li> -->
-          <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Addmission List</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{{ route('candidate-admission') }}">Candidate Addmission </a></li>
+          <li class="nav-item"> <a class="nav-link" href="{{ route('admission_list') }}">Addmission List</a></li>
         </ul>
       </div>
     </li>

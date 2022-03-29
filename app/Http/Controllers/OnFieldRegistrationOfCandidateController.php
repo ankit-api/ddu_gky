@@ -7,6 +7,8 @@ use App\Models\CentreDetails;
 use App\Models\OnFieldRegistrationOfCandidate;
 use App\Models\RegDocument;
 use App\Models\DocType;
+use App\Models\Block;
+use App\Models\Mobilizer;
 use Carbon\Carbon;
 use Auth;
 
@@ -21,7 +23,9 @@ class OnFieldRegistrationOfCandidateController extends Controller
     {
         $get_centre = CentreDetails::all(); 
         $get_doc_type = DocType::all();      
-        return view('admin.on_field_reg_of_candidate.on_field_reg_of_candidate', compact("get_centre","get_doc_type" ));
+        $get_block = Block::all();
+        $get_mobi = Mobilizer::all();
+        return view('admin.on_field_reg_of_candidate.on_field_reg_of_candidate', compact("get_centre","get_doc_type","get_block","get_mobi"));
     }
 
     public function postRegistration(Request $req)
@@ -48,21 +52,21 @@ class OnFieldRegistrationOfCandidateController extends Controller
         $mob_id = $req->session()->get('mob_id');
 
         //Unique Registration Code
-        $total_rows = OnFieldRegistrationOfCandidate::orderBy('id', 'desc')->count();
-        $register_code = "Reg/";
-        if($total_rows==0){
-            $register_code .= '0001';
-        }else{
-            $last_id = OnFieldRegistrationOfCandidate::orderBy('id', 'desc')->first()->id;
-            $register_code .= sprintf("%'04d",$last_id + 1);
-        }
+        // $total_rows = OnFieldRegistrationOfCandidate::orderBy('id', 'desc')->count();
+        // $register_code = "Reg/";
+        // if($total_rows==0){
+        //     $register_code .= '0001';
+        // }else{
+        //     $last_id = OnFieldRegistrationOfCandidate::orderBy('id', 'desc')->first()->id;
+        //     $register_code .= sprintf("%'04d",$last_id + 1);
+        // }
 
         $file = $req->file('sign_doc');               
         $signdoc = $file->getClientOriginalName();
 
         $register = new OnFieldRegistrationOfCandidate();
         $register->mob_id = $mob_id;
-        $register->reg_code = $register_code;
+        $register->reg_code = $req->reg_code;
         $register->name = $req->name;
         $register->village = $req->village;
         $register->date_of_mobilization = $req->dom;
@@ -84,7 +88,7 @@ class OnFieldRegistrationOfCandidateController extends Controller
         $register->save();
         $insertedId = $register->id;
 
-        $file_reg_code = str_replace("/", "_", $register_code);
+        $file_reg_code = str_replace("/", "_", $req->reg_code);
         $file_loc = "Documents/Registration/$file_reg_code";
         if (!file_exists($file_loc)) {
             mkdir("Documents/Registration/$file_reg_code", 0777, true);

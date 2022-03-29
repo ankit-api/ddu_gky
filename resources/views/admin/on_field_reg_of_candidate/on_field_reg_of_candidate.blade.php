@@ -27,17 +27,23 @@
                         @endif 
             </div>                  
             <div class="row">            
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <label for="" class="m-2">Centre Name</label><br>
                     <select name="" id="" name="gender" class="form-control" style="background-color:white;" required>
+                        <option value="Not Selected">Select Centre Name</option>
                     @foreach($get_centre as $centre)
                         <option value="{{ $centre->id }}">{{ $centre->centre_name }}</option>
                     @endforeach
                     </select>  
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
+                    <label for="" class="m-2">Registration Code/Panjee Code</label><br>
+                    <input name ="reg_code" type="text" class="form-control" placeholder="Enter Registration Code">
+                </div> 
+                <div class="col-md-4">
                     <label for="" class="m-2">Counselling</label><br>
                     <select id="" name="counsel" class="form-control" style="background-color:white;" required>
+                        <option value="Not Selected">Select Counselling Status</option>
                         <option value="not done">Not Done</option>
                         <option value="done">Done</option>
                     </select>                  
@@ -48,9 +54,19 @@
                     <label for="" class="m-2">Name of Candidates</label><br>
                     <input type="text" class="form-control" name="name" id="" placeholder="Enter Candidate Name" required>
                 </div>
-                <div class="col-md-4">
+                {{-- <div class="col-md-4">
                     <label for="" class="m-2">Village/GP/Block</label><br>
                     <textarea class="form-control" name="village" required></textarea>
+                </div> --}}
+                <div class="col-md-4">
+                    <label for="" class="m-2">Village/GP/Block</label><br>
+                    <select name="village" id="village" class="form-control" required
+                        style="background-color:white;">
+                        <option value="Not Selected">Select Block Name</option>
+                        @foreach ($get_block as $block)
+                            <option value="{{ $block->id }}">{{ $block->block_name }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="col-md-4">
                     <label for="" class="m-2">Date of mobilization</label><br>
@@ -61,6 +77,7 @@
                 <div class="col-md-4">
                     <label for="" class="m-2">Gender</label><br>
                     <select id="" name="gender" class="form-control" style="background-color:white;" required>
+                        <option value="Not Selected">Select Gender</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                         <option value="others">Others</option>
@@ -80,6 +97,7 @@
                 <div class="col-md-4">
                     <label for="" class="m-2">Category</label><br>
                     <select name="category" id="" class="form-control"  style="background-color:white;" required>
+                        <option value="Not Selected">Select Category</option>
                         <option value="gn">General</option>
                         <option value="sc">SC</option>
                         <option value="st">ST</option>
@@ -93,6 +111,7 @@
                 <div class="col-md-4">
                 <label for="" class="m-2">Minority</label><br>
                     <select name="minority" id="" class="form-control"  required style="background-color:white;" >
+                        <option value="Not Selected">Select Minority</option>
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>  
@@ -115,7 +134,13 @@
             <div class="row">
                <div class="col-md-6">
                 <label for="" class="m-2">Referring Stakeholder</label><br>
-                    <input type="text" name="ref" class="form-control"  placeholder="Enter Referring Stakeholder">  
+                    <select name="ref" id="ref" class="form-control" required
+                        style="background-color:white;">
+                        <option value="Not Selected">Select Referring Stakeholder</option>
+                        @foreach ($get_mobi as $mobi)
+                            <option value="{{ $mobi->id }}">{{ $mobi->name }}</option>
+                        @endforeach
+                    </select> 
                 </div>   
                <div class="col-md-6">
                 <label for="" class="m-2">Remarks</label><br>

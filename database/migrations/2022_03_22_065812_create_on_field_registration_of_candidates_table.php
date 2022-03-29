@@ -19,7 +19,7 @@ class CreateOnFieldRegistrationOfCandidatesTable extends Migration
             $table->foreign('mob_id')->references('id')->on('mobilizers')->onUpdate('cascade')->onDelete('cascade');
             $table->string('reg_code',60);
             $table->string('name',50);
-            $table->string('village',30);
+            $table->integer('village')->unsigned();
             $table->timestamp('date_of_mobilization')->nullable();
             $table->timestamp('date_of_birth')->nullable();
             $table->string('age',10);

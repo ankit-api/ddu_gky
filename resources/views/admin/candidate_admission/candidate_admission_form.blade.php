@@ -41,6 +41,7 @@
                 <div class="col-md-4">
                     <label for="" class="m-2">Batch Number</label><br>
                     <select name="batch" id="" class="form-control" style="background-color:white;">
+                        <option value="Not Selected">Select Batch Number</option>
                     @foreach($batch as $batch)
                         <option value="{{ $batch->id }}">{{ $batch->batch_code }}</option>
                     @endforeach
@@ -49,7 +50,7 @@
 
                 <div class="col-md-4">
                     <label for="" class="m-2">Trade</label><br>
-                    <input name="trade" required type="text" class="form-control">
+                    <input name="trade" required type="text" placeholder="Enter Trade" class="form-control">
                 </div>
                 
                 <!-- <div class="col-md-4">
@@ -58,7 +59,7 @@
                 </div>-->
                 <div class="col-md-4">
                     <label for="" class="m-2">Training Duration</label><br>
-                    <input type="text" required name="duration" class="form-control" name="" id="" >
+                    <input type="text" required name="duration" class="form-control" placeholder="Enter Training Duration" >
                 </div>
             </div><br> <br>
             <h5>Trainee Profile</h5>
@@ -68,6 +69,7 @@
                 <div class="col-md-3">
                     <label for="" class="m-2">Registration ID</label><br>
                     <select name="reg_id" id="" class="form-control" style="background-color:white;">
+                        <option value="Not Selected">Select Registration ID</option>
                     @foreach($reg_can as $reg_can)
                         <option value="{{ $reg_can->id }}">{{ $reg_can->reg_code }}</option>
                     @endforeach
@@ -90,6 +92,7 @@
                 <div class="col-md-3">
                     <label for="" class="m-2">Gender</label><br>
                     <select name="gender" id="" class="form-control" style="background-color:white;">
+                        <option value="Not Selected">Select Gender</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                         <option value="other">Others</option>
@@ -146,6 +149,7 @@
                 <div class="col-md-4">
                     <label for="" class="m-2">Religion</label><br>
                     <select name="religion" id="" class="form-control" style="background-color:white;">
+                        <option value="Not Selected">Select Religion</option>
                         <option value="hindu">Hindus</option>
                         <option value="muslim">Muslims</option>
                         <option value="christian">Christians</option>
@@ -158,6 +162,7 @@
                 <div class="col-md-4">
                 <label for="" class="m-2">Category</label><br>
                      <select name="category" id="" class="form-control" style="background-color:white;">
+                        <option value="Not Selected">Select Category</option>
                         <option value="gn">General</option>
                         <option value="sc">SC</option>
                         <option value="st">ST</option>
@@ -170,73 +175,76 @@
             <div class="col-md-3">
                     <label for="" class="m-2">PWD</label><br>
                     <select name="pwd" id="" class="form-control" style="background-color:white;">
+                        <option value="Not Selected">Select PWD</option>
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
                 </div>
                 <div class="col-md-3">
                 <label for="" class="m-2">PWD type</label><br>
-                    <input type="text" name="pwd_type" class="form-control">    
+                    <input type="text" name="pwd_type" class="form-control" placeholder="Enter PWD Type">    
                 </div>    
                 <div class="col-md-3">
                     <label for="" class="m-2">Other vulnerable group</label><br>
                     <select name="other_vul_group" id="" class="form-control" style="background-color:white;">
+                        <option value="Not Selected">Select Other Vulnerable Group</option>
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
                 </div>
                 <div class="col-md-3">
                 <label for="" class="m-2">Vulnerable group type</label><br>
-                    <input type="text" name="vul_group_type" class="form-control" >    
+                    <input type="text" name="vul_group_type" class="form-control" placeholder="Enter Vulnerable Group Type" >    
                 </div>                
             </div><br>
             <div class="row">
             <div class="col-md-3">
                     <label for="" class="m-2">SESS Number</label><br>
-                    <input type="text" name="sess_no" class="form-control">    
+                    <input type="text" name="sess_no" class="form-control" placeholder="Enter SESS Number">    
                 </div>
                 <div class="col-md-3">
                 <label for="" class="m-2">BPL Ration Card No.</label><br>
-                    <input type="text" name="bpl_no" class="form-control">    
+                    <input type="text" name="bpl_no" class="form-control" placeholder="Enter BPL Ration Card No.">    
                 </div>    
                 <div class="col-md-3">
                     <label for="" class="m-2">Job Card No.(MNREGA)</label><br>
-                    <input type="text" name="mnrega_no" class="form-control">
+                    <input type="text" name="mnrega_no" class="form-control" placeholder="Enter Job Card No.(MNREGA)">
                 </div>
                 <div class="col-md-3">
                 <label for="" class="m-2">RSBY Card No.#</label><br>
-                    <input type="text" name="rsby_no" class="form-control" >    
+                    <input type="text" name="rsby_no" class="form-control" placeholder="Enter RSBY Card No.#" >    
                 </div>                
             </div><br>
             <div class="row">
             <div class="col-md-6">
                     <label for="" class="m-2">Antyodaya Anna Yojana Ration Card No. </label><br>
-                    <input type="text" name="aay_ration_no" class="form-control">
+                    <input type="text" name="aay_ration_no" class="form-control" placeholder="Enter Antyodaya Anna Yojana Ration Card No.">
                 </div>
                 <div class="col-md-6">
                 <label for="" class="m-2">Yearly Income(in Rs.) </label><br>
-                    <input type="text" name="a_income" class="form-control" >    
+                    <input type="text" name="a_income" class="form-control" placeholder="Enter Yearly Income(in Rs.)" >    
                 </div>                
             </div><br>
             <div class="row">
             <div class="col-md-3">
                     <label for="" class="m-2">Is candidate a family member of a SHG member? ## </label><br>
                     <select name="c_shg" id="" class="form-control" style="background-color:white;">
+                        <option value="Not Selected">Select Option</option>
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
                 </div>
                 <div class="col-md-3">
                 <label for="" class="m-2">Name of SHG </label><br><br>
-                    <input type="text" name="c_shg_name" class="form-control" >    
+                    <input type="text" name="c_shg_name" class="form-control" placeholder="Enter Name of SHG" >    
                 </div>    
                 <div class="col-md-3">
                     <label for="" class="m-2">SHG ID</label><br><br>
-                    <input type="text" name="c_shg_id" class="form-control">
+                    <input type="text" name="c_shg_id" class="form-control" placeholder="Enter SHG ID">
                 </div>
                 <div class="col-md-3">
                 <label for="" class="m-2">Name of SHG member</label><br><br>
-                    <input type="text" name="shg_member_name" class="form-control" >    
+                    <input type="text" name="shg_member_name" class="form-control" placeholder="Enter Name of SHG member" >    
                 </div>                
             </div><br><br>
             <h5>Family Head Details</h5>
@@ -244,19 +252,19 @@
             <div class="row">   
                 <div class="col-md-3">
                 <label for="" class="m-2">Name of the head of family</label><br><br>
-                    <input type="text" name="h_name" required class="form-control" >    
+                    <input type="text" name="h_name" required class="form-control" placeholder="Name of the head of family" >    
                 </div>    
                 <div class="col-md-3">
                     <label for="" class="m-2">Highest education of the head of family</label><br>
-                    <input type="text" name="h_qualification" required class="form-control">
+                    <input type="text" name="h_qualification" required class="form-control" placeholder="Enter Highest education of the head of family">
                 </div>
                 <div class="col-md-3">
                 <label for="" class="m-2">Yearly Income of the family(Rs.)</label><br>
-                    <input type="text" name="fam_income" required class="form-control" >    
+                    <input type="text" name="fam_income" required class="form-control" placeholder="Enter Yearly Income of the family(Rs.)" >    
                 </div> 
                 <div class="col-md-3">
                     <label for="" class="m-2">Number of member in the family </label><br>
-                    <input type="number" name="fam_mem_no" required class="form-control" > </option>
+                    <input type="number" name="fam_mem_no" required class="form-control" placeholder="Enter Number of member in the family" > </option>
                     </select>
                 </div>                
             </div><br><br>
@@ -353,12 +361,12 @@
                     </div>-->
                     <div class="col-md-6">
                         <label for="" class="m-2">Allocated Trade</label><br>
-                        <input type="text" name="allocate_trade"class="form-control">
+                        <input type="text" name="allocate_trade" class="form-control" placeholder="Enter Allocated Trade">
                     </div>
                     
                     <div class="col-md-6">
                         <label for="" class="m-2">Comments if any</label><br>
-                        <textarea rows="3" name="comment" id="" style="width:100%; border-radius: 4px; border:1px solid #dee2e6;"></textarea>
+                        <textarea rows="3" name="comment" placeholder="Enter Comments If Any" style="width:100%; border-radius: 4px; border:1px solid #dee2e6;"></textarea>
                     </div>
                 </div>
             </div><br>
