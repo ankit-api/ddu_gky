@@ -15,7 +15,7 @@
                   
                 <div class="container col-sm-12 mx-auto" >
                   <h4 class="text-center fw-bold">Create PIA</h4><br>
-                  <form action="{{ route('create_pia') }}" method="post">
+                  <form action="{{ route('create_pia') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row">     
                       @if (session('alert_status'))
@@ -46,6 +46,11 @@
                         <label for="" class="m-2">Landline No.</label><br>
                         <input name ="landline_no" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" maxlength="15" placeholder="Enter Landline No." class="form-control">
                       </div> 
+                      <div class="col-md-6">
+                        <label for="" class="m-2">PIA Document</label><br>
+                        <input type="file" name="pia_doc" accept="application/pdf"
+                            class="form-control " style="background-color:white;" required>
+                      </div>
                       <div class="col-md-12">
                           <label for="" class="m-2">Address of PIA</label><br>
                           <input name ="address" type="text" placeholder="Enter Full Address Of PIA" class="form-control">
