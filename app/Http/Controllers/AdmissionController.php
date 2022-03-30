@@ -188,4 +188,9 @@ class AdmissionController extends Controller
         return view('admin.candidate_admission.admission_list', compact("candidate_data"));
     }
 
+    public function dossierList(){
+        $candidate_data = Admission::with('batchCode')->get();      
+        return view('admin.candidate_dossier.dossier_list', compact("candidate_data"));
+    }
+
 }

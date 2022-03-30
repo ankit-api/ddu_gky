@@ -21,7 +21,7 @@ class CreatePiaTable extends Migration
             $table->bigInteger('phone_no');
             $table->string('email',50);
             $table->text('address');
-            $table->string('logo',50)->nullable();
+            $table->string('pia_doc',50)->nullable();
             $table->integer('added_by')->unsigned()->nullable();
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamp('created_on')->useCurrent();

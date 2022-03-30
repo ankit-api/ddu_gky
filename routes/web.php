@@ -113,7 +113,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/post-candidate-admission', [AdmissionController::class,'postAdmission'])->name('post-candidate-admission');
     Route::get('/admission_list', [AdmissionController::class,'admissionList'])->name('admission_list');
     
-
+    //Candidate Dossier
+    Route::get('/candidate_dossier_list', [AdmissionController::class,'dossierList'])->name('candidate_dossier_list');
     
     Route::get('/items_given', [ItemsGivenToCandidateController::class,'index'])->name('items_given');
     Route::get('/items_failure', [DailyFailureItemsReportController::class,'index'])->name('items_failure');
@@ -135,6 +136,7 @@ Route::group(['middleware' => ['auth']], function() {
     //Print
     Route::view('/registration-print', 'print_layout/on_field_reg_of_candidate_print');
     Route::view('/addmission-print', 'print_layout/candidate_admission_form_print');
+    Route::view('/parent_consent_form_print', 'print_layout/parent_consent_form_print');
     //Print-Layout Forms
     Route::get('/print_srlm_to_cert', [LetterController::class,'print_srlm_to_cert'])->name('print_srlm_to_cert');
     Route::get('/print_srlm_from_cert', [LetterController::class,'print_srlm_from_cert'])->name('print_srlm_from_cert');
