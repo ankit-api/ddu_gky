@@ -17,6 +17,7 @@ use App\Models\User;
 use App\Models\Scheme;
 use App\Models\CategoryType;
 use App\Models\Block;
+use Image;
 use Mail;
 use Auth;
 
@@ -34,8 +35,8 @@ class MasterController extends Controller
             'contact_no' => 'required|max:10',
             'landline_no' => 'required|max:15',
             'official_email' => 'required',
-            'address' => 'required|min:10|max:255'
-
+            'address' => 'required|min:10|max:255',
+            'pia_doc' => 'max:1024'
         ]);
 
         // $total_rows = PIA::orderBy('id', 'desc')->count();

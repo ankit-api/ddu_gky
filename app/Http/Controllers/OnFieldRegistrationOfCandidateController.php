@@ -11,6 +11,7 @@ use App\Models\Block;
 use App\Models\Mobilizer;
 use Carbon\Carbon;
 use Auth;
+use Image;
 
 class OnFieldRegistrationOfCandidateController extends Controller
 {
@@ -46,7 +47,7 @@ class OnFieldRegistrationOfCandidateController extends Controller
             'contact' => 'required',
             'address' => 'required',
             'ref' => 'required',
-            'sign_doc' => 'required|mimes:png,jpg,jpeg,svg|max:1024'           
+            'sign_doc' => 'required|mimes:png,jpg,jpeg,svg|max:512'           
         ]);
         
         $mob_id = $req->session()->get('mob_id');
@@ -93,7 +94,12 @@ class OnFieldRegistrationOfCandidateController extends Controller
         if (!file_exists($file_loc)) {
             mkdir("Documents/Registration/$file_reg_code", 0777, true);
         }
-        $file->move($file_loc,$signdoc);
+        // $file->move($file_loc,$signdoc);
+
+        $img = Image::make($file->getRealPath());
+        $img->resize(200, 200, function ($constraint) {
+            $constraint->aspectRatio();
+        })->save($file_loc.'/'.$signdoc);
 
         $i = count($req->doc_type);        
         for ($j = 0; $j < $i; $j++) {  

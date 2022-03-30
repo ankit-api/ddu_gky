@@ -134,7 +134,7 @@
                 </div>
                 <div class="col-md-3">
                     <label for="" class="m-2">Adhaar no </label><br>
-                  <input type="number" name="adhaar" min="12" class="form-control" required placeholder="Enter adhaar no.">
+                  <input type="number" name="adhaar" min="12" class="form-control"  required placeholder="Enter adhaar no.">
                 </div>
             </div><br>
             <div class="row">            

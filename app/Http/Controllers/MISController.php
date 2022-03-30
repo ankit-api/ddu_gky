@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Models\User;
 use App\Models\Project;
+use Image;
 use Mail;
 use Auth;
 
@@ -32,7 +33,9 @@ class MISController extends Controller
             'name' => 'required|max:40',
             'email' => 'required|email',
             'contact_no' => 'required',
-            'address' => 'required|min:10|max:255'
+            'address' => 'required|min:10|max:255',
+            'image_doc' => 'max:512',
+            'sign_doc' => 'max:512'
         ]);
 
         $file1 = $req->file('image_doc');
@@ -83,8 +86,18 @@ class MISController extends Controller
         $user->save();
 
         $path = 'Documents/MIS';
-        $file1->move($path,$filename1);
-        $file2->move($path,$filename2);
+        // $file1->move($path,$filename1);
+        // $file2->move($path,$filename2);
+
+        $img1 = Image::make($file1->getRealPath());
+        $img1->resize(200, 200, function ($constraint) {
+            $constraint->aspectRatio();
+        })->save($path.'/'.$filename1);
+
+        $img2 = Image::make($file2->getRealPath());
+        $img2->resize(200, 200, function ($constraint) {
+            $constraint->aspectRatio();
+        })->save($path.'/'.$filename2);
 
         return redirect()->back()->with('alert_status','MIS Added Successfully');
     }
