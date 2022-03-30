@@ -155,37 +155,49 @@
             </div><br><br>
                <h5>Attachmnet Fields <span class="text-danger">(All Documents size should be less than 1Mb)</span></h5>
                <hr>
-            <div class="row">
-               <div class="col-md-5">
-                <label for="" class="m-2">Document Type</label><br>
-               </div>
-               <div class="col-md-5">
-                <label for="" class="m-2">Document</label><br>
-               </div>    
-            </div>   
+               <div class="row">
+                <div class="table-responsive">
+                    <table class="table ">
+                        <thead>
+                            <tr>
+                                <th style="padding-right: 200px;">Document Category</th>
+                                <th style="padding-right: 200px;">Document Type</th>
+                                <th style="padding-right: 215px;">Document </th>
+                                <th>Action</th>
+                                </tr>
+                        </thead>
+                        <tbody id="more-div">
+                            <tr>
+                                <td>
+                                    <select name="doc1_type[]" class="form-control doc1-dropdown"  data-id="1" style="background-color:white;" >
+                                            <option value=""  selected >Select Document Category</option>
+                                    @foreach($get_doc1_type as $doc1_type)
+                                            <option value="{{ $doc1_type->id }}" >{{ $doc1_type->doc1_type_name }}</option>
+                                    @endforeach
+                                    </select>  
+                                </td>
+                                <td>
+                                    <select name="doc2_type[]"  class="doc2-dropdown1 form-control"  style="background-color:white;" >              
+                                    </select>  
+                                </td>
+                                <td >
+                                    <input type="file" name="doc[]"  accept="application/pdf" class="form-control " style="background-color:white;"> 
+                                </td>
+                                <td>
+                                    <button type="button" class="text-light btn  btn-primary btn-icon-text add_more" >
+                                        Add more
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>    
+
             
-        <div class="more-div" id="more-div">
-            <div class="row">
-               <div class="col-md-5">
-               <select name="doc_type[]" id="" class="form-control"  style="background-color:white;" >
-               @foreach($get_doc_type as $doc_type)
-                        <option value="{{ $doc_type->id }}">{{ $doc_type->doc_type_name }}</option>
-                @endforeach
-                </select>  
-               </div>
-               <div class="col-md-5">
-                <input type="file" name="doc[]"  accept="application/pdf" class="form-control " style="background-color:white;" >
-               </div>
-             
-               <div class="col-md-2">                  
-               <button type="button" class="text-light btn  btn-primary btn-icon-text add_more" >
-                          <i class="ti-plus btn-icon-prepend"></i>
-                          Add more
-                </button>
-               </div>
+       
+           
             </div>
         </div>
-
+                <br>
                <button type="submit" class="text-light btn btn-lg btn-success btn-icon-text">
                           <i class="ti-upload btn-icon-prepend"></i>
                           Submit
@@ -200,23 +212,79 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script type="text/javascript">
-            $(document).ready(function() {
+             
+            $(document).ready(function() {              
                 
                     var no = 1;
-                    $('.add_more').click(function(e){
-                     
+                    $('.add_more').click(function(e){                     
                     e.preventDefault();
-                  
-                    // sno = parseInt(sno)+1;
-                    no = no+1;
-                    $('#more-div').append(' <div class="row" id="'+no+'"><div class="col-md-5"><select name="doc_type[]" id=""  class="form-control" style="background-color:white;" required>   @foreach($get_doc_type as $doc_type)<option value="{{ $doc_type->id }}">{{ $doc_type->doc_type_name }}</option> @endforeach </select>  </div>  <div class="col-md-5"><input type="file" name="doc[]" accept="application/pdf" required class="form-control " style="background-color:white;" >  </div>  <div class="col-md-1"><button type="button" class="btn btn-danger text-white rem_data" data-id="'+no+'" name="remove" data-target="tr">Remove</button></div></div>');
-
+                    no = no+1;    
                    
+                    
+                     $('#more-div').append(`<tr  id="`+no+`"><td><select name="doc1_type[]" class="doc1-dropdown form-control " data-id="`+no+`"  style="background-color:white;" ><option value=""  selected >Select Document Category</option>@foreach($get_doc1_type as $doc1_type)<option value="{!!  json_encode($doc1_type["id"]) !!}" >{{ str_replace('"','',json_encode($doc1_type["doc1_type_name"])) }}</option>@endforeach</select>  </td><td><select name="doc2_type[]"  id="" class="form-control doc2-dropdown`+no+`"  style="background-color:white;" >  </select>  </td><td ><input type="file" name="doc[]"  accept="application/pdf" class="form-control " style="background-color:white;"> </td><td> <button type="button" class="btn btn-danger text-white rem_data" data-id="`+no+`" name="remove" data-target="tr">Remove</button></td> </tr>` );
+                    
+
                     $('.rem_data').click(function(e){
                         e.preventDefault();
                         var id = $(this).data('id');     
                         $('#'+id).remove();
                     });
-                });
+                
+                   
+
+                $('.doc1-dropdown').change(function(e){
+                        var id = $(this).data('id');  
+                        e.preventDefault();
+                        $.ajax({
+                            url: "/getDoc2Type",
+                            type: "POST",
+                            data: {
+                                id: this.value,
+                                _token: '{{csrf_token()}}'
+                            },
+                            dataType: 'json',
+                            success: function (result) {
+                              
+                                $('.doc2-dropdown'+id).html('<option value="" selected>Select Document Type</option>');
+                                $.each(result.doc2_type_data, function (key, value) {
+                                    $(".doc2-dropdown"+id).append('<option value="' + value
+                                        .id + '">' + value.doc2_type_name + '</option>');
+                                });
+                                // $('#city-dd').html('<option value="">Select City</option>');
+                            }
+                        });
+            
+                    });  
+                }); 
+                
+                $('.doc1-dropdown').change(function(e){
+                        var id = $(this).data('id');  
+                        e.preventDefault();
+                        $.ajax({
+                            url: "/getDoc2Type",
+                            type: "POST",
+                            data: {
+                                id: this.value,
+                                _token: '{{csrf_token()}}'
+                            },
+                            dataType: 'json',
+                            success: function (result) {
+                              
+                                $('.doc2-dropdown'+id).html('<option value="" selected>Select Document Type</option>');
+                                $.each(result.doc2_type_data, function (key, value) {
+                                    $(".doc2-dropdown"+id).append('<option value="' + value
+                                        .id + '">' + value.doc2_type_name + '</option>');
+                                });
+                                // $('#city-dd').html('<option value="">Select City</option>');
+                            }
+                        });
+            
+                    });  
+          
             });
         </script>
+
+      <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+      <script type="text/javascript"></script>
+      
+      
