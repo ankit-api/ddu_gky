@@ -169,7 +169,7 @@
                         <tbody id="more-div">
                             <tr>
                                 <td>
-                                    <select name="doc1_type[]" class="form-control doc1-dropdown"  data-id="1" style="background-color:white;" >
+                                    <select name="doc1_type[]" onchange="docType(this);" class="form-control doc1-dropdown"  data-id="1" style="background-color:white;" >
                                             <option value=""  selected >Select Document Category</option>
                                     @foreach($get_doc1_type as $doc1_type)
                                             <option value="{{ $doc1_type->id }}" >{{ $doc1_type->doc1_type_name }}</option>
@@ -212,6 +212,32 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script type="text/javascript">
+
+                    function docType(value){
+                   
+                        var id = $(value).data('id');  
+                      
+                        $.ajax({
+                            url: "/getDoc2Type",
+                            type: "POST",
+                            data: {
+                                id: value.value,
+                                _token: '{{csrf_token()}}'
+                            },
+                            dataType: 'json',
+                            success: function (result) {
+                              
+                                $('.doc2-dropdown'+id).html('<option value="" selected>Select Document Type</option>');
+                                $.each(result.doc2_type_data, function (key, value) {
+                                    $(".doc2-dropdown"+id).append('<option value="' + value
+                                        .id + '">' + value.doc2_type_name + '</option>');
+                                });
+                                // $('#city-dd').html('<option value="">Select City</option>');
+                            }
+                        });
+            
+                    }  
+          
              
             $(document).ready(function() {              
                 
@@ -221,66 +247,15 @@
                     no = no+1;    
                    
                     
-                     $('#more-div').append(`<tr  id="`+no+`"><td><select name="doc1_type[]" class="doc1-dropdown form-control " data-id="`+no+`"  style="background-color:white;" ><option value=""  selected >Select Document Category</option>@foreach($get_doc1_type as $doc1_type)<option value="{!!  json_encode($doc1_type["id"]) !!}" >{{ str_replace('"','',json_encode($doc1_type["doc1_type_name"])) }}</option>@endforeach</select>  </td><td><select name="doc2_type[]"  id="" class="form-control doc2-dropdown`+no+`"  style="background-color:white;" >  </select>  </td><td ><input type="file" name="doc[]"  accept="application/pdf" class="form-control " style="background-color:white;"> </td><td> <button type="button" class="btn btn-danger text-white rem_data" data-id="`+no+`" name="remove" data-target="tr">Remove</button></td> </tr>` );
+                     $('#more-div').append(`<tr  id="`+no+`"><td><select name="doc1_type[]" onchange="docType(this);" class="doc1-dropdown form-control " data-id="`+no+`"  style="background-color:white;" ><option value=""  selected >Select Document Category</option>@foreach($get_doc1_type as $doc1_type)<option value="{!!  json_encode($doc1_type["id"]) !!}" >{{ str_replace('"','',json_encode($doc1_type["doc1_type_name"])) }}</option>@endforeach</select>  </td><td><select name="doc2_type[]"  id="" class="form-control doc2-dropdown`+no+`"  style="background-color:white;" >  </select>  </td><td ><input type="file" name="doc[]"  accept="application/pdf" class="form-control " style="background-color:white;"> </td><td> <button type="button" class="btn btn-danger text-white rem_data" data-id="`+no+`" name="remove" data-target="tr">Remove</button></td> </tr>` );
                     
 
                     $('.rem_data').click(function(e){
                         e.preventDefault();
                         var id = $(this).data('id');     
                         $('#'+id).remove();
-                    });
-                
-                   
-
-                $('.doc1-dropdown').change(function(e){
-                        var id = $(this).data('id');  
-                        e.preventDefault();
-                        $.ajax({
-                            url: "/getDoc2Type",
-                            type: "POST",
-                            data: {
-                                id: this.value,
-                                _token: '{{csrf_token()}}'
-                            },
-                            dataType: 'json',
-                            success: function (result) {
-                              
-                                $('.doc2-dropdown'+id).html('<option value="" selected>Select Document Type</option>');
-                                $.each(result.doc2_type_data, function (key, value) {
-                                    $(".doc2-dropdown"+id).append('<option value="' + value
-                                        .id + '">' + value.doc2_type_name + '</option>');
-                                });
-                                // $('#city-dd').html('<option value="">Select City</option>');
-                            }
-                        });
-            
-                    });  
-                }); 
-                
-                $('.doc1-dropdown').change(function(e){
-                        var id = $(this).data('id');  
-                        e.preventDefault();
-                        $.ajax({
-                            url: "/getDoc2Type",
-                            type: "POST",
-                            data: {
-                                id: this.value,
-                                _token: '{{csrf_token()}}'
-                            },
-                            dataType: 'json',
-                            success: function (result) {
-                              
-                                $('.doc2-dropdown'+id).html('<option value="" selected>Select Document Type</option>');
-                                $.each(result.doc2_type_data, function (key, value) {
-                                    $(".doc2-dropdown"+id).append('<option value="' + value
-                                        .id + '">' + value.doc2_type_name + '</option>');
-                                });
-                                // $('#city-dd').html('<option value="">Select City</option>');
-                            }
-                        });
-            
-                    });  
-          
+                    });    
+                });       
             });
         </script>
 
