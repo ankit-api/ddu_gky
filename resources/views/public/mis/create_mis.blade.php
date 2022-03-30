@@ -63,11 +63,11 @@
                           <input name ="address" type="text" placeholder="Enter Full Address Of MIS" class="form-control">
                       </div> 
                       <div class="col-md-6">
-                        <label for="" class="m-2">Attach Image Document</label><br>
+                        <label for="" class="m-2">Attach Image Document <span class="text-danger">(Image size should be less than 512Kb)</span></label><br>
                         <input type="file" name="image_doc" accept="image/png, image/gif, image/jpeg" class="form-control " style="background-color:white;" >
                       </div>
                       <div class="col-md-6">
-                        <label for="" class="m-2">Attach Signature Document</label><br>
+                        <label for="" class="m-2">Attach Signature Document <span class="text-danger">(Image size should be less than 512Kb)</span></label><br>
                         <input type="file" name="sign_doc" accept="image/png, image/gif, image/jpeg" class="form-control" style="background-color:white;" >
                       </div>
                     </div><br>     

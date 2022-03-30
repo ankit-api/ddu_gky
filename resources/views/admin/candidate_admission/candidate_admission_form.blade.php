@@ -372,11 +372,11 @@
             </div><br>
             <div class="row">
                 <div class="col-md-6">
-                    <label for="" class="m-2">Attach Photo Document</label><br>
+                    <label for="" class="m-2">Attach Photo Document <span class="text-danger">(Photo size should be less than 512Kb)</span></label><br>
                     <input type="file" name="photo_doc" accept="image/png, image/gif, image/jpeg" class="form-control " style="background-color:white;" >
                 </div>
             </div><br><br>
-            <h5>Attachmnet Fields</h5>
+            <h5>Attachmnet Fields <span class="text-danger">(All Documents size should be less than 1Mb)</span></h5>
                <hr>
                <div class="doc-div" id="doc-div">   
                <div class="row">

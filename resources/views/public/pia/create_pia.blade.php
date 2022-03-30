@@ -47,7 +47,7 @@
                         <input name ="landline_no" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" maxlength="15" placeholder="Enter Landline No." class="form-control">
                       </div> 
                       <div class="col-md-6">
-                        <label for="" class="m-2">PIA Document</label><br>
+                        <label for="" class="m-2">PIA Document <span class="text-danger">(Pdf size should be less than 1Mb)</span></label><br>
                         <input type="file" name="pia_doc" accept="application/pdf"
                             class="form-control " style="background-color:white;" required>
                       </div>

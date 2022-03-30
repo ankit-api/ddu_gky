@@ -11,6 +11,7 @@ use App\Models\RegDocument;
 use App\Models\FamilyDetail;
 use App\Models\Doc1Type;
 use Auth;
+use Image;
 
 
 class AdmissionController extends Controller
@@ -132,7 +133,11 @@ class AdmissionController extends Controller
         if (!file_exists($file_loc)) {
             mkdir("Documents/Registration/$file_reg_code", 0777, true);
         }
-        $file->move($file_loc,$photodoc);
+        // $file->move($file_loc,$photodoc);
+        $img = Image::make($file->getRealPath());
+        $img->resize(200, 200, function ($constraint) {
+            $constraint->aspectRatio();
+        })->save($file_loc.'/'.$photodoc);
 
         $i = count($req->m_name);        
         for ($j = 0; $j < $i; $j++) {     

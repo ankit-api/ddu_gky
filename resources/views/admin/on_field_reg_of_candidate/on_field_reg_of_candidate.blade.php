@@ -149,11 +149,11 @@
             </div><br>
             <div class="row">
                 <div class="col-md-6">
-                    <label for="" class="m-2">Attach Signature Document</label><br>
+                    <label for="" class="m-2">Attach Signature Document <span class="text-danger">(Image size should be less than 512Kb)</span></label><br>
                     <input type="file" name="sign_doc" accept="image/png, image/gif, image/jpeg" class="form-control " style="background-color:white;" >
                 </div>
             </div><br><br>
-               <h5>Attachmnet Fields</h5>
+               <h5>Attachmnet Fields <span class="text-danger">(All Documents size should be less than 1Mb)</span></h5>
                <hr>
                <div class="row">
                 <div class="table-responsive">
