@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\CentreDetails;
 use App\Models\OnFieldRegistrationOfCandidate;
 use App\Models\RegDocument;
-use App\Models\DocType;
+use App\Models\Doc1Type;
 use App\Models\Block;
 use App\Models\Mobilizer;
 use Carbon\Carbon;
@@ -22,10 +22,10 @@ class OnFieldRegistrationOfCandidateController extends Controller
     public function registrationForm()
     {
         $get_centre = CentreDetails::all(); 
-        $get_doc_type = DocType::all();      
+        $get_doc1_type = Doc1Type::all();      
         $get_block = Block::all();
         $get_mobi = Mobilizer::all();
-        return view('admin.on_field_reg_of_candidate.on_field_reg_of_candidate', compact("get_centre","get_doc_type","get_block","get_mobi"));
+        return view('admin.on_field_reg_of_candidate.on_field_reg_of_candidate', compact("get_centre","get_doc1_type","get_block","get_mobi"));
     }
 
     public function postRegistration(Request $req)
@@ -95,15 +95,16 @@ class OnFieldRegistrationOfCandidateController extends Controller
         }
         $file->move($file_loc,$signdoc);
 
-        $i = count($req->doc_type);        
+        $i = count($req->doc2_type);        
         for ($j = 0; $j < $i; $j++) {  
             if(isset($req->file('doc')[$j])){  
                 $file = $req->file('doc')[$j];                
-                $filename = $req->doc_type[$j].'.'.$file->getClientOriginalExtension();
+                $filename = $req->doc2_type[$j].'.'.$file->getClientOriginalExtension();
             
                 $reg_doc = new RegDocument();
                 $reg_doc->register_id = $insertedId;
-                $reg_doc->doc_type_id = $req->doc_type[$j];
+                $reg_doc->doc1_type_id = $req->doc1_type[$j];
+                $reg_doc->doc2_type_id = $req->doc2_type[$j];
                 $reg_doc->file = $filename;
                 $reg_doc->added_by = Auth::user()->id;         
                 $reg_doc->save();     

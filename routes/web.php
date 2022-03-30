@@ -22,6 +22,7 @@ use App\Http\Controllers\DailyDistributionOfTabletController;
 use App\Http\Controllers\LetterController;
 use App\Http\Controllers\MISController;
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\AjaxController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +48,9 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 
 Route::group(['middleware' => ['auth']], function() {
 
+    //Ajax Route
+    Route::post('/getDoc2Type', [AjaxController::class,'getDoc2Type'])->name('getDoc2Type');
+  
     //Change Password
      //Pia Route
      Route::get('/change_password', [AuthenticationController::class,'changePassword'])->name('change_password');

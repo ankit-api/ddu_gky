@@ -9,7 +9,7 @@ use App\Models\OnFieldRegistrationOfCandidate;
 use App\Models\Admission;
 use App\Models\RegDocument;
 use App\Models\FamilyDetail;
-use App\Models\DocType;
+use App\Models\Doc1Type;
 use Auth;
 
 
@@ -24,7 +24,7 @@ class AdmissionController extends Controller
     {
         $batch = Batch::all();    
         $state = State::all();
-        $get_doc_type = DocType::all(); 
+        $get_doc_type = Doc1Type::all(); 
         $reg_can = OnFieldRegistrationOfCandidate::all();
         return view('admin.candidate_admission.candidate_admission_form', compact("batch",'state','reg_can','get_doc_type'));
     }
