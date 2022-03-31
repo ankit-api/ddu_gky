@@ -12,9 +12,31 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="home-tab">
-
+                    
                         <div class="container col-sm-12 mx-auto">
+                        <div class="col-sm-4 ml-2">
+                            <ol class="breadcrumb float-sm-right" style="border:none;  border-left:solid #dee2e6;">
+                                <li class="breadcrumb-item"><b>User Manager</b></li>
+                                <li class="breadcrumb-item"><b>PIA</b></li>
+                                <li class="breadcrumb-item active"><b>PIA List</b></li>
+                            </ol>
+                        </div><!-- /.col -->
                             <h4 class="text-center fw-bold">PIA List</h4><br>
+                            <div class="container row mb-2">
+                      
+                      
+                    </div>
+                            @if (session('alert_success'))
+                            <h6 class="alert alert-success">{{ session('alert_success') }}</h6>
+                            @endif     
+                            @if (session('alert_danger'))
+                                <h6 class="alert alert-danger">{{ session('alert_danger') }}</h6>
+                            @endif       
+                            @if ($errors->any())
+                                {{-- @foreach ($errors->all() as $error) --}}
+                                    <div class="alert alert-danger">{{$errors->first()}}</div>
+                                {{-- @endforeach --}}
+                            @endif 
                             <div class="container col-sm-12 mx-auto" style="overflow:scroll;">
                                 <table class="table table-bordered" id="table">
                                     <thead>

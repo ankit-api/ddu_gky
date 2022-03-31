@@ -18,9 +18,12 @@
                   <form action="{{ route('create_pia') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row">     
-                      @if (session('alert_status'))
-                          <h6 class="alert alert-success">{{ session('alert_status') }}</h6>
-                      @endif      
+                      @if (session('alert_success'))
+                          <h6 class="alert alert-success">{{ session('alert_success') }}</h6>
+                      @endif     
+                      @if (session('alert_danger'))
+                          <h6 class="alert alert-danger">{{ session('alert_danger') }}</h6>
+                      @endif  
                       @if ($errors->any())
                           {{-- @foreach ($errors->all() as $error) --}}
                               <div class="alert alert-danger">{{$errors->first()}}</div>

@@ -10,6 +10,7 @@ use App\Models\Admission;
 use App\Models\RegDocument;
 use App\Models\FamilyDetail;
 use App\Models\Doc1Type;
+use App\Models\Doc2Type;
 use Auth;
 use Image;
 
@@ -25,9 +26,9 @@ class AdmissionController extends Controller
     {
         $batch = Batch::all();    
         $state = State::all();
-        $get_doc_type = Doc1Type::all(); 
+        $get_doc1_type = Doc1Type::all(); 
         $reg_can = OnFieldRegistrationOfCandidate::all();
-        return view('admin.candidate_admission.candidate_admission_form', compact("batch",'state','reg_can','get_doc_type'));
+        return view('admin.candidate_admission.candidate_admission_form', compact("batch",'state','reg_can','get_doc1_type'));
     }
 
     public function postAdmission(Request $req)
@@ -125,7 +126,6 @@ class AdmissionController extends Controller
          $student->photo_doc = $photodoc;
          $student->added_by = Auth::user()->id; 
          $student->save();
-         $insertedId = $student->id;
 
          $reg_code = OnFieldRegistrationOfCandidate::select('reg_code')->find($req->reg_id);
         $file_reg_code = str_replace("/", "_", $reg_code['reg_code']);
@@ -142,7 +142,7 @@ class AdmissionController extends Controller
         $i = count($req->m_name);        
         for ($j = 0; $j < $i; $j++) {     
             $family = new FamilyDetail();
-            $family->admission_id = $insertedId;
+            $family->admission_id = $req->reg_id;
             $family->name = $req->m_name[$j];
             $family->relation = $req->relation[$j];
             $family->gender = $req->m_gender[$j];
@@ -157,23 +157,21 @@ class AdmissionController extends Controller
             $family->save();
         }
 
-        $i = count($req->doc_type);      
+        $i = count($req->doc2_type);      
         for ($j = 0; $j < $i; $j++) {  
             if(isset($req->file('doc')[$j])){  
-                $document = RegDocument::where('register_id', $req->reg_id)->where('doc_type_id', $req->doc_type[$j])->get();
-                if( $document == "false")
-                   {
-                    return redirect()->back()->with('alert_status','Duplicate File!');
-                   }    else {     
-                    $reg_code = OnFieldRegistrationOfCandidate::select('reg_code')->find($req->reg_id);
-                    $file = $req->file('doc')[$j];    
-                    $doc_type_name = DocType::find($req->doc_type[$j])->doc_type_name;   
-                    $filename = $doc_type_name.'.'.$file->getClientOriginalExtension();
+                $document = RegDocument::where('register_id', $req->reg_id)->where('doc1_type_id', $req->doc1_type[$j])->where('doc2_type_id', $req->doc2_type[$j])->count();
+                if( $document == 0)
+                   {                  
+                    $doc_name = Doc2Type::where('id', $req->doc2_type[$j])->first('doc2_type_name');
+                    $file = $req->file('doc')[$j];                
+                    $filename = $doc_name['doc2_type_name'].'.'.$file->getClientOriginalExtension();
+                    $filename = str_replace("/","-", $filename);
                 
-                    $reg_doc = new RegDocument();
-                    // $reg_doc->register_id = $insertedId;
-                     $reg_doc->register_id = 1;
-                    $reg_doc->doc_type_id = $req->doc_type[$j];
+                    $reg_doc = new RegDocument();                   
+                    $reg_doc->register_id = $req->reg_id;
+                    $reg_doc->doc1_type_id = $req->doc1_type[$j];
+                    $reg_doc->doc2_type_id = $req->doc2_type[$j];
                     $reg_doc->file = $filename;
                     $reg_doc->added_by = Auth::user()->id;         
                     $reg_doc->save();    
@@ -181,6 +179,7 @@ class AdmissionController extends Controller
                     // $path = 'document/reg_doc';
                     $file->move($file_loc,$file->getClientOriginalName());
                     // $req->file($filename)->storeAs($path,$filename);
+                   
                 }
             }
         }

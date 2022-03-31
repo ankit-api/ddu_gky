@@ -48,6 +48,9 @@ class MasterController extends Controller
         //     $last_id = PIA::orderBy('id', 'desc')->first()->id;
         //     $pia_code .= sprintf("%'04d",$last_id + 1);
         // }
+
+        $user_check = User::where('user_code',$req->pia_code)->get();
+
         $file = $req->file('pia_doc');
         $piadoc = $file->getClientOriginalName();
 
@@ -79,8 +82,7 @@ class MasterController extends Controller
         $message->to($toEmail)
         ->subject('Mail');
         $message->from(env('MAIL_USERNAME'), env('APP_NAME'));
-        });
-
+        });     
 
         $user = new User();
         $user->role_id = '2';
@@ -91,10 +93,9 @@ class MasterController extends Controller
         $user->save();
 
         $path = 'Documents/PIA_File';
-        $file->move($path,$piadoc);
-       
-        return redirect()->back()->with('alert_status','PIA Added Successfully');
-
+        $file->move($path,$piadoc);       
+        return redirect()->route('pia_list')->with('alert_success','PIA Added Successfully');
+        
     }
 
     public function piaList()
