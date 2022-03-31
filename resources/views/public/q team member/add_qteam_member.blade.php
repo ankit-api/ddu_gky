@@ -36,8 +36,8 @@
                     </select> 
                   </div>
                 <div class="col-md-6">
-                    <label for="" class="m-2">Q-Team Member Code</label><br>
-                    <input name ="q_code" type="text" required placeholder="Enter Q-Team Member Code" class="form-control">
+                    <label for="" class="m-2">Q-Team Member Code <span class="text-danger" style="display:none;" id="code_exist">(Q-Team Member Code Already Exist)</span></label><br>
+                    <input name ="q_code" id="qteam_code" type="text" required placeholder="Enter Q-Team Member Code" class="form-control">
                 </div> 
                 <div class="col-md-6">
                     <label for="" class="m-2">Full Name</label><br>
@@ -77,7 +77,7 @@
                     <input name ="reporting_off" type="text" required placeholder="Enter Reporting Office" class="form-control">
                 </div> 
               </div><br>     
-               <button type="submit" class="text-light btn btn-lg btn-success btn-icon-text">
+               <button type="submit" class="text-light btn btn-lg btn-success btn-icon-text" id="qteam_submit">
                           <i class="ti-upload btn-icon-prepend"></i>
                           Submit
                 </button>              
@@ -87,5 +87,30 @@
         </div>
     </div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $("#qteam_code").keyup(function () {
+        var qteam_code = $('#qteam_code').val();
+        $.ajax({
+            type: "POST",
+            url: "/qteam_check_duplicate",
+            data: { qteam_code : qteam_code, _token: '{{csrf_token()}}' },
+            dataType: 'json',
+            success: function (data) {
+                if (data > 0) {
+                    $('#code_exist').css('display','');
+                    $('#qteam_submit').attr('disabled','disabled');
+                } else {
+                    $('#code_exist').css('display','none');
+                    $('#qteam_submit').removeAttr('disabled');
+                }
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+    });
+</script>
 
 @endsection

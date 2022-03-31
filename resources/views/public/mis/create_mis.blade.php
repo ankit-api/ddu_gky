@@ -36,8 +36,8 @@
                         </select> 
                       </div>  
                       <div class="col-md-4">
-                        <label for="" class="m-2">MIS Code/Unique ID</label><br>
-                        <input name="mis_code" type="text" placeholder="Enter MIS Code" class="form-control">
+                        <label for="" class="m-2">MIS Code/Unique ID <span class="text-danger" style="display:none;" id="code_exist">(MIS Code Already Exist)</span></label><br>
+                        <input name="mis_code" id="mis_code" type="text" placeholder="Enter MIS Code" class="form-control">
                       </div>
                       <div class="col-md-4">
                         <label for="" class="m-2">MIS Type</label><br>
@@ -71,7 +71,7 @@
                         <input type="file" name="sign_doc" accept="image/png, image/gif, image/jpeg" class="form-control" style="background-color:white;" >
                       </div>
                     </div><br>     
-                    <button type="submit" class="text-light btn btn-lg btn-success btn-icon-text">
+                    <button type="submit" class="text-light btn btn-lg btn-success btn-icon-text" id="mis_submit">
                               <i class="ti-upload btn-icon-prepend"></i>
                               Submit
                     </button>   
@@ -83,4 +83,29 @@
           </div> 
         </div>
          
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $("#mis_code").keyup(function () {
+        var mis_code = $('#mis_code').val();
+        $.ajax({
+            type: "POST",
+            url: "/mis_check_duplicate",
+            data: { mis_code : mis_code, _token: '{{csrf_token()}}' },
+            dataType: 'json',
+            success: function (data) {
+                if (data > 0) {
+                    $('#code_exist').css('display','');
+                    $('#mis_submit').attr('disabled','disabled');
+                } else {
+                    $('#code_exist').css('display','none');
+                    $('#mis_submit').removeAttr('disabled');
+                }
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+    });
+</script>
 @endsection

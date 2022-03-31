@@ -27,8 +27,8 @@
                           {{-- @endforeach --}}
                       @endif 
                       <div class="col-md-6">
-                        <label for="" class="m-2">PIA Code</label><br>
-                        <input name="pia_code" type="text" placeholder="Enter PIA Code" class="form-control">
+                        <label for="" class="m-2">PIA Code <span class="text-danger" style="display:none;" id="code_exist">(PIA Code Already Exist)</span></label><br>
+                        <input name="pia_code" id="pia_code" type="text" placeholder="Enter PIA Code" class="form-control">
                       </div>
                       <div class="col-md-6">
                           <label for="" class="m-2">Name of PIA</label><br>
@@ -56,7 +56,7 @@
                           <input name ="address" type="text" placeholder="Enter Full Address Of PIA" class="form-control">
                       </div> 
                     </div><br>     
-                    <button type="submit" class="text-light btn btn-lg btn-success btn-icon-text">
+                    <button type="submit" id="pia_submit" class="text-light btn btn-lg btn-success btn-icon-text">
                               <i class="ti-upload btn-icon-prepend"></i>
                               Submit
                     </button>   
@@ -68,4 +68,29 @@
           </div> 
         </div>
          
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $("#pia_code").keyup(function () {
+        var pia_code = $('#pia_code').val();
+        $.ajax({
+            type: "POST",
+            url: "/pia_check_duplicate",
+            data: { pia_code : pia_code, _token: '{{csrf_token()}}' },
+            dataType: 'json',
+            success: function (data) {
+                if (data > 0) {
+                    $('#code_exist').css('display','');
+                    $('#pia_submit').attr('disabled','disabled');
+                } else {
+                    $('#code_exist').css('display','none');
+                    $('#pia_submit').removeAttr('disabled');
+                }
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+    });
+</script>
 @endsection

@@ -34,8 +34,8 @@
                     </select> 
                 </div>
                 <div class="col-md-6">
-                    <label for="" class="m-2">Centre Incharge Code</label><br>
-                    <input name ="ci_code" type="text" class="form-control" placeholder="Enter Centre Incharge Code">
+                    <label for="" class="m-2">Centre Incharge Code <span class="text-danger" style="display:none;" id="code_exist">(Centre Incharge Code Already Exist)</span></label><br>
+                    <input name ="ci_code" type="text" class="form-control" id="centreinch_code" placeholder="Enter Centre Incharge Code">
                 </div>                
                 <div class="col-md-6">
                     <label for="" class="m-2">Centre Name</label><br>
@@ -77,7 +77,7 @@
                 </div> 
                  
               </div><br>     
-               <button type="submit" class="text-light btn btn-lg btn-success btn-icon-text">
+               <button type="submit" class="text-light btn btn-lg btn-success btn-icon-text" id="centreinch_submit">
                           <i class="ti-upload btn-icon-prepend"></i>
                           Submit
                 </button>              
@@ -87,5 +87,30 @@
         </div>
     </div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $("#centreinch_code").keyup(function () {
+        var centreinch_code = $('#centreinch_code').val();
+        $.ajax({
+            type: "POST",
+            url: "/centreinch_check_duplicate",
+            data: { centreinch_code : centreinch_code, _token: '{{csrf_token()}}' },
+            dataType: 'json',
+            success: function (data) {
+                if (data > 0) {
+                    $('#code_exist').css('display','');
+                    $('#centreinch_submit').attr('disabled','disabled');
+                } else {
+                    $('#code_exist').css('display','none');
+                    $('#centreinch_submit').removeAttr('disabled');
+                }
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+    });
+</script>
 
 @endsection

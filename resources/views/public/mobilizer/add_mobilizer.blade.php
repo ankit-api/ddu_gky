@@ -43,8 +43,8 @@
                     </select> 
                 </div>
                 <div class="col-md-6">
-                    <label for="" class="m-2">Mobilizer Code</label><br>
-                    <input name ="mob_code" type="text" class="form-control" placeholder="Enter Mobilizer Code">
+                    <label for="" class="m-2">Mobilizer Code <span class="text-danger" style="display:none;" id="code_exist">(Mobilizer Code Already Exist)</span></label><br>
+                    <input name ="mob_code" id="mob_code" type="text" class="form-control" placeholder="Enter Mobilizer Code">
                 </div> 
                 <div class="col-md-6">
                     <label for="" class="m-2">Name</label><br>
@@ -93,7 +93,7 @@
                 </div>
                  
               </div><br>     
-               <button type="submit" class="text-light btn btn-lg btn-success btn-icon-text">
+               <button type="submit" class="text-light btn btn-lg btn-success btn-icon-text" id="mob_submit">
                           <i class="ti-upload btn-icon-prepend"></i>
                           Submit
                 </button>              
@@ -103,5 +103,30 @@
         </div>
     </div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $("#mob_code").keyup(function () {
+        var mob_code = $('#mob_code').val();
+        $.ajax({
+            type: "POST",
+            url: "/mob_check_duplicate",
+            data: { mob_code : mob_code, _token: '{{csrf_token()}}' },
+            dataType: 'json',
+            success: function (data) {
+                if (data > 0) {
+                    $('#code_exist').css('display','');
+                    $('#mob_submit').attr('disabled','disabled');
+                } else {
+                    $('#code_exist').css('display','none');
+                    $('#mob_submit').removeAttr('disabled');
+                }
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+    });
+</script>
 
 @endsection

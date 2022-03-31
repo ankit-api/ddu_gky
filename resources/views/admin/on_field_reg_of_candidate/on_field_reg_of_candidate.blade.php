@@ -37,8 +37,8 @@
                     </select>  
                 </div>
                 <div class="col-md-4">
-                    <label for="" class="m-2">Registration Code/Panjee Code</label><br>
-                    <input name ="reg_code" type="text" class="form-control" placeholder="Enter Registration Code">
+                    <label for="" class="m-2">Registration Code/Panjee Code <span class="text-danger" style="display:none;" id="code_exist">(Registration / Panjee Code Already Exist)</span></label><br>
+                    <input name ="reg_code" type="text" class="form-control" id="reg_code" placeholder="Enter Registration Code">
                 </div> 
                 <div class="col-md-4">
                     <label for="" class="m-2">Counselling</label><br>
@@ -198,7 +198,7 @@
             </div>
         </div>
                 <br>
-               <button type="submit" class="text-light btn btn-lg btn-success btn-icon-text">
+               <button type="submit" class="text-light btn btn-lg btn-success btn-icon-text" id="reg_submit">
                           <i class="ti-upload btn-icon-prepend"></i>
                           Submit
                 </button>
@@ -255,7 +255,29 @@
                         var id = $(this).data('id');     
                         $('#'+id).remove();
                     });    
-                });       
+                });      
+                
+                $("#reg_code").keyup(function () {
+                        var reg_code = $('#reg_code').val();
+                        $.ajax({
+                            type: "POST",
+                            url: "/reg_check_duplicate",
+                            data: { reg_code : reg_code, _token: '{{csrf_token()}}' },
+                            dataType: 'json',
+                            success: function (data) {
+                                if (data > 0) {
+                                    $('#code_exist').css('display','');
+                                    $('#reg_submit').attr('disabled','disabled');
+                                } else {
+                                    $('#code_exist').css('display','none');
+                                    $('#reg_submit').removeAttr('disabled');
+                                }
+                            },
+                            error: function (data) {
+                                console.log(data);
+                            }
+                        });
+                    });
             });
         </script>
 
