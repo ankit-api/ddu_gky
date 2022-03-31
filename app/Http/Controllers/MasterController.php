@@ -20,6 +20,7 @@ use App\Models\Block;
 use Image;
 use Mail;
 use Auth;
+use Response;
 
 class MasterController extends Controller
 {

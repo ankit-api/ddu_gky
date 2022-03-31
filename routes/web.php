@@ -50,6 +50,15 @@ Route::group(['middleware' => ['auth']], function() {
 
     //Ajax Route
     Route::post('/getDoc2Type', [AjaxController::class,'getDoc2Type'])->name('getDoc2Type');
+
+    //Code Duplicacy
+    Route::post('/pia_check_duplicate', [AjaxController::class,'pia_check_duplicate']);
+    Route::post('/mis_check_duplicate', [AjaxController::class,'mis_check_duplicate']);
+    Route::post('/mob_check_duplicate', [AjaxController::class,'mob_check_duplicate']);
+    Route::post('/qteam_check_duplicate', [AjaxController::class,'qteam_check_duplicate']);
+    Route::post('/trainer_check_duplicate', [AjaxController::class,'trainer_check_duplicate']);
+    Route::post('/centreinch_check_duplicate', [AjaxController::class,'centreinch_check_duplicate']);
+    Route::post('/reg_check_duplicate', [AjaxController::class,'reg_check_duplicate']);
   
     //Change Password
      //Pia Route

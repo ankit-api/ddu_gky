@@ -56,8 +56,8 @@
             </div><br>
             <div class="row"> 
                 <div class="col-md-4">
-                    <label for="" class="m-2">Trainer Code</label><br>
-                    <input type="text" name="trainer_code" class="form-control" required placeholder="Enter Trainer Code">
+                    <label for="" class="m-2">Trainer Code <span class="text-danger" style="display:none;" id="code_exist">(Trainer Code Already Exist)</span></label><br>
+                    <input type="text" name="trainer_code" id="trainer_code" class="form-control" required placeholder="Enter Trainer Code">
                 </div>
                 <div class="col-md-4">
                     <label for="" class="m-2">Training Type</label><br>
@@ -256,7 +256,7 @@
                     <textarea name="other_info" cols="120" rows="4" placeholder="Comments.."></textarea>
                 </div>
             </div><br>
-               <button type="submit" class="text-light btn btn-lg btn-success btn-icon-text">
+               <button type="submit" class="text-light btn btn-lg btn-success btn-icon-text" id="trainer_submit">
                           <i class="ti-upload btn-icon-prepend"></i>
                           Submit
                 </button>
@@ -306,7 +306,27 @@
                     });
                 });
 
-                
+                $("#trainer_code").keyup(function () {
+                    var trainer_code = $('#trainer_code').val();
+                    $.ajax({
+                        type: "POST",
+                        url: "/trainer_check_duplicate",
+                        data: { trainer_code : trainer_code, _token: '{{csrf_token()}}' },
+                        dataType: 'json',
+                        success: function (data) {
+                            if (data > 0) {
+                                $('#code_exist').css('display','');
+                                $('#trainer_submit').attr('disabled','disabled');
+                            } else {
+                                $('#code_exist').css('display','none');
+                                $('#trainer_submit').removeAttr('disabled');
+                            }
+                        },
+                        error: function (data) {
+                            console.log(data);
+                        }
+                    });
+                });
                       
             });
     </script>
