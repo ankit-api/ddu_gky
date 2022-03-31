@@ -97,7 +97,7 @@
               <form method="POST" action="{{ route('login') }}" class="pt-3">
                   @csrf
                 <div class="form-group">
-                 <input id="email" type="email" class="form-control form-control-lg @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus  placeholder="Username">
+                 <input id="user_code" type="text" class="form-control form-control-lg @error('user_code') is-invalid @enderror" name="user_code" value="{{ old('user_code') }}" required autocomplete="user_code" autofocus  placeholder="Username">
 
                   
                 </div>

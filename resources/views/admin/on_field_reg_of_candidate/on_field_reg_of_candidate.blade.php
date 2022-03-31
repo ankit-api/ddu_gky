@@ -181,7 +181,7 @@
                                     </select>  
                                 </td>
                                 <td >
-                                    <input type="file" name="doc[]"  accept="application/pdf" class="form-control " style="background-color:white;"> 
+                                    <input type="file" name="doc[]"  accept="application/pdf" required class="form-control " style="background-color:white;"> 
                                 </td>
                                 <td>
                                     <button type="button" class="text-light btn  btn-primary btn-icon-text add_more" >
@@ -247,7 +247,7 @@
                     no = no+1;    
                    
                     
-                     $('#more-div').append(`<tr  id="`+no+`"><td><select name="doc1_type[]" onchange="docType(this);" class="doc1-dropdown form-control " data-id="`+no+`"  style="background-color:white;" ><option value=""  selected >Select Document Category</option>@foreach($get_doc1_type as $doc1_type)<option value="{!!  json_encode($doc1_type["id"]) !!}" >{{ str_replace('"','',json_encode($doc1_type["doc1_type_name"])) }}</option>@endforeach</select>  </td><td><select name="doc2_type[]"  id="" class="form-control doc2-dropdown`+no+`"  style="background-color:white;" >  </select>  </td><td ><input type="file" name="doc[]"  accept="application/pdf" class="form-control " style="background-color:white;"> </td><td> <button type="button" class="btn btn-danger text-white rem_data" data-id="`+no+`" name="remove" data-target="tr">Remove</button></td> </tr>` );
+                     $('#more-div').append(`<tr  id="`+no+`"><td><select name="doc1_type[]" onchange="docType(this);" class="doc1-dropdown form-control " data-id="`+no+`"  style="background-color:white;" ><option value=""  selected >Select Document Category</option>@foreach($get_doc1_type as $doc1_type)<option value="{!!  json_encode($doc1_type["id"]) !!}" >{{ str_replace('"','',json_encode($doc1_type["doc1_type_name"])) }}</option>@endforeach</select>  </td><td><select name="doc2_type[]"  id="" class="form-control doc2-dropdown`+no+`"  style="background-color:white;" >  </select>  </td><td ><input type="file" name="doc[]"  accept="application/pdf" required class="form-control " style="background-color:white;"> </td><td> <button type="button" class="btn btn-danger text-white rem_data" data-id="`+no+`" name="remove" data-target="tr">Remove</button></td> </tr>` );
                     
 
                     $('.rem_data').click(function(e){

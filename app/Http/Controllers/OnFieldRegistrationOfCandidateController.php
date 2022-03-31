@@ -8,6 +8,7 @@ use App\Models\OnFieldRegistrationOfCandidate;
 use App\Models\RegDocument;
 use App\Models\Doc1Type;
 use App\Models\Block;
+use App\Models\Doc2Type;
 use App\Models\Mobilizer;
 use Carbon\Carbon;
 use Auth;
@@ -87,7 +88,7 @@ class OnFieldRegistrationOfCandidateController extends Controller
         $register->added_by = Auth::user()->id; 
         $register->registered_on = Carbon::now();
         $register->save();
-        $insertedId = $register->id;
+    
 
         $file_reg_code = str_replace("/", "_", $req->reg_code);
         $file_loc = "Documents/Registration/$file_reg_code";
@@ -104,18 +105,20 @@ class OnFieldRegistrationOfCandidateController extends Controller
         $i = count($req->doc2_type);        
         for ($j = 0; $j < $i; $j++) {  
             if(isset($req->file('doc')[$j])){  
+                $doc_name = Doc2Type::where('id', $req->doc2_type[$j])->first('doc2_type_name');
+        
                 $file = $req->file('doc')[$j];                
-                $filename = $req->doc2_type[$j].'.'.$file->getClientOriginalExtension();
-            
+                $filename = $doc_name['doc2_type_name'].'.'.$file->getClientOriginalExtension();
+                $filename = str_replace("/","-", $filename);
                 $reg_doc = new RegDocument();
-                $reg_doc->register_id = $insertedId;
+                $reg_doc->register_id = $req->reg_code;
                 $reg_doc->doc1_type_id = $req->doc1_type[$j];
                 $reg_doc->doc2_type_id = $req->doc2_type[$j];
                 $reg_doc->file = $filename;
                 $reg_doc->added_by = Auth::user()->id;         
-                $reg_doc->save();     
-                
-                $file->move($file_loc,$file->getClientOriginalName());
+                $reg_doc->save();  
+
+                $file->move($file_loc,$filename);
             }
         }
         
