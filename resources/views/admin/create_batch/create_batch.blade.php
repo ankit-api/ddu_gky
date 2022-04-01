@@ -14,6 +14,7 @@
               <div class="home-tab">
                   
         <div class="container col-sm-12">
+       
                 <h4 class="text-center fw-bold">SF 6.3A1: Batch details</h4><br>
         <form action="{{ route('create_batch') }}" method="post">
         @csrf

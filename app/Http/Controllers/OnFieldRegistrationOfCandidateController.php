@@ -122,7 +122,7 @@ class OnFieldRegistrationOfCandidateController extends Controller
             }
         }
         
-        return redirect()->back()->with('alert_status','Candidate Registered Successfully!');
+        return redirect()->route('mis_list')->with('alert_status','Candidate Registered Successfully!');
     }
 
     public function registrationList(){

@@ -14,8 +14,16 @@
               <div class="home-tab">
                   
                 <div class="container col-sm-12 mx-auto">
+                        <div class="col-sm-4 ml-2">
+                            <ol class="breadcrumb float-sm-right" style="background-color: #6b8ed6;border-radius: 5px;margin-left: 28px;">
+                                <li class="breadcrumb-item"><a  style="color:#fff; text-decoration: none;" href="{{ route('home') }}" aria-expanded="false" aria-controls="ui-basic"><i class="fa-solid fa-house"></i></a></li>
+                                    <li class="breadcrumb-item"><a  style="color:#fff; text-decoration: none;"data-bs-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic3">Centre</a></li>
+                                    <li class="breadcrumb-item active" ><a  style="color:#fff; text-decoration: none;" href="{{ route('centre_list')}}" ><b>Centre List </b></a>
+                                </li>
+                            </ol>
+                        </div>
                   <h4 class="text-center fw-bold">Centre List</h4><br>
-                    <div class="container col-sm-12 mx-auto" style="overflow:scroll;">
+                    <div class="container col-sm-12 mx-auto">
                         <table class="table table-bordered" id="table1">
                             <thead>
                                 <tr>
@@ -41,7 +49,8 @@
                                 <td>{{ $centre->getDistrict->district_name }}</td>                              
                                 <td>{{ $centre->address }}</td>
                                 <td>
-                                  <button class="text-light btn btn-info">Edit</button><button class="text-light btn btn-danger">Delete</button>
+                                  <button class="text-light btn btn-primary">View</button>
+                                  <!-- <button class="text-light btn btn-danger">Deactive</button> -->
                                 </td>
                                 </tr>
                                 @endforeach

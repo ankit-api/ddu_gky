@@ -13,9 +13,19 @@
             <div class="col-sm-12">
               <div class="home-tab">
                   
-                <div class="container col-sm-12 mx-auto">
-                  <h4 class="text-center fw-bold">Q-Team Member List</h4><br>
-                    <div class="container col-sm-12 mx-auto" style="overflow:scroll;">
+                <div class="container col-sm-12 mx-auto" >
+
+                <div class="col-sm-7 ml-2 mb-4">
+                            <ol class="breadcrumb float-sm-right" style="background-color: #6b8ed6;border-radius: 5px;margin-left: 28px;">
+                                <li class="breadcrumb-item"><a  style="color:#fff; text-decoration: none;" href="{{ route('home') }}" aria-expanded="false" aria-controls="ui-basic"><i class="fa-solid fa-house"></i></a></li>
+                                    <li class="breadcrumb-item"><a  style="color:#fff; text-decoration: none;"data-bs-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic6">User Manager</a></li>
+                                    <li class="breadcrumb-item" ><a  style="color:#fff; text-decoration: none;"data-bs-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic4">Quality Team Member </a></li>
+                                    <li class="breadcrumb-item active" ><a  style="color:#fff; text-decoration: none;" href="{{ route('q_team_member_list')}}" ><b>Quality Team Member List</b></a>
+                                </li>
+                            </ol>
+                        </div>                
+                        <h4 class="text-center fw-bold">Quality Team Member List</h4><br>
+                    <div class="container col-sm-12 mx-auto">
                         <table class="table table-bordered" id="table">
                             <thead>
                                 <tr>
@@ -23,13 +33,8 @@
                                     {{-- <th>PIA Name</th> --}}
                                     <th>Sanction Order No.</th>
                                     <th>Q-Team Member Designation</th>
-                                    <th>Q-Team Member Reporting Office</th>
                                     <th>Q-Team Member Code</th>
                                     <th>Q-Team Member Name</th>
-                                    <th>Gender</th>
-                                    <th>Email</th>
-                                    <th>Contact</th>
-                                    <th>Address</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -40,15 +45,11 @@
                                     {{-- <td>{{ $qteam->getPiaName->pia_name }}</td> --}}
                                     <td>{{ $qteam->getProjectName->sanction_order_no }}</td>
                                     <td>{{ $qteam->designation }}</td>
-                                    <td>{{ $qteam->reporting_office }}</td>
                                     <td>{{ $qteam->qteam_member_code }}</td>
                                     <td>{{ $qteam->name }}</td>
-                                    <td>{{ $qteam->gender }}</td>
-                                    <td>{{ $qteam->email }}</td>
-                                    <td>{{ $qteam->contact }}</td>
-                                    <td>{{ $qteam->address }}</td>
                                     <td>
-                                  <button class="text-light btn btn-info">Edit</button><button class="text-light btn btn-danger">Delete</button>
+                                  <button class="text-light btn btn-primary">View</button>
+                                  <!-- <button class="text-light btn btn-danger">Deactive</button> -->
                                 </td>
                                 </tr>
                                 @endforeach
