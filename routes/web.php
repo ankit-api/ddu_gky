@@ -148,5 +148,8 @@ Route::group(['middleware' => ['auth']], function() {
     //Print-Layout Forms
     Route::get('/print_srlm_to_cert', [LetterController::class,'print_srlm_to_cert'])->name('print_srlm_to_cert');
     Route::get('/print_srlm_from_cert', [LetterController::class,'print_srlm_from_cert'])->name('print_srlm_from_cert');
+
+    //Testing Mail Layout
+    Route::view('/sendmail', 'mail/sendmail');
     
 });

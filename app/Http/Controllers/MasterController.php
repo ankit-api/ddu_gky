@@ -73,15 +73,24 @@ class MasterController extends Controller
         // $toEmail = 'ankit.bisht@prakharsoftwares.com';
         $toEmail = 'bhandaridisha0309@gmail.com';
         $from=env('MAIL_USERNAME'); 
+        // $data= 
+        // [  
+        //     'otp'=>$random_password,
+        //     'user'=>'PIA',
+        // ];       
+        
         $data= 
         [  
-            'otp'=>$random_password,
-            'user'=>'PIA',
-        ];                
+            'username'=>$req->pia_code,
+            'password'=>$random_password,
+            'name'=>$req->name,
+            'email'=>$req->official_email,
+            'usertype'=>'PIA',
+        ];    
 
-        Mail::send('mail.otp', $data, function ($message) use ($toEmail,$from) {
+        Mail::send('mail.sendmail', $data, function ($message) use ($toEmail,$from) {
         $message->to($toEmail)
-        ->subject('Mail');
+        ->subject('Login Credentials');
         $message->from(env('MAIL_USERNAME'), env('APP_NAME'));
         });     
 
