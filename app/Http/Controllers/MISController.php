@@ -38,10 +38,12 @@ class MISController extends Controller
             'sign_doc' => 'max:512'
         ]);
 
+        $file_reg_code = str_replace("/", "_", $req->mis_code);
+
         $file1 = $req->file('image_doc');
         $file2 = $req->file('sign_doc');
-        $filename1 = $req->mis_code.'_image.'.$file1->getClientOriginalExtension();
-        $filename2 = $req->mis_code.'_sign.'.$file2->getClientOriginalExtension();
+        $filename1 = $file_reg_code.'_image.'.$file1->getClientOriginalExtension();
+        $filename2 = $file_reg_code.'_sign.'.$file2->getClientOriginalExtension();
 
         $req->mis_type=="mis_head" ? $role_id="7" : $role_id="8";
         $req->mis_type=="mis_head" ? $mis_role="MIS Head" : $mis_role="MIS Executive";
@@ -113,7 +115,7 @@ class MISController extends Controller
             $constraint->aspectRatio();
         })->save($path.'/'.$filename2);
 
-        return redirect()->route('mobilizer_list')->with('alert_status','MIS Added Successfully');
+        return redirect()->route('mis_list')->with('alert_status','MIS Added Successfully');
     }
 
     public function misList(){

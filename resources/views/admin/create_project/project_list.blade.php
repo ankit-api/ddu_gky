@@ -27,8 +27,8 @@
                                 <table class="table table-bordered" id="table1">
                                     <thead>
                                         <tr>
-                                            {{-- <th>PIA Code</th> --}}
-                                            {{-- <th>PIA Name</th> --}}
+                                            <th>PIA Code</th>
+                                            <th>PIA Name</th>
                                             <th>Project Name</th>
                                             <th>State</th>
                                             <th>District</th>
@@ -39,8 +39,8 @@
                                     <tbody>
                                         @foreach ($project_data as $project)
                                             <tr>
-                                                {{-- <td>{{ $project->getProjectList->pia_code }}</td> --}}
-                                                {{-- <td>{{ $project->getProjectList->pia_name }}</td> --}}
+                                                <td>{{ $project->getProjectList->pia_code }}</td> 
+                                                <td>{{ $project->getProjectList->pia_name }}</td>
                                                 <td>{{ $project->name }}</td>
                                                 <td>{{ $project->getState->state_name }}</td>
                                                 <td>{{ $project->getDistrict->district_name }}</td> 

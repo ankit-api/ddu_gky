@@ -182,7 +182,7 @@ class MasterController extends Controller
 
         $path = 'Documents/Project_File';
         $file->move($path,$filename);
-        return redirect()->back()->with('alert_status','Project Added Successfully');
+        return redirect()->route('project_list')->with('alert_status','Project Added Successfully');
     }
 
     public function projectList()
