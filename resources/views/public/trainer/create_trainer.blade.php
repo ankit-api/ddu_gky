@@ -130,7 +130,7 @@
                 </div>
                 <div class="col-md-3">
                     <label for="" class="m-2">Date of Birth</label><br>
-                   <input type="date" name="dob"  required class="form-control">
+                   <input type="date" name="dob" max="{{date("Y-m-d")}}" required class="form-control">
                 </div>
                 <div class="col-md-3">
                     <label for="" class="m-2">Adhaar no </label><br>
@@ -236,8 +236,8 @@
                         <tbody>
                             <tr>
                                 <td id="1">1</td>
-                                <td><input type="date" name="from[]" id="" class="form-control" value=""  placeholder=""></td>
-                                <td><input type="date" name="to[]" id="" class="form-control" value=""  placeholder=""></td>
+                                <td><input type="date" name="from[]" max="{{date("Y-m-d")}}" id="" class="form-control" value=""  placeholder=""></td>
+                                <td><input type="date" name="to[]" max="{{date("Y-m-d")}}" id="" class="form-control" value=""  placeholder=""></td>
                                 <td><input type="text" name="c_name[]" id="" class="form-control" value=""  placeholder="Enter Company Name "></td>
                                 <td><input type="text" name="s_desg[]" id="" class="form-control" value=""  placeholder="Enter Starting designation"></td>
                                 <td><input type="text" name="l_desg[]" id="" class="form-control" value=""  placeholder="Enter Last designation"></td>
@@ -297,7 +297,7 @@
 
                     e.preventDefault();
                     // sno = parseInt(sno)+1;
-                    $('tbody').append('<tr><td id="'+sno+'">'+sno+'</td> <td><input type="date" name="from[]" id="" class="form-control" value=""  placeholder=""></td><td><input type="date" name="to[]" id="" class="form-control" value=""  placeholder=""></td><td><input type="text" name="c_name[]" id="" class="form-control" value=""  placeholder="Enter Company Name "></td><td><input type="text" name="s_desg[]" id="" class="form-control" value=""  placeholder="Enter Starting designation"></td><td><input type="text" name="l_desg[]" id="" class="form-control" value=""  placeholder="Enter Last designation"></td><td><input type="text" name="l_salary[]" id="" class="form-control" value=""  placeholder="Enter Last salary drawn"></td>  <td><button class="btn btn-danger text-white rem_data1" data-id="'+sno+'" name="remove1" data-target="tr">Remove</button></div></tr>');
+                    $('tbody').append('<tr><td id="'+sno+'">'+sno+'</td> <td><input type="date" name="from[]" max="{{date("Y-m-d")}}" id="" class="form-control" value=""  placeholder=""></td><td><input type="date" name="to[]" max="{{date("Y-m-d")}}" id="" class="form-control" value=""  placeholder=""></td><td><input type="text" name="c_name[]" id="" class="form-control" value=""  placeholder="Enter Company Name "></td><td><input type="text" name="s_desg[]" id="" class="form-control" value=""  placeholder="Enter Starting designation"></td><td><input type="text" name="l_desg[]" id="" class="form-control" value=""  placeholder="Enter Last designation"></td><td><input type="text" name="l_salary[]" id="" class="form-control" value=""  placeholder="Enter Last salary drawn"></td>  <td><button class="btn btn-danger text-white rem_data1" data-id="'+sno+'" name="remove1" data-target="tr">Remove</button></div></tr>');
 
                     
                     $('button[data-id='+sno+']').click(function(e){

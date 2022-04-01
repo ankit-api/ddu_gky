@@ -7,6 +7,7 @@ use App\Models\BatchLessonPlanner;;
 use Auth;
 use Illuminate\Http\Request;
 use App\Models\CenterIncharge;
+use App\Models\TrainerDetail;
 
 class BatchController extends Controller
 {
@@ -56,7 +57,9 @@ class BatchController extends Controller
          }
 
         $batch = new Batch();
-        $get_centre_inc_id = CenterIncharge::where('centre_incharge_code',Auth::user()->user_code)->first();
+        // $get_centre_inc_id = CenterIncharge::with('centre_incharge_code',Auth::user()->user_code)->first();
+        $get_cntr_id = TrainerDetail::where('id',$req->t_name)->first();
+        $get_centre_inc_id = CenterIncharge::where('centre_id',$get_cntr_id->centre_id)->first();
         $batch->incharge_id = $get_centre_inc_id->id;
         $batch->batch_code = $batch_code;
         $batch->trainer_id = $req->t_name;
@@ -70,14 +73,14 @@ class BatchController extends Controller
         $batch->duration_per_day = $req->duration_per_day;
         // $batch->trade =        
         // $batch->batch_summary_status =
-        $batch->batch_in_two_shift = $req->shift;
-        $req->start1 ? $batch->start_time_shift1 = $req->start1 : $batch->start_time_shift1 = 'NULL';
-        $req->start2 ? $batch->start_time_shift2 = $req->start2 : $batch->start_time_shift2 = 'NULL';
-        $req->end1 ? $batch->end_time_shift1 = $req->end1 : $batch->end_time_shift1 = 'NULL';
-        $req->end2 ? $batch->end_time_shift2 = $req->end2 : $batch->end_time_shift2 = 'NULL';
-        $batch->batch_split_for_same_training_centre = $req->split;
-        $req->sec1_can_no ? $batch->no_of_stu_sec_a = $req->sec1_can_no : $batch->no_of_stu_sec_a = NULL;
-        $req->sec2_can_no ? $batch->no_of_stu_sec_b = $req->sec2_can_no : $batch->no_of_stu_sec_b = NULL;
+        // $batch->batch_in_two_shift = $req->shift;
+        // $req->start1 ? $batch->start_time_shift1 = $req->start1 : $batch->start_time_shift1 = 'NULL';
+        // $req->start2 ? $batch->start_time_shift2 = $req->start2 : $batch->start_time_shift2 = 'NULL';
+        // $req->end1 ? $batch->end_time_shift1 = $req->end1 : $batch->end_time_shift1 = 'NULL';
+        // $req->end2 ? $batch->end_time_shift2 = $req->end2 : $batch->end_time_shift2 = 'NULL';
+        // $batch->batch_split_for_same_training_centre = $req->split;
+        // $req->sec1_can_no ? $batch->no_of_stu_sec_a = $req->sec1_can_no : $batch->no_of_stu_sec_a = NULL;
+        // $req->sec2_can_no ? $batch->no_of_stu_sec_b = $req->sec2_can_no : $batch->no_of_stu_sec_b = NULL;
         $batch->lesson_planner = $req->lesson_planner;
         $batch->ojt_given = $req->ojt_given;
         $req->o_start_date ? $batch->ojt_start_date = $req->o_start_date : $batch->ojt_start_date = 'NULL';

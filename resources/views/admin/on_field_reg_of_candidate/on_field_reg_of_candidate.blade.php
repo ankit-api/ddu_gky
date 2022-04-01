@@ -70,7 +70,7 @@
                 </div>
                 <div class="col-md-4">
                     <label for="" class="m-2">Date of mobilization</label><br>
-                    <input type="date" class="form-control" name="dom" id="" required>
+                    <input type="date" class="form-control" name="dom" id="" max="{{date("Y-m-d")}}" required>
                 </div>
             </div><br>
             <div class="row">
@@ -85,7 +85,7 @@
                 </div>
                 <div class="col-md-4">
                     <label for="" class="m-2">Date of Birth</label><br>
-                    <input type="date" class="form-control" name="dob" id="" required>
+                    <input type="date" class="form-control" name="dob" max="{{date("Y-m-d")}}" id="" required>
                 </div>
                 <div class="col-md-4">
                         <label for="" class="m-2">Age</label><br>

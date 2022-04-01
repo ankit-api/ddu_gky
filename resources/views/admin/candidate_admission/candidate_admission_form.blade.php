@@ -100,7 +100,7 @@
                 </div>
                 <div class="col-md-3">
                     <label for="" class="m-2">Date of Birth</label><br>
-                    <input type="date" required class="form-control" name="dob" id="" >
+                    <input type="date" required class="form-control" name="dob" max="{{date("Y-m-d")}}" id="" >
                 </div>
                 <div class="col-md-3">
                         <label for="" class="m-2">Age</label><br>

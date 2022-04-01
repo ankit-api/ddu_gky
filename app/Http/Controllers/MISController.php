@@ -44,6 +44,7 @@ class MISController extends Controller
         $filename2 = $req->mis_code.'_sign.'.$file2->getClientOriginalExtension();
 
         $req->mis_type=="mis_head" ? $role_id="7" : $role_id="8";
+        $req->mis_type=="mis_head" ? $mis_role="MIS Head" : $mis_role="MIS Executive";
 
         $mis = new MIS();
         $mis->mis_code = $req->mis_code;
@@ -65,17 +66,32 @@ class MISController extends Controller
         // $toEmail = 'ankit.bisht@prakharsoftwares.com';
         $toEmail = 'bishtsonu251011@gmail.com';
         $from=env('MAIL_USERNAME'); 
+        // $data= 
+        // [  
+        //     'otp'=>$random_password,
+        //     'user'=>'MIS',
+        // ];   
+        
         $data= 
         [  
-            'otp'=>$random_password,
-            'user'=>'MIS',
-        ];                
+            'username'=>$req->mis_code,
+            'password'=>$random_password,
+            'name'=>$req->name,
+            'email'=>$req->email,
+            'usertype'=>$mis_role,
+        ];    
 
-        Mail::send('mail.otp', $data, function ($message) use ($toEmail,$from) {
-        $message->to($toEmail)
-        ->subject('Mail');
-        $message->from(env('MAIL_USERNAME'), env('APP_NAME'));
-        });
+        // Mail::send('mail.otp', $data, function ($message) use ($toEmail,$from) {
+        // $message->to($toEmail)
+        // ->subject('Mail');
+        // $message->from(env('MAIL_USERNAME'), env('APP_NAME'));
+        // });
+
+        Mail::send('mail.sendmail', $data, function ($message) use ($toEmail,$from) {
+            $message->to($toEmail)
+            ->subject('Login Credentials');
+            $message->from(env('MAIL_USERNAME'), env('APP_NAME'));
+            });
 
         $user = new User();
         $user->role_id = $role_id;
