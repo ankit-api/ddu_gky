@@ -80,6 +80,11 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/project_list', [MasterController::class,'projectList'])->name('project_list');
     // Route::get('/view_project', [MasterController::class,'viewProject'])->name('view_project');
 
+    //Fetch District
+    Route::post('fetch_district', [AjaxController::class, 'fetchDistrict']);
+    //Fetch Block
+    Route::post('fetch_block', [AjaxController::class, 'fetchBlock']);
+
     
      //Centre Route
     Route::get('/centre_form', [MasterController::class,'centreForm'])->name('centre_form');

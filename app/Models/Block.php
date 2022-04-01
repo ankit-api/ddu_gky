@@ -9,6 +9,6 @@ class Block extends Model
 {
     use HasFactory;
 
-    protected $table = 'blocks';
+    protected $table = 'taluk_block';
     public $timestamps = false;
 }

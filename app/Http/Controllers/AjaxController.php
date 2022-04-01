@@ -11,6 +11,8 @@ use App\Models\Trainer;
 use App\Models\CenterIncharge;
 use App\Models\QTeamMembersDetail;
 use App\Models\OnFieldRegistrationOfCandidate;
+use App\Models\District;
+use App\Models\Block;
 use Response;
 
 class AjaxController extends Controller
@@ -89,5 +91,17 @@ class AjaxController extends Controller
         else{
             return Response::json($check_dup);
         }
+    }
+
+    public function fetchDistrict(Request $request)
+    {
+        $data = District::where("state_id",$request->state_id)->get(["district_name", "id"]);
+        return response()->json($data);
+    }
+
+    public function fetchBlock(Request $request)
+    {
+        $data = Block::where("district_id",$request->district_id)->get(["block_name", "id"]);
+        return response()->json($data);
     }
 }
