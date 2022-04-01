@@ -201,7 +201,7 @@
     </li>   --}}
 
 
-<!-- Student Registration  -->
+<!-- Candidate Registration  -->
     <hr>
     <li class="nav-item">
       <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic">
@@ -211,8 +211,8 @@
       </a>
       <div class="collapse" id="ui-basic3">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="{{ route('candidate-register') }}">Student Register</a></li>
-          <li class="nav-item"> <a class="nav-link" href="{{ route('candidate_register_list') }}">Student Register List</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{{ route('candidate-register') }}">Candidate Register</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{{ route('candidate_register_list') }}">Candidate Register List</a></li>
         </ul>
       </div>
     </li>
@@ -246,31 +246,31 @@
         </ul>
       </div>
     </li>
-<!-- Addmission  -->
+<!-- Admission  -->
     <hr>
     <li class="nav-item">
       <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic6" aria-expanded="false" aria-controls="ui-basic">
         <i class="menu-icon mdi mdi-floor-plan"></i>
-        <span class="menu-title">Addmission</span>
+        <span class="menu-title">Admission</span>
         <i class="menu-arrow"></i> 
       </a>
       <div class="collapse" id="ui-basic6">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="{{ route('candidate-admission') }}">Candidate Addmission </a></li>
-          <li class="nav-item"> <a class="nav-link" href="{{ route('admission_list') }}">Addmission List</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{{ route('candidate-admission') }}">Candidate Admission </a></li>
+          <li class="nav-item"> <a class="nav-link" href="{{ route('admission_list') }}">Admission List</a></li>
         </ul>
       </div>
     </li>
 
-    <!-- Candidate Dossier  -->
+    <!-- Candidate Dossier  ui-basic26--> 
     <hr>
     <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic22" aria-expanded="false" aria-controls="ui-basic">
+      <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic26" aria-expanded="false" aria-controls="ui-basic26">
         <i class="menu-icon mdi mdi-floor-plan"></i>
         <span class="menu-title">Candidate Dossier</span>
         <i class="menu-arrow"></i> 
       </a>
-      <div class="collapse" id="ui-basic22">
+      <div class="collapse" id="ui-basic26">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item"> <a class="nav-link" href="{{ route('candidate_dossier_list') }}">Candidate Dossier List</a></li>
         </ul>

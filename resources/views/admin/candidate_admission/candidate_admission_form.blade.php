@@ -14,6 +14,14 @@
               <div class="home-tab">
                   
             <div class="container col-sm-12">
+            <div class="col-sm-4 ml-2 mb-4">
+                <ol class="breadcrumb float-sm-right" style="background-color: #6b8ed6;border-radius: 5px;">
+                    <li class="breadcrumb-item"><a  style="color:#fff; text-decoration: none;" href="{{ route('home') }}" aria-expanded="false" aria-controls="ui-basic"><i class="fa-solid fa-house"></i></a></li>
+                        <li class="breadcrumb-item" ><a  style="color:#fff; text-decoration: none;"data-bs-toggle="collapse" href="#ui-basic17" aria-expanded="false" aria-controls="ui-basic17">Admission</a></li>
+                        <li class="breadcrumb-item active" ><a  style="color:#fff; text-decoration: none;" href="{{ route('admission_list')}}" ><b>Admission List</b></a>
+                    </li>
+                </ol>
+            </div>
             <h4 class="text-center fw-bold">SF 6.2A3: Candidate application form</h4><br>
             <form action="{{ route('post-candidate-admission')}}" method="post" enctype="multipart/form-data"> 
             @csrf
@@ -372,11 +380,11 @@
             </div><br>
             <div class="row">
                 <div class="col-md-6">
-                    <label for="" class="m-2">Attach Photo Document <span class="text-danger">(Photo size should be less than 512Kb)</span></label><br>
+                    <label for="" class="m-2">Attach Photo Document <span style="font-size: 14px;font-weight: 600;color: #ee1201;">(Photo size should be less than 512Kb)</span></label><br>
                     <input type="file" name="photo_doc" accept="image/png, image/gif, image/jpeg" class="form-control " style="background-color:white;" >
                 </div>
             </div><br><br>
-            <h5>Attachmnet Fields <span class="text-danger">(All Documents size should be less than 1Mb)</span></h5>
+            <h5>Attachmnet Fields <span style="font-size: 14px;font-weight: 600;color: #ee1201;">(All Documents size should be less than 1MB)</span></h5>
                <hr>
           
                <div class="row">

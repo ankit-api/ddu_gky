@@ -14,15 +14,15 @@
               <div class="home-tab">
                   
         <div class="container col-sm-12">
-        <div class="col-sm-4 ml-2">
-                            <ol class="breadcrumb float-sm-right" style="background-color: #6b8ed6;border-radius: 5px;margin-left: 28px;">
+        <div class="col-sm-3 ml-2">
+                            <ol class="breadcrumb float-sm-right" style="background-color: #6b8ed6;border-radius: 5px;">
                                 <li class="breadcrumb-item"><a  style="color:#fff; text-decoration: none;" href="{{ route('home') }}" aria-expanded="false" aria-controls="ui-basic"><i class="fa-solid fa-house"></i></a></li>
                                     <li class="breadcrumb-item"><a  style="color:#fff; text-decoration: none;"data-bs-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic3">Centre</a></li>
                                     <li class="breadcrumb-item active" ><a  style="color:#fff; text-decoration: none;" href="{{ route('centre_form')}}" ><b>Add Centre </b></a>
                                 </li>
                             </ol>
                         </div>
-                <h4 class="text-center fw-bold">Add New Centre</h4><br>
+                <h3 class="text-center fw-bold">Add New Centre</h3><br>
         <form action="{{ route('create_centre') }}" method="post">
             @csrf
             <div class="row">   
