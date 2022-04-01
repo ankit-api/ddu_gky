@@ -77,6 +77,7 @@ class TrainerController extends Controller
        
         $trainer = new Trainer();
         $trainer->centre_id = $req->centre_name;
+        $trainer->project_id = $req->project_name;
         $trainer->trainer_code  = $req->trainer_code;
         $trainer->name =  $req->name;
         $trainer->relation = $req->relation_name;
@@ -158,12 +159,12 @@ class TrainerController extends Controller
         $user->password = $hashed_random_password;
         $user->save();
        
-        return redirect()->route('candidate_register_list')->with('alert_status','Trainer Added Successfully!');
+        return redirect()->route('trainer_list')->with('alert_status','Trainer Added Successfully!');
     }
 
     public function trainerList()
     {     
-        $trainer_data = Trainer::with('getCentreName','getProjectName')->get();  
+        $trainer_data = Trainer::with('getCentreName','getSanctionOrder')->get();  
         return view('public.trainer.trainer_list', compact('trainer_data'));
     }
    

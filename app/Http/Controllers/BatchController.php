@@ -106,7 +106,7 @@ class BatchController extends Controller
            $lesson_planner->save();          
          }
 
-        return redirect()->route('trainer_list')->with('alert_status','Batch Created Successfully!');
+        return redirect()->route('batch_list')->with('alert_status','Batch Created Successfully!');
     }
 
     public function batchList(){

@@ -39,7 +39,7 @@
                             <tbody>
                                 @foreach($mobilizer_data as $mobilizer)
                                 <tr>
-                                <td>{{ $mobilizer->getProjectName->sanction_order_no }}</td>  
+                                <td>{{ $mobilizer->getSanctionOrder->sanction_order_no }}</td>  
                                 <td>{{ $mobilizer->getCentreName->centre_code }}</td> 
                                 <td>{{ $mobilizer->getCentreName->centre_name }}</td> 
                                 <td>{{ $mobilizer->mob_id }}</td>

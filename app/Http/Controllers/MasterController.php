@@ -327,7 +327,7 @@ class MasterController extends Controller
 
     public function qteamMemberList()
     {     
-        $qteam_data = QTeamMembersDetail::with('getPiaName', 'getProjectName' )->get();       
+        $qteam_data = QTeamMembersDetail::with('getPiaName', 'getSanctionOrder' )->get();       
         return view('public.q team member.q_team_list', compact('qteam_data'));
     }
 
@@ -406,7 +406,7 @@ class MasterController extends Controller
     public function centreInchargeList()
     {
      
-        $centre_incharge_data = CenterIncharge::with('getCentreName', 'getProjectName' )->get();
+        $centre_incharge_data = CenterIncharge::with('getCentreName', 'getSanctionOrder' )->get();
        
         return view('public.centre incharge.centre_incharge_list', compact('centre_incharge_data'));
     }
@@ -489,7 +489,8 @@ class MasterController extends Controller
     public function mobilizerList()
     {
      
-        $mobilizer_data = Mobilizer::with('getCentreName', 'getProjectName' )->get();   
+        $mobilizer_data = Mobilizer::with('getCentreName', 'getSanctionOrder' )->get();
+       
             
         return view('public.mobilizer.mobilizer_list', compact('mobilizer_data'));
     }
