@@ -21,6 +21,16 @@
                                     <li class="breadcrumb-item active" ><a  style="color:#fff; text-decoration: none;" href="{{ route('candidate_register_list')}}" ><b>Candidate Registration List</b></a>
                                 </li>
                             </ol>
+
+                            <div class="row">  
+                                        @if (session('alert_status'))
+                                            <h6 class="alert alert-success">{{ session('alert_status') }}</h6>
+                                        @endif      
+                                        @if ($errors->any())
+                                                <div class="alert alert-danger">{{$errors->first()}}</div>
+                                        @endif 
+                            </div> 
+
                         </div> 
                             <h3 class="text-center fw-bold">Candidate Registration List</h3><br>
                             <div class="container col-sm-12 mx-auto" >

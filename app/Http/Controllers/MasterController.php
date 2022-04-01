@@ -489,8 +489,7 @@ class MasterController extends Controller
     public function mobilizerList()
     {
      
-        $mobilizer_data = Mobilizer::with('getCentreName', 'getProjectName' )->get();   
-            
+        $mobilizer_data = Mobilizer::with('getCentreName', 'getProjectName' )->get(); 
         return view('public.mobilizer.mobilizer_list', compact('mobilizer_data'));
     }
 

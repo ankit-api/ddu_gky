@@ -143,7 +143,7 @@
                 </div>
                 <div class="col-md-3">
                     <label for="" class="m-2">Adhaar no </label><br>
-                  <input type="number" name="adhaar" min="12" class="form-control"  required placeholder="Enter adhaar no.">
+                  <input type="text" data-type="adhaar-number" name="adhaar"maxLength="14" class="form-control"  required placeholder="Enter adhaar no.">
                 </div>
             </div><br>
             <div class="row">            
@@ -336,6 +336,25 @@
                         }
                     });
                 });
+
+
+          
+                    $('[data-type="adhaar-number"]').keyup(function() {
+                    var value = $(this).val();
+                    value = value.replace(/\D/g, "").split(/(?:([\d]{4}))/g).filter(s => s.length > 0).join("-");
+                    $(this).val(value);
+                    });
+
+                    $('[data-type="adhaar-number"]').on("change, blur", function() {
+                    var value = $(this).val();
+                    var maxLength = $(this).attr("maxLength");
+                    if (value.length != maxLength) {
+                        $(this).addClass("highlight-error");
+                    } else {
+                        $(this).removeClass("highlight-error");
+                    }
+                    });
+                
                       
             });
     </script>
