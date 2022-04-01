@@ -14,7 +14,15 @@
               <div class="home-tab">
                   
               <div class="container col-sm-12">
-                <h4 class="text-center fw-bold">SF 6.1C: On field registration of candidates</h4><br>
+              <div class="col-sm-4 ml-2 mb-4">
+                <ol class="breadcrumb float-sm-right" style="background-color: #6b8ed6;border-radius: 5px;">
+                    <li class="breadcrumb-item"><a  style="color:#fff; text-decoration: none;" href="{{ route('home') }}" aria-expanded="false" aria-controls="ui-basic"><i class="fa-solid fa-house"></i></a></li>
+                        <li class="breadcrumb-item" ><a  style="color:#fff; text-decoration: none;"data-bs-toggle="collapse" href="#ui-basic14" aria-expanded="false" aria-controls="ui-basic14">Registration</a></li>
+                        <li class="breadcrumb-item active" ><a  style="color:#fff; text-decoration: none;" href="{{ route('candidate-register')}}" ><b>Candidate Registration List</b></a>
+                    </li>
+                </ol>
+            </div> 
+                <h3 class="text-center fw-bold">SF 6.1C: On field registration of candidates</h3><br>
         <form action="{{ route('post-candidate-register') }}" method="post" enctype="multipart/form-data">
             @csrf
 
@@ -37,7 +45,7 @@
                     </select>  
                 </div>
                 <div class="col-md-4">
-                    <label for="" class="m-2">Registration Code/Panjee Code <span class="text-danger" style="display:none;" id="code_exist">(Registration / Panjee Code Already Exist)</span></label><br>
+                    <label for="" class="m-2">Registration Code/Panjee Code <span style="font-size: 14px;font-weight: 600;color: #ee1201;" style="display:none;" id="code_exist">(Registration / Panjee Code Already Exist)</span></label><br>
                     <input name ="reg_code" type="text" class="form-control" id="reg_code" placeholder="Enter Registration Code">
                 </div> 
                 <div class="col-md-4">
@@ -149,11 +157,11 @@
             </div><br>
             <div class="row">
                 <div class="col-md-6">
-                    <label for="" class="m-2">Attach Signature Document <span class="text-danger">(Image size should be less than 512Kb)</span></label><br>
+                    <label for="" class="m-2">Attach Signature Document <span style="font-size: 14px;font-weight: 600;color: #ee1201;">(Image size should be less than 512Kb)</span></label><br>
                     <input type="file" name="sign_doc" accept="image/png, image/gif, image/jpeg" class="form-control " style="background-color:white;" >
                 </div>
             </div><br><br>
-               <h5>Attachmnet Fields <span class="text-danger">(All Documents size should be less than 1Mb)</span></h5>
+               <h5>Attachmnet Fields <span style="font-size: 14px;font-weight: 600;color: #ee1201;">(All Documents size should be less than 1Mb)</span></h5>
                <hr>
                <div class="row">
                 <div class="table-responsive">

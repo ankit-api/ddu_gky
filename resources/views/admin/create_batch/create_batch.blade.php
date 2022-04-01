@@ -14,8 +14,15 @@
               <div class="home-tab">
                   
         <div class="container col-sm-12">
-       
-                <h4 class="text-center fw-bold">SF 6.3A1: Batch details</h4><br>
+        <div class="col-sm-3 ml-2 mb-4">
+            <ol class="breadcrumb float-sm-right" style="background-color: #6b8ed6;border-radius: 5px;">
+                <li class="breadcrumb-item"><a  style="color:#fff; text-decoration: none;" href="{{ route('home') }}" aria-expanded="false" aria-controls="ui-basic"><i class="fa-solid fa-house"></i></a></li>
+                    <li class="breadcrumb-item" ><a  style="color:#fff; text-decoration: none;"data-bs-toggle="collapse" href="#ui-basic16" aria-expanded="false" aria-controls="ui-basic16">Batch</a></li>
+                    <li class="breadcrumb-item active" ><a  style="color:#fff; text-decoration: none;" href="{{ route('batch_form')}}" ><b>Add Batch</b></a>
+                </li>
+            </ol>
+        </div>
+                <h3 class="text-center fw-bold">SF 6.3A1: Batch details</h3><br>
         <form action="{{ route('create_batch') }}" method="post">
         @csrf
         <div class="row">  

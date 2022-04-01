@@ -30,6 +30,10 @@
     .breadcrumb .breadcrumb-item + .breadcrumb .breadcrumb-item::before {
         color: #fff;
     }
+    td{
+      color:black;
+      font-weight: 500;
+    }
   </style>
   
 </head>

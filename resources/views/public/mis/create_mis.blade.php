@@ -22,7 +22,7 @@
                     </ol>
                 </div> 
                 <div class="container col-sm-12 mx-auto" >
-                  <h4 class="text-center fw-bold">Add MIS</h4><br>
+                  <h3 class="text-center fw-bold">Add MIS</h3><br>
                   <form action="{{ route('create_mis') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row">     
@@ -71,11 +71,11 @@
                           <input name ="address" type="text" placeholder="Enter Full Address Of MIS" class="form-control">
                       </div> 
                       <div class="col-md-6">
-                        <label for="" class="m-2">Attach Image Document <span class="text-danger">(Image size should be less than 512Kb)</span></label><br>
+                        <label for="" class="m-2">Attach Photograph <span style="font-size: 14px;font-weight: 600;color: #ee1201;">(Image size should be less than 512Kb)</span></label><br>
                         <input type="file" name="image_doc" accept="image/png, image/gif, image/jpeg" class="form-control " style="background-color:white;" >
                       </div>
                       <div class="col-md-6">
-                        <label for="" class="m-2">Attach Signature Document <span class="text-danger">(Image size should be less than 512Kb)</span></label><br>
+                        <label for="" class="m-2">Attach Signature  <span style="font-size: 14px;font-weight: 600;color: #ee1201;">(Image size should be less than 512Kb)</span></label><br>
                         <input type="file" name="sign_doc" accept="image/png, image/gif, image/jpeg" class="form-control" style="background-color:white;" >
                       </div>
                     </div><br>     

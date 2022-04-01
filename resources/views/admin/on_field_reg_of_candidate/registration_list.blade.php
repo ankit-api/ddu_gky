@@ -22,7 +22,7 @@
                                 </li>
                             </ol>
                         </div> 
-                            <h4 class="text-center fw-bold">Candidate Registration List</h4><br>
+                            <h3 class="text-center fw-bold">Candidate Registration List</h3><br>
                             <div class="container col-sm-12 mx-auto" >
                                 <table class="table table-bordered" id="table1">
                                     <thead>

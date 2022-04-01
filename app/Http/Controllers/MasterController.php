@@ -482,7 +482,7 @@ class MasterController extends Controller
         $user->password = $hashed_random_password;
         $user->save();
 
-        return redirect()->route('admission_list')->with('alert_status','Mobilizer Added Successfully');
+        return redirect()->route('mobilizer_list')->with('alert_status','Mobilizer Added Successfully');
     }
 
     public function mobilizerList()

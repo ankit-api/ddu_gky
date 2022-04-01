@@ -13,7 +13,7 @@
                     <div class="home-tab">
 
                         <div class="container col-sm-12 mx-auto">
-                        <div class="col-sm-4 ml-2 mb-4">
+                        <div class="col-sm-3 ml-2 mb-4">
                             <ol class="breadcrumb float-sm-right" style="background-color: #6b8ed6;border-radius: 5px;margin-left: 28px;">
                                 <li class="breadcrumb-item"><a  style="color:#fff; text-decoration: none;" href="{{ route('home') }}" aria-expanded="false" aria-controls="ui-basic"><i class="fa-solid fa-house"></i></a></li>
                                     <li class="breadcrumb-item" ><a  style="color:#fff; text-decoration: none;"data-bs-toggle="collapse" href="#ui-basic16" aria-expanded="false" aria-controls="ui-basic16">Batch</a></li>
@@ -21,7 +21,7 @@
                                 </li>
                             </ol>
                         </div>
-                            <h4 class="text-center fw-bold">Batch List</h4><br>
+                            <h3 class="text-center fw-bold">Batch List</h3><br>
                             <div class="container col-sm-12 mx-auto" >
                                 <table class="table table-bordered" id="table1">
                                     <thead>
