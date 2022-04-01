@@ -62,11 +62,11 @@
             <div class="row"> 
             <div class="col-md-6">
                     <label for="" class="m-2">Batch Start Date</label><br>
-                    <input type="date" required name="b_start_date" class="form-control">
+                    <input type="date" required name="b_start_date" min="{{date("Y-m-d")}}" id="b_start_date" class="form-control">
                 </div>
                 <div class="col-md-6">
                     <label for="" class="m-2">Expected Batch End Date</label><br>
-                    <input type="date" required name="ex_b_end_date" class="form-control" name="" id="" >
+                    <input type="date" required name="ex_b_end_date" min="{{date("Y-m-d")}}" class="form-control" name="" id="" >
                 </div>
             </div> <br>
             <div class="row">
@@ -74,13 +74,13 @@
                     <label for="" class="m-2">Maximum permissible batch size</label><br>
                     <input type="text" required name="b_size" class="form-control" placeholder="35"  value="35">
                 </div> 
-            <div class="col-md-6">
+            {{-- <div class="col-md-6">
                     <label for="" class="m-2">Will the batch be run in two shift</label><br>
                     <select name="shift" id="" onchange="getShift(this);"  class="form-control" style="background-color:white;">
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select> 
-                </div>               
+                </div>                --}}
             </div> <br> 
             <div class="shift-div" id="shift-div">
             </div>    
@@ -100,7 +100,7 @@
             </div>
             <br>  
         
-            <div class="row mb-3" >
+            {{-- <div class="row mb-3" >
                 <div class="col-md-6">
                 <label for="" class="m-2">Will the batch be split for training at the same Training Centre? </label>                     
                 </div>
@@ -110,7 +110,7 @@
                             <option value="yes">Yes</option>
                         </select>     
                 </div>                             
-            </div> 
+            </div>  --}}
             <div class="section-div" id="section-div">
             </div>
             <div class="row">
@@ -128,28 +128,28 @@
                 <div class="row">
                     <div class="col-md-2">
                             <label for="" class="m-2">Theory Classroom No.</label><br>
-                            <input type="number" class="form-control" name="theory_class[]" id="" >
+                            <input type="number" class="form-control" name="theory_class[]" min="0" id="" >
                         </div> 
                     <div class="col-md-2">
                             <label for="" class="m-2">IT lab No.</label><br><br>
-                            <input type="number" class="form-control" name="it_lab[]" id="" >
+                            <input type="number" class="form-control" name="it_lab[]" min="0" id="" >
                     </div>   
                     <div class="col-md-2">
                             <label for="" class="m-2">Practical lab No.</label><br><br>
-                            <input type="number" class="form-control" name="practical_lab[]" id="" >
+                            <input type="number" class="form-control" name="practical_lab[]" min="0" id="" >
                     </div> 
                     <div class="col-md-2">
                             <label for="" class="m-2">Theory cum Practical Lab No.
                             </label><br>
-                            <input type="number" class="form-control" name="theory_cum_class[]" id="" >
+                            <input type="number" class="form-control" name="theory_cum_class[]" min="0" id="" >
                     </div>   
                     <div class="col-md-2">
                             <label for="" class="m-2">Theory cum IT Lab No.</label><br>
-                            <input type="number" class="form-control" name="it_cum_lab[]" id="" >
+                            <input type="number" class="form-control" name="it_cum_lab[]" min="0" id="" >
                     </div>                
                     <div class="col-md-2">
                             <label for="" class="m-2">IT cum Practical Lab No.</label><br>
-                            <input type="number" class="form-control" name="practical_cum_lab[]" id="" >
+                            <input type="number" class="form-control" name="practical_cum_lab[]" min="0" id="" >
                     </div>                     
                 </div> 
             </div>  
@@ -199,24 +199,24 @@
         <script type="text/javascript">
        
 
-        function getShift(shift)
-        { 
-            if(shift.value == 'yes')
-            {
-                $('#shift-div').append('  <div class="row mb-4" id="append-shift"><div class="col-md-3"><label for="" class="m-2">Start Time (Shift-1)</label><br><input type="time" class="form-control" name="start1" id="" > </div> <div class="col-md-3"><label for="" class="m-2">End Time (Shift-1)</label><br><input type="time" class="form-control" name="end1" id="" ></div>   <div class="col-md-3"><label for="" class="m-2">Start Time (Shift-2)</label><br><input type="time" class="form-control" name="start2" id="" > </div> <div class="col-md-3"><label for="" class="m-2">End Time (Shift-2)</label><br><input type="time" class="form-control" name="end2" id="" ></div></div>  ');
-            }
+        // function getShift(shift)
+        // { 
+        //     if(shift.value == 'yes')
+        //     {
+        //         $('#shift-div').append('  <div class="row mb-4" id="append-shift"><div class="col-md-3"><label for="" class="m-2">Start Time (Shift-1)</label><br><input type="time" class="form-control" name="start1" id="" > </div> <div class="col-md-3"><label for="" class="m-2">End Time (Shift-1)</label><br><input type="time" class="form-control" name="end1" id="" ></div>   <div class="col-md-3"><label for="" class="m-2">Start Time (Shift-2)</label><br><input type="time" class="form-control" name="start2" id="" > </div> <div class="col-md-3"><label for="" class="m-2">End Time (Shift-2)</label><br><input type="time" class="form-control" name="end2" id="" ></div></div>  ');
+        //     }
             
-            if(shift.value == 'no')
-            {
-               $('#append-shift').remove();
-            }    
-        }
+        //     if(shift.value == 'no')
+        //     {
+        //        $('#append-shift').remove();
+        //     }    
+        // }
 
         function getOjt(ojt)
         { 
             if(ojt.value == 'yes')
             {
-                $('#ojt-div').append('  <div class="row" id="append-ojt"><div class="col-md-6"><label for="" class="m-2">Expected OJT start date</label><br> <input type="date" class="form-control" name="o_start_date" id="" > </div> <div class="col-md-6"> <label for="" class="m-2">No. of OJT days:</label><br> <input type="number" class="form-control" name="ojt_days" id="" ></div>   </div></div>  ');
+                $('#ojt-div').append('  <div class="row" id="append-ojt"><div class="col-md-6"><label for="" class="m-2">Expected OJT start date</label><br> <input type="date" class="form-control"  min="{{date("Y-m-d")}}" name="o_start_date" id="" > </div> <div class="col-md-6"> <label for="" class="m-2">No. of OJT days:</label><br> <input type="number" class="form-control" name="ojt_days" id="" ></div>   </div></div>  ');
             }
             
             if(ojt.value == 'no')
@@ -225,25 +225,25 @@
             }    
         }
 
-        function getSection(section)
-        {
-            if(section.value == 'yes')
-            {
-                $('#section-div').append('  <div class="row mb-4" id="append-section"> <div class="col-md-6" ><label for="" class="m-2">Section A- No of Candidates</label><br><input type="number" class="form-control" name="sec1_can_no" id="" ></div><div class="col-md-6"><label for="" class="m-2">Section B- No of Candidates</label><br><input type="number" class="form-control" name="sec2_can_no" id="" ></div></div>   ');
-            }
+        // function getSection(section)
+        // {
+        //     if(section.value == 'yes')
+        //     {
+        //         $('#section-div').append('  <div class="row mb-4" id="append-section"> <div class="col-md-6" ><label for="" class="m-2">Section A- No of Candidates</label><br><input type="number" class="form-control" name="sec1_can_no" id="" ></div><div class="col-md-6"><label for="" class="m-2">Section B- No of Candidates</label><br><input type="number" class="form-control" name="sec2_can_no" id="" ></div></div>   ');
+        //     }
             
-            if(section.value == 'no')
-            {
-               $('#append-section').remove();
-            }    
-        }
+        //     if(section.value == 'no')
+        //     {
+        //        $('#append-section').remove();
+        //     }    
+        // }
 
 
         function getClassType(classType)
         { 
             if(classType.value == 'section')
             {
-                $('#classtype-div').append('  <div class="row" id="append-classType"> <div class="col-md-2"> <label for="" class="m-2">Theory Classroom No.</label><br>    <input type="number" class="form-control" name="theory_class[]" id="" > </div> <div class="col-md-2">     <label for="" class="m-2">IT lab No.</label><br><br><input type="number" class="form-control" name="it_lab[]" id="" ></div>   <div class="col-md-2"><label for="" class="m-2">Practical lab No.</label><br><br><input type="number" class="form-control" name="practical_lab[]" id="" ></div> <div class="col-md-2"><label for="" class="m-2">Theory cum Practical Lab No.</label><br><input type="number" class="form-control" name="theory_cum_class[]" id="" ></div>   <div class="col-md-2"><label for="" class="m-2">Theory cum IT Lab No.</label><br><input type="number" class="form-control" name="it_cum_lab[]" id="" ></div>                <div class="col-md-2"><label for="" class="m-2">IT cum Practical Lab No.</label><br><input type="number" class="form-control" name="practical_cum_lab[]" id="" ></div> </div> ');
+                $('#classtype-div').append('  <div class="row" id="append-classType"> <div class="col-md-2"> <label for="" class="m-2">Theory Classroom No.</label><br>    <input type="number" class="form-control" name="theory_class[]"  min="0" id="" > </div> <div class="col-md-2">     <label for="" class="m-2">IT lab No.</label><br><br><input type="number" class="form-control" name="it_lab[]"  min="0" id="" ></div>   <div class="col-md-2"><label for="" class="m-2">Practical lab No.</label><br><br><input type="number" class="form-control" name="practical_lab[]"  min="0" id="" ></div> <div class="col-md-2"><label for="" class="m-2">Theory cum Practical Lab No.</label><br><input type="number" class="form-control" name="theory_cum_class[]"  min="0" id="" ></div>   <div class="col-md-2"><label for="" class="m-2">Theory cum IT Lab No.</label><br><input type="number" class="form-control" name="it_cum_lab[]"  min="0" id="" ></div>                <div class="col-md-2"><label for="" class="m-2">IT cum Practical Lab No.</label><br><input type="number" class="form-control" name="practical_cum_lab[]"  min="0" id="" ></div> </div> ');
             }
             
             if(classType.value == 'batch')

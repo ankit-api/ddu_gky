@@ -241,7 +241,7 @@
       </a>
       <div class="collapse" id="ui-basic5">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="{{ route('batch_form')}}">Add Batch</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{{ route('batch_form')}}">Create Batch</a></li>
           <li class="nav-item"> <a class="nav-link" href="{{ route('batch_list') }}">Batch List</a></li>
         </ul>
       </div>
