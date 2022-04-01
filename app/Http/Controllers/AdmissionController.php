@@ -33,25 +33,24 @@ class AdmissionController extends Controller
 
     public function postAdmission(Request $req)
     { 
-        session(['pia_id' => '1']);
         $this->validate($req, [
-            // // 'reg_code' => 'required',
-            // 'name' => 'required',
-            // 'father_husband_name' => 'required',
-            // 'mother_name' => 'required',
-            // // 'gender' => 'required',
-            // 'dob' => 'required',
-            // 'age' => 'required',
-            // 'identity_no' => 'required',
-            // 'contact' => 'required',
-            // // 'a_contact' => 'required',
-            // // 'email' => 'required',
-            // // 'a_email' => 'required',
-            // 'pre_address' => 'required',
-            // // 'per_address' => 'required',
-            // 'qualification' => 'required',
-            // // 'religion' => 'required',
-            // // 'category' => 'required',
+            // 'reg_code' => 'required',
+            'name' => 'required',
+            'father_husband_name' => 'required',
+            'mother_name' => 'required',
+            // 'gender' => 'required',
+            'dob' => 'required',
+            'age' => 'required',
+            'identity_no' => 'required',
+            'contact' => 'required',
+            // 'a_contact' => 'required',
+            // 'email' => 'required',
+            // 'a_email' => 'required',
+            'pre_address' => 'required',
+            // 'per_address' => 'required',
+            'qualification' => 'required',
+            // 'religion' => 'required',
+            // 'category' => 'required',
         ]);
 
          //Student Code
