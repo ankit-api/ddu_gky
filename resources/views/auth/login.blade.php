@@ -76,10 +76,15 @@
 
 
   <div class="container-scroller">
+      {{-- <div class="logo mx-auto">
+        <div class="container text-center">
+          <img src="{{asset('images/ddu-header.jpg')}}" class="img-fluid" style="height:130px;" alt="logo">
+        </div>
+      </div> --}}
     <div class="container-fluid page-body-wrapper full-page-wrapper">
       <div class="content-wrapper d-flex align-items-center auth px-0">
         <div class="row w-100 mx-0">
-          <div class="col-lg-4 mx-auto">
+          <div class="col-lg-5 mx-auto">
             <div class="auth-form-light text-left py-5 px-4 px-sm-5">
               <div class="logo mb-5">
                 <img src="{{asset('images/ddu-header.jpg')}}" class="img-fluid" alt="logo">
