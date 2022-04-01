@@ -13,8 +13,16 @@
                     <div class="home-tab">
 
                         <div class="container col-sm-12 mx-auto">
+                        <div class="col-sm-4 ml-2 mb-4">
+                            <ol class="breadcrumb float-sm-right" style="background-color: #6b8ed6;border-radius: 5px;margin-left: 28px;">
+                                <li class="breadcrumb-item"><a  style="color:#fff; text-decoration: none;" href="{{ route('home') }}" aria-expanded="false" aria-controls="ui-basic"><i class="fa-solid fa-house"></i></a></li>
+                                    <li class="breadcrumb-item" ><a  style="color:#fff; text-decoration: none;"data-bs-toggle="collapse" href="#ui-basic17" aria-expanded="false" aria-controls="ui-basic17">Admission</a></li>
+                                    <li class="breadcrumb-item active" ><a  style="color:#fff; text-decoration: none;" href="{{ route('admission_list')}}" ><b>Admission List</b></a>
+                                </li>
+                            </ol>
+                        </div>
                             <h4 class="text-center fw-bold">Candidate Admission List</h4><br>
-                            <div class="container col-sm-12 mx-auto" style="overflow:scroll;">
+                            <div class="container col-sm-12 mx-auto">
                                 <table class="table table-bordered" id="table1">
                                     <thead>
                                         <tr>
@@ -22,8 +30,6 @@
                                             <th>Student Name</th>
                                             <th>Batch ID</th>
                                             <th>D.O.B</th>
-                                            <th>Contact</th>
-                                            <th>Email</th>
                                             <th>Added By</th>
                                             <th>Action</th>
                                         </tr>
@@ -35,11 +41,9 @@
                                                 <td>{{ $candidate->name }}</td>
                                                 <td>{{ $candidate->batchCode->batch_code }}</td>
                                                 <td>{{ $candidate->dob }}</td>
-                                                <td>{{ $candidate->contact }}</td>
-                                                <td>{{ $candidate->email }}</td>
                                                 <td>{{ $candidate->cenInchName->name.' ('.$candidate->cenInchName->user_code.')' }}</td>
                                                 <td>
-                                                    <button class="text-light btn btn-info">Edit</button>
+                                                    <button class="text-light btn btn-primary">View</button>
                                                 </td>
                                             </tr>
                                         @endforeach

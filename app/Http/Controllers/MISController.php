@@ -115,7 +115,7 @@ class MISController extends Controller
             $constraint->aspectRatio();
         })->save($path.'/'.$filename2);
 
-        return redirect()->back()->with('alert_status','MIS Added Successfully');
+        return redirect()->route('mobilizer_list')->with('alert_status','MIS Added Successfully');
     }
 
     public function misList(){

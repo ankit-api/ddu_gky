@@ -14,6 +14,15 @@
               <div class="home-tab">
                   
         <div class="container col-sm-12 mx-auto">
+        <div class="col-sm-5 ml-2">
+            <ol class="breadcrumb float-sm-right" style="background-color: #6b8ed6;border-radius: 5px;margin-left: 28px;">
+                <li class="breadcrumb-item"><a  style="color:#fff; text-decoration: none;" href="{{ route('home') }}" aria-expanded="false" aria-controls="ui-basic"><i class="fa-solid fa-house"></i></a></li>
+                    <li class="breadcrumb-item"><a  style="color:#fff; text-decoration: none;"data-bs-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic6">User Manager</a></li>
+                    <li class="breadcrumb-item" ><a  style="color:#fff; text-decoration: none;"data-bs-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic4">Mobilizer</a></li>
+                    <li class="breadcrumb-item active" ><a  style="color:#fff; text-decoration: none;" href="{{ route('mobilizer_form')}}" ><b>Add Mobilizer</b></a>
+                </li>
+            </ol>
+        </div>
                 <h4 class="text-center fw-bold">Add Mobilizer</h4><br>
         <form action="{{ route('create_mobilizer_form') }}" method="post">
             @csrf

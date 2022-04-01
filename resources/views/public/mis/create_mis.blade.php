@@ -12,7 +12,15 @@
           <div class="row">
             <div class="col-sm-12">
               <div class="home-tab">
-                  
+              <div class="col-sm-4 ml-2 mb-4">
+                    <ol class="breadcrumb float-sm-right" style="background-color: #6b8ed6;border-radius: 5px;margin-left: 28px;">
+                        <li class="breadcrumb-item"><a  style="color:#fff; text-decoration: none;" href="{{ route('home') }}" aria-expanded="false" aria-controls="ui-basic"><i class="fa-solid fa-house"></i></a></li>
+                            <li class="breadcrumb-item"><a  style="color:#fff; text-decoration: none;"data-bs-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic6">User Manager</a></li>
+                            <li class="breadcrumb-item" ><a  style="color:#fff; text-decoration: none;"data-bs-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic4">MIS</a></li>
+                            <li class="breadcrumb-item active" ><a  style="color:#fff; text-decoration: none;" href="{{ route('mis_form')}}" ><b>Add MIS</b></a>
+                        </li>
+                    </ol>
+                </div> 
                 <div class="container col-sm-12 mx-auto" >
                   <h4 class="text-center fw-bold">Add MIS</h4><br>
                   <form action="{{ route('create_mis') }}" method="post" enctype="multipart/form-data">

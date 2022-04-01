@@ -14,8 +14,17 @@
               <div class="home-tab">
                   
                 <div class="container col-sm-12 mx-auto">
+                <div class="col-sm-6  mb-4">
+                            <ol class="breadcrumb float-sm-right" style="background-color: #6b8ed6;border-radius: 5px;margin-left: 28px;">
+                                <li class="breadcrumb-item"><a  style="color:#fff; text-decoration: none;" href="{{ route('home') }}" aria-expanded="false" aria-controls="ui-basic"><i class="fa-solid fa-house"></i></a></li>
+                                    <li class="breadcrumb-item"><a  style="color:#fff; text-decoration: none;"data-bs-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic6">User Manager</a></li>
+                                    <li class="breadcrumb-item" ><a  style="color:#fff; text-decoration: none;"data-bs-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic4">Centre Incharge </a></li>
+                                    <li class="breadcrumb-item active" ><a  style="color:#fff; text-decoration: none;" href="{{ route('centre_incharge_list')}}" ><b>Centre Incharge List</b></a>
+                                </li>
+                            </ol>
+                        </div> 
                   <h4 class="text-center fw-bold">Centre Incharge List</h4><br>
-                    <div class="container col-sm-12 mx-auto" style="overflow:scroll;">
+                    <div class="container col-sm-12 mx-auto" >
                         <table class="table table-bordered" id="table1">
                             <thead>
                                 <tr>                                    
@@ -24,11 +33,6 @@
                                     <th>Centre Name</th>
                                     <th>Centre Incharge Code</th>
                                     <th>Centre Incharge Name</th>
-                                    <th>Gender</th>
-                                    <th>Email</th>
-                                    <th>Contact</th>
-                                    <th>Address</th>
-                                    <th>Qualification</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -40,13 +44,9 @@
                                 <td>{{ $centre_incharge->getCentreName->centre_name }}</td> 
                                 <td>{{ $centre_incharge->centre_incharge_code }}</td>
                                 <td>{{ $centre_incharge->name }}</td>
-                                <td>{{ $centre_incharge->gender }}</td>
-                                <td>{{ $centre_incharge->email }}</td>
-                                <td>{{ $centre_incharge->contact }}</td>
-                                <td>{{ $centre_incharge->address }}</td>
-                                <td>{{ $centre_incharge->qualification }}</td>
                                 <td>
-                                  <button class="text-light btn btn-info">Edit</button><button class="text-light btn btn-danger">Delete</button>
+                                  <button class="text-light btn btn-primary">View</button>
+                                  <!-- <button class="text-light btn btn-danger">Deactive</button> -->
                                 </td>
                                 </tr>
                                 @endforeach

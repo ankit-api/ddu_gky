@@ -14,6 +14,15 @@
               <div class="home-tab">
                   
         <div class="container col-sm-12 mx-auto">
+        <div class="col-sm-7 ml-2 mb-4">
+            <ol class="breadcrumb float-sm-right" style="background-color: #6b8ed6;border-radius: 5px;margin-left: 28px;">
+                <li class="breadcrumb-item"><a  style="color:#fff; text-decoration: none;" href="{{ route('home') }}" aria-expanded="false" aria-controls="ui-basic"><i class="fa-solid fa-house"></i></a></li>
+                    <li class="breadcrumb-item"><a  style="color:#fff; text-decoration: none;"data-bs-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic4">User Manager</a></li>
+                    <li class="breadcrumb-item" ><a  style="color:#fff; text-decoration: none;"data-bs-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic4">Quality Team Member </a></li>
+                    <li class="breadcrumb-item active" ><a  style="color:#fff; text-decoration: none;" href="{{ route('q_team_member_form')}}" ><b>Add Quality Team Member </b></a>
+                </li>
+            </ol>
+        </div>     
                 <h4 class="text-center fw-bold">Create Q-Team Member</h4><br>
         <form action="{{ route('create_qteam_member') }}" method="post">
             @csrf

@@ -181,7 +181,7 @@ class MasterController extends Controller
 
         $path = 'Documents/Project_File';
         $file->move($path,$filename);
-        return redirect()->back()->with('alert_status','Project Added Successfully');
+        return redirect()->route('project_list')->with('alert_status','Project Added Successfully');
     }
 
     public function projectList()
@@ -239,7 +239,7 @@ class MasterController extends Controller
         $center->added_by = Auth::user()->id;
         $center->save();
 
-        return redirect()->back()->with('alert_status','Centre Added Successfully');
+        return redirect()->route('centre_list')->with('alert_status','Centre Added Successfully');
     }
 
     public function centreList()
@@ -321,7 +321,7 @@ class MasterController extends Controller
         $user->password = $hashed_random_password;
         $user->save();
 
-        return redirect()->back()->with('alert_status','Q Team Member Added Successfully');
+        return redirect()->route('q_team_member_list')->with('alert_status','Q Team Member Added Successfully');
     }
 
     public function qteamMemberList()
@@ -399,7 +399,7 @@ class MasterController extends Controller
         $user->password = $hashed_random_password;
         $user->save();
 
-        return redirect()->back()->with('alert_status','Centre Incharge Added Successfully');
+        return redirect()->route('centre_incharge_list')->with('alert_status','Centre Incharge Added Successfully');
     }
 
     public function centreInchargeList()
@@ -482,7 +482,7 @@ class MasterController extends Controller
         $user->password = $hashed_random_password;
         $user->save();
 
-        return redirect()->back()->with('alert_status','Mobilizer Added Successfully');
+        return redirect()->route('admission_list')->with('alert_status','Mobilizer Added Successfully');
     }
 
     public function mobilizerList()

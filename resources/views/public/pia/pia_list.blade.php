@@ -15,12 +15,14 @@
                     
                         <div class="container col-sm-12 mx-auto">
                         <div class="col-sm-4 ml-2">
-                            <ol class="breadcrumb float-sm-right" style="border:none;  border-left:solid #dee2e6;">
-                                <li class="breadcrumb-item"><b>User Manager</b></li>
-                                <li class="breadcrumb-item"><b>PIA</b></li>
-                                <li class="breadcrumb-item active"><b>PIA List</b></li>
+                            <ol class="breadcrumb float-sm-right" style="background-color: #6b8ed6;border-radius: 5px;margin-left: 28px;">
+                                <li class="breadcrumb-item"><a  style="color:#fff; text-decoration: none;" href="{{ route('home') }}" aria-expanded="false" aria-controls="ui-basic"><i class="fa-solid fa-house"></i></a></li>
+                                    <li class="breadcrumb-item"><a  style="color:#fff; text-decoration: none;"data-bs-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic4">User Manager</a></li>
+                                    <li class="breadcrumb-item" ><a  style="color:#fff; text-decoration: none;"data-bs-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic4">PIA</a></li>
+                                    <li class="breadcrumb-item active" ><a  style="color:#fff; text-decoration: none;" href="{{ route('pia_list')}}" ><b>PIA List</b></a>
+                                </li>
                             </ol>
-                        </div><!-- /.col -->
+                        </div>
                             <h4 class="text-center fw-bold">PIA List</h4><br>
                             <div class="container row mb-2">
                       
@@ -37,7 +39,7 @@
                                     <div class="alert alert-danger">{{$errors->first()}}</div>
                                 {{-- @endforeach --}}
                             @endif 
-                            <div class="container col-sm-12 mx-auto" style="overflow:scroll;">
+                            <div class="container col-sm-12 mx-auto" >
                                 <table class="table table-bordered" id="table">
                                     <thead>
                                         <tr>
@@ -46,7 +48,6 @@
                                             <th>PIA Landline No.</th>
                                             <th>PIA Alternate Contact</th>
                                             <th> PIA Email</th>
-                                            <th>PIA Address</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -58,8 +59,7 @@
                                                 <td>{{ $pia->landline_no }}</td>
                                                 <td>{{ $pia->phone_no }}</td>
                                                 <td>{{ $pia->email }}</td>
-                                                <td>{{ $pia->address }}</td>
-                                                <td><button class="text-light btn btn-info">Edit</button></td>
+                                                <td><button class="text-light btn btn-primary">View</button></td>
                                             </tr>
                                         @endforeach
                                     </tbody>

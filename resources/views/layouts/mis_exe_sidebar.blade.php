@@ -139,21 +139,7 @@
             </div>
           </li>
 
-          <!-- Candidate Menu -->
-          <hr>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic11" aria-expanded="false" aria-controls="ui-basic">
-              <i class="menu-icon mdi mdi-floor-plan"></i>
-              <span class="menu-title">Candidate</span>
-              <i class="menu-arrow"></i> 
-            </a>
-            <div class="collapse" id="ui-basic11">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Candidate List</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ route('candidate_feedback') }}">Candidate Feedback Form</a></li>
-              </ul>
-            </div>
-          </li>  
+         
 
 
 <!-- Aptitude  -->

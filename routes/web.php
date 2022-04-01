@@ -61,7 +61,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/reg_check_duplicate', [AjaxController::class,'reg_check_duplicate']);
   
     //Change Password
-     //Pia Route
      Route::get('/change_password', [AuthenticationController::class,'changePassword'])->name('change_password');
      Route::post('/post_change_password', [AuthenticationController::class,'postChangePAssword'])->name('post_change_password');
   

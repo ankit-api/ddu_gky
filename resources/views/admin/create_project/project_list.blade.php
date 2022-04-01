@@ -14,8 +14,16 @@
                     <div class="home-tab">
 
                         <div class="container col-sm-12 mx-auto">
+                        <div class="col-sm-5 ml-2">
+                            <ol class="breadcrumb float-sm-right" style="background-color: #6b8ed6;border-radius: 5px;margin-left: 28px;">
+                                <li class="breadcrumb-item"><a  style="color:#fff; text-decoration: none;" href="{{ route('home') }}" aria-expanded="false" aria-controls="ui-basic"><i class="fa-solid fa-house"></i></a></li>
+                                    <li class="breadcrumb-item"><a  style="color:#fff; text-decoration: none;"data-bs-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic2">Project/Sanction Order</a></li>
+                                    <li class="breadcrumb-item active" ><a  style="color:#fff; text-decoration: none;" href="{{ route('project_list')}}" ><b>Project List </b></a>
+                                </li>
+                            </ol>
+                        </div>
                             <h4 class="text-center fw-bold">Sanction Order List</h4><br>
-                            <div class="container col-sm-12 mx-auto" style="overflow:scroll;">
+                            <div class="container col-sm-12 mx-auto" >
                                 <table class="table table-bordered" id="table1">
                                     <thead>
                                         <tr>
@@ -24,9 +32,7 @@
                                             <th>Project Name</th>
                                             <th>State</th>
                                             <th>District</th>
-                                            <th>Project Duration<br>(in months)</th>
-                                            <th>Sanction Date</th>
-                                            <th>Project Cost</th>
+                                            <th>Sanction Date</th>                                         
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -37,13 +43,11 @@
                                                 <td>{{ $project->getProjectList->pia_name }}</td>
                                                 <td>{{ $project->name }}</td>
                                                 <td>{{ $project->getState->state_name }}</td>
-                                                <td>{{ $project->getDistrict->district_name }}</td>
-                                                <td>{{ $project->project_duration }} months</td>
+                                                <td>{{ $project->getDistrict->district_name }}</td> 
                                                 <td>{{ $project->sanction_date }}</td>
-                                                <td>Rs. {{ $project->project_cost }}</td>
-                                                <td>
-                                                    <button class="text-light btn btn-info">Edit</button>
+                                                <td>                                                  
                                                     <button class="text-light btn btn-primary">View</button>
+                                                    <!-- <button class="text-light btn btn-danger">Deactive</button> -->
                                                 </td>
                                             </tr>
                                         @endforeach
