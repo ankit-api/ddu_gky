@@ -58,12 +58,12 @@
                                     </div> -->
                                     <div class="col-md-6">
                                         <label for="" class="m-2">Sanction Order No.</label><br>
-                                        <input type="text" class="form-control" name="sac_order_no"
+                                        <input type="text" class="form-control" max="{{date("Y-m-d")}}" name="sac_order_no"
                                             placeholder="Enter Sanction Order No.">
                                     </div>
                                     <div class="col-md-6">
                                         <label for="" class="m-2">Sanction Order Date</label><br>
-                                        <input type="date" class="form-control" name="sac_order_date">
+                                        <input type="date" class="form-control" max="{{date("Y-m-d")}}" name="sac_order_date">
                                     </div>
                                     <div class="col-md-6">
                                         <label for="" class="m-2">Proposal Code</label><br>
@@ -106,32 +106,32 @@
                                     </div>
                                     <div class="col-md-4">
                                         <label for="" class="m-2">Total Project Duration(In Months)</label><br>
-                                        <input type="number" min="0" class="form-control" name="proj_duration" required
+                                        <input type="text" class="form-control" maxlength="4" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" name="proj_duration" required
                                             placeholder="Enter Project Duration">
                                     </div>
                                     <div class="col-md-4">
                                         <label for="" class="m-2">Total Target</label><br>
-                                        <input type="number" min="0" class="form-control" name="total_target" required
+                                        <input type="text" class="form-control" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" maxlength="5" name="total_target" required
                                             placeholder="Enter Total Target">
                                     </div>
                                     <div class="col-md-4">
                                         <label for="" class="m-2">Placement Target</label><br>
-                                        <input type="number" min="0" class="form-control" name="place_target" required
+                                        <input type="text" class="form-control" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" maxlength="5" name="place_target" required
                                             placeholder="Enter Placement Target">
                                     </div>
                                     <div class="col-md-4">
                                         <label for="" class="m-2">Total Project Cost(In Rs)</label><br>
-                                        <input type="number" min="0" class="form-control" name="proj_cost" required
+                                        <input type="text" class="form-control" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" maxlength="9" name="proj_cost" required
                                             placeholder="Enter Total Project Cost">
                                     </div>
                                     <div class="col-md-4">
                                         <label for="" class="m-2">Central Share(In Rs)</label><br>
-                                        <input type="number" min="0" class="form-control" name="central_share" required
+                                        <input type="text" class="form-control" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" maxlength="9" name="central_share" required
                                             placeholder="Enter Centre Share">
                                     </div>
                                     <div class="col-md-4">
                                         <label for="" class="m-2">State Share(In Rs)</label><br>
-                                        <input type="number"  min="0" class="form-control" name="state_share" required
+                                        <input type="text" class="form-control" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" maxlength="9" name="state_share" required
                                             placeholder="Enter State Share">
                                     </div>
                                     <div class="col-md-4">
@@ -148,11 +148,11 @@
                                     </div>
                                     <div class="col-md-4">
                                         <label for="" class="m-2">Consortium Partner PRN</label><br>
-                                        <input type="text" class="form-control" name="con_part_no" required
+                                        <input type="text" class="form-control" name="con_part_no"
                                             placeholder="Enter Consortium Partner PRN">
                                     </div>
-                                    <div class="col-md-4">
-                                        <label for="" class="m-2">Project Application Document</label><br>
+                                    <div class="col-md-6">
+                                        <label for="" class="m-2">Project Application Document <span style="font-size: 14px;font-weight: 600;color: #ee1201;">(Document size should be less than 1MB)</span></label><br>
                                         <input type="file" name="project_doc" accept="application/pdf"
                                             class="form-control " style="background-color:white;" required>
                                     </div>

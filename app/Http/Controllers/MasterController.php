@@ -134,7 +134,8 @@ class MasterController extends Controller
             'sac_order_date' => 'required',
             'pro_code' => 'required',
             'state_id' => 'required',
-            'district_id' => 'required'
+            'district_id' => 'required',
+            'project_doc' => 'max:1024'
         ]);
 
         $file = $req->file('project_doc');
@@ -181,7 +182,7 @@ class MasterController extends Controller
 
         $path = 'Documents/Project_File';
         $file->move($path,$filename);
-        return redirect()->route('project_list')->with('alert_status','Project Added Successfully');
+        return redirect()->back()->with('alert_status','Project Added Successfully');
     }
 
     public function projectList()

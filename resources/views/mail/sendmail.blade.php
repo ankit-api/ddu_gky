@@ -49,20 +49,20 @@
                         <tr>
                             <td bgcolor="#ffffff" align="left"
                                 style="padding: 10px 30px 20px 30px; color: #E46013; font-family: 'Poppins', sans-serif; font-size: 18px; font-weight: 500; line-height: 25px;">
-                                <p style="margin-bottom: 20px; text-align:center;"><span style="font-weight: 600;">Username :</span> {{$username}} <br><span style="font-weight: 600;">Name :</span> {{$name}} <br><span style="font-weight: 600;">Password :</span> {{$password}} <br><span style="font-weight: 600;">Email :</span> <span style="text-decoration:none;color: #E46013;">{{$email}}</span> <br><span style="font-weight: 600;">Usertype :</span> {{$usertype}} <br></p>
+                                <p style="margin-bottom: 20px;"><span style="font-weight: 600;">Username :</span> {{$username}} <br><span style="font-weight: 600;">Name :</span> {{$name}} <br><span style="font-weight: 600;">Password :</span> {{$password}} <br><span style="font-weight: 600;">Email :</span> <span style="text-decoration:none;color: #E46013;">{{$email}}</span> <br><span style="font-weight: 600;">Usertype :</span> {{$usertype}} <br></p>
                             </td>
                         </tr>
 
                         <tr>
                             <td bgcolor="#ffffff" align="left"
                                 style="padding: 20px 30px 10px 30px; color: #000281; font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 400; line-height: 25px;">
-                                <p style="text-align:center">Login From Here</p>
+                                <p style="">Login From Here</p>
                             </td>
                         </tr>
 
                         <tr>
                             <td bgcolor="#ffffff" align="left"
-                                style="padding: 0px 30px 20px 30px; color: #666666; font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 400; line-height: 25px; text-align:center;">
+                                style="padding: 0px 30px 20px 30px; color: #666666; font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 400; line-height: 25px;">
                                 <a href="{{env('APP_URL')}}" class="dwnld-btn" style="padding: 12px 20px;
                                 text-decoration: none;
                                 border: 1px solid #030050;
