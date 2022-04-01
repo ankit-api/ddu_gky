@@ -104,9 +104,7 @@ class MISController extends Controller
         $user->save();
 
         $path = 'Documents/MIS';
-        // $file1->move($path,$filename1);
-        // $file2->move($path,$filename2);
-
+        
         $img1 = Image::make($file1->getRealPath());
         $img1->resize(200, 200, function ($constraint) {
             $constraint->aspectRatio();

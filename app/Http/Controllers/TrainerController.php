@@ -73,8 +73,9 @@ class TrainerController extends Controller
             $skill = implode(",",$req->add_skill);
         } else {
             $skill = 'NULL';
-        }
-       
+    
+        $adhaar = str_replace("-","",$req->adhaar);
+        
         $trainer = new Trainer();
         $trainer->centre_id = $req->centre_name;
         $trainer->project_id = $req->project_name;
@@ -91,7 +92,7 @@ class TrainerController extends Controller
         $trainer->type_of_engagement = $req->engagement_type;
         $trainer->training_type = $req->training_type;
         !empty($req->pwd_type ) ? $trainer->pwd_type = $req->pwd_type : $trainer->pwd_type = 'NULL';
-        $trainer->aadhaar_no = $req->adhaar;
+        $trainer->aadhaar_no = $adhaar;
         !empty($req->other_info ) ? $trainer->other_info = $req->other_info : $trainer->other_info = 'NULL';
         $trainer->added_by = Auth::user()->id;
         $trainer->save();

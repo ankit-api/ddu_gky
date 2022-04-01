@@ -82,10 +82,14 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-8">
-                                            <input type="file" name="sign_doc" accept="image/png, image/gif, image/jpeg" class="form-control" style="background-color:white;" >
+                                            @if(!empty($mis_data->photo))
+                                                <input type="file" name="sign_doc" accept="image/png, image/gif, image/jpeg" class="form-control" style="background-color:white;" >
+                                            @endif    
                                         </div>
                                         <div class="col-md-4">
-                                            <a href="{{ asset('Documents/MIS/'.$mis_data->signature)}}" target="_blank" class="text-light btn btn-primary">View Sign</a>
+                                            @if(!empty($mis_data->signature))
+                                                 <a href="{{ asset('Documents/MIS/'.$mis_data->signature)}}" target="_blank" class="text-light btn btn-primary">View Sign</a>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
