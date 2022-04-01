@@ -17,6 +17,7 @@ use App\Models\User;
 use App\Models\Scheme;
 use App\Models\CategoryType;
 use App\Models\Block;
+use App\Models\Qualification;
 use Image;
 use Mail;
 use Auth;
@@ -336,7 +337,8 @@ class MasterController extends Controller
     {
         $get_project = Project::all();
         $get_centre = CentreDetails::all();
-        return view('public.centre incharge.add_centre_incharge', compact("get_centre","get_project"));
+        $get_qualifications = Qualification::all();
+        return view('public.centre incharge.add_centre_incharge', compact("get_centre","get_project","get_qualifications"));
     }
 
     public function createCentreIncharge(Request $req)
