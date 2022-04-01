@@ -23,6 +23,7 @@ use App\Http\Controllers\LetterController;
 use App\Http\Controllers\MISController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\AjaxController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +64,10 @@ Route::group(['middleware' => ['auth']], function() {
     //Change Password
      Route::get('/change_password', [AuthenticationController::class,'changePassword'])->name('change_password');
      Route::post('/post_change_password', [AuthenticationController::class,'postChangePAssword'])->name('post_change_password');
+  
+     //Update Profile Route
+     Route::get('/update_profile', [ProfileController::class,'profileForm'])->name('update_profile');
+     Route::post('/post_update_profile', [ProfileController::class,'postprofileForm'])->name('post_update_profile');
   
     //Pia Route
     Route::get('/pia_form', [MasterController::class,'piaForm'])->name('pia_form');

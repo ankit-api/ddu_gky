@@ -142,11 +142,11 @@
                 <div class="col-md-6">
                         <label for="" class="m-2">Present Address</label><br>
                        
-                        <textarea name="pre_address" required rows="3" style="width:100%; border-radius: 4px; border:1px solid #dee2e6;"> </textarea>
+                        <textarea name="pre_address" required rows="3" style="width:100%; border-radius: 4px; border:1px solid #dee2e6;padding-left: 15px; font-size: 15px;"> </textarea>
                 </div>
                 <div class="col-md-6">
                     <label for="" class="m-2">Permanent Address</label><br>
-                    <textarea name="per_address" rows="3" style="width:100%; border-radius: 4px; border:1px solid #dee2e6;"></textarea>
+                    <textarea name="per_address" rows="3" style="width:100%; border-radius: 4px; border:1px solid #dee2e6;padding-left: 15px; font-size: 15px;"></textarea>
                 </div>                
             </div>
             <div class="row">
