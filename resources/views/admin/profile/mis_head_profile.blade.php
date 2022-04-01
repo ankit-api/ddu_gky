@@ -85,7 +85,7 @@
                                             <input type="file" name="sign_doc" accept="image/png, image/gif, image/jpeg" class="form-control" style="background-color:white;" >
                                         </div>
                                         <div class="col-md-4">
-                                            <a href="" target="_blank" class="text-light btn btn-primary">View Sign</a>
+                                            <a href="{{ asset('Documents/MIS/'.$mis_data->signature)}}" target="_blank" class="text-light btn btn-primary">View Sign</a>
                                         </div>
                                     </div>
                                 </div>
