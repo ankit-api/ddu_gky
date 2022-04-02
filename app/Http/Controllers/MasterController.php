@@ -144,6 +144,8 @@ class MasterController extends Controller
         $file = $req->file('project_doc');
         $filename = $req->sac_order_no.'.'.$file->getClientOriginalExtension();
 
+         str_replace("/", "_", $req->pia_code);
+
         $Project = new Project();
         $Project->pia_id = $req->pia_id;
         $Project->scheme_id = $req->scheme_id;
@@ -158,9 +160,9 @@ class MasterController extends Controller
         $Project->project_duration = $req->proj_duration;
         $Project->total_target = $req->total_target;
         $Project->placement_target = $req->place_target;
-        $Project->project_cost = $req->proj_cost;
-        $Project->central_share = $req->central_share;
-        $Project->state_share = $req->state_share;
+        $Project->project_cost = str_replace(",", "", $req->proj_cost);
+        $Project->central_share = str_replace(",", "", $req->central_share);
+        $Project->state_share = str_replace(",", "", $req->state_share);
         $Project->mpr_project_id = $req->mpr_proj_id;
         $Project->consortium = $req->con_part;
         $Project->consortium_prn = $req->con_part_no;

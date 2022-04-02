@@ -121,17 +121,17 @@
                                     </div>
                                     <div class="col-md-4">
                                         <label for="" class="m-2">Total Project Cost(In Rs)</label><br>
-                                        <input type="text" id="proj_cost" class="form-control number_validation"  maxlength="9" name="proj_cost" required
+                                        <input type="text" id="proj_cost" class="money form-control money_format" maxlength="10"  name="proj_cost" required
                                             placeholder="Enter Total Project Cost">
                                     </div>
                                     <div class="col-md-4">
                                         <label for="" class="m-2">Central Share(In Rs)</label><br>
-                                        <input type="text" class="form-control number_validation"  maxlength="9" name="central_share" required
+                                        <input type="text" class="form-control money_format"  maxlength="9" name="central_share" required
                                             placeholder="Enter Centre Share">
                                     </div>
                                     <div class="col-md-4">
                                         <label for="" class="m-2">State Share(In Rs)</label><br>
-                                        <input type="text" class="form-control number_validation" maxlength="9" name="state_share" required
+                                        <input type="text" class="form-control money_format" maxlength="9" name="state_share" required
                                             placeholder="Enter State Share">
                                     </div>
                                     <div class="col-md-4">
@@ -179,26 +179,26 @@
                                         <tbody>
                                             <tr>
                                                 <th><input type="hidden" name="cat_type[]" value="Sanctioned">Sanctioned</th>
-                                                <td><input type="number" min="0" name="target_no[]" class="form-control"></td>
-                                                <td><input type="number" min="0" name="sc_no[]" class="form-control"></td>
-                                                <td><input type="number" min="0" name="st_no[]" class="form-control"></td>
-                                                <td><input type="number" min="0" name="others_no[]" class="form-control"></td>
-                                                <td><input type="number" min="0" name="minorities_no[]" class="form-control">
+                                                <td><input type="text" min="0" name="target_no[]" class="number_validation form-control"></td>
+                                                <td><input type="text" min="0" name="sc_no[]" class="number_validation form-control"></td>
+                                                <td><input type="text" min="0" name="st_no[]" class="number_validation form-control"></td>
+                                                <td><input type="text" min="0" name="others_no[]" class="number_validation form-control"></td>
+                                                <td><input type="text" min="0" name="minorities_no[]" class="number_validation form-control">
                                                 </td>
-                                                <td><input type="number" min="0" name="women_no[]" class="form-control"></td>
-                                                <td><input type="number" min="0" name="placement_no[]" class="form-control">
+                                                <td><input type="text" min="0" name="women_no[]" class="number_validation form-control"></td>
+                                                <td><input type="text" min="0" name="placement_no[]" class="number_validation form-control">
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th><input type="hidden" name="cat_type[]" value="Proposed">Proposed</th>
-                                                <td><input type="number" min="0" name="target_no[]" class="form-control"></td>
-                                                <td><input type="number" min="0" name="sc_no[]" class="form-control"></td>
-                                                <td><input type="number" min="0" name="st_no[]" class="form-control"></td>
-                                                <td><input type="number" min="0" name="others_no[]" class="form-control"></td>
-                                                <td><input type="number" min="0" name="minorities_no[]" class="form-control">
+                                                <td><input type="text" min="0" name="target_no[]" class="number_validation form-control"></td>
+                                                <td><input type="text" min="0" name="sc_no[]" class="number_validation form-control"></td>
+                                                <td><input type="text" min="0" name="st_no[]" class="number_validation form-control"></td>
+                                                <td><input type="text" min="0" name="others_no[]" class="number_validation form-control"></td>
+                                                <td><input type="text" min="0" name="minorities_no[]" class="number_validation form-control">
                                                 </td>
-                                                <td><input type="number" min="0" name="women_no[]" class="form-control"></td>
-                                                <td><input type="number" min="0" name="placement_no[]" class="form-control">
+                                                <td><input type="text" min="0" name="women_no[]" class="number_validation form-control"></td>
+                                                <td><input type="text" min="0" name="placement_no[]" class="number_validation form-control">
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -219,10 +219,28 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>    
 <script>
     $(document).ready(function () {
-            $('.number_validation').on('keyup', function () {
+
+        $('.number_validation').on('keyup', function () {
                 if (/\D/g.test(this.value))
                  this.value = this.value.replace(/\D/g,'')
             });
+
+        $('.money_format').on('keyup', function (e) {   
+            if (/\D/g.test(this.value)){
+                 this.value = this.value.replace(/\D/g,'') 
+            }            
+            var number = this.value.replace(/,/g, ''); 
+            var a =  Number(number).toLocaleString('en-IN');
+            this.value = a;
+        });
+
+        
+           
+            
+            // var number = 123456.789;
+       
+            // document.getElementById('result').innerHTML = number.toLocaleString('en-IN');
+            // → 1,23,456.789
 
 
             $('#state_id').on('change', function () {
