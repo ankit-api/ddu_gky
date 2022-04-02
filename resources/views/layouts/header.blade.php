@@ -169,7 +169,7 @@
                 <a href="{{ route('update_admin_profile') }}" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i>Update Profile </a>
               @endif
               @if(Auth::user()->user_role->role_name == 'PIA')
-                <a href="{{ route('update_pia__profile') }}" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i>Update Profile </a>
+                <a href="{{ route('update_pia_profile') }}" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i>Update Profile </a>
               @endif
               @if(Auth::user()->user_role->role_name == 'MIS Head')
                 <a href="{{ route('update_mis_head_profile') }}" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i>Update Profile </a>
