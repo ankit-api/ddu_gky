@@ -80,7 +80,7 @@
             <div class="row">       
                 <div class="col-md-6">
                     <label for="" class="m-2">Address of Training Centre</label><br>
-                    <textarea name="address"  cols="30" rows="3" placeholder="Enter Complete Address" style="font-size:14px; width:100%; border-radius: 4px; border:1px solid #dee2e6;"></textarea>
+                    <textarea name="address"  cols="30"  placeholder="Enter Complete Address" rows="3" style="font-size:14px; width:100%; border-radius: 4px; border:1px solid #dee2e6; padding-left:10px;"></textarea>
                 </div>
             </div><br>                       
                <button type="submit" class="text-light btn btn-lg btn-success btn-icon-text">

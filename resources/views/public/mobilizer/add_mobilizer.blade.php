@@ -74,7 +74,7 @@
                 </div>
                 <div class="col-md-6">
                     <label for="" class="m-2">Contact</label><br>
-                    <input name ="contact_no" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" maxlength="10" placeholder="Enter Contact No." class="form-control">
+                    <input name ="contact_no" type="text"  maxlength="10" placeholder="Enter Contact No." class="number_validation form-control">
                 </div> 
                 <div class="col-md-6">
                     <label for="" class="m-2">State</label><br>
@@ -98,7 +98,7 @@
                 </div>
                 <div class="col-md-6">
                     <label for="" class="m-2">Address</label><br>
-                    <textarea  name ="address"placeholder="Enter Complete Address"  style="font-size:14px; width:100%; border-radius: 4px; border:1px solid #dee2e6;"></textarea>
+                    <textarea  name ="address" placeholder="Enter Complete Address"   rows="3" style="width:100%; border-radius: 4px; border:1px solid #dee2e6;padding-left: 10px; font-size: 14px;" ></textarea>
                 </div>
                  
               </div><br>     
@@ -115,7 +115,13 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-    $(document).ready(function () {
+    $(document).ready(function () {    
+          
+        $('.number_validation').on('keyup', function () {
+            if (/\D/g.test(this.value))
+                this.value = this.value.replace(/\D/g,'')
+        });
+
             $('#state_id').on('change', function () {
                 var idState = this.value;
                 $("#district_id").html('');

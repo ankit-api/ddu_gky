@@ -97,7 +97,7 @@
                 </div>
                 <div class="col-md-4">
                         <label for="" class="m-2">Age</label><br>
-                        <input type="number" class="form-control" name="age" id="" required placeholder="Enter Age" >
+                        <input type="text" class="number_validation form-control" name="age"  required placeholder="Enter Age" >
                 </div>                          
             </div><br>
           
@@ -132,15 +132,9 @@
                 </div>
                 <div class="col-md-4">
                     <label for="" class="m-2">Contact</label><br>
-                    <input type="number" class="form-control" required name="contact" id=""  placeholder="Enter Contact">
+                    <input type="text" class="number_validation form-control" required name="contact"   placeholder="Enter Contact">
                 </div>
                 <div class="col-md-4">
-                <label for="" class="m-2">Address</label><br>
-                    <textarea name="address" id="" class="form-control" required placeholder="Enter Address"></textarea>  
-                </div>                
-            </div><br>
-            <div class="row">
-               <div class="col-md-6">
                 <label for="" class="m-2">Referring Stakeholder</label><br>
                     <select name="ref" id="ref" class="form-control" required
                         style="background-color:white;">
@@ -149,10 +143,16 @@
                             <option value="{{ $mobi->id }}">{{ $mobi->name }}</option>
                         @endforeach
                     </select> 
-                </div>   
+                </div>                                  
+            </div><br>
+            <div class="row">
+            <div class="col-md-6">
+                <label for="" class="m-2">Address</label><br>
+                    <textarea name="address" id="" required placeholder="Enter Address" rows="3" style="width:100%; border-radius: 4px; border:1px solid #dee2e6;padding-left: 10px; font-size: 14px;"></textarea>  
+                </div> 
                <div class="col-md-6">
                 <label for="" class="m-2">Remarks</label><br>
-                <textarea name="remark" id="" class="form-control"   rows="10" placeholder="Referring Remarks"></textarea>  
+                <textarea name="remark" id="" placeholder="Referring Remarks" rows="3" style="width:100%; border-radius: 4px; border:1px solid #dee2e6;padding-left: 10px; font-size: 14px;"></textarea>  
                 </div>   
             </div><br>
             <div class="row">
@@ -247,7 +247,11 @@
                     }  
           
              
-            $(document).ready(function() {              
+            $(document).ready(function () {
+                    $('.number_validation').on('keyup', function () {
+                        if (/\D/g.test(this.value))
+                        this.value = this.value.replace(/\D/g,'')
+                    });      
                 
                     var no = 1;
                     $('.add_more').click(function(e){                     

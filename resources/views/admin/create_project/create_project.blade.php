@@ -106,32 +106,32 @@
                                     </div>
                                     <div class="col-md-4">
                                         <label for="" class="m-2">Total Project Duration(In Months)</label><br>
-                                        <input type="text" class="form-control" maxlength="4" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" name="proj_duration" required
+                                        <input type="text" class="form-control number_validation" maxlength="4" name="proj_duration" required
                                             placeholder="Enter Project Duration">
                                     </div>
                                     <div class="col-md-4">
                                         <label for="" class="m-2">Total Target</label><br>
-                                        <input type="text" class="form-control" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" maxlength="5" name="total_target" required
+                                        <input type="text" class="form-control number_validation" maxlength="5" name="total_target" required
                                             placeholder="Enter Total Target">
                                     </div>
                                     <div class="col-md-4">
                                         <label for="" class="m-2">Placement Target</label><br>
-                                        <input type="text" class="form-control" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" maxlength="5" name="place_target" required
+                                        <input type="text" class="form-control number_validation" maxlength="5" name="place_target" required
                                             placeholder="Enter Placement Target">
                                     </div>
                                     <div class="col-md-4">
                                         <label for="" class="m-2">Total Project Cost(In Rs)</label><br>
-                                        <input type="text" id="proj_cost" class="form-control" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,''); numberFormat(this);" maxlength="9" name="proj_cost" required
+                                        <input type="text" id="proj_cost" class="form-control number_validation"  maxlength="9" name="proj_cost" required
                                             placeholder="Enter Total Project Cost">
                                     </div>
                                     <div class="col-md-4">
                                         <label for="" class="m-2">Central Share(In Rs)</label><br>
-                                        <input type="text" class="form-control" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" maxlength="9" name="central_share" required
+                                        <input type="text" class="form-control number_validation"  maxlength="9" name="central_share" required
                                             placeholder="Enter Centre Share">
                                     </div>
                                     <div class="col-md-4">
                                         <label for="" class="m-2">State Share(In Rs)</label><br>
-                                        <input type="text" class="form-control" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,''); " maxlength="9" name="state_share" required
+                                        <input type="text" class="form-control number_validation" maxlength="9" name="state_share" required
                                             placeholder="Enter State Share">
                                     </div>
                                     <div class="col-md-4">
@@ -158,8 +158,7 @@
                                     </div>
                                     {{-- <div class="col-md-12">
                                         <label for="" class="m-2">Description</label><br>
-                                        <textarea name="proj_description" required placeholder="  " rows="3"
-                                            style="width:100%; border-radius: 4px; border:1px solid #dee2e6;"></textarea>
+                                        <textarea name="proj_description" required placeholder="  "  rows="3" style="width:100%; border-radius: 4px; border:1px solid #dee2e6;padding-left: 10px; font-size: 14px;"></textarea>
                                     </div> --}}
                                 </div><br><br>
                                 <div class="row">
@@ -220,6 +219,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>    
 <script>
     $(document).ready(function () {
+            $('.number_validation').on('keyup', function () {
+                if (/\D/g.test(this.value))
+                 this.value = this.value.replace(/\D/g,'')
+            });
+
+
             $('#state_id').on('change', function () {
                 var idState = this.value;
                 $("#district_id").html('');

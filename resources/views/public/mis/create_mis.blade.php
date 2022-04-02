@@ -64,11 +64,11 @@
                       </div> 
                       <div class="col-md-4">
                           <label for="" class="m-2">Contact No.</label><br>
-                          <input name ="contact_no" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" maxlength="10" placeholder="Enter Contact No." class="form-control">
+                          <input name ="contact_no" type="text"  maxlength="10" placeholder="Enter Contact No." class="number_validation form-control">
                       </div> 
                       <div class="col-md-12">
                           <label for="" class="m-2">Address of MIS</label><br>
-                          <input name ="address" type="text" placeholder="Enter Full Address Of MIS" class="form-control">
+                          <textarea name ="address"  placeholder="Enter Full Address Of MIS" rows="3" style="font-size:14px; width:100%; border-radius: 4px; border:1px solid #dee2e6; padding-left:10px;"></textarea>
                       </div> 
                       <div class="col-md-6">
                         <label for="" class="m-2">Attach Photograph <span style="font-size: 14px;font-weight: 600;color: #ee1201;">(Image size should be less than 512Kb)</span></label><br>
@@ -114,6 +114,13 @@
                 console.log(data);
             }
         });
+    });
+
+    $(document).ready(function () {
+            $('.number_validation').on('keyup', function () {
+                if (/\D/g.test(this.value))
+                 this.value = this.value.replace(/\D/g,'')
+            });
     });
 </script>
 @endsection

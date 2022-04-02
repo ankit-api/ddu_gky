@@ -66,8 +66,8 @@
                     <input type="date" class="form-control" name="" id="" > 
                 </div>-->
                 <div class="col-md-4">
-                    <label for="" class="m-2">Training Duration</label><br>
-                    <input type="text" required name="duration" class="form-control" placeholder="Enter Training Duration" >
+                    <label for="" class="m-2">Training Duration<span style="font-size: 14px;font-weight: 600;color: #ee1201;"> (In months)</span></label><br>
+                    <input type="text" required name="duration" class="number_validation form-control" placeholder="Enter Training Duration" >
                 </div>
             </div><br> <br>
             <h5>Trainee Profile</h5>
@@ -112,7 +112,7 @@
                 </div>
                 <div class="col-md-3">
                         <label for="" class="m-2">Age</label><br>
-                        <input type="number" required class="form-control" name="age" id="age" placeholder="Enter Age">
+                        <input type="text" required class="number_validation form-control" name="age" id="age" placeholder="Enter Age">
                 </div>                 
                 <div class="col-md-3">
                         <label for="" class="m-2">Individual Identity No.</label><br>
@@ -123,11 +123,11 @@
             <div class="row">
             <div class="col-md-3">
                         <label for="" class="m-2">Contact</label><br>
-                        <input type="text" required class="form-control" name="contact" id="contact" required placeholder="Enter Contact ">
+                        <input type="text" required class="number_validation form-control" name="contact" id="contact" required placeholder="Enter Contact ">
                 </div>
                 <div class="col-md-3">
                     <label for="" class="m-2">Alternative Contact</label><br>
-                    <input type="text" class="form-control" name="a_contact" id="a_contact" placeholder="Enter Alternative Contact">
+                    <input type="text" class="number_validation form-control" name="a_contact" id="a_contact" placeholder="Enter Alternative Contact">
                 </div>    
             <div class="col-md-3">
                         <label for="" class="m-2">Email</label><br>
@@ -142,11 +142,11 @@
                 <div class="col-md-6">
                         <label for="" class="m-2">Present Address</label><br>
                        
-                        <textarea name="pre_address" required rows="3" style="width:100%; border-radius: 4px; border:1px solid #dee2e6;padding-left: 15px; font-size: 15px;"> </textarea>
+                        <textarea name="pre_address"  placeholder="Enter Present Address" required rows="3" style="width:100%; border-radius: 4px; border:1px solid #dee2e6;padding-left: 10px; font-size: 14px;"> </textarea>
                 </div>
                 <div class="col-md-6">
                     <label for="" class="m-2">Permanent Address</label><br>
-                    <textarea name="per_address" rows="3" style="width:100%; border-radius: 4px; border:1px solid #dee2e6;padding-left: 15px; font-size: 15px;"></textarea>
+                    <textarea name="per_address" placeholder="Enter Permanent Address" rows="3" style="width:100%; border-radius: 4px; border:1px solid #dee2e6;padding-left: 10px; font-size: 14px;"></textarea>
                 </div>                
             </div>
             <div class="row">
@@ -230,7 +230,7 @@
                 </div>
                 <div class="col-md-6">
                 <label for="" class="m-2">Yearly Income(in Rs.) </label><br>
-                    <input type="text" name="a_income" class="form-control" placeholder="Enter Yearly Income(in Rs.)" >    
+                    <input type="text" name="a_income" class="number_validation form-control" placeholder="Enter Yearly Income(in Rs.)" >    
                 </div>                
             </div><br>
             <div class="row">
@@ -272,7 +272,7 @@
                 </div> 
                 <div class="col-md-3">
                     <label for="" class="m-2">Number of member in the family </label><br>
-                    <input type="number" name="fam_mem_no" required class="form-control" placeholder="Enter Number of member in the family" > </option>
+                    <input type="number" name="fam_mem_no" required class="number_validation form-control" placeholder="Enter Number of member in the family" > </option>
                     </select>
                 </div>                
             </div><br><br>
@@ -316,7 +316,7 @@
                                    
                                 </select>
                             </td>
-                            <td> <input type="number" name="m_age[]" placeholder="Enter age" class="form-control" ></td>
+                            <td> <input type="number" name="m_age[]" placeholder="Enter age" class="number_validation form-control" ></td>
                             <td>
                                 <select name="m_gender[]" id="" class="form-control" style="background-color:white;">
                                     <option value="female">Female</option>
@@ -374,7 +374,7 @@
                     
                     <div class="col-md-6">
                         <label for="" class="m-2">Comments if any</label><br>
-                        <textarea rows="3" name="comment" placeholder="Enter Comments If Any" style="width:100%; border-radius: 4px; border:1px solid #dee2e6;"></textarea>
+                        <textarea  name="comment" placeholder="Enter Comments If Any" rows="3" placeholder="Comments" style="width:100%; border-radius: 4px; border:1px solid #dee2e6;padding-left: 10px; font-size: 14px;"></textarea>
                     </div>
                 </div>
             </div><br>
@@ -443,6 +443,12 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script type="text/javascript">
+            $(document).ready(function () {
+                $('.number_validation').on('keyup', function () {
+                    if (/\D/g.test(this.value))
+                    this.value = this.value.replace(/\D/g,'')
+                });
+            });
                  function docType(value){
                    
                    var id = $(value).data('id');  
