@@ -76,7 +76,7 @@
             <div class="row">
                 <div class="col-md-3">
                     <label for="" class="m-2">Registration ID</label><br>
-                    <select name="reg_id" id="" class="form-control" style="background-color:white;">
+                    <select name="reg_id" id="reg_id" class="form-control" style="background-color:white;">
                         <option value="Not Selected">Select Registration ID</option>
                     @foreach($reg_can as $reg_can)
                         <option value="{{ $reg_can->id }}">{{ $reg_can->reg_code }}</option>
@@ -85,7 +85,7 @@
                 </div>
                 <div class="col-md-3">
                     <label for="" class="m-2">Name of Candidates</label><br>
-                    <input type="text" required class="form-control" name="name" id="" placeholder="Enter Candidate Name">
+                    <input type="text" required class="form-control" name="name" id="name_of_can" placeholder="Enter Candidate Name">
                 </div>
                 <div class="col-md-3">
                     <label for="" class="m-2">Father/Husband's Name</label><br>
@@ -99,7 +99,7 @@
             <div class="row">
                 <div class="col-md-3">
                     <label for="" class="m-2">Gender</label><br>
-                    <select name="gender" id="" class="form-control" style="background-color:white;">
+                    <select name="gender" id="can_gender" class="form-control" style="background-color:white;">
                         <option value="Not Selected">Select Gender</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
@@ -108,11 +108,11 @@
                 </div>
                 <div class="col-md-3">
                     <label for="" class="m-2">Date of Birth</label><br>
-                    <input type="date" required class="form-control" name="dob" max="{{date("Y-m-d")}}" id="" >
+                    <input type="date" required class="form-control" name="dob" max="{{date("Y-m-d")}}" id="dob" >
                 </div>
                 <div class="col-md-3">
                         <label for="" class="m-2">Age</label><br>
-                        <input type="number" required class="form-control" name="age" id="" placeholder="Enter Age">
+                        <input type="number" required class="form-control" name="age" id="age" placeholder="Enter Age">
                 </div>                 
                 <div class="col-md-3">
                         <label for="" class="m-2">Individual Identity No.</label><br>
@@ -123,11 +123,11 @@
             <div class="row">
             <div class="col-md-3">
                         <label for="" class="m-2">Contact</label><br>
-                        <input type="text" required class="form-control" name="contact" id="" required placeholder="Enter Contact ">
+                        <input type="text" required class="form-control" name="contact" id="contact" required placeholder="Enter Contact ">
                 </div>
                 <div class="col-md-3">
                     <label for="" class="m-2">Alternative Contact</label><br>
-                    <input type="text" class="form-control" name="a_contact" id="" placeholder="Enter Alternative Contact">
+                    <input type="text" class="form-control" name="a_contact" id="a_contact" placeholder="Enter Alternative Contact">
                 </div>    
             <div class="col-md-3">
                         <label for="" class="m-2">Email</label><br>
@@ -169,7 +169,7 @@
                 </div>
                 <div class="col-md-4">
                 <label for="" class="m-2">Category</label><br>
-                     <select name="category" id="" class="form-control" style="background-color:white;">
+                     <select name="category" id="category" class="form-control" style="background-color:white;">
                         <option value="Not Selected">Select Category</option>
                         <option value="gn">General</option>
                         <option value="sc">SC</option>
@@ -182,7 +182,7 @@
             <div class="row">
             <div class="col-md-3">
                     <label for="" class="m-2">PWD</label><br>
-                    <select name="pwd" id="" class="form-control" style="background-color:white;">
+                    <select name="pwd" id="pwd" class="form-control" style="background-color:white;">
                         <option value="Not Selected">Select PWD</option>
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
@@ -502,6 +502,32 @@
                         $('#'+id).remove();
                     });
                 });
+
+
+                $('#reg_id').on('change', function () {
+                var reg_id = this.value;
+                // $("#reg_id").html('');
+                $.ajax({
+                    url: "{{url('fetch_regdata')}}",
+                    type: "POST",
+                    data: {
+                        reg_id: reg_id,
+                        _token: '{{csrf_token()}}'
+                    },
+                    dataType: 'json',
+                    success: function (result) {
+                        $("#name_of_can").val(result.name);
+                        var can_dob = new Date(result.date_of_birth);
+                        var dob_format = can_dob.toISOString().split( "T" );
+                        $("#dob").val(dob_format[0]);
+                        $("#age").val(result.age);
+                        $("#contact").val(result.contact);
+                        $("#can_gender").val(result.gender);
+                        $("#category").val(result.category);
+                        $("#pwd").val(result.pwd);
+                    }
+                });
+            });
 
             });
         </script>

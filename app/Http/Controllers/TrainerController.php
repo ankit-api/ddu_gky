@@ -73,6 +73,7 @@ class TrainerController extends Controller
             $skill = implode(",",$req->add_skill);
         } else {
             $skill = 'NULL';
+        }
     
         $adhaar = str_replace("-","",$req->adhaar);
         
@@ -127,7 +128,7 @@ class TrainerController extends Controller
           $trainer_exp->last_salary_drawn = $req->l_salary[$j];
           $trainer_exp->added_by = Auth::user()->id;          
           $trainer_exp->save();   
-        }       
+               
         }
 
         // Random Password generate
@@ -161,7 +162,7 @@ class TrainerController extends Controller
         $user->save();
        
         return redirect()->route('trainer_list')->with('alert_status','Trainer Added Successfully!');
-    }
+    }}
 
     public function trainerList()
     {     

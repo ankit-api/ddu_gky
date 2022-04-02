@@ -33,7 +33,7 @@
                                     <th>Centre Code</th>
                                     <th>Centre Name</th> 
                                     <th>State</th>
-                                    <th>District</th> 
+                                    {{-- <th>District</th>  --}}
                                     <th>Centre Address</th>                                                                      
                                     <th>Action</th>
                                 </tr>
@@ -46,7 +46,7 @@
                                 <td>{{ $centre->centre_code }}</td>                        
                                 <td>{{ $centre->centre_name }}</td>
                                 <td>{{ $centre->getState->state_name }}</td>
-                                <td>{{ $centre->getDistrict->district_name }}</td>                              
+                                {{-- <td>{{ $centre->getDistrict->district_name }}</td>                               --}}
                                 <td>{{ $centre->address }}</td>
                                 <td>
                                   <button class="text-light btn btn-primary">View</button>

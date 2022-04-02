@@ -32,7 +32,6 @@ class OnFieldRegistrationOfCandidateController extends Controller
 
     public function postRegistration(Request $req)
     {
-        session(['mob_id' => '1']);
         $this->validate($req, [
             'name' => 'required',
             'village' => 'required',
@@ -50,8 +49,6 @@ class OnFieldRegistrationOfCandidateController extends Controller
             'ref' => 'required',
             'sign_doc' => 'required|mimes:png,jpg,jpeg,svg|max:512'           
         ]);
-        
-        $mob_id = $req->session()->get('mob_id');
 
         //Unique Registration Code
         // $total_rows = OnFieldRegistrationOfCandidate::orderBy('id', 'desc')->count();
@@ -67,7 +64,7 @@ class OnFieldRegistrationOfCandidateController extends Controller
         $signdoc = $file->getClientOriginalName();
 
         $register = new OnFieldRegistrationOfCandidate();
-        $register->mob_id = $mob_id;
+        $register->mob_id = $req->ref;
         $register->reg_code = $req->reg_code;
         $register->name = $req->name;
         $register->village = $req->village;
@@ -88,6 +85,7 @@ class OnFieldRegistrationOfCandidateController extends Controller
         $register->added_by = Auth::user()->id; 
         $register->registered_on = Carbon::now();
         $register->save();
+        $reg_last_id = $register->id;
     
 
         $file_reg_code = str_replace("/", "_", $req->reg_code);
@@ -111,7 +109,7 @@ class OnFieldRegistrationOfCandidateController extends Controller
                 $filename = $doc_name['doc2_type_name'].'.'.$file->getClientOriginalExtension();
                 $filename = str_replace("/","-", $filename);
                 $reg_doc = new RegDocument();
-                $reg_doc->register_id = $req->reg_code;
+                $reg_doc->register_id = $reg_last_id;
                 $reg_doc->doc1_type_id = $req->doc1_type[$j];
                 $reg_doc->doc2_type_id = $req->doc2_type[$j];
                 $reg_doc->file = $filename;
@@ -122,7 +120,7 @@ class OnFieldRegistrationOfCandidateController extends Controller
             }
         }
         
-        return redirect()->route('mis_list')->with('alert_status','Candidate Registered Successfully!');
+        return redirect()->route('candidate_register_list')->with('alert_status','Candidate Registered Successfully!');
     }
 
     public function registrationList(){

@@ -104,4 +104,10 @@ class AjaxController extends Controller
         $data = Block::where("district_id",$request->district_id)->get(["block_name", "id"]);
         return response()->json($data);
     }
+
+    public function fetchRegData(Request $request)
+    {
+        $data = OnFieldRegistrationOfCandidate::where("id",$request->reg_id)->first();
+        return response()->json($data);
+    }
 }
