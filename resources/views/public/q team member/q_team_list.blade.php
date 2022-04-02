@@ -43,7 +43,7 @@
                                 <tr>
                                     {{-- <td>{{ $qteam->getPiaName->pia_code }}</td> --}}
                                     {{-- <td>{{ $qteam->getPiaName->pia_name }}</td> --}}
-                                    <td>{{ $qteam->getProjectName->sanction_order_no }}</td>
+                                    <td>{{ $qteam->getSanctionOrder->sanction_order_no }}</td>
                                     <td>{{ $qteam->designation }}</td>
                                     <td>{{ $qteam->qteam_member_code }}</td>
                                     <td>{{ $qteam->name }}</td>

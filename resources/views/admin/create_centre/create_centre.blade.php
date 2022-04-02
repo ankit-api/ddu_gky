@@ -61,6 +61,7 @@
                 <div class="col-md-4">
                     <label for="" class="m-2">State</label><br>
                     <select name="state_id" id="state_id" class="form-control" style="background-color:white;">
+                        <option value="Not Selected">Select State Name</option>
                         @foreach($get_state as $state)
                             <option value="{{ $state->id }}">{{ $state->state_name }}</option>
                         @endforeach
@@ -69,9 +70,10 @@
                 <div class="col-md-4">
                     <label for="" class="m-2">District</label><br>
                     <select name="district_id" id="district_id" class="form-control" style="background-color:white;">
-                        @foreach($get_district as $district)
+                        <option value="Not Selected">Select District Name</option>
+                        {{-- @foreach($get_district as $district)
                             <option value="{{ $district->id }}">{{ $district->district_name }}</option>
-                        @endforeach
+                        @endforeach --}}
                     </select> 
                 </div>
             </div><br>
@@ -90,4 +92,30 @@
           </div>
         </div>
       
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>    
+<script>
+    $(document).ready(function () {
+            $('#state_id').on('change', function () {
+                var idState = this.value;
+                $("#district_id").html('');
+                $.ajax({
+                    url: "{{url('fetch_district')}}",
+                    type: "POST",
+                    data: {
+                        state_id: idState,
+                        _token: '{{csrf_token()}}'
+                    },
+                    dataType: 'json',
+                    success: function (result) {
+                        $('#district_id').html('<option value="">Select District</option>');
+                        $.each(result, function (key, value) {
+                            $("#district_id").append('<option value="' + value
+                                .id + '">' + value.district_name + '</option>');
+                        });
+                    }
+                });
+            });
+        });
+</script> 
 @endsection

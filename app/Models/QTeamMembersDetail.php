@@ -16,7 +16,11 @@ class QTeamMembersDetail extends Model
         return $this->hasOne(PIA::class, 'id', 'pia_id');
     }
 
-    function getProjectName(){
-        return $this->hasOneThrough(Project::class, CentreDetails::class,  'project_id', 'id');
+    function getSanctionOrder(){
+        return $this->hasOne(Project::class, 'id', 'project_id');
     }
+
+    // function getProjectName(){
+    //     return $this->hasOneThrough(Project::class, CentreDetails::class,  'project_id', 'id');
+    // }
 }

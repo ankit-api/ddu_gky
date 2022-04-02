@@ -89,9 +89,9 @@
                                         <select name="district_id" id="district_id" class="form-control" required
                                             style="background-color:white;">
                                             <option value="Not Selected">Select District Name</option>
-                                            @foreach ($get_district as $dist)
+                                            {{-- @foreach ($get_district as $dist)
                                                 <option value="{{ $dist->id }}">{{ $dist->district_name }}</option>
-                                            @endforeach
+                                            @endforeach --}}
                                         </select>
                                     </div>
                                     <div class="col-md-4">
@@ -99,9 +99,9 @@
                                         <select name="block_id" id="block_id" class="form-control" required
                                             style="background-color:white;">
                                             <option value="Not Selected">Select Block Name</option>
-                                            @foreach ($get_block as $block)
+                                            {{-- @foreach ($get_block as $block)
                                                 <option value="{{ $block->id }}">{{ $block->block_name }}</option>
-                                            @endforeach
+                                            @endforeach --}}
                                         </select>
                                     </div>
                                     <div class="col-md-4">
@@ -216,6 +216,53 @@
             </div>
         </div>
 
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>    
+<script>
+    $(document).ready(function () {
+            $('#state_id').on('change', function () {
+                var idState = this.value;
+                $("#district_id").html('');
+                $.ajax({
+                    url: "{{url('fetch_district')}}",
+                    type: "POST",
+                    data: {
+                        state_id: idState,
+                        _token: '{{csrf_token()}}'
+                    },
+                    dataType: 'json',
+                    success: function (result) {
+                        $('#district_id').html('<option value="">Select District</option>');
+                        $.each(result, function (key, value) {
+                            $("#district_id").append('<option value="' + value
+                                .id + '">' + value.district_name + '</option>');
+                        });
+                        $('#block_id').html('<option value="">Select Block</option>');
+                    }
+                });
+            });
+            $('#district_id').on('change', function () {
+                var idDistrict = this.value;
+                $("#block_id").html('');
+                $.ajax({
+                    url: "{{url('fetch_block')}}",
+                    type: "POST",
+                    data: {
+                        district_id: idDistrict,
+                        _token: '{{csrf_token()}}'
+                    },
+                    dataType: 'json',
+                    success: function (res) {
+                        $('#block_id').html('<option value="">Select Block</option>');
+                        $.each(res, function (key, value) {
+                            $("#block_id").append('<option value="' + value
+                                .id + '">' + value.block_name + '</option>');
+                        });
+                    }
+                });
+            });
+        });
+</script>
     @endsection
 
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>

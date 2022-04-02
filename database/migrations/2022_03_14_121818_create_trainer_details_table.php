@@ -19,7 +19,8 @@ class CreateTrainerDetailsTable extends Migration
             
             $table->integer('centre_id')->unsigned()->foriegn(); 
             $table->foreign('centre_id')->references('id')->on('centre')->onUpdate('cascade')->onDelete('cascade');
-           
+            $table->integer('project_id')->unsigned()->foriegn(); 
+            $table->foreign('project_id')->references('id')->on('project')->onUpdate('cascade')->onDelete('cascade');
 
             $table->string('name',50);
             $table->string('relation',50)->nullable();

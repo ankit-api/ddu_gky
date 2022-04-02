@@ -16,10 +16,14 @@ class Mobilizer extends Model
         return $this->hasOne(CentreDetails::class, 'id', 'centre_id');
     }
 
-    function getProjectName(){
-        return $this->hasOneThrough(Project::class, CentreDetails::class,  'project_id', 'id');
-        
+    function getSanctionOrder(){
+        return $this->hasOne(Project::class, 'id', 'project_id');
     }
+
+    // function getProjectName(){
+    //     return $this->hasOneThrough(Project::class, CentreDetails::class,  'project_id', 'id');
+        
+    // }
 
     
 

@@ -40,7 +40,7 @@
                             <tbody>
                                 @foreach($trainer_data as $trainer)
                                 <tr>
-                                    <td>{{ $trainer->getProjectName->sanction_order_no }}</td>  
+                                    <td>{{ $trainer->getSanctionOrder->sanction_order_no }}</td>  
                                     <td>{{ $trainer->getCentreName->centre_code }}</td>
                                     <td>{{ $trainer->getCentreName->centre_name }}</td>
                                     <td>{{ $trainer->trainer_code }}</td>

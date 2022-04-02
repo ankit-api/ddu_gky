@@ -17,6 +17,7 @@ use App\Models\User;
 use App\Models\Scheme;
 use App\Models\CategoryType;
 use App\Models\Block;
+use App\Models\Qualification;
 use Image;
 use Mail;
 use Auth;
@@ -327,7 +328,7 @@ class MasterController extends Controller
 
     public function qteamMemberList()
     {     
-        $qteam_data = QTeamMembersDetail::with('getPiaName', 'getProjectName' )->get();       
+        $qteam_data = QTeamMembersDetail::with('getPiaName', 'getSanctionOrder' )->get();       
         return view('public.q team member.q_team_list', compact('qteam_data'));
     }
 
@@ -336,7 +337,8 @@ class MasterController extends Controller
     {
         $get_project = Project::all();
         $get_centre = CentreDetails::all();
-        return view('public.centre incharge.add_centre_incharge', compact("get_centre","get_project"));
+        $get_qualifications = Qualification::all();
+        return view('public.centre incharge.add_centre_incharge', compact("get_centre","get_project","get_qualifications"));
     }
 
     public function createCentreIncharge(Request $req)
@@ -406,7 +408,7 @@ class MasterController extends Controller
     public function centreInchargeList()
     {
      
-        $centre_incharge_data = CenterIncharge::with('getCentreName', 'getProjectName' )->get();
+        $centre_incharge_data = CenterIncharge::with('getCentreName', 'getSanctionOrder' )->get();
        
         return view('public.centre incharge.centre_incharge_list', compact('centre_incharge_data'));
     }
@@ -489,7 +491,9 @@ class MasterController extends Controller
     public function mobilizerList()
     {
      
-        $mobilizer_data = Mobilizer::with('getCentreName', 'getProjectName' )->get(); 
+        $mobilizer_data = Mobilizer::with('getCentreName', 'getSanctionOrder' )->get();
+       
+            
         return view('public.mobilizer.mobilizer_list', compact('mobilizer_data'));
     }
 

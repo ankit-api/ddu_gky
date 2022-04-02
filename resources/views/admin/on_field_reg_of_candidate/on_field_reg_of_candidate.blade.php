@@ -45,7 +45,7 @@
                     </select>  
                 </div>
                 <div class="col-md-4">
-                    <label for="" class="m-2">Registration Code/Panjee Code <span style="font-size: 14px;font-weight: 600;color: #ee1201;" style="display:none;" id="code_exist">(Registration / Panjee Code Already Exist)</span></label><br>
+                    <label for="" class="m-2">Registration Code/Panjee Code <span style="font-size: 14px;font-weight: 600;color: #ee1201;display:none;" id="code_exist">(Registration / Panjee Code Already Exist)</span></label><br>
                     <input name ="reg_code" type="text" class="form-control" id="reg_code" placeholder="Enter Registration Code">
                 </div> 
                 <div class="col-md-4">

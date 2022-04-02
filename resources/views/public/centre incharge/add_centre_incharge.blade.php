@@ -82,7 +82,13 @@
                 </div>
                 <div class="col-md-6">
                     <label for="" class="m-2">Qualification</label><br>
-                   <textarea name="qualification" id="" cols="30" rows="10" class="form-control" placeholder="Enter Qualification"></textarea>
+                    <select name="qualification" id="" class="form-control" style="background-color:white;" required>
+                        <option value="Not Selected">Select Qualification</option>
+                        @foreach($get_qualifications as $name)
+                            <option value="{{ $name->id }}">{{ $name->qualification_name }}</option>
+                        @endforeach
+                    </select> 
+                   {{-- <textarea name="qualification" id="" cols="30" rows="10" class="form-control" placeholder="Enter Qualification"></textarea> --}}
                 </div> 
                  
               </div><br>     
