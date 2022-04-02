@@ -119,7 +119,7 @@ class MISController extends Controller
     }
 
     public function misList(){
-        $mis_data = MIS::with('getUserType')->get();      
+        $mis_data = MIS::with('getUserType')->orderByDesc("id")->get();      
         return view('public.mis.mis_list', compact("mis_data"));
     }
 }

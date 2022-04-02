@@ -23,10 +23,22 @@
                             </ol>
                         </div>
                   <h3 class="text-center fw-bold">Centre List</h3><br>
+                  @if (session('alert_success'))
+                            <h6 class="alert alert-success mx-4">{{ session('alert_success') }}</h6>
+                            @endif     
+                            @if (session('alert_danger'))
+                                <h6 class="alert alert-danger mx-4">{{ session('alert_danger') }}</h6>
+                            @endif       
+                            @if ($errors->any())
+                                {{-- @foreach ($errors->all() as $error) --}}
+                                    <div class="alert alert-danger mx-4">{{$errors->first()}}</div>
+                                {{-- @endforeach --}}
+                            @endif
                     <div class="container col-sm-12 mx-auto">
                         <table class="table table-bordered" id="table1">
                             <thead>
                                 <tr>
+                                    <th>S.No.</th>
                                     <!-- <th>PIA Code</th>-->
                                     <th>PIA Name</th> 
                                     {{-- <th>Sanction Order No.</th> --}}
@@ -41,6 +53,7 @@
                             <tbody>
                                 @foreach($centre_data as $centre)
                                 <tr>
+                                <td>{{$loop->iteration}}</td>
                                 {{-- <td>{{ $centre->getProjectName->sanction_order_no }}</td>  --}}
                                 <td>{{ $centre->getPiaName->pia_name }}</td>
                                 <td>{{ $centre->centre_code }}</td>                        

@@ -24,10 +24,22 @@
                             </ol>
                         </div> 
                   <h3 class="text-center fw-bold">Trainer List</h3><br>
+                  @if (session('alert_success'))
+                            <h6 class="alert alert-success mx-4">{{ session('alert_success') }}</h6>
+                            @endif     
+                            @if (session('alert_danger'))
+                                <h6 class="alert alert-danger mx-4">{{ session('alert_danger') }}</h6>
+                            @endif       
+                            @if ($errors->any())
+                                {{-- @foreach ($errors->all() as $error) --}}
+                                    <div class="alert alert-danger mx-4">{{$errors->first()}}</div>
+                                {{-- @endforeach --}}
+                            @endif 
                     <div class="container col-sm-12 mx-auto" >
                         <table class="table table-bordered" id="table">
                             <thead>
                                 <tr>
+                                    <th>S.No.</th>
                                     <th>Sanction Order No.</th>
                                     <th>Centre Code</th>
                                     <th>Centre Name</th>                                    
@@ -40,6 +52,7 @@
                             <tbody>
                                 @foreach($trainer_data as $trainer)
                                 <tr>
+                                    <td>{{$loop->iteration}}</td>
                                     <td>{{ $trainer->getSanctionOrder->sanction_order_no }}</td>  
                                     <td>{{ $trainer->getCentreName->centre_code }}</td>
                                     <td>{{ $trainer->getCentreName->centre_name }}</td>

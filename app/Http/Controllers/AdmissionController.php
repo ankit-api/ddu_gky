@@ -125,6 +125,7 @@ class AdmissionController extends Controller
          $student->photo_doc = $photodoc;
          $student->added_by = Auth::user()->id; 
          $student->save();
+         $admsn_id = $student->id;
 
          $reg_code = OnFieldRegistrationOfCandidate::select('reg_code')->find($req->reg_id);
         $file_reg_code = str_replace("/", "_", $reg_code['reg_code']);
@@ -141,7 +142,7 @@ class AdmissionController extends Controller
         $i = count($req->m_name);        
         for ($j = 0; $j < $i; $j++) {     
             $family = new FamilyDetail();
-            $family->admission_id = $req->reg_id;
+            $family->admission_id = $admsn_id;
             $family->name = $req->m_name[$j];
             $family->relation = $req->relation[$j];
             $family->gender = $req->m_gender[$j];
@@ -187,12 +188,12 @@ class AdmissionController extends Controller
     }
 
     public function admissionList(){
-        $candidate_data = Admission::with('batchCode')->get();      
+        $candidate_data = Admission::with('batchCode')->orderByDesc("id")->get();      
         return view('admin.candidate_admission.admission_list', compact("candidate_data"));
     }
 
     public function dossierList(){
-        $candidate_data = Admission::with('batchCode')->get();      
+        $candidate_data = Admission::with('batchCode')->orderByDesc("id")->get();      
         return view('admin.candidate_dossier.dossier_list', compact("candidate_data"));
     }
 

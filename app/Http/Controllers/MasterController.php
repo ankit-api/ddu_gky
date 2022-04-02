@@ -113,7 +113,7 @@ class MasterController extends Controller
 
     public function piaList()
     {
-        $pia = PIA::where('status', 'active')->get();
+        $pia = PIA::where('status', 'active')->orderByDesc("id")->get();
         return view('public.pia.pia_list', compact('pia'));
     }
 
@@ -192,7 +192,7 @@ class MasterController extends Controller
 
     public function projectList()
     {
-        $project_data = Project::with('getProjectList','getState','getDistrict')->get();
+        $project_data = Project::with('getProjectList','getState','getDistrict')->orderByDesc("id")->get();
         // dd($project_data);
         return view('admin.create_project.project_list', compact('project_data'));
     }
@@ -250,7 +250,7 @@ class MasterController extends Controller
 
     public function centreList()
     {
-        $centre_data = CentreDetails::with('getProjectName', 'getState','getDistrict')->get();
+        $centre_data = CentreDetails::with('getProjectName', 'getState','getDistrict')->orderByDesc("id")->get();
         return view('admin.create_centre.centre_list', compact('centre_data'));
     }
 
@@ -332,7 +332,7 @@ class MasterController extends Controller
 
     public function qteamMemberList()
     {     
-        $qteam_data = QTeamMembersDetail::with('getPiaName', 'getSanctionOrder' )->get();       
+        $qteam_data = QTeamMembersDetail::with('getPiaName', 'getSanctionOrder' )->orderByDesc("id")->get();       
         return view('public.q team member.q_team_list', compact('qteam_data'));
     }
 
@@ -412,7 +412,7 @@ class MasterController extends Controller
     public function centreInchargeList()
     {
      
-        $centre_incharge_data = CenterIncharge::with('getCentreName', 'getSanctionOrder' )->get();
+        $centre_incharge_data = CenterIncharge::with('getCentreName', 'getSanctionOrder' )->orderByDesc("id")->get();
        
         return view('public.centre incharge.centre_incharge_list', compact('centre_incharge_data'));
     }
@@ -495,7 +495,7 @@ class MasterController extends Controller
     public function mobilizerList()
     {
      
-        $mobilizer_data = Mobilizer::with('getCentreName', 'getSanctionOrder' )->get();
+        $mobilizer_data = Mobilizer::with('getCentreName', 'getSanctionOrder' )->orderByDesc("id")->get();
        
             
         return view('public.mobilizer.mobilizer_list', compact('mobilizer_data'));

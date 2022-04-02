@@ -26,6 +26,7 @@
                                 <table class="table table-bordered" id="table1">
                                     <thead>
                                         <tr>
+                                            <th>S.No.</th>
                                             <th>Student Code</th>
                                             <th>Student Name</th>
                                             <th>Batch ID</th>
@@ -38,6 +39,7 @@
                                     <tbody>
                                         @foreach ($candidate_data as $candidate)
                                             <tr>
+                                                <td>{{$loop->iteration}}</td>
                                                 <td>{{ $candidate->student_code }}</td>
                                                 <td>{{ $candidate->name }}</td>
                                                 <td>{{ $candidate->batchCode->batch_code }}</td>

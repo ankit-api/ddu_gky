@@ -20,23 +20,21 @@
                                     <li class="breadcrumb-item" ><a  style="color:#fff; text-decoration: none;"data-bs-toggle="collapse" href="#ui-basic14" aria-expanded="false" aria-controls="ui-basic14">Registration</a></li>
                                     <li class="breadcrumb-item active" ><a  style="color:#fff; text-decoration: none;" href="{{ route('candidate_register_list')}}" ><b>Candidate Registration List</b></a>
                                 </li>
-                            </ol>
-
-                            <div class="row">  
-                                        @if (session('alert_status'))
-                                            <h6 class="alert alert-success">{{ session('alert_status') }}</h6>
-                                        @endif      
-                                        @if ($errors->any())
-                                                <div class="alert alert-danger">{{$errors->first()}}</div>
-                                        @endif 
-                            </div> 
+                            </ol> 
 
                         </div> 
                             <h3 class="text-center fw-bold">Candidate Registration List</h3><br>
+                            @if (session('alert_success'))
+                            <h6 class="alert alert-success mx-4">{{ session('alert_success') }}</h6>
+                            @endif     
+                            @if (session('alert_danger'))
+                                <h6 class="alert alert-danger mx-4">{{ session('alert_danger') }}</h6>
+                            @endif
                             <div class="container col-sm-12 mx-auto" >
                                 <table class="table table-bordered" id="table1">
                                     <thead>
                                         <tr>
+                                            <th>S.No.</th>
                                             <th>Registration Code</th>
                                             <th>Candidate Name</th>
                                             <th>Village Name</th>
@@ -47,6 +45,7 @@
                                     <tbody>
                                         @foreach ($candidate_data as $candidate)
                                             <tr>
+                                                <td>{{$loop->iteration}}</td>
                                                 <td>{{ $candidate->reg_code }}</td>
                                                 <td>{{ $candidate->name }}</td>
                                                 <td>{{ $candidate->village }}</td>
