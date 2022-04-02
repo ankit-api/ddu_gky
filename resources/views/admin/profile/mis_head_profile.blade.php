@@ -19,14 +19,14 @@
                 <div class="col-sm-3 ml-2 mb-4">
                     <ol class="breadcrumb float-sm-right" style="background-color: #6b8ed6;border-radius: 5px;margin-left: 28px;">
                         <li class="breadcrumb-item"><a  style="color:#fff; text-decoration: none;" href="{{ route('home') }}" aria-expanded="false" aria-controls="ui-basic"><i class="fa-solid fa-house"></i></a></li>
-                        <li class="breadcrumb-item active" ><a  style="color:#fff; text-decoration: none;" href="{{ route('update_profile')}}" ><b>Update Profile</b></a>
+                        <li class="breadcrumb-item active" ><a  style="color:#fff; text-decoration: none;" href="{{ route('update_mis_head_profile')}}" ><b>Update Profile</b></a>
                         </li>
                     </ol>
                 </div> 
                   <h3 class="text-center fw-bold">Update Profile</h3><br>
                     <div class="container-fluid" >
                         <div class="col-12 mx-auto">
-                        <form action="{{ route('post_update_profile') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('post_update_mis_head_profile') }}" method="post" enctype="multipart/form-data">
                             @csrf
                           
                             <div class="row">  

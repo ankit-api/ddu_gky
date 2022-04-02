@@ -121,7 +121,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <label for="" class="m-2">Total Project Cost(In Rs)</label><br>
-                                        <input type="text" class="form-control" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" maxlength="9" name="proj_cost" required
+                                        <input type="text" id="proj_cost" class="form-control" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,''); numberFormat(this);" maxlength="9" name="proj_cost" required
                                             placeholder="Enter Total Project Cost">
                                     </div>
                                     <div class="col-md-4">
@@ -131,7 +131,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <label for="" class="m-2">State Share(In Rs)</label><br>
-                                        <input type="text" class="form-control" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" maxlength="9" name="state_share" required
+                                        <input type="text" class="form-control" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,''); " maxlength="9" name="state_share" required
                                             placeholder="Enter State Share">
                                     </div>
                                     <div class="col-md-4">
@@ -264,3 +264,9 @@
         });
 </script>
     @endsection
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script>
+         
+
+    </script>

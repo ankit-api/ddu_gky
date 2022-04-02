@@ -165,7 +165,15 @@
                 <p class="mb-1 mt-3 font-weight-semibold">{{ Auth::user()->name }}</p>
                 <p class="fw-light text-muted mb-0">{{ Auth::user()->user_role->role_name }}</p>
               </div>
-              <a href="{{ route('update_profile') }}" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i>Update Profile </a>
+              @if(Auth::user()->user_role->role_name == 'Admin')
+                <a href="{{ route('update_admin_profile') }}" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i>Update Profile </a>
+              @endif
+              @if(Auth::user()->user_role->role_name == 'PIA')
+                <a href="{{ route('update_pia_profile') }}" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i>Update Profile </a>
+              @endif
+              @if(Auth::user()->user_role->role_name == 'MIS Head')
+                <a href="{{ route('update_mis_head_profile') }}" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i>Update Profile </a>
+              @endif
               <a href="{{ route('change_password') }}"class="dropdown-item"><i class="dropdown-item-icon fa fa-unlock-alt text-primary me-2"></i> Change Password</a>
                {{--<a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-calendar-check-outline text-primary me-2"></i> Activity</a>
               <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-help-circle-outline text-primary me-2"></i> FAQ</a> --}}

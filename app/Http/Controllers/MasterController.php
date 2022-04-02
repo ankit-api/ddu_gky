@@ -52,9 +52,11 @@ class MasterController extends Controller
         // }
 
         $user_check = User::where('user_code',$req->pia_code)->get();
-
+        
+        $pia_code = str_replace("/", "_", $req->pia_code);
         $file = $req->file('pia_doc');
-        $piadoc = $file->getClientOriginalName();
+        $filename = $pia_code.'.'.$file->getClientOriginalExtension();
+      
 
         $Pia = new PIA();
         $Pia->pia_code = $req->pia_code;
@@ -62,7 +64,7 @@ class MasterController extends Controller
         $Pia->landline_no = $req->landline_no;
         $Pia->phone_no = $req->contact_no;
         $Pia->email = $req->official_email;
-        $Pia->pia_doc = $piadoc;
+        $Pia->pia_doc = $filename;
         $Pia->address = $req->address;
         $Pia->added_by = Auth::user()->id;
         $Pia->save();
@@ -104,7 +106,7 @@ class MasterController extends Controller
         $user->save();
 
         $path = 'Documents/PIA_File';
-        $file->move($path,$piadoc);       
+        $file->move($path,$filename);       
         return redirect()->route('pia_list')->with('alert_success','PIA Added Successfully');
         
     }
