@@ -216,10 +216,10 @@
                     <input type="text" name="subject[]" class="form-control"required  placeholder="Enter Subject">
                 </div>
                 <div class="col-md-2">                  
-                    <input type="text" name="yop[]" class="form-control"style="padding: 8px;" required placeholder="Enter year of passing">
+                    <input type="text" name="yop[]" class="number_validation form-control"style="padding: 8px;" required placeholder="Enter year of passing">
                 </div>
                 <div class="col-md-1">                  
-                    <input type="text" name="percentage" style="padding: 8px;" class="form-control" required placeholder="Enter percentage">
+                    <input type="text" name="percentage" style="padding: 8px;" class="number_validation form-control" required placeholder="Enter percentage">
                 </div>
                 <div class="col-md-1">
                     <button class="btn btn-info text-white add_more1">Add More</button>
@@ -250,7 +250,7 @@
                                 <td><input type="text" name="c_name[]" id="" class="form-control" value=""  placeholder="Enter Company Name "></td>
                                 <td><input type="text" name="s_desg[]" id="" class="form-control" value=""  placeholder="Enter Starting designation"></td>
                                 <td><input type="text" name="l_desg[]" id="" class="form-control" value=""  placeholder="Enter Last designation"></td>
-                                <td><input type="text" name="l_salary[]" id="" class="form-control" value=""  placeholder="Enter Last salary drawn"></td>
+                                <td><input type="text" name="l_salary[]" id="" class="number_validation form-control" value=""  placeholder="Enter Last salary drawn"></td>
                                 <td><button class="btn btn-info text-white add_more2">Add More</button></td>
                             </tr>
                         </tbody>
@@ -262,7 +262,7 @@
         <h5>Other information (if any) </h5><hr> 
             <div class="row">            
                 <div class="col-md-12">
-                    <textarea name="other_info" cols="120" rows="4" placeholder="Comments.."></textarea>
+                    <textarea name="other_info" cols="120" rows="3" placeholder="Comments.." style="width:100%; border-radius: 4px; border:1px solid #dee2e6;padding-left: 10px; font-size: 14px;"></textarea>
                 </div>
             </div><br>
                <button type="submit" class="text-light btn btn-lg btn-success btn-icon-text" id="trainer_submit">
@@ -278,7 +278,11 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script type="text/javascript">
-            $(document).ready(function() {
+            $(document).ready(function () {
+                $('.number_validation').on('keyup', function () {
+                    if (/\D/g.test(this.value))
+                    this.value = this.value.replace(/\D/g,'')
+                });
                 
                     var no1 = 1;
                     $('.add_more1').click(function(e){
@@ -286,7 +290,7 @@
                     e.preventDefault();
                     // sno = parseInt(sno)+1;
                     no1 = no1+1;
-                    $('#qualification-div').append(' <div class="row" id="'+no1+'"><div class="col-md-2"> <select  id="" class="form-control" name="qualification[]" style="background-color:white;"><option value="10th">10th</option><option value="12th">12th</option> <option value="graduation">Graduation</option> <option value="post-graduation">Post Graduation</option><option value="other">Other qualification</option> </select> </div><div class="col-md-2">    <input type="text" class="form-control"  name="q_detail[]" placeholder="Enter qualification detail"></div><div class="col-md-2">    <input type="text" class="form-control"  name="university[]" placeholder="Enter Board/University"></div><div class="col-md-2"><input type="text" class="form-control" name="subject[]" placeholder="Enter Subject"></div><div class="col-md-2"><input type="text" name="yop[]" class="form-control"style="padding: 8px;"  placeholder="Enter year of passing"></div><div class="col-md-1"><input type="text" style="padding: 8px;" class="form-control" name="percentage"placeholder="Enter percentage"></div><div class="col-md-1"><button class="btn btn-danger text-white rem_data1" data-id="'+no1+'" name="remove1" data-target="tr">Remove</button></div>');
+                    $('#qualification-div').append(' <div class="row" id="'+no1+'"><div class="col-md-2"> <select  id="" class="form-control" name="qualification[]" style="background-color:white;"><option value="10th">10th</option><option value="12th">12th</option> <option value="graduation">Graduation</option> <option value="post-graduation">Post Graduation</option><option value="other">Other qualification</option> </select> </div><div class="col-md-2">    <input type="text" class="form-control"  name="q_detail[]" placeholder="Enter qualification detail"></div><div class="col-md-2">    <input type="text" class="form-control"  name="university[]" placeholder="Enter Board/University"></div><div class="col-md-2"><input type="text" class="form-control" name="subject[]" placeholder="Enter Subject"></div><div class="col-md-2"><input type="text" name="yop[]" class="number_validation form-control"style="padding: 8px;"  placeholder="Enter year of passing"></div><div class="col-md-1"><input type="text" style="padding: 8px;" class="form-control" name="percentage"placeholder="Enter percentage"></div><div class="col-md-1"><button class="btn btn-danger text-white rem_data1" data-id="'+no1+'" name="remove1" data-target="tr">Remove</button></div>');
 
                    
                     $('.rem_data1').click(function(e){
@@ -306,7 +310,7 @@
 
                     e.preventDefault();
                     // sno = parseInt(sno)+1;
-                    $('tbody').append('<tr><td id="'+sno+'">'+sno+'</td> <td><input type="date" name="from[]" max="{{date("Y-m-d")}}" id="" class="form-control" value=""  placeholder=""></td><td><input type="date" name="to[]" max="{{date("Y-m-d")}}" id="" class="form-control" value=""  placeholder=""></td><td><input type="text" name="c_name[]" id="" class="form-control" value=""  placeholder="Enter Company Name "></td><td><input type="text" name="s_desg[]" id="" class="form-control" value=""  placeholder="Enter Starting designation"></td><td><input type="text" name="l_desg[]" id="" class="form-control" value=""  placeholder="Enter Last designation"></td><td><input type="text" name="l_salary[]" id="" class="form-control" value=""  placeholder="Enter Last salary drawn"></td>  <td><button class="btn btn-danger text-white rem_data1" data-id="'+sno+'" name="remove1" data-target="tr">Remove</button></div></tr>');
+                    $('tbody').append('<tr><td id="'+sno+'">'+sno+'</td> <td><input type="date" name="from[]" max="{{date("Y-m-d")}}" id="" class="form-control" value=""  placeholder=""></td><td><input type="date" name="to[]" max="{{date("Y-m-d")}}" id="" class="form-control" value=""  placeholder=""></td><td><input type="text" name="c_name[]" id="" class="form-control" value=""  placeholder="Enter Company Name "></td><td><input type="text" name="s_desg[]" id="" class="form-control" value=""  placeholder="Enter Starting designation"></td><td><input type="text" name="l_desg[]" id="" class="form-control" value=""  placeholder="Enter Last designation"></td><td><input type="text" name="l_salary[]" id="" class="number_validation form-control" value=""  placeholder="Enter Last salary drawn"></td>  <td><button class="btn btn-danger text-white rem_data1" data-id="'+sno+'" name="remove1" data-target="tr">Remove</button></div></tr>');
 
                     
                     $('button[data-id='+sno+']').click(function(e){

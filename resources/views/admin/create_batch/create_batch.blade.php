@@ -51,8 +51,8 @@
                     </select>            
                 </div>
                 <div class="col-md-4">
-                    <label for="" class="m-2">Class Duration per day</label><br>
-                    <input type="text" required class="form-control" name="duration_per_day">
+                    <label for="" class="m-2">Class Duration per day< style="font-size: 1span4px;font-weight: 600;color: #ee1201;"> (In hours)</span></label><br>
+                    <input type="text" required class="number_validation form-control" name="duration_per_day">
                 </div>
                 <!-- <div class="col-md-3">
                     <label for="" class="m-2">Date of mobilization</label><br>
@@ -128,28 +128,28 @@
                 <div class="row">
                     <div class="col-md-2">
                             <label for="" class="m-2">Theory Classroom No.</label><br>
-                            <input type="number" class="form-control" name="theory_class[]" min="0" id="" >
+                            <input type="text" class="number_validation form-control" name="theory_class[]" min="0" id="" >
                         </div> 
                     <div class="col-md-2">
                             <label for="" class="m-2">IT lab No.</label><br><br>
-                            <input type="number" class="form-control" name="it_lab[]" min="0" id="" >
+                            <input type="text" class="number_validation form-control" name="it_lab[]" min="0" id="" >
                     </div>   
                     <div class="col-md-2">
                             <label for="" class="m-2">Practical lab No.</label><br><br>
-                            <input type="number" class="form-control" name="practical_lab[]" min="0" id="" >
+                            <input type="text" class="number_validation form-control" name="practical_lab[]" min="0" id="" >
                     </div> 
                     <div class="col-md-2">
                             <label for="" class="m-2">Theory cum Practical Lab No.
                             </label><br>
-                            <input type="number" class="form-control" name="theory_cum_class[]" min="0" id="" >
+                            <input type="text" class="number_validation form-control" name="theory_cum_class[]" min="0" id="" >
                     </div>   
                     <div class="col-md-2">
                             <label for="" class="m-2">Theory cum IT Lab No.</label><br>
-                            <input type="number" class="form-control" name="it_cum_lab[]" min="0" id="" >
+                            <input type="text" class="number_validation form-control" name="it_cum_lab[]" min="0" id="" >
                     </div>                
                     <div class="col-md-2">
                             <label for="" class="m-2">IT cum Practical Lab No.</label><br>
-                            <input type="number" class="form-control" name="practical_cum_lab[]" min="0" id="" >
+                            <input type="text" class="number_validation form-control" name="practical_cum_lab[]" min="0" id="" >
                     </div>                     
                 </div> 
             </div>  
@@ -197,8 +197,14 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script type="text/javascript">
-       
 
+        $(document).ready(function () {
+                    $('.number_validation').on('keyup', function () {
+                        if (/\D/g.test(this.value))
+                        this.value = this.value.replace(/\D/g,'')
+                    });
+       
+        });
         // function getShift(shift)
         // { 
         //     if(shift.value == 'yes')
@@ -243,7 +249,7 @@
         { 
             if(classType.value == 'section')
             {
-                $('#classtype-div').append('  <div class="row" id="append-classType"> <div class="col-md-2"> <label for="" class="m-2">Theory Classroom No.</label><br>    <input type="number" class="form-control" name="theory_class[]"  min="0" id="" > </div> <div class="col-md-2">     <label for="" class="m-2">IT lab No.</label><br><br><input type="number" class="form-control" name="it_lab[]"  min="0" id="" ></div>   <div class="col-md-2"><label for="" class="m-2">Practical lab No.</label><br><br><input type="number" class="form-control" name="practical_lab[]"  min="0" id="" ></div> <div class="col-md-2"><label for="" class="m-2">Theory cum Practical Lab No.</label><br><input type="number" class="form-control" name="theory_cum_class[]"  min="0" id="" ></div>   <div class="col-md-2"><label for="" class="m-2">Theory cum IT Lab No.</label><br><input type="number" class="form-control" name="it_cum_lab[]"  min="0" id="" ></div>                <div class="col-md-2"><label for="" class="m-2">IT cum Practical Lab No.</label><br><input type="number" class="form-control" name="practical_cum_lab[]"  min="0" id="" ></div> </div> ');
+                $('#classtype-div').append('  <div class="row" id="append-classType"> <div class="col-md-2"> <label for="" class="m-2">Theory Classroom No.</label><br>    <input type="text" class="number_validation form-control" name="theory_class[]"  min="0" id="" > </div> <div class="col-md-2">     <label for="" class="m-2">IT lab No.</label><br><br><input type="text" class="number_validation form-control" name="it_lab[]"  min="0" id="" ></div>   <div class="col-md-2"><label for="" class="m-2">Practical lab No.</label><br><br><input type="text" class="number_validation form-control" name="practical_lab[]"  min="0" id="" ></div> <div class="col-md-2"><label for="" class="m-2">Theory cum Practical Lab No.</label><br><input type="text" class="number_validation form-control" name="theory_cum_class[]"  min="0" id="" ></div>   <div class="col-md-2"><label for="" class="m-2">Theory cum IT Lab No.</label><br><input type="text" class="number_validation form-control" name="it_cum_lab[]"  min="0" id="" ></div><div class="col-md-2"><label for="" class="m-2">IT cum Practical Lab No.</label><br><input type="text" class="number_validation form-control" name="practical_cum_lab[]"  min="0" id="" ></div> </div> ');
             }
             
             if(classType.value == 'batch')

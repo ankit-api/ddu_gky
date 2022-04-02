@@ -74,11 +74,11 @@
                 </div>
                 <div class="col-md-6">
                     <label for="" class="m-2">Contact</label><br>
-                    <input name ="contact_no" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" maxlength="10" placeholder="Enter Contact No." class="form-control">
+                    <input name ="contact_no" type="text"  maxlength="10" placeholder="Enter Contact No." class="number_validation form-control">
                 </div> 
                 <div class="col-md-6">
                     <label for="" class="m-2">Address</label><br>
-                    <input name ="address" type="text" class="form-control" placeholder="Enter Complete Address">
+                    <textarea name ="address" class="form-control" placeholder="Enter Complete Address"  rows="3" style="width:100%; border-radius: 4px; border:1px solid #dee2e6;padding-left: 10px; font-size: 14px;">
                 </div>
                 <div class="col-md-6">
                     <label for="" class="m-2">Qualification</label><br>
@@ -124,6 +124,14 @@
             error: function (data) {
                 console.log(data);
             }
+        });
+    });
+
+
+    $(document).ready(function () {
+        $('.number_validation').on('keyup', function () {
+            if (/\D/g.test(this.value))
+            this.value = this.value.replace(/\D/g,'')
         });
     });
 </script>

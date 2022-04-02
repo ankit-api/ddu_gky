@@ -113,71 +113,79 @@
             </div>
           </li> 
 
- <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic4">
-              <i class="menu-icon mdi mdi-floor-plan"></i>
-              <span class="menu-title">User Manager</span>
-              <i class="menu-arrow"></i> 
-            </a>
-            <div class="collapse" id="ui-basic4">
-              <ul class="nav flex-column sub-menu">
-                  
-                
-               
-{{--                
-                <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic6" aria-expanded="false" aria-controls="ui-basic6">
-                  <span class="menu-title">Mobilizer</span>
-                  <i class="menu-arrow"></i> 
-                </a>
-                <div class="collapse" id="ui-basic6">
-                  <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('mobilizer_form')}}">Add Mobilizer</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('mobilizer_list')}}">Mobilizer List</a></li>
-                  </ul>
-                </div></li>
-                <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic18" aria-expanded="false" aria-controls="ui-basic">
-                  <span class="menu-title">Q-team Member</span>
-                  <i class="menu-arrow"></i> 
-                </a>
-                <div class="collapse" id="ui-basic18">
-                  <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('q_team_member_form')}}">Add Q-team Member</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('q_team_member_list')}}">Q-team Member List</a></li>
-                  </ul>
-                </div></li>
-                <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic19" aria-expanded="false" aria-controls="ui-basic">
-                  <span class="menu-title">Centre Incharge</span>
-                  <i class="menu-arrow"></i> 
-                </a>
-                <div class="collapse" id="ui-basic19">
-                  <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('centre_incharge_form')}}">Add Centre Incharge</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('centre_incharge_list')}}">Centre Incharge List</a></li>
-                 </ul>
-                </div></li>
-                <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic20" aria-expanded="false" aria-controls="ui-basic">
-                  <span class="menu-title">Trainer</span>
-                  <i class="menu-arrow"></i> 
-                </a>
-                <div class="collapse" id="ui-basic20">
-                   <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('trainer_form')}}"> Add Trainer</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('trainer_list')}}">Trainer List</a></li>
-                 </ul>
-                </div></li> --}}
-                <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic12" aria-expanded="false" aria-controls="ui-basic12">
-                  <span class="menu-title">MIS</span>
-                  <i class="menu-arrow"></i> 
-                </a>
-                <div class="collapse" id="ui-basic12">
-                  <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('mis_form')}}">Add MIS</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('mis_list')}}">MIS List</a></li>
-                  </ul>
-                </div></li>
-              </ul>
-            </div>
-          </li>
+          <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic4">
+        <i class="menu-icon mdi mdi-floor-plan"></i>
+        <span class="menu-title">User Manager</span>
+        <i class="menu-arrow"></i> 
+      </a>
+      <div class="collapse" id="ui-basic4">
+        <ul class="nav flex-column sub-menu">
+            
+          
+         
+          <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic5" aria-expanded="false" aria-controls="ui-basic5">
+            <span class="menu-title">PIA</span>
+            <i class="menu-arrow"></i> 
+          </a>
+          <div class="collapse" id="ui-basic5">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" href="{{ route('pia_list')}}">PIA List</a></li>
+            </ul>
+          </div></li>
+          <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic6" aria-expanded="false" aria-controls="ui-basic6">
+            <span class="menu-title">Mobilizer</span>
+            <i class="menu-arrow"></i> 
+          </a>
+          <div class="collapse" id="ui-basic6">
+            <ul class="nav flex-column sub-menu">
+              {{-- <li class="nav-item"> <a class="nav-link" href="{{ route('mobilizer_form')}}">Add Mobilizer</a></li> --}}
+              <li class="nav-item"> <a class="nav-link" href="{{ route('mobilizer_list')}}">Mobilizer List</a></li>
+            </ul>
+          </div></li>
+          <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic7" aria-expanded="false" aria-controls="ui-basic7">
+            <span class="menu-title">Quality Team Member</span>
+            <i class="menu-arrow"></i> 
+          </a>
+          <div class="collapse" id="ui-basic7">
+            <ul class="nav flex-column sub-menu">
+              {{-- <li class="nav-item"> <a class="nav-link" href="{{ route('q_team_member_form')}}">Add Quality team Member</a></li> --}}
+              <li class="nav-item"> <a class="nav-link" href="{{ route('q_team_member_list')}}">Quality Team Member List</a></li>
+            </ul>
+          </div></li>
+          <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic10" aria-expanded="false" aria-controls="ui-basic10">
+            <span class="menu-title">Centre Incharge</span>
+            <i class="menu-arrow"></i> 
+          </a>
+          <div class="collapse" id="ui-basic10">
+            <ul class="nav flex-column sub-menu">
+              {{-- <li class="nav-item"> <a class="nav-link" href="{{ route('centre_incharge_form')}}">Add Centre Incharge</a></li> --}}
+              <li class="nav-item"> <a class="nav-link" href="{{ route('centre_incharge_list')}}">Centre Incharge List</a></li>
+           </ul>
+          </div></li>
+          <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic11" aria-expanded="false" aria-controls="ui-basic11">
+            <span class="menu-title">Trainer</span>
+            <i class="menu-arrow"></i> 
+          </a>
+          <div class="collapse" id="ui-basic11">
+             <ul class="nav flex-column sub-menu">
+              {{-- <li class="nav-item"> <a class="nav-link" href="{{ route('trainer_form')}}"> Add Trainer</a></li> --}}
+              <li class="nav-item"> <a class="nav-link" href="{{ route('trainer_list')}}">Trainer List</a></li>
+           </ul>
+          </div></li>
+          <li class="nav-item"><a class="nav-link" data-bs-toggle="collapse" href="#ui-basic12" aria-expanded="false" aria-controls="ui-basic12">
+            <span class="menu-title">MIS</span>
+            <i class="menu-arrow"></i> 
+          </a>
+          <div class="collapse" id="ui-basic12">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" href="{{ route('mis_form')}}">Add MIS</a></li> 
+              <li class="nav-item"> <a class="nav-link" href="{{ route('mis_list')}}">MIS List</a></li>
+            </ul>
+          </div></li>
+        </ul>
+      </div>
+    </li>
           
 
          
