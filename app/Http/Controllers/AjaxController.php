@@ -13,6 +13,7 @@ use App\Models\QTeamMembersDetail;
 use App\Models\OnFieldRegistrationOfCandidate;
 use App\Models\District;
 use App\Models\Block;
+use App\Models\CentreDetails;
 use Response;
 
 class AjaxController extends Controller
@@ -108,6 +109,13 @@ class AjaxController extends Controller
     public function fetchRegData(Request $request)
     {
         $data = OnFieldRegistrationOfCandidate::where("id",$request->reg_id)->first();
+        return response()->json($data);
+    }
+
+    public function fetchBlockByCentre(Request $request)
+    {
+        $id_by_centre_id = CentreDetails::where("id",$request->centre_id)->first();
+        $data = Block::where("district_id",$id_by_centre_id->district)->get(["block_name", "id"]);
         return response()->json($data);
     }
 }

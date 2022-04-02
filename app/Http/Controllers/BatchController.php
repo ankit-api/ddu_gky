@@ -110,7 +110,7 @@ class BatchController extends Controller
     }
 
     public function batchList(){
-        $batch_data = Batch::all();      
+        $batch_data = Batch::all()->sortByDesc("id");      
         return view('admin.create_batch.batch_list', compact("batch_data"));
     }
 }

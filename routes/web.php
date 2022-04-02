@@ -92,6 +92,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('fetch_block', [AjaxController::class, 'fetchBlock']);
     //Fetch Registered Candidate Details
     Route::post('fetch_regdata', [AjaxController::class, 'fetchRegData']);
+    //Fetch Block ByCentre Id
+    Route::post('fetch_block_by_centre', [AjaxController::class, 'fetchBlockByCentre']);
 
     
      //Centre Route

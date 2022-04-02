@@ -25,10 +25,22 @@
                             </ol>
                         </div>                
                         <h3 class="text-center fw-bold">Quality Team Member List</h3><br>
+                        @if (session('alert_success'))
+                            <h6 class="alert alert-success mx-4">{{ session('alert_success') }}</h6>
+                            @endif     
+                            @if (session('alert_danger'))
+                                <h6 class="alert alert-danger mx-4">{{ session('alert_danger') }}</h6>
+                            @endif       
+                            @if ($errors->any())
+                                {{-- @foreach ($errors->all() as $error) --}}
+                                    <div class="alert alert-danger mx-4">{{$errors->first()}}</div>
+                                {{-- @endforeach --}}
+                            @endif 
                     <div class="container col-sm-12 mx-auto">
                         <table class="table table-bordered" id="table">
                             <thead>
                                 <tr>
+                                    <th>S.No.</th>
                                     {{-- <th>PIA Code</th> --}}
                                     {{-- <th>PIA Name</th> --}}
                                     <th>Sanction Order No.</th>
@@ -41,6 +53,7 @@
                             <tbody>
                                 @foreach($qteam_data as $qteam)
                                 <tr>
+                                    <td>{{$loop->iteration}}</td>
                                     {{-- <td>{{ $qteam->getPiaName->pia_code }}</td> --}}
                                     {{-- <td>{{ $qteam->getPiaName->pia_name }}</td> --}}
                                     <td>{{ $qteam->getSanctionOrder->sanction_order_no }}</td>

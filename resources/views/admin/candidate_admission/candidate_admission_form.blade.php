@@ -506,7 +506,6 @@
 
                 $('#reg_id').on('change', function () {
                 var reg_id = this.value;
-                // $("#reg_id").html('');
                 $.ajax({
                     url: "{{url('fetch_regdata')}}",
                     type: "POST",

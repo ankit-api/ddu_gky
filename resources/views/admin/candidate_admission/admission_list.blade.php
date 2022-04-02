@@ -22,10 +22,17 @@
                             </ol>
                         </div>
                             <h3 class="text-center fw-bold">Candidate Admission List</h3><br>
+                            @if (session('alert_success'))
+                            <h6 class="alert alert-success mx-4">{{ session('alert_success') }}</h6>
+                            @endif     
+                            @if (session('alert_danger'))
+                                <h6 class="alert alert-danger mx-4">{{ session('alert_danger') }}</h6>
+                            @endif
                             <div class="container col-sm-12 mx-auto">
                                 <table class="table table-bordered" id="table1">
                                     <thead>
                                         <tr>
+                                            <th>S.No.</th>
                                             <th>Student Code</th>
                                             <th>Student Name</th>
                                             <th>Batch ID</th>
@@ -37,6 +44,7 @@
                                     <tbody>
                                         @foreach ($candidate_data as $candidate)
                                             <tr>
+                                                <td>{{$loop->iteration}}</td>
                                                 <td>{{ $candidate->student_code }}</td>
                                                 <td>{{ $candidate->name }}</td>
                                                 <td>{{ $candidate->batchCode->batch_code }}</td>

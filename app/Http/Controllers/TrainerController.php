@@ -166,7 +166,7 @@ class TrainerController extends Controller
 
     public function trainerList()
     {     
-        $trainer_data = Trainer::with('getCentreName','getSanctionOrder')->get();  
+        $trainer_data = Trainer::with('getCentreName','getSanctionOrder')->orderByDesc("id")->get();  
         return view('public.trainer.trainer_list', compact('trainer_data'));
     }
    

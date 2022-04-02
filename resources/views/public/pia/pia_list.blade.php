@@ -43,6 +43,7 @@
                                 <table class="table table-bordered" id="table">
                                     <thead>
                                         <tr>
+                                            <th>S.No.</th>
                                             <th>PIA Code</th>
                                             <th>PIA Name</th>
                                             <th>PIA Landline No.</th>
@@ -54,6 +55,7 @@
                                     <tbody>
                                         @foreach ($pia as $pia)
                                             <tr>
+                                                <td>{{$loop->iteration}}</td>
                                                 <td>{{ $pia->pia_code }}</td>
                                                 <td>{{ $pia->pia_name }}</td>
                                                 <td>{{ $pia->landline_no }}</td>

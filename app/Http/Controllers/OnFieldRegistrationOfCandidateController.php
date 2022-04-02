@@ -124,7 +124,7 @@ class OnFieldRegistrationOfCandidateController extends Controller
     }
 
     public function registrationList(){
-        $candidate_data = OnFieldRegistrationOfCandidate::with('mob_name')->get();      
+        $candidate_data = OnFieldRegistrationOfCandidate::with('mob_name')->orderByDesc("id")->get();      
         return view('admin.on_field_reg_of_candidate.registration_list', compact("candidate_data"));
     }
 }

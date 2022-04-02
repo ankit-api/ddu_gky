@@ -37,7 +37,7 @@
             <div class="row">            
                 <div class="col-md-4">
                     <label for="" class="m-2">Centre Name</label><br>
-                    <select name="" id="" name="gender" class="form-control" style="background-color:white;" required>
+                    <select name="" id="centre_id" name="gender" class="form-control" style="background-color:white;" required>
                         <option value="Not Selected">Select Centre Name</option>
                     @foreach($get_centre as $centre)
                         <option value="{{ $centre->id }}">{{ $centre->centre_name }}</option>
@@ -71,9 +71,9 @@
                     <select name="village" id="village" class="form-control" required
                         style="background-color:white;">
                         <option value="Not Selected">Select Block Name</option>
-                        @foreach ($get_block as $block)
+                        {{-- @foreach ($get_block as $block)
                             <option value="{{ $block->id }}">{{ $block->block_name }}</option>
-                        @endforeach
+                        @endforeach --}}
                     </select>
                 </div>
                 <div class="col-md-4">
@@ -283,6 +283,26 @@
                             },
                             error: function (data) {
                                 console.log(data);
+                            }
+                        });
+                    });
+
+                    $('#centre_id').on('change', function () {
+                        var centre_id = this.value;
+                        $.ajax({
+                            url: "{{url('fetch_block_by_centre')}}",
+                            type: "POST",
+                            data: {
+                                centre_id: centre_id,
+                                _token: '{{csrf_token()}}'
+                            },
+                            dataType: 'json',
+                            success: function (result) {
+                                $('#village').html('<option value="">Select Block</option>');
+                                $.each(result, function (key, value) {
+                                    $("#village").append('<option value="' + value
+                                        .id + '">' + value.block_name + '</option>');
+                                });
                             }
                         });
                     });
