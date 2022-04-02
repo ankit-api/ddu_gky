@@ -66,8 +66,11 @@ Route::group(['middleware' => ['auth']], function() {
      Route::post('/post_change_password', [AuthenticationController::class,'postChangePAssword'])->name('post_change_password');
   
      //Update Profile Route
-     Route::get('/update_profile', [ProfileController::class,'profileForm'])->name('update_profile');
-     Route::post('/post_update_profile', [ProfileController::class,'postprofileForm'])->name('post_update_profile');
+     Route::get('/update_admin_profile', [ProfileController::class,'misHeadProfileForm'])->name('update_admin_profile');
+     Route::post('/post_update_admin_profile', [ProfileController::class,'postMisHeadProfileForm'])->name('post_update_admin_profile');
+  
+     Route::get('/update_mis_head_profile', [ProfileController::class,'adminProfileForm'])->name('update_mis_head_profile');
+     Route::post('/post_update_mis_head_profile', [ProfileController::class,'postAdminProfileForm'])->name('post_update_mis_head_profile');
   
     //Pia Route
     Route::get('/pia_form', [MasterController::class,'piaForm'])->name('pia_form');

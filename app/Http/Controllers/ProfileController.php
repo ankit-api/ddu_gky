@@ -10,12 +10,12 @@ use Auth;
 
 class ProfileController extends Controller
 {
-    public function profileForm()
+    public function misHeadProfileForm()
     {
         $mis_data = MIS::where('mis_code', Auth::user()->user_code)->first();
         return view('admin.profile.mis_head_profile', compact("mis_data"));
     }
-    public function postProfileForm(Request $req)
+    public function postMisHeadProfileForm(Request $req)
     {
         $this->validate($req, [           
             'name' => 'required|max:40',
@@ -68,4 +68,14 @@ class ProfileController extends Controller
         return redirect()->route('home')->with('alert_status','Profile Updated Successfully ! ');
 
     }
+
+
+    public function adminProfileForm()
+    {
+        $mis_data = MIS::where('mis_code', Auth::user()->user_code)->first();
+        return view('admin.profile.mis_head_profile', compact("mis_data"));
+    }
+    public function postAdminProfileForm(Request $req)
+    {
+        $this->validate($req, [  
 }

@@ -2,6 +2,7 @@
 @section('title', 'Project List')
 @section('dashboard')
 
+
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <!-- partial -->
     <!-- partial:partials/_sidebar.html -->
@@ -65,13 +66,17 @@
 {{-- <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script> --}}
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-
 <script>
+  
     $(document).ready(function() {
         // $('#table1').dataTable();
         $('#table1').DataTable({
             "processing": true,
             "serverSide": true
         });
+
+      
+
+
     });
 </script>
