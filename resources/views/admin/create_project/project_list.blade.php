@@ -57,7 +57,7 @@
                                                 <td>{{ $project->getProjectList->pia_name }}</td>
                                                 <td>{{ $project->name }}</td>
                                                 <td>{{ $project->getState->state_name }}</td>
-                                                <td>{{ $project->getDistrict->district_name }}</td> 
+                                                <td>{{ $project->district }}</td> 
                                                 <td>{{ $project->sanction_date }}</td>
                                                 <td>                                                  
                                                     <button class="text-light btn btn-primary">View</button>

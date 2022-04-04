@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Create Project')
+@section('title', 'Update Aptitude Marks')
 @section('dashboard')
 
 
@@ -17,12 +17,12 @@
                         <div class="col-sm-4 mb-4 ">
                             <ol class="breadcrumb float-sm-left" style="background-color: #6b8ed6;border-radius: 5px;">
                                 <li class="breadcrumb-item"><a  style="color:#fff; text-decoration: none;" href="{{ route('home') }}" aria-expanded="false" aria-controls="ui-basic"><i class="fa-solid fa-house"></i></a></li>
-                                    <li class="breadcrumb-item"><a  style="color:#fff; text-decoration: none;"data-bs-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic2">Project/Sanction Order</a></li>
-                                    <li class="breadcrumb-item active" ><a  style="color:#fff; text-decoration: none;" href="{{ route('project_form')}}" ><b>Add Project</b></a>
+                                    <li class="breadcrumb-item"><a  style="color:#fff; text-decoration: none;"data-bs-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic2">Aptitude</a></li>
+                                    <li class="breadcrumb-item active" ><a  style="color:#fff; text-decoration: none;" href="{{ route('project_form')}}" ><b>Add Aptitude Mark</b></a>
                                 </li>
                             </ol>
                         </div>
-                            <h3 class="text-center fw-bold">Project/Sanction Order Details</h3><br>
+                            <h3 class="text-center fw-bold">Aptitude Marks</h3><br>
                             <form action="{{ route('create_project') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
@@ -33,7 +33,7 @@
                                         <div class="alert alert-danger">{{ $errors->first() }}</div>
                                     @endif
                                     <div class="col-md-6">
-                                        <label for="" class="m-2">Name of PIA</label><br>
+                                        <label for="" class="m-2">Registration ID</label><br>
                                       
                                        
                                             @foreach ($pia as $pia)
@@ -74,7 +74,7 @@
                                         <label for="" class="m-2">PAC/EC Minutes Date</label><br>
                                         <input type="date" class="form-control" name="pac_date">
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <label for="" class="m-2">State</label><br>
                                         <select name="state_id" id="state_id" class="form-control"
                                             style="background-color:white;">
@@ -84,14 +84,29 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <label for="" class="m-2">District</label><br>
-                                       <input type="text" class="form-control" name="district">
+                                        <select name="district_id" id="district_id" class="form-control" required
+                                            style="background-color:white;">
+                                            <option value="Not Selected">Select District Name</option>
+                                            {{-- @foreach ($get_district as $dist)
+                                                <option value="{{ $dist->id }}">{{ $dist->district_name }}</option>
+                                            @endforeach --}}
+                                        </select>
                                     </div>
-                    
+                                    <div class="col-md-4">
+                                        <label for="" class="m-2">Block</label><br>
+                                        <select name="block_id" id="block_id" class="form-control" required
+                                            style="background-color:white;">
+                                            <option value="Not Selected">Select Block Name</option>
+                                            {{-- @foreach ($get_block as $block)
+                                                <option value="{{ $block->id }}">{{ $block->block_name }}</option>
+                                            @endforeach --}}
+                                        </select>
+                                    </div>
                                     <div class="col-md-4">
                                         <label for="" class="m-2">Total Project Duration(In Months)</label><br>
-                                        <input type="text" class="number_validation form-control " maxlength="4" name="proj_duration" required
+                                        <input type="text" class="form-control number_validation" maxlength="4" name="proj_duration" required
                                             placeholder="Enter Project Duration">
                                     </div>
                                     <div class="col-md-4">
@@ -136,20 +151,15 @@
                                         <input type="text" class="form-control" name="con_part_no"
                                             placeholder="Enter Consortium Partner PRN">
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <label for="" class="m-2">Project Application Document <span style="font-size: 14px;font-weight: 600;color: #ee1201;">(Document size should be less than 1MB)</span></label><br>
                                         <input type="file" name="project_doc" accept="application/pdf"
                                             class="form-control " style="background-color:white;" required>
                                     </div>
-                                    <div class="col-md-4">
-                                        <label for="" class="m-2">Project Header <span style="font-size: 14px;font-weight: 600;color: #ee1201;">(Header size should be less than 1MB)</span></label><br>
-                                        <input type="file" name="project_header" accept="image/*,.doc,.docx"
-                                            class="form-control " style="background-color:white;" required>
-                                    </div><div class="col-md-4">
-                                        <label for="" class="m-2">Project Footer <span style="font-size: 14px;font-weight: 600;color: #ee1201;">(Footer size should be less than 1MB)</span></label><br>
-                                        <input type="file" name="project_footer" accept="image/*,.doc,.docxf"
-                                            class="form-control " style="background-color:white;" required>
-                                    </div>
+                                    {{-- <div class="col-md-12">
+                                        <label for="" class="m-2">Description</label><br>
+                                        <textarea name="proj_description" required placeholder="  "  rows="3" style="width:100%; border-radius: 4px; border:1px solid #dee2e6;padding-left: 10px; font-size: 14px;"></textarea>
+                                    </div> --}}
                                 </div><br><br>
                                 <div class="row">
                                     <table class="table table-bordered text-center">
@@ -233,47 +243,47 @@
             // → 1,23,456.789
 
 
-            // $('#state_id').on('change', function () {
-            //     var idState = this.value;
-            //     $("#district_id").html('');
-            //     $.ajax({
-            //         url: "{{url('fetch_district')}}",
-            //         type: "POST",
-            //         data: {
-            //             state_id: idState,
-            //             _token: '{{csrf_token()}}'
-            //         },
-            //         dataType: 'json',
-            //         success: function (result) {
-            //             $('#district_id').html('<option value="">Select District</option>');
-            //             $.each(result, function (key, value) {
-            //                 $("#district_id").append('<option value="' + value
-            //                     .id + '">' + value.district_name + '</option>');
-            //             });
-            //             $('#block_id').html('<option value="">Select Block</option>');
-            //         }
-            //     });
-            // });
-        //     $('#district_id').on('change', function () {
-        //         var idDistrict = this.value;
-        //         $("#block_id").html('');
-        //         $.ajax({
-        //             url: "{{url('fetch_block')}}",
-        //             type: "POST",
-        //             data: {
-        //                 district_id: idDistrict,
-        //                 _token: '{{csrf_token()}}'
-        //             },
-        //             dataType: 'json',
-        //             success: function (res) {
-        //                 $('#block_id').html('<option value="">Select Block</option>');
-        //                 $.each(res, function (key, value) {
-        //                     $("#block_id").append('<option value="' + value
-        //                         .id + '">' + value.block_name + '</option>');
-        //                 });
-        //             }
-        //         });
-        //     });
+            $('#state_id').on('change', function () {
+                var idState = this.value;
+                $("#district_id").html('');
+                $.ajax({
+                    url: "{{url('fetch_district')}}",
+                    type: "POST",
+                    data: {
+                        state_id: idState,
+                        _token: '{{csrf_token()}}'
+                    },
+                    dataType: 'json',
+                    success: function (result) {
+                        $('#district_id').html('<option value="">Select District</option>');
+                        $.each(result, function (key, value) {
+                            $("#district_id").append('<option value="' + value
+                                .id + '">' + value.district_name + '</option>');
+                        });
+                        $('#block_id').html('<option value="">Select Block</option>');
+                    }
+                });
+            });
+            $('#district_id').on('change', function () {
+                var idDistrict = this.value;
+                $("#block_id").html('');
+                $.ajax({
+                    url: "{{url('fetch_block')}}",
+                    type: "POST",
+                    data: {
+                        district_id: idDistrict,
+                        _token: '{{csrf_token()}}'
+                    },
+                    dataType: 'json',
+                    success: function (res) {
+                        $('#block_id').html('<option value="">Select Block</option>');
+                        $.each(res, function (key, value) {
+                            $("#block_id").append('<option value="' + value
+                                .id + '">' + value.block_name + '</option>');
+                        });
+                    }
+                });
+            });
         });
 </script>
     @endsection

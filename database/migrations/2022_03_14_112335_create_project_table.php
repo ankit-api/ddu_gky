@@ -25,8 +25,7 @@ class CreateProjectTable extends Migration
             $table->string('proposal_code',70);
             $table->date('pac_date');
             $table->integer('state')->unsigned();
-            $table->integer('district')->unsigned();
-            $table->integer('block')->unsigned();
+            $table->string('district',100);
             $table->integer('project_duration')->unsigned();
             $table->integer('total_target')->unsigned();
             $table->integer('placement_target')->unsigned();
@@ -37,6 +36,8 @@ class CreateProjectTable extends Migration
             $table->enum('consortium', ['yes', 'no'])->default('no');
             $table->string('consortium_prn',30)->nullable();
             $table->string('project_doc',50)->nullable();
+            $table->string('project_header',50)->nullable();
+            $table->string('project_footer',50)->nullable();
             $table->integer('added_by')->unsigned()->nullable();
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamp('created_on')->useCurrent();

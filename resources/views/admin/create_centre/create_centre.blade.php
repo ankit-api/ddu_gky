@@ -23,7 +23,7 @@
                             </ol>
                         </div>
                 <h3 class="text-center fw-bold">Add New Centre</h3><br>
-        <form action="{{ route('create_centre') }}" method="post">
+        <form action="{{ route('create_centre') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="row">   
                 @if (session('alert_status'))
@@ -34,7 +34,7 @@
                 @endif         
                 <div class="col-md-4">
                     <label for="" class="m-2">Centre Code</label><br>
-                    <input type="text" class="form-control" name="cntr_code" placeholder="Enter Centre Code">
+                    <input type="text" class="form-control" name="centre_code" placeholder="Enter Centre Code" required>
                 </div>
                 <div class="col-md-4">
                     <label for="" class="m-2">Name of PIA</label><br>
@@ -81,6 +81,11 @@
                 <div class="col-md-6">
                     <label for="" class="m-2">Address of Training Centre</label><br>
                     <textarea name="address"  cols="30"  placeholder="Enter Complete Address" rows="3" style="font-size:14px; width:100%; border-radius: 4px; border:1px solid #dee2e6; padding-left:10px;"></textarea>
+                </div>
+                <div class="col-md-6">
+                    <label for="" class="m-2">Centre Document <span style="font-size: 14px;font-weight: 600;color: #ee1201;">(Document size should be less than 1MB)</span></label><br>
+                    <input type="file" name="centre_doc"accept="application/pdf"
+                        class="form-control " style="background-color:white;" required>
                 </div>
             </div><br>                       
                <button type="submit" class="text-light btn btn-lg btn-success btn-icon-text">

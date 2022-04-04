@@ -24,6 +24,7 @@ class CreateCentreTable extends Migration
             $table->integer('district')->unsigned();
             $table->string('centre_name',100);
             $table->text('address');
+            $table->string('centre_doc',50)->nullable();
             $table->integer('added_by')->unsigned()->nullable();
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamp('created_on')->useCurrent();

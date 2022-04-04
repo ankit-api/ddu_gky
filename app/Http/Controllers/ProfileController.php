@@ -126,17 +126,17 @@ class ProfileController extends Controller
             })->save($path.'/'.$filename);
         }
         
-        $mis_id = MIS::where('mis_code', Auth::user()->user_code)->first('id'); 
-        $mis = MIS::find($mis_id->id);
-        $mis->name = $req->name;
-        $mis->email = $req->email;
-        $mis->phone_no = $req->contact;
-        $mis->address = $req->address;       
+        $pia_is_id = PIA::where('mis_code', Auth::user()->user_code)->first('id'); 
+        $pia = PIA::find($mis_id->id);
+        $pia->pia_name = $req->name;
+        $pia->email = $req->email;
+        $pia->phone_no = $req->contact;
+        $pia->landline_no = $req->landline;
+        $pia->address = $req->address;       
         if($req->file('pia_doc')){
-            $mis->photo = $filename;
+            $pia->pia_doc = $filename;
         }
-        $mis->added_by = Auth::user()->id;
-        $mis->save();
+        $pia->save();
 
         $user = User::find(Auth::user()->id);
         $user->name = $req->name;

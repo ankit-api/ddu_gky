@@ -121,11 +121,8 @@ class MasterController extends Controller
     {
         $pia = User::where('user_code',Auth::user()->user_code)->with('getPia')->get();
         $get_state = State::all();
-        $get_district = District::all();
-        $get_block = Block::all();
         $get_scheme = Scheme::all();
-        // dd($get_project);
-        return view('admin.create_project.create_project', compact("pia", "get_state", "get_district", "get_scheme","get_block"));
+        return view('admin.create_project.create_project', compact("pia", "get_state", "get_scheme",));
     }
 
     public function createProject(Request $req)
@@ -137,14 +134,18 @@ class MasterController extends Controller
             'sac_order_date' => 'required',
             'pro_code' => 'required',
             'state_id' => 'required',
-            'district_id' => 'required',
-            'project_doc' => 'max:1024'
+            'district' => 'required',
+            'project_doc' => 'max:1024',
+            'project_header' => 'max:1024',
+            'project_footer' => 'max:1024'
         ]);
 
-        $file = $req->file('project_doc');
-        $filename = $req->sac_order_no.'.'.$file->getClientOriginalExtension();
-
-         str_replace("/", "_", $req->pia_code);
+        $file1 = $req->file('project_doc');
+        $file_document = $req->sac_order_no.'_document.'.$file1->getClientOriginalExtension();
+        $file2 = $req->file('project_header');
+        $file_header = $req->sac_order_no.'_header.'.$file2->getClientOriginalExtension();
+        $file3 = $req->file('project_footer');
+        $file_footer = $req->sac_order_no.'_footer.'.$file3->getClientOriginalExtension();
 
         $Project = new Project();
         $Project->pia_id = $req->pia_id;
@@ -155,8 +156,7 @@ class MasterController extends Controller
         $Project->proposal_code = $req->pro_code;
         $Project->pac_date = $req->pac_date;
         $Project->state = $req->state_id;
-        $Project->district = $req->district_id;
-        $Project->block = $req->block_id;
+        $Project->district = $req->district;
         $Project->project_duration = $req->proj_duration;
         $Project->total_target = $req->total_target;
         $Project->placement_target = $req->place_target;
@@ -166,7 +166,9 @@ class MasterController extends Controller
         $Project->mpr_project_id = $req->mpr_proj_id;
         $Project->consortium = $req->con_part;
         $Project->consortium_prn = $req->con_part_no;
-        $Project->project_doc = $filename;
+        $Project->project_doc = $file_document;
+        $Project->project_header = $file_header;
+        $Project->project_footer = $file_footer;
         $Project->added_by = Auth::user()->id;
         $Project->save();
 
@@ -185,8 +187,10 @@ class MasterController extends Controller
             $cat->save();
         }
 
-        $path = 'Documents/Project_File';
-        $file->move($path,$filename);
+        $path = public_path('Documents/Project_File');
+        $file1->move($path,$file_document);
+        $file2->move($path,$file_header);
+        $file3->move($path,$file_footer);
         return redirect()->route('project_list')->with('alert_status','Project Added Successfully');
     }
 
@@ -232,18 +236,23 @@ class MasterController extends Controller
         //     $cntr_code .= sprintf("%'04d",$last_id + 1);
         // }
 
-        $get_pia_id = Auth::user()->id;
+        $file = $req->file('centre_doc');
+        $file_document = str_replace("/", "_", $req->centre_code).'_document.'.$file->getClientOriginalExtension();
 
         $center = new CentreDetails();
         $center->project_id = $req->project_id;
         $center->pia_id = $req->pia_id;
-        $center->centre_code = $req->cntr_code;
+        $center->centre_code = $req->centre_code;
         $center->state = $req->state_id;
         $center->district = $req->district_id;
         $center->centre_name = $req->name_of_centre;
         $center->address = $req->address;
+        $center->centre_doc = $file_document;
         $center->added_by = Auth::user()->id;
         $center->save();
+
+        $path = public_path('Documents/Centre_File');
+        $file->move($path,$file_document);
 
         return redirect()->route('centre_list')->with('alert_status','Centre Added Successfully');
     }
