@@ -105,7 +105,7 @@ class MasterController extends Controller
         $user->password = $hashed_random_password;
         $user->save();
 
-        $path = 'Documents/PIA_File';
+        $path = public_path('Documents/PIA_File');
         $file->move($path,$filename);       
         return redirect()->route('pia_list')->with('alert_success','PIA Added Successfully');
         
@@ -183,9 +183,9 @@ class MasterController extends Controller
             $cat->save();
         }
 
-        $path = 'Documents/Project_File';
+        $path = public_path('Documents/Project_File');
         $file->move($path,$filename);
-        return redirect()->route('project_list')->with('alert_status','Project Added Successfully');
+        return redirect()->route('project_list')->with('alert_success','Project Added Successfully');
     }
 
     public function projectList()
@@ -243,7 +243,7 @@ class MasterController extends Controller
         $center->added_by = Auth::user()->id;
         $center->save();
 
-        return redirect()->route('centre_list')->with('alert_status','Centre Added Successfully');
+        return redirect()->route('centre_list')->with('alert_success','Centre Added Successfully');
     }
 
     public function centreList()
@@ -325,7 +325,7 @@ class MasterController extends Controller
         $user->password = $hashed_random_password;
         $user->save();
 
-        return redirect()->route('q_team_member_list')->with('alert_status','Q Team Member Added Successfully');
+        return redirect()->route('q_team_member_list')->with('alert_success','Q Team Member Added Successfully');
     }
 
     public function qteamMemberList()
@@ -404,7 +404,7 @@ class MasterController extends Controller
         $user->password = $hashed_random_password;
         $user->save();
 
-        return redirect()->route('centre_incharge_list')->with('alert_status','Centre Incharge Added Successfully');
+        return redirect()->route('centre_incharge_list')->with('alert_success','Centre Incharge Added Successfully');
     }
 
     public function centreInchargeList()
@@ -487,7 +487,7 @@ class MasterController extends Controller
         $user->password = $hashed_random_password;
         $user->save();
 
-        return redirect()->route('mobilizer_list')->with('alert_status','Mobilizer Added Successfully');
+        return redirect()->route('mobilizer_list')->with('alert_success','Mobilizer Added Successfully');
     }
 
     public function mobilizerList()
