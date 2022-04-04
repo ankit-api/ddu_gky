@@ -78,7 +78,7 @@
                 </div> 
                 <div class="col-md-6">
                     <label for="" class="m-2">Address</label><br>
-                    <textarea name ="address" class="form-control" placeholder="Enter Complete Address"  rows="3" style="width:100%; border-radius: 4px; border:1px solid #dee2e6;padding-left: 10px; font-size: 14px;">
+                    <textarea name ="address" class="form-control" placeholder="Enter Complete Address"  rows="3" style="width:100%; border-radius: 4px; border:1px solid #dee2e6;padding-left: 10px; font-size: 14px;"></textarea>
                 </div>
                 <div class="col-md-6">
                     <label for="" class="m-2">Qualification</label><br>

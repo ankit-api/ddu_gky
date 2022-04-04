@@ -161,7 +161,7 @@ class TrainerController extends Controller
         $user->password = $hashed_random_password;
         $user->save();
        
-        return redirect()->route('trainer_list')->with('alert_status','Trainer Added Successfully!');
+        return redirect()->route('trainer_list')->with('alert_success','Trainer Added Successfully!');
     }}
 
     public function trainerList()

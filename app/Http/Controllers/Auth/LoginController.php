@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -43,6 +44,11 @@ class LoginController extends Controller
     {
         return 'user_code'; //or return the field which you want to use.
     }
+
+    // public function showLoginForm(Request $req)
+    // {
+    //     return view('auth.login',['terms'=>$req->id]); //pass your data here as a second argument
+    // }
 }
 
 

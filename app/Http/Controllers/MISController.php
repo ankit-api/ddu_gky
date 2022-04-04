@@ -103,7 +103,7 @@ class MISController extends Controller
         $user->password = $hashed_random_password;
         $user->save();
 
-        $path = 'Documents/MIS';
+        $path = public_path('Documents/MIS');
         
         $img1 = Image::make($file1->getRealPath());
         $img1->resize(200, 200, function ($constraint) {
@@ -115,7 +115,7 @@ class MISController extends Controller
             $constraint->aspectRatio();
         })->save($path.'/'.$filename2);
 
-        return redirect()->route('mis_list')->with('alert_status','MIS Added Successfully');
+        return redirect()->route('mis_list')->with('alert_success','MIS Added Successfully');
     }
 
     public function misList(){

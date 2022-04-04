@@ -454,7 +454,7 @@
                    var id = $(value).data('id');  
                  
                    $.ajax({
-                       url: "/getDoc2Type",
+                       url: "{{url('getDoc2Type')}}",
                        type: "POST",
                        data: {
                            id: value.value,

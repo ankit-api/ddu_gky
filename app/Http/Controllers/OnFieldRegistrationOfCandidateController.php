@@ -89,7 +89,7 @@ class OnFieldRegistrationOfCandidateController extends Controller
     
 
         $file_reg_code = str_replace("/", "_", $req->reg_code);
-        $file_loc = "Documents/Registration/$file_reg_code";
+        $file_loc = public_path("Documents/Registration/$file_reg_code");
         if (!file_exists($file_loc)) {
             mkdir("Documents/Registration/$file_reg_code", 0777, true);
         }
@@ -120,7 +120,7 @@ class OnFieldRegistrationOfCandidateController extends Controller
             }
         }
         
-        return redirect()->route('candidate_register_list')->with('alert_status','Candidate Registered Successfully!');
+        return redirect()->route('candidate_register_list')->with('alert_success','Candidate Registered Successfully!');
     }
 
     public function registrationList(){
