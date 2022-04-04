@@ -184,7 +184,7 @@ class AdmissionController extends Controller
             }
         }
         
-        return redirect()->route('admission_list')->with('alert_status','Admission done Successfully!');
+        return redirect()->route('admission_list')->with('alert_success','Admission done Successfully!');
     }
 
     public function admissionList(){

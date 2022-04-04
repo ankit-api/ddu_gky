@@ -77,17 +77,24 @@
 
   <div class="container-scroller" style="margin-top: -30px;">
       <div class="logo mx-auto">
-        <div class="container text-center">
-          <img src="{{asset('images/ddu_login_header2.png')}}" class="img-fluid" style="height:130px;" alt="logo">
+        <div class="container text-center d-flex justify-content-between mt-3">
+          <div class="col-5 col-md-3">
+            <img src="{{asset('images/prakhar_logo.png')}}" class="img-fluid" style="max-height: 110px;" alt="logo">
+          </div>
+          <div class="col-5 col-md-3 mt-3">
+            <img src="{{asset('images/naukriyan_logo.png')}}" class="img-fluid" style="max-height: 79px;" alt="logo">
+          </div>
         </div>
       </div>
-    <div class="container-fluid page-body-wrapper py-0">
-      <div class="d-flex auth pt-5">
-        <div class="row w-100 mx-0">
-          <div class="col-lg-5 mx-auto">
+    <div class="container-fluid py-0">
+      <center>
+      <div class="col-10 col-sm-8 col-md-4 auth pt-1">
+        {{-- <div class="row w-100 mx-0">
+          <div class="col-lg-8 mx-auto"> --}}
             <div class="auth-form-light text-left py-5 px-4 px-sm-5">
-              <div class="logo mb-5">
-                <img src="{{asset('images/ddu-header.jpg')}}" class="img-fluid" alt="logo">
+              <div class="w-100 mb-5">
+                <h3 style="font-weight:bold;color:green">Prakhar Software Solutions Pvt. Ltd.</h3>
+                 {{-- <img src="{{asset('images/ddu-header.jpg')}}" class="img-fluid" alt="logo">  --}}
               </div>
               <div class="row">  
                 @if (session('alert_status'))
@@ -133,9 +140,9 @@
                 </div> --}}
               </form>
             </div>
-          </div>
-        </div>
-      </div>
+          {{-- </div>
+        </div> --}}
+      </div></center>
       <!-- content-wrapper ends -->
     </div>
     <!-- page-body-wrapper ends -->

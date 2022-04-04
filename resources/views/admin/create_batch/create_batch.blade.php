@@ -51,7 +51,7 @@
                     </select>            
                 </div>
                 <div class="col-md-4">
-                    <label for="" class="m-2">Class Duration per day< style="font-size: 1span4px;font-weight: 600;color: #ee1201;"> (In hours)</span></label><br>
+                    <label for="" class="m-2">Class Duration per day<span style="font-size: 14px;font-weight: 600;color: #ee1201;"> (In hours)</span></label><br>
                     <input type="text" required class="number_validation form-control" name="duration_per_day">
                 </div>
                 <!-- <div class="col-md-3">

@@ -19,7 +19,11 @@
               <div class="home-tab">
                   
                 <h2>Admin Dashboard here</h2>
-
+                {{-- <form action="{{env('APP_URL')}}" method="POST">
+                  @csrf
+                  <input type="hidden" name="id" value="Admin">
+                  <input type="submit" value="Submit">
+                </form> --}}
                
               </div>
             </div>

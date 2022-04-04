@@ -26,7 +26,7 @@ class ProfileController extends Controller
             // 'image_doc' => 'max:512',
             // 'sign_doc' => 'max:512'
         ]);
-        $path = 'Documents/MIS';
+        $path = public_path('Documents/MIS');
         $mis_code = str_replace("/", "_", Auth::user()->user_code);
 
         if($req->file('image_doc')){
@@ -113,21 +113,18 @@ class ProfileController extends Controller
             'address' => 'required|min:10|max:255',
             
         ]);
-        $path = 'Documents/PIA_File';
+        $path = public_path('Documents/PIA_File');
 
         if($req->file('pia_doc')){
             $file = $req->file('pia_doc');
             $pia_code = str_replace("/", "_", Auth::user()->user_code);
             $filename = $pia_code.'.'.$file->getClientOriginalExtension();
 
-            $img = Image::make($file->getRealPath());
-            $img->resize(200, 200, function ($constraint) {
-                $constraint->aspectRatio();
-            })->save($path.'/'.$filename);
+            $file->move($path,$filename); 
         }
         
-        $pia_is_id = PIA::where('mis_code', Auth::user()->user_code)->first('id'); 
-        $pia = PIA::find($mis_id->id);
+        $pia_id = PIA::where('pia_code', Auth::user()->user_code)->first('id'); 
+        $pia = PIA::find($pia_id->id);
         $pia->pia_name = $req->name;
         $pia->email = $req->email;
         $pia->phone_no = $req->contact;

@@ -46,6 +46,7 @@ Route::view('/letter-to-srlm', 'forms/letter_to_srlm')->name('letter-to-srlm');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+// Route::post('/', [App\Http\Controllers\HomeController::class, 'index']);
 
 Route::group(['middleware' => ['auth']], function() {
 

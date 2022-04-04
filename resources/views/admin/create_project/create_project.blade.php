@@ -169,26 +169,26 @@
                                         <tbody>
                                             <tr>
                                                 <th><input type="hidden" name="cat_type[]" value="Sanctioned">Sanctioned</th>
-                                                <td><input type="text" min="0" name="target_no[]" class="number_validation form-control"></td>
-                                                <td><input type="text" min="0" name="sc_no[]" class="number_validation form-control"></td>
-                                                <td><input type="text" min="0" name="st_no[]" class="number_validation form-control"></td>
-                                                <td><input type="text" min="0" name="others_no[]" class="number_validation form-control"></td>
-                                                <td><input type="text" min="0" name="minorities_no[]" class="number_validation form-control">
+                                                <td><input type="text" name="target_no[]" class="form-control number_validation"></td>
+                                                <td><input type="text" name="sc_no[]" class="form-control number_validation"></td>
+                                                <td><input type="text" name="st_no[]" class="form-control number_validation"></td>
+                                                <td><input type="text" name="others_no[]" class="form-control number_validation"></td>
+                                                <td><input type="text" name="minorities_no[]" class="form-control number_validation">
                                                 </td>
-                                                <td><input type="text" min="0" name="women_no[]" class="number_validation form-control"></td>
-                                                <td><input type="text" min="0" name="placement_no[]" class="number_validation form-control">
+                                                <td><input type="text" name="women_no[]" class="form-control number_validation"></td>
+                                                <td><input type="text" name="placement_no[]" class="form-control number_validation">
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th><input type="hidden" name="cat_type[]" value="Proposed">Proposed</th>
-                                                <td><input type="text" min="0" name="target_no[]" class="number_validation form-control"></td>
-                                                <td><input type="text" min="0" name="sc_no[]" class="number_validation form-control"></td>
-                                                <td><input type="text" min="0" name="st_no[]" class="number_validation form-control"></td>
-                                                <td><input type="text" min="0" name="others_no[]" class="number_validation form-control"></td>
-                                                <td><input type="text" min="0" name="minorities_no[]" class="number_validation form-control">
+                                                <td><input type="text" name="target_no[]" class="form-control number_validation"></td>
+                                                <td><input type="text" name="sc_no[]" class="form-control number_validation"></td>
+                                                <td><input type="text" name="st_no[]" class="form-control number_validation"></td>
+                                                <td><input type="text" name="others_no[]" class="form-control number_validation"></td>
+                                                <td><input type="text" name="minorities_no[]" class="form-control number_validation">
                                                 </td>
-                                                <td><input type="text" min="0" name="women_no[]" class="number_validation form-control"></td>
-                                                <td><input type="text" min="0" name="placement_no[]" class="number_validation form-control">
+                                                <td><input type="text" name="women_no[]" class="form-control number_validation"></td>
+                                                <td><input type="text" name="placement_no[]" class="form-control number_validation">
                                                 </td>
                                             </tr>
                                         </tbody>
