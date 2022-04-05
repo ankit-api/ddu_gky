@@ -17,7 +17,7 @@
                         <tr>
                             <td bgcolor="#ffffff" align="center" valign="top"
                                 style="padding: 20px 20px 20px 20px; border-radius: 4px 4px 0px 0px;">
-                                <img src="https://ndgc-etl.com/Demo_hrms/images/ddu-header.jpg" style="margin: 0; max-width:540px; "></h2>
+                                <img src="https://ndgc-etl.com/Demo_hrms/images/ddu_mail_header.png" style="margin: 0; max-width:540px; "></h2>
                             </td>
                         </tr>
                         

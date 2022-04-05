@@ -92,7 +92,7 @@ class MISController extends Controller
         Mail::send('mail.sendmail', $data, function ($message) use ($toEmail,$from) {
             $message->to($toEmail)
             ->subject('Login Credentials');
-            $message->from(env('MAIL_USERNAME'), env('APP_NAME'));
+            $message->from(env('MAIL_USERNAME'), 'PSSPL');
             });
 
         $user = new User();

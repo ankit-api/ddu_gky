@@ -126,7 +126,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/candidate-register', [OnFieldRegistrationOfCandidateController::class,'registrationForm'])->name('candidate-register');
     Route::post('/post-candidate-register', [OnFieldRegistrationOfCandidateController::class,'postRegistration'])->name('post-candidate-register');
     Route::get('/candidate_register_list', [OnFieldRegistrationOfCandidateController::class,'registrationList'])->name('candidate_register_list');
-    
+    //Update Remarks in OFR Candidate Registration
+    Route::post('/update_remarks', [OnFieldRegistrationOfCandidateController::class,'updateRemarks'])->name('update_remarks');
+
     //Batch Route
     Route::get('/batch_form', [BatchController::class,'batchForm'])->name('batch_form');
     Route::post('/create_batch', [BatchController::class,'createBatch'])->name('create_batch');

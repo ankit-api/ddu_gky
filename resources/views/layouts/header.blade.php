@@ -25,7 +25,10 @@
   {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
   <!-- <link rel="shortcut icon" href="{{ asset('/star_theme/images/favicon.png') }}" /> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  
+  {{-- datatable link --}}
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.jqueryui.min.css">
   <style>
      .breadcrumb-item +  .breadcrumb-item::before {
         color: #fff;
@@ -50,6 +53,24 @@
   
     #loading-image {
       z-index: 100;
+    }
+
+    .btn{
+      color: white!important;
+      padding: 8px 16px!important;
+    }
+    thead > tr > th::before, thead > tr > th::after{
+      content: none!important;
+    }
+    thead{
+      background-color: #1E283D !important;
+      color: #ffffff !important;
+    }
+    .dataTables_wrapper .dataTables_length select{
+      background-color: #fff;
+    }
+    .dataTables_wrapper .dataTables_filter input{
+      background-color: #fff;
     }
   </style>
   

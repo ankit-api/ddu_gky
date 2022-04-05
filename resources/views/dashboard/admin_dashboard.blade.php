@@ -19,6 +19,14 @@
               <div class="home-tab">
                   
                 <h2>Admin Dashboard here</h2>
+                <div class="row mt-3 mx-1">  
+                  @if (session('alert_status'))
+                      <h6 class="alert alert-success">{{ session('alert_status') }}</h6>
+                  @endif      
+                  @if ($errors->any())
+                          <div class="alert alert-danger">{{$errors->first()}}</div>
+                  @endif 
+                </div>
                 {{-- <form action="{{env('APP_URL')}}" method="POST">
                   @csrf
                   <input type="hidden" name="id" value="Admin">

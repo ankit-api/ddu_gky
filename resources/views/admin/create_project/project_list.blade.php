@@ -57,7 +57,7 @@
                                                 <td>{{ $project->getProjectList->pia_name }}</td>
                                                 <td>{{ $project->name }}</td>
                                                 <td>{{ $project->getState->state_name }}</td>
-                                                <td>{{ $project->district }}</td> 
+                                                <td>{{ ucwords($project->district) }}</td> 
                                                 <td>{{ $project->sanction_date }}</td>
                                                 <td>                                                  
                                                     <button class="text-light btn btn-primary">View</button>
@@ -76,20 +76,6 @@
         </div>
     {{-- </div> --}}
 @endsection
-{{-- <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script> --}}
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-<script>
-  
-    $(document).ready(function() {
-        // $('#table1').dataTable();
-        $('#table1').DataTable({
-            "processing": true,
-            "serverSide": true
-        });
 
-      
-
-
-    });
-</script>

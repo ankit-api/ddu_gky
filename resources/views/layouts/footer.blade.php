@@ -34,7 +34,10 @@
   <!-- End custom js for this page-->
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  
+  {{-- datatable link --}}
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+{{-- <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/dataTables.jqueryui.min.js"></script> --}}
   <script>
     $.ajaxSetup({
     headers: {
@@ -48,6 +51,12 @@
     $('#loading').hide();
   })
   </script>
+  <script>
+    $(document).ready( function () {
+      $('#display').DataTable();
+      $('#table1').DataTable();
+  } );
+    </script>
   
 </body>
 
