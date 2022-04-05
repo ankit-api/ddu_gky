@@ -61,6 +61,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/trainer_check_duplicate', [AjaxController::class,'trainer_check_duplicate']);
     Route::post('/centreinch_check_duplicate', [AjaxController::class,'centreinch_check_duplicate']);
     Route::post('/reg_check_duplicate', [AjaxController::class,'reg_check_duplicate']);
+    Route::post('/check_create_batch', [AjaxController::class,'checkCreateBatch']);
   
     //Change Password
      Route::get('/change_password', [AuthenticationController::class,'changePassword'])->name('change_password');

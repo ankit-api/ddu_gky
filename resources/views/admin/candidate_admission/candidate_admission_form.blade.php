@@ -34,37 +34,27 @@
                         @endif 
             </div>    
             <div class="row"> 
-            <!-- <div class="col-md-4">
+            <!-- <div class="col-md-6">
                     <label for="" class="m-2">Name of Project</label><br>
                     <select name="project" id="" class="form-control" style="background-color:white;">
                    
                     </select> 
-                </div>   
+                </div>   -->
             <div class="col-md-4">
                     <label for="" class="m-2">Centre Name</label><br>
-                    <select name="centre" id="" class="form-control" style="background-color:white;">
-                   
-                    </select> 
-                </div>           -->
-                <div class="col-md-4">
-                    <label for="" class="m-2">Batch Number</label><br>
-                    <select name="batch" id="" class="form-control" style="background-color:white;">
-                        <option value="Not Selected">Select Batch Number</option>
-                    @foreach($batch as $batch)
-                        <option value="{{ $batch->id }}">{{ $batch->batch_code }}</option>
+                    <select name="centre_id" id="" class="form-control" style="background-color:white;">
+                        <option value="">Select Centre</option>
+                    @foreach($centre as $centre)
+                        <option value="{{ $centre->id }}">{{ $centre->centre_name }}</option>
                     @endforeach
                     </select> 
-                </div>
+                </div>            
+                
 
                 <div class="col-md-4">
                     <label for="" class="m-2">Trade</label><br>
                     <input name="trade" required type="text" placeholder="Enter Trade" class="form-control">
-                </div>
-                
-                <!-- <div class="col-md-4">
-                    <label for="" class="m-2">Date of Registration</label><br>
-                    <input type="date" class="form-control" name="" id="" > 
-                </div>-->
+                </div>            
                 <div class="col-md-4">
                     <label for="" class="m-2">Training Duration<span style="font-size: 14px;font-weight: 600;color: #ee1201;"> (In months)</span></label><br>
                     <input type="text" required name="duration" class="number_validation form-control" placeholder="Enter Training Duration" >
@@ -380,8 +370,8 @@
             </div><br>
             <div class="row">
                 <div class="col-md-6">
-                    <label for="" class="m-2">Attach Photo Document <span style="font-size: 14px;font-weight: 600;color: #ee1201;">(Photo size should be less than 512Kb)</span></label><br>
-                    <input type="file" name="photo_doc" accept="image/png, image/gif, image/jpeg" class="form-control " style="background-color:white;" >
+                    <label for="" class="m-2">Candidate Document <span style="font-size: 14px;font-weight: 600;color: #ee1201;">(Document size should be less than 1MB)</span></label><br>
+                    <input type="file" name="candidate_doc" accept="application/pdf" class="form-control " style="background-color:white;" >
                 </div>
             </div><br><br>
             <h5>Attachmnet Fields <span style="font-size: 14px;font-weight: 600;color: #ee1201;">(All Documents size should be less than 1MB)</span></h5>

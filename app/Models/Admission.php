@@ -20,8 +20,8 @@ class Admission extends Model
         return $this->hasOne(User::class,'id','added_by');
     }
 
-    public function batchCode(){
-        return $this->hasOne(Batch::class,'id','batch_id');
+    public function registrationCode(){
+        return $this->hasOne(OnFieldRegistrationOfCandidate::class,'id','register_id');
     }
 
 }

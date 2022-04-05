@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admission;
 use Illuminate\Http\Request;
 use App\Models\Doc2Type;
 use App\Models\PIA;
@@ -14,6 +15,8 @@ use App\Models\OnFieldRegistrationOfCandidate;
 use App\Models\District;
 use App\Models\Block;
 use App\Models\CentreDetails;
+use App\Models\Batch;
+use App\Models\BatchAllotment;
 use Response;
 
 class AjaxController extends Controller
@@ -118,4 +121,29 @@ class AjaxController extends Controller
         $data = Block::where("district_id",$id_by_centre_id->district)->get(["block_name", "id"]);
         return response()->json($data);
     }
+
+    public function checkCreateBatch(Request $req)
+    {
+        $batch_no = Batch::where('batch_summary_status','<>', 'complete')->where('centre_id', $req->centre_id)->count();
+           if($batch_no == 3){
+                $status = "batch";
+                $msg = "There are already 3 batch, which are currently running ";
+                return response()->json([$status,$msg]); 
+           } else{
+            $candidate_no = Admission::where("batch_enroll_status", 'unenroll')->count();       
+                if($candidate_no < 35){  
+                    $status = "candidate";                  
+                    $req_cand_no = 35 - $candidate_no;
+                    $msg = "Batch cannot be created(".$req_cand_no." more candidates required) ";
+                    return response()->json([$status,$msg]); 
+                } else {
+                $status = "create";
+                $trainer = Trainer::where("centre_id",$req->centre_id)->get(["name", "id"]);
+                return response()->json([$status,$trainer]); 
+                }
+            }
+        
+       
+    }
+
 }

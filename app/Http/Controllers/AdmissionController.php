@@ -9,6 +9,7 @@ use App\Models\OnFieldRegistrationOfCandidate;
 use App\Models\Admission;
 use App\Models\RegDocument;
 use App\Models\FamilyDetail;
+use App\Models\CentreDetails;
 use App\Models\Doc1Type;
 use App\Models\Doc2Type;
 use Auth;
@@ -23,12 +24,12 @@ class AdmissionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function admissionForm()
-    {
-        $batch = Batch::all();    
+    {  
         $state = State::all();
         $get_doc1_type = Doc1Type::all(); 
-        $reg_can = OnFieldRegistrationOfCandidate::all();
-        return view('admin.candidate_admission.candidate_admission_form', compact("batch",'state','reg_can','get_doc1_type'));
+        $reg_can = OnFieldRegistrationOfCandidate::where('added_by',Auth::user()->id)->get();
+        $centre = CentreDetails::where('added_by', Auth::user()->id)->get();
+        return view('admin.candidate_admission.candidate_admission_form', compact('centre','state','reg_can','get_doc1_type'));
     }
 
     public function postAdmission(Request $req)
@@ -52,24 +53,13 @@ class AdmissionController extends Controller
             // 'religion' => 'required',
             // 'category' => 'required',
         ]);
-
-         //Student Code
-         $total_rows = Admission::orderBy('id', 'desc')->count();
-         $stu_code = "Student-Id/";
-         if($total_rows==0){
-             $stu_code .= '0001';
-         }else{
-             $last_id = Admission::orderBy('id', 'desc')->first()->id;
-             $stu_code .= sprintf("%'04d",$last_id + 1);
-         }
          
-        $file = $req->file('photo_doc');               
-        $photodoc = $file->getClientOriginalName();
+        $file = $req->file('candidate_doc');               
+        $file_document = 'Candidate_doc.'.$file->getClientOriginalExtension();
 
          $student = new Admission();
-         $student->student_code = $stu_code;
+         $student->centre_id = $req->centre_id;
          $student->register_id = $req->reg_id;
-         $student->batch_id = $req->batch;
          $student->name = $req->name;
          $student->father_husband_name = $req->father_husband_name;
          $student->mother_name = $req->mother_name;
@@ -122,7 +112,7 @@ class AdmissionController extends Controller
          $student->trade =  $req->trade;
          $student->allocated_trade =  $req->allocate_trade;
          !empty($req->comment ) ? $student->comment = $req->comment : $student->comment = 'NULL';
-         $student->photo_doc = $photodoc;
+         $student->candidate_doc = $file_document;
          $student->added_by = Auth::user()->id; 
          $student->save();
          $admsn_id = $student->id;
@@ -133,11 +123,9 @@ class AdmissionController extends Controller
         if (!file_exists($file_loc)) {
             mkdir("Documents/Registration/$file_reg_code", 0777, true);
         }
-        // $file->move($file_loc,$photodoc);
-        $img = Image::make($file->getRealPath());
-        $img->resize(200, 200, function ($constraint) {
-            $constraint->aspectRatio();
-        })->save($file_loc.'/'.$photodoc);
+        
+        $file->move($file_loc,$file_document);
+      
 
         $i = count($req->m_name);        
         for ($j = 0; $j < $i; $j++) {     
@@ -188,7 +176,7 @@ class AdmissionController extends Controller
     }
 
     public function admissionList(){
-        $candidate_data = Admission::with('batchCode')->orderByDesc("id")->get();      
+        $candidate_data = Admission::with('registrationCode')->orderByDesc("id")->get();      
         return view('admin.candidate_admission.admission_list', compact("candidate_data"));
     }
 

@@ -35,7 +35,6 @@
                                             <th>S.No.</th>
                                             <th>Student Code</th>
                                             <th>Student Name</th>
-                                            <th>Batch ID</th>
                                             <th>D.O.B</th>
                                             <th>Added By</th>
                                             <th>Action</th>
@@ -45,9 +44,8 @@
                                         @foreach ($candidate_data as $candidate)
                                             <tr>
                                                 <td>{{$loop->iteration}}</td>
-                                                <td>{{ $candidate->student_code }}</td>
+                                                <td>{{ $candidate->registrationCode->reg_code }}</td>
                                                 <td>{{ $candidate->name }}</td>
-                                                <td>{{ $candidate->batchCode->batch_code }}</td>
                                                 <td>{{ $candidate->dob }}</td>
                                                 <td>{{ $candidate->cenInchName->name.' ('.$candidate->cenInchName->user_code.')' }}</td>
                                                 <td>

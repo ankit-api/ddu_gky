@@ -109,7 +109,7 @@
                 <div class="row">            
                 <div class="col-md-6">
                     <label for="" class="m-2">If Trainer, Domain(Course)</label><br>
-                    <input type="text" name="domain" class="form-control"  placeholder="Enter ">
+                    <input type="text" name="domain" class="form-control"  placeholder="Enter Domain ">
                 </div>
                 <div class="col-md-6">
                     <label for="" class="m-2">If not the domain trainer or with additional skill</label><br>  

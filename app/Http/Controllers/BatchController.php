@@ -1,13 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Admission;
 use App\Models\Trainer;
 use App\Models\Batch;
 use App\Models\BatchLessonPlanner;;
 use Auth;
 use Illuminate\Http\Request;
 use App\Models\CenterIncharge;
+use App\Models\CentreDetails;
 use App\Models\TrainerDetail;
+use App\Models\MIS;
+use App\Models\Project;
 
 class BatchController extends Controller
 {
@@ -17,16 +22,14 @@ class BatchController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function batchForm()
-    {
-        $get_trainer = Trainer::all();
-        return view('admin.create_batch.create_batch', compact("get_trainer"));
+    {   $project = Project::where('added_by',Auth::user()->id)->first();
+        $centre = CentreDetails::where('project_id',$project->id )->get();       
+        return view('admin.create_batch.create_batch', compact("project","centre"));
     }
 
    
     public function createBatch(Request $req)
     {
-        // session(['incharge_id' => '1']);
-
         $this->validate($req, [
             // 'nature_of_training' => 'required',
             't_name' => 'required',
@@ -57,10 +60,8 @@ class BatchController extends Controller
          }
 
         $batch = new Batch();
-        // $get_centre_inc_id = CenterIncharge::with('centre_incharge_code',Auth::user()->user_code)->first();
-        $get_cntr_id = TrainerDetail::where('id',$req->t_name)->first();
-        $get_centre_inc_id = CenterIncharge::where('centre_id',$get_cntr_id->centre_id)->first();
-        $batch->incharge_id = $get_centre_inc_id->id;
+        $batch->project_id = $req->project_id;
+        $batch->centre_id = $req->centre_id;
         $batch->batch_code = $batch_code;
         $batch->trainer_id = $req->t_name;
         $batch->nature_of_training = $req->nature_of_training;

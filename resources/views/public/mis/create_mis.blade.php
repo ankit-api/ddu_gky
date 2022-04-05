@@ -70,14 +70,6 @@
                           <label for="" class="m-2">Address of MIS</label><br>
                           <textarea name ="address"  placeholder="Enter Full Address Of MIS" rows="3" style="font-size:14px; width:100%; border-radius: 4px; border:1px solid #dee2e6; padding-left:10px;"></textarea>
                       </div> 
-                      <div class="col-md-6">
-                        <label for="" class="m-2">Attach Photograph <span style="font-size: 14px;font-weight: 600;color: #ee1201;">(Image size should be less than 512Kb)</span></label><br>
-                        <input type="file" name="image_doc" accept="image/png, image/gif, image/jpeg" class="form-control " style="background-color:white;" >
-                      </div>
-                      <div class="col-md-6">
-                        <label for="" class="m-2">Attach Signature  <span style="font-size: 14px;font-weight: 600;color: #ee1201;">(Image size should be less than 512Kb)</span></label><br>
-                        <input type="file" name="sign_doc" accept="image/png, image/gif, image/jpeg" class="form-control" style="background-color:white;" >
-                      </div>
                     </div><br>     
                     <button type="submit" class="text-light btn btn-lg btn-success btn-icon-text" id="mis_submit">
                               <i class="ti-upload btn-icon-prepend"></i>
@@ -98,7 +90,7 @@
         var mis_code = $('#mis_code').val();
         $.ajax({
             type: "POST",
-            url: "/mis_check_duplicate",
+            url: "{{url('mis_check_duplicate')}}",
             data: { mis_code : mis_code, _token: '{{csrf_token()}}' },
             dataType: 'json',
             success: function (data) {

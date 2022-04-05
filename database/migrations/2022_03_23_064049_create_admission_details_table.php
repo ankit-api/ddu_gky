@@ -15,14 +15,15 @@ class CreateAdmissionDetailsTable extends Migration
     {
         Schema::create('admission_details', function (Blueprint $table) {
             $table->increments('id');  
-            $table->string('student_code',50);
+            $table->integer('centre_id')->unsigned()->foriegn(); 
+            $table->foreign('centre_id')->references('id')->on('centre')->onUpdate('cascade')->onDelete('cascade');
+          
             $table->integer('register_id')->unsigned()->foriegn(); 
-            $table->integer('batch_id')->unsigned()->foriegn();  
             // $table->integer('aptitude_id')->unsigned()->foriegn(); 
 
             
            $table->foreign('register_id')->references('id')->on('on_field_registration_of_candidates')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('batch_id')->references('id')->on('batch_details')->onUpdate('cascade')->onDelete('cascade');
+           
             // $table->foreign('aptitude_id')->references('id')->on('can_aptitude_results')->onUpdate('cascade')->onDelete('cascade');
 
             // $table->integer('state_id');
@@ -38,7 +39,6 @@ class CreateAdmissionDetailsTable extends Migration
             $table->bigInteger('alternate_contact')->nullable();
             $table->string('email',200)->nullable();
             $table->string('alternate_email',200)->nullable();
-            // $table->string('village',150);
             $table->text('present_address');
             $table->text('permanent_address')->nullable();
             $table->enum('category', ['gn', 'sc', 'st','ob','mn'])->default('gn');
@@ -66,7 +66,8 @@ class CreateAdmissionDetailsTable extends Migration
             $table->string('trade',100);
             $table->string('allocated_trade',100);
             $table->text('comment');
-            $table->string('photo_doc',50);
+            $table->string('candidate_doc',50);
+            $table->enum('batch_enroll_status', ['unenroll', 'enroll'])->default('unenroll');
             $table->integer('added_by')->unsigned()->nullable();
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamp('created_on')->useCurrent();

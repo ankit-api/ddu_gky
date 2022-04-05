@@ -15,9 +15,11 @@ class CreateBatchDetailsTable extends Migration
     {
         Schema::create('batch_details', function (Blueprint $table) {
             $table->increments('id');
-
-            $table->integer('incharge_id')->unsigned()->foriegn();  
-            $table->foreign('incharge_id')->references('id')->on('centre_incharge_details')->onUpdate('cascade')->onDelete('cascade');       
+            $table->integer('project_id')->unsigned()->foriegn();  
+            $table->foreign('project_id')->references('id')->on('project')->onUpdate('cascade')->onDelete('cascade');       
+            
+            $table->integer('centre_id')->unsigned()->foriegn();  
+            $table->foreign('centre_id')->references('id')->on('centre')->onUpdate('cascade')->onDelete('cascade');       
             
             $table->integer('trainer_id')->unsigned()->foriegn();  
             $table->foreign('trainer_id')->references('id')->on('trainer_details')->onUpdate('cascade')->onDelete('cascade');       

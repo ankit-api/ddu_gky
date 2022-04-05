@@ -34,16 +34,8 @@ class MISController extends Controller
             'email' => 'required|email',
             'contact_no' => 'required',
             'address' => 'required|min:10|max:255',
-            'image_doc' => 'max:512',
-            'sign_doc' => 'max:512'
         ]);
 
-        $file_reg_code = str_replace("/", "_", $req->mis_code);
-
-        $file1 = $req->file('image_doc');
-        $file2 = $req->file('sign_doc');
-        $filename1 = $file_reg_code.'_image.'.$file1->getClientOriginalExtension();
-        $filename2 = $file_reg_code.'_sign.'.$file2->getClientOriginalExtension();
 
         $req->mis_type=="mis_head" ? $role_id="7" : $role_id="8";
         $req->mis_type=="mis_head" ? $mis_role="MIS Head" : $mis_role="MIS Executive";
@@ -56,8 +48,6 @@ class MISController extends Controller
         $mis->email = $req->email;
         $mis->phone_no = $req->contact_no;
         $mis->address = $req->address;
-        $mis->photo = $filename1;
-        $mis->signature = $filename2;
         $mis->added_by = Auth::user()->id;
         $mis->save();
 
@@ -102,19 +92,7 @@ class MISController extends Controller
         $user->email = $req->email;
         $user->password = $hashed_random_password;
         $user->save();
-
-        $path = public_path('Documents/MIS');
-        
-        $img1 = Image::make($file1->getRealPath());
-        $img1->resize(200, 200, function ($constraint) {
-            $constraint->aspectRatio();
-        })->save($path.'/'.$filename1);
-
-        $img2 = Image::make($file2->getRealPath());
-        $img2->resize(200, 200, function ($constraint) {
-            $constraint->aspectRatio();
-        })->save($path.'/'.$filename2);
-
+       
         return redirect()->route('mis_list')->with('alert_success','MIS Added Successfully');
     }
 

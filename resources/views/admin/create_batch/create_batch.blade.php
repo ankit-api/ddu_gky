@@ -23,7 +23,8 @@
             </ol>
         </div>
                 <h3 class="text-center fw-bold">SF 6.3A1: Batch details</h3><br>
-        <form action="{{ route('create_batch') }}" method="post">
+                
+                <form action="{{ route('create_batch') }}" method="post">
         @csrf
         <div class="row">  
                         @if (session('alert_status'))
@@ -33,7 +34,28 @@
                                 <div class="alert alert-danger">{{$errors->first()}}</div>
                         @endif 
         </div>               
-            <div class="row">            
+            <div class="row">   
+                   <div class="col-md-6">
+                    <label for="" class="m-2">Name of Project</label><br>
+                    <select name="project_id" id="" class="form-control" style="background-color:white;">
+                        <option value="{{ $project['id'] }}">{{ $project->sanction_order_no}}</option>                      
+                    </select> 
+                </div>   
+                <div class="col-md-6">
+                        <label for="" class="m-2">Centre Name</label><br>
+                        <select name="centre_id" id="" class="form-control centre" style="background-color:white;">
+                        <option value="">Select Centre</option>
+                        @foreach($centre as $centre)
+                            <option value="{{ $centre['id'] }}">{{ $centre['centre_name']}}</option>
+                        @endforeach
+                        </select> 
+                </div>       
+            </div>   
+            <div class="row d-none not-create">
+                <h2 class="text-center mt-5" style="font-weight: 600;color: #ee1201;"></h2>   
+            </div>
+        <div class="allow-create d-none">    
+            <div class="row">        
                 <div class="col-md-4">
                     <label for="" class="m-2">Nature of training</label><br>
                     <select name="nature_of_training" id="" class="form-control" style="background-color:white;">
@@ -44,10 +66,8 @@
                 </div>
                 <div class="col-md-4">
                     <label for="" class="m-2">Trainer Name</label><br>
-                    <select name="t_name" id="" class="form-control" style="background-color:white;">
-                    @foreach($get_trainer as $trainer)
-                        <option value="{{ $trainer->id }}">{{ $trainer->name }}</option>
-                    @endforeach
+                    <select name="t_name" id="trainer" class="form-control" style="background-color:white;">
+                   
                     </select>            
                 </div>
                 <div class="col-md-4">
@@ -160,9 +180,8 @@
                 <div class="col-md-3">
                     <label for="" class="m-2">Trainer Name</label><br>
                     <select name="" id="" class="form-control" style="background-color:white;">
-                    @foreach($get_trainer as $trainer)
-                        <option value="{{ $trainer->id }}">{{ $trainer->name }}</option>
-                    @endforeach
+                  
+                      
                     </select>            
                 </div>
                 <div class="col-md-3">
@@ -188,7 +207,8 @@
                           <i class="ti-upload btn-icon-prepend"></i>
                           Submit
                 </button>
-              
+        </form> 
+            </div>
             </div> 
           </div>
         </div>
@@ -203,6 +223,44 @@
                         if (/\D/g.test(this.value))
                         this.value = this.value.replace(/\D/g,'')
                     });
+
+            $('.centre').on('change', function () {
+                var id = this.value;
+                $("#trainer").html('');
+                $.ajax({
+                    url: "{{url('check_create_batch')}}",
+                    type: "POST",
+                    data: {
+                        centre_id: id,
+                        _token: '{{csrf_token()}}'
+                    },
+                    dataType: 'json',
+                    success: function (result) {
+                        if(result[0]=="batch" || result[0]=="candidate")
+                        {
+                            $('.not-create').removeClass('d-none');
+                            $('.not-create > h2').html(result[1]);
+                        } else if(result[0]=="create"){
+                            $('.allow-create').removeClass('d-none');
+
+                            $('#trainer').html('<option value="">Select Trainer</option>');
+                            $.each(result[1], function (key, value) {
+                                $("#trainer").append('<option value="' + value
+                                    .id + '">' + value.name + '</option>');
+                            });
+                        }
+                        
+                        // $('#district_id').html('<option value="">Select District</option>');
+                        // $.each(result, function (key, value) {
+                        //     $("#district_id").append('<option value="' + value
+                        //         .id + '">' + value.district_name + '</option>');
+                        // });
+                        // $('#block_id').html('<option value="">Select Block</option>');
+                    }
+                });
+            });
+
+                    
        
         });
         // function getShift(shift)
