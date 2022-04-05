@@ -15,8 +15,7 @@ class CreateOnFieldRegistrationOfCandidatesTable extends Migration
     {
         Schema::create('on_field_registration_of_candidates', function (Blueprint $table) {
             $table->increments('id');          
-            $table->integer('mob_id')->unsigned()->foriegn();  
-            $table->foreign('mob_id')->references('id')->on('mobilizers')->onUpdate('cascade')->onDelete('cascade');
+            $table->integer('mob_id')->unsigned()->nullable();
             $table->string('reg_code',60);
             $table->string('name',50);
             $table->integer('village')->unsigned();
@@ -29,13 +28,13 @@ class CreateOnFieldRegistrationOfCandidatesTable extends Migration
             $table->enum('minority', ['yes', 'no'])->default('no');
             $table->string('high_edu',40)->nullable(true);
             $table->string('referring_stk',40)->nullable(true);
+            $table->string('other_reference',50)->nullable(true);
             $table->text('address')->nullable(true);
             $table->string('contact',15)->nullable(true);
             $table->string('certificate_id',25)->nullable(true);
             $table->enum('counselling_status', ['done', 'not done'])->default('not done');
-            $table->enum('enrolled_status', ['yes', 'no'])->default('no');
-            $table->string('signature_file',50)->nullable(true);
-            $table->text('remarks')->nullable(true);
+            $table->string('doc_file',50)->nullable(true);
+            $table->enum('remarks', ['wait', 'rejected', 'hold', 'proceed'])->default('wait');
             $table->integer('added_by')->unsigned()->nullable();   
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->rememberToken();

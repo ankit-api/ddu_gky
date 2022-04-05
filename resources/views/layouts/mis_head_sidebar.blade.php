@@ -211,20 +211,22 @@
       </a>
       <div class="collapse" id="ui-basic3">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="{{ route('candidate-register') }}">Candidate Register</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{{ route('candidate-register') }}">OFR Form</a></li>
           <li class="nav-item"> <a class="nav-link" href="{{ route('candidate_register_list') }}">Candidate Register List</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{{ route('candidate-admission') }}">Candidate Admission </a></li>
+          <li class="nav-item"> <a class="nav-link" href="{{ route('admission_list') }}">Admission List</a></li>
         </ul>
       </div>
     </li>
 <!-- Aptitude  -->
     <hr>
     <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic">
+      <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic6" aria-expanded="false" aria-controls="ui-basic">
         <i class="menu-icon mdi mdi-floor-plan"></i>
         <span class="menu-title">Aptitude</span>
         <i class="menu-arrow"></i> 
       </a>
-      <div class="collapse" id="ui-basic4">
+      <div class="collapse" id="ui-basic6">
         <ul class="nav flex-column sub-menu">
           <!-- <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Student Register</a></li> -->
           <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Apptitude Result List</a></li>
@@ -247,7 +249,7 @@
       </div>
     </li>
 <!-- Admission  -->
-    <hr>
+    {{-- <hr>
     <li class="nav-item">
       <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic6" aria-expanded="false" aria-controls="ui-basic">
         <i class="menu-icon mdi mdi-floor-plan"></i>
@@ -260,7 +262,7 @@
           <li class="nav-item"> <a class="nav-link" href="{{ route('admission_list') }}">Admission List</a></li>
         </ul>
       </div>
-    </li>
+    </li> --}}
 
     <!-- Candidate Dossier  ui-basic26--> 
     <hr>

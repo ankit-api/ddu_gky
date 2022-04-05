@@ -36,7 +36,7 @@
                                 {{-- @endforeach --}}
                             @endif 
                             <div class="container col-sm-12 mx-auto" >
-                                <table class="table table-bordered" id="table">
+                                <table class="table table-bordered" id="table1">
                                     <thead>
                                         <tr>
                                             <th>S.No.</th>

@@ -135,6 +135,7 @@
             <div class="collapse" id="ui-basic3">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="{{ route('candidate_register_list') }}">Candidate Register List</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('admission_list') }}">Addmission List</a></li>
               </ul>
             </div>
           </li>
@@ -183,7 +184,7 @@
             <div class="collapse" id="ui-basic6">
               <ul class="nav flex-column sub-menu">
                 {{-- <li class="nav-item"> <a class="nav-link" href="{{ route('candidate-admission') }}">Candidate Addmission </a></li> --}}
-                <li class="nav-item"> <a class="nav-link" href="{{ route('admission_list') }}">Addmission List</a></li>
+                {{-- <li class="nav-item"> <a class="nav-link" href="{{ route('admission_list') }}">Addmission List</a></li> --}}
               </ul>
             </div>
           </li>

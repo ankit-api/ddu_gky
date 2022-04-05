@@ -17,8 +17,8 @@
               <div class="col-sm-4 ml-2 mb-4">
                 <ol class="breadcrumb float-sm-right" style="background-color: #6b8ed6;border-radius: 5px;">
                     <li class="breadcrumb-item"><a  style="color:#fff; text-decoration: none;" href="{{ route('home') }}" aria-expanded="false" aria-controls="ui-basic"><i class="fa-solid fa-house"></i></a></li>
-                        <li class="breadcrumb-item" ><a  style="color:#fff; text-decoration: none;"data-bs-toggle="collapse" href="#ui-basic14" aria-expanded="false" aria-controls="ui-basic14">Registration</a></li>
-                        <li class="breadcrumb-item active" ><a  style="color:#fff; text-decoration: none;" href="{{ route('candidate-register')}}" ><b>Candidate Registration List</b></a>
+                        <li class="breadcrumb-item" ><a  style="color:#fff; text-decoration: none;"data-bs-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic3">Registration</a></li>
+                        <li class="breadcrumb-item active" ><a  style="color:#fff; text-decoration: none;" href="{{ route('candidate-register')}}" ><b>On Field Registration</b></a>
                     </li>
                 </ol>
             </div> 
@@ -113,7 +113,7 @@
                     </select>            
                 </div>
                 <div class="col-md-4">
-                    <label for="pwd" class="m-2">PWD</label><br>
+                    <label for="pwd" class="m-2">PWD Type</label><br>
                     <input type="text" class="form-control" name="pwd" id=""  placeholder="Enter PWD Type">
                 </div>
                 <div class="col-md-4">
@@ -128,7 +128,13 @@
             <div class="row">
                 <div class="col-md-4">
                     <label for="" class="m-2">Highest Education</label><br>
-                    <input type="text" name="qualification" required class="form-control" placeholder="Enter Highest Education">
+                    <select name="qualification" id="" class="form-control" style="background-color:white;" required>
+                        <option value="Not Selected">Select Qualification</option>
+                        @foreach($get_qualifications as $name)
+                            <option value="{{ $name->id }}">{{ $name->qualification_name }}</option>
+                        @endforeach
+                    </select> 
+                    {{-- <input type="text" name="qualification" required class="form-control" placeholder="Enter Highest Education"> --}}
                 </div>
                 <div class="col-md-4">
                     <label for="" class="m-2">Contact</label><br>
@@ -146,16 +152,26 @@
                 </div>                                  
             </div><br>
             <div class="row">
+                <div class="col-md-6">
+                    <label for="" class="m-2">Other Reference</label><br>
+                    <input type="text" class="form-control" name="other_ref"   placeholder="Enter Other Reference">
+                </div>
+                <div class="col-md-6">
+                    <label for="" class="m-2">Attach Document <span style="font-size: 14px;font-weight: 600;color: #ee1201;">(Image size should be less than 1MB)</span></label><br>
+                    <input type="file" name="doc_file" class="form-control " style="background-color:white;" >
+                </div>
+            </div><br>
+            <div class="row">
             <div class="col-md-6">
                 <label for="" class="m-2">Address</label><br>
                     <textarea name="address" id="" required placeholder="Enter Address" rows="3" style="width:100%; border-radius: 4px; border:1px solid #dee2e6;padding-left: 10px; font-size: 14px;"></textarea>  
                 </div> 
-               <div class="col-md-6">
+               {{-- <div class="col-md-6">
                 <label for="" class="m-2">Remarks</label><br>
                 <textarea name="remark" id="" placeholder="Referring Remarks" rows="3" style="width:100%; border-radius: 4px; border:1px solid #dee2e6;padding-left: 10px; font-size: 14px;"></textarea>  
-                </div>   
+                </div>    --}}
             </div><br>
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-md-6">
                     <label for="" class="m-2">Attach Signature Document <span style="font-size: 14px;font-weight: 600;color: #ee1201;">(Image size should be less than 512Kb)</span></label><br>
                     <input type="file" name="sign_doc" accept="image/png, image/gif, image/jpeg" class="form-control " style="background-color:white;" >
@@ -204,7 +220,7 @@
        
            
             </div>
-        </div>
+        </div> --}}
                 <br>
                <button type="submit" class="text-light btn btn-lg btn-success btn-icon-text" id="reg_submit">
                           <i class="ti-upload btn-icon-prepend"></i>
@@ -273,7 +289,7 @@
                         var reg_code = $('#reg_code').val();
                         $.ajax({
                             type: "POST",
-                            url: "/reg_check_duplicate",
+                            url: "{{url('reg_check_duplicate')}}",
                             data: { reg_code : reg_code, _token: '{{csrf_token()}}' },
                             dataType: 'json',
                             success: function (data) {
