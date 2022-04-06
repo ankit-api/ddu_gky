@@ -30,7 +30,7 @@ class AdmissionController extends Controller
         $state = State::all();
         $get_doc1_type = Doc1Type::all(); 
         $get_qualifications = Qualification::all();
-        $reg_can = OnFieldRegistrationOfCandidate::where('enroll','no')->where('added_by',Auth::user()->id)->get();
+        $reg_can = OnFieldRegistrationOfCandidate::where('enroll','no')->where('remarks','proceed')->where('added_by',Auth::user()->id)->get();
         $centre = CentreDetails::where('added_by', Auth::user()->id)->get();
         return view('admin.candidate_admission.candidate_admission_form', compact('centre','state','reg_can','get_doc1_type','get_qualifications'));
     }
@@ -198,6 +198,17 @@ class AdmissionController extends Controller
     public function dossierList(){
         $candidate_data = Admission::with('registrationCode')->orderByDesc("id")->get();      
         return view('admin.candidate_dossier.dossier_list', compact("candidate_data"));
+    }
+
+    public function individualDossierList(Request $req){
+        $cand_data = OnFieldRegistrationOfCandidate::where('id',$req->id)->first(['name','enroll']);
+        $parent_consent = ParentConsent::where('candidate_id',$req->id)->count();
+        $id_proof = RegDocument::where('register_id',$req->id)->where('doc1_type_id','1')->with('getDocNameSecond')->first();
+        $age_proof = RegDocument::where('register_id',$req->id)->where('doc1_type_id','3')->with('getDocNameSecond')->first();
+        $domicile_proof = RegDocument::where('register_id',$req->id)->where('doc1_type_id','4')->with('getDocNameSecond')->first();
+        $poor_proof = RegDocument::where('register_id',$req->id)->where('doc1_type_id','5')->with('getDocNameSecond')->first();
+        $category_proof = RegDocument::where('register_id',$req->id)->where('doc1_type_id','6')->with('getDocNameSecond')->first();
+        return view('admin.candidate_dossier.ind_dossier_list', compact('cand_data','parent_consent','id_proof','age_proof','domicile_proof','poor_proof'));
     }
 
 }

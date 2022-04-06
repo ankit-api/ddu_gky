@@ -148,6 +148,9 @@ Route::group(['middleware' => ['auth']], function() {
     
     //Candidate Dossier
     Route::get('/candidate_dossier_list', [AdmissionController::class,'dossierList'])->name('candidate_dossier_list');
+
+    //Index of individual Candidate Dossier
+    Route::get('/ind_candidate_dossier_list', [AdmissionController::class,'individualDossierList'])->name('ind_candidate_dossier_list');
     
     Route::get('/items_given', [ItemsGivenToCandidateController::class,'index'])->name('items_given');
     Route::get('/items_failure', [DailyFailureItemsReportController::class,'index'])->name('items_failure');
