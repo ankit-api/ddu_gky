@@ -21,10 +21,10 @@
                 <h2>PIA Dashboard Here</h2>
                 <div class="row mt-3 mx-1">  
                   @if (session('alert_status'))
-                      <h6 class="alert alert-success">{{ session('alert_status') }}</h6>
+                      <h6 class="alert alert-success fw-bold fs-6">{{ session('alert_status') }}</h6>
                   @endif      
                   @if ($errors->any())
-                          <div class="alert alert-danger">{{$errors->first()}}</div>
+                          <div class="alert alert-danger fw-bold fs-6">{{$errors->first()}}</div>
                   @endif 
                 </div>
                

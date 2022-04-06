@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admission;
+use App\Models\OnFieldRegistrationOfCandidate;
 use App\Models\Trainer;
 use App\Models\Batch;
+use App\Models\BatchAllotment;
 use App\Models\BatchLessonPlanner;;
 use Auth;
 use Illuminate\Http\Request;
@@ -113,5 +115,50 @@ class BatchController extends Controller
     public function batchList(){
         $batch_data = Batch::all()->sortByDesc("id");      
         return view('admin.create_batch.batch_list', compact("batch_data"));
+    }
+
+    public function batchAllotment()
+    {   $project = Project::where('added_by',Auth::user()->id)->first();
+        $centre = CentreDetails::where('project_id',$project->id )->get();   
+        return view('admin.create_batch.batch_allotment', compact("project","centre"));
+    }
+
+    public function postBatchAllotment(Request $req)
+    {
+        $this->validate($req, [
+           
+        ]);
+
+        if(isset($req->admi_reg_id)){        
+        
+        $can_count = count($req->admi_reg_id);    
+            for($i = 0; $i < $can_count; $i++){
+                $id = explode(',',$req->admi_reg_id[$i]);
+                for($j = 0; $j<2; $j++){
+                    $add_id = $id[0];
+                    $reg_id = $id[1];
+                }
+                    $batchAllotment = new BatchAllotment();
+                    $batchAllotment->centre_id = $req->centre_id;
+                    $batchAllotment->batch_id = $req->batch_id;
+                    $batchAllotment->admission_id = $add_id;
+                    $batchAllotment->register_id = $reg_id;
+                    $batchAllotment->added_by = Auth::user()->id;  
+                    $batchAllotment->save();
+
+                    $admission = Admission::find($add_id);              
+                    $admission->batch_enroll_status = "enroll"; 
+                    $admission->save();
+                
+            }
+                return redirect()->route('batch_allotment')->with('alert_success','Batch Assigned Successfully!');
+        } else {
+            return redirect()->route('batch_allotment')->with('alert_success','Please Select Candidate !');
+        }
+
+
+        
+
+       
     }
 }

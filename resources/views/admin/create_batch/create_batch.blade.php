@@ -237,25 +237,22 @@
                     dataType: 'json',
                     success: function (result) {
                         if(result[0]=="batch" || result[0]=="candidate")
-                        {
+                        {   $('.allow-create').addClass('d-none');
+                            $('.not-create').removeClass('d-none');
+                            $('.not-create > h2').html(result[1]);
+                        } else if(result[0]=="enroll")
+                        {   $('.allow-create').addClass('d-none');
                             $('.not-create').removeClass('d-none');
                             $('.not-create > h2').html(result[1]);
                         } else if(result[0]=="create"){
                             $('.allow-create').removeClass('d-none');
-
+                            $('.not-create').addClass('d-none');
                             $('#trainer').html('<option value="">Select Trainer</option>');
                             $.each(result[1], function (key, value) {
                                 $("#trainer").append('<option value="' + value
                                     .id + '">' + value.name + '</option>');
                             });
                         }
-                        
-                        // $('#district_id').html('<option value="">Select District</option>');
-                        // $.each(result, function (key, value) {
-                        //     $("#district_id").append('<option value="' + value
-                        //         .id + '">' + value.district_name + '</option>');
-                        // });
-                        // $('#block_id').html('<option value="">Select Block</option>');
                     }
                 });
             });

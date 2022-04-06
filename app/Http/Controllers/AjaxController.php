@@ -122,6 +122,12 @@ class AjaxController extends Controller
         return response()->json($data);
     }
 
+    public function fetchBatchByCentre(Request $request)
+    {
+        $data = Batch::where("centre_id",$request->centre_id)->get(["id","batch_code"]);
+        return response()->json($data);
+    }
+
     public function checkCreateBatch(Request $req)
     {
         $batch_no = Batch::where('batch_summary_status','<>', 'complete')->where('centre_id', $req->centre_id)->count();
@@ -130,20 +136,44 @@ class AjaxController extends Controller
                 $msg = "There are already 3 batch, which are currently running ";
                 return response()->json([$status,$msg]); 
            } else{
-            $candidate_no = Admission::where("batch_enroll_status", 'unenroll')->count();       
-                if($candidate_no < 35){  
-                    $status = "candidate";                  
-                    $req_cand_no = 35 - $candidate_no;
-                    $msg = "Batch cannot be created(".$req_cand_no." more candidates required) ";
+                $enroll_batch_no = Batch::where('batch_summary_status', 'enroll')->where('centre_id', $req->centre_id)->count();
+                $enroll_batch_id = Batch::where('batch_summary_status', 'enroll')->where('centre_id', $req->centre_id)->first(['id']);
+                $enroll_can = 35- (BatchAllotment::where('batch_id', $enroll_batch_id->id)->count());
+                if($enroll_batch_no > 0){
+                    $status = "enroll";
+                    $msg = "There is a batch for enrollment, ".$enroll_can." seats available";
                     return response()->json([$status,$msg]); 
-                } else {
+                } else{
+                    $candidate_no = Admission::where("batch_enroll_status", 'unenroll')->count();       
+                    if($candidate_no > 35){  
+                        $status = "candidate";                  
+                        $req_cand_no = 35 - $candidate_no;
+                        $msg = "Batch cannot be created(".$req_cand_no." more candidates required) ";
+                        return response()->json([$status,$msg]); 
+                    } else {
                 $status = "create";
                 $trainer = Trainer::where("centre_id",$req->centre_id)->get(["name", "id"]);
                 return response()->json([$status,$trainer]); 
                 }
             }
         
-       
+        }
     }
 
+    public function fetchCanForAllot(Request $request)
+    {
+        $data = Admission::where("centre_id",$request->centre_id)->where("batch_enroll_status","unenroll")->with('registrationCode')->get();
+        return response()->json($data);
+    }
+
+    public function fetchEnrollCandidate(Request $req)
+    {
+        // $unenroll_can_count = 35 - (BatchAllotment::where('batch_id', $req->batch_id)->count());
+         $unenroll_can_count = 2 - (BatchAllotment::where('batch_id', $req->batch_id)->count());
+        $msg="";
+        if($req->count > $unenroll_can_count){
+            $msg = "Only ".$unenroll_can_count." more candiadte can be enrolled !";
+        }
+        return response()->json($msg);
+    }
 }
