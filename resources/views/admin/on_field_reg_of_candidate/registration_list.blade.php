@@ -49,10 +49,10 @@
                             </div>
                             <h3 class="text-center fw-bold">SF 6.1C: Candidate Registration List</h3><br>
                             @if (session('alert_success'))
-                                <h6 class="alert alert-success mx-4">{{ session('alert_success') }}</h6>
+                                <h6 class="alert alert-success mx-4 fw-bold fs-6">{{ session('alert_success') }}</h6>
                             @endif
                             @if (session('alert_danger'))
-                                <h6 class="alert alert-danger mx-4">{{ session('alert_danger') }}</h6>
+                                <h6 class="alert alert-danger mx-4 fw-bold fs-6">{{ session('alert_danger') }}</h6>
                             @endif
                             <div class="container col-sm-12 mx-auto">
                                 <table class="table display table-bordered" id="table1">

@@ -63,6 +63,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/centreinch_check_duplicate', [AjaxController::class,'centreinch_check_duplicate']);
     Route::post('/reg_check_duplicate', [AjaxController::class,'reg_check_duplicate']);
     Route::post('/check_create_batch', [AjaxController::class,'checkCreateBatch']);
+    
   
     //Change Password
      Route::get('/change_password', [AuthenticationController::class,'changePassword'])->name('change_password');
@@ -135,6 +136,11 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/batch_form', [BatchController::class,'batchForm'])->name('batch_form');
     Route::post('/create_batch', [BatchController::class,'createBatch'])->name('create_batch');
     Route::get('/batch_list', [BatchController::class,'batchList'])->name('batch_list');
+    Route::get('/batch_allotment', [BatchController::class,'batchAllotment'])->name('batch_allotment');
+    Route::post('/post_batch_allotment', [BatchController::class,'postBatchAllotment'])->name('post_batch_allotment');
+    Route::post('/fetch_batch_by_centre', [AjaxController::class,'fetchBatchByCentre']);
+    Route::post('/fetch_can_for_allot', [AjaxController::class,'fetchCanForAllot']);
+    Route::post('/fetch_enroll_can', [AjaxController::class,'fetchEnrollCandidate']);
 
     //MIS Route
     Route::get('/mis_form', [MISController::class,'misForm'])->name('mis_form');

@@ -29,14 +29,14 @@
                       
                     </div>
                             @if (session('alert_success'))
-                            <h6 class="alert alert-success">{{ session('alert_success') }}</h6>
+                            <h6 class="alert alert-success fw-bold fs-6">{{ session('alert_success') }}</h6>
                             @endif     
                             @if (session('alert_danger'))
-                                <h6 class="alert alert-danger">{{ session('alert_danger') }}</h6>
+                                <h6 class="alert alert-danger fw-bold fs-6">{{ session('alert_danger') }}</h6>
                             @endif       
                             @if ($errors->any())
                                 {{-- @foreach ($errors->all() as $error) --}}
-                                    <div class="alert alert-danger">{{$errors->first()}}</div>
+                                    <div class="alert alert-danger fw-bold fs-6">{{$errors->first()}}</div>
                                 {{-- @endforeach --}}
                             @endif 
                             <div class="container col-sm-12 mx-auto" >
