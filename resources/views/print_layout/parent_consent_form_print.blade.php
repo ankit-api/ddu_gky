@@ -10,7 +10,7 @@
     <div class="col-11 mt-5 mx-auto">
         <p>
             <span style="font-weight: bold;text-align:center;">Parent’s consent form</span><br><br>
-            <span style="font-weight: bold">Name of the candidate ___________________________</span>  <br>
+            <span style="font-weight: bold">Name of the candidate </span><u>&nbsp;{{ $cand_data->name }}&nbsp;</u>  <br>
             <span style="font-weight: bold">Candidate's father's name ___________________________</span> <br>
             <span style="font-weight: bold">Candidate's mother's name ___________________________</span> <br>
             <span style="font-weight: bold">Basic information</span> <br><br>

@@ -131,7 +131,7 @@ class AjaxController extends Controller
                 return response()->json([$status,$msg]); 
            } else{
             $candidate_no = Admission::where("batch_enroll_status", 'unenroll')->count();       
-                if($candidate_no < 35){  
+                if($candidate_no > 35){  
                     $status = "candidate";                  
                     $req_cand_no = 35 - $candidate_no;
                     $msg = "Batch cannot be created(".$req_cand_no." more candidates required) ";

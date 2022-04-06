@@ -49,7 +49,7 @@
                                                 <td>{{ $batch_data->batch_code }}</td>
                                                 <td>{{ $batch_data->trainerDetails->name }}</td>
                                                 <td>{{ $batch_data->trainerDetails->getCentreName->centre_code }}</td>
-                                                <td>{{ $batch_data->nature_of_training }}</td>
+                                                <td>{{ ucwords($batch_data->nature_of_training) }}</td>
                                                 <td>{{ ucwords($batch_data->batch_summary_status) }}</td>
                                                 <td>{{ $batch_data->addedBy->name }}</td>
                                                 <td>

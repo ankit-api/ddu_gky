@@ -29,7 +29,7 @@
                                             <th>S.No.</th>
                                             <th>Student Code</th>
                                             <th>Student Name</th>
-                                            <th>Batch ID</th>
+                                            {{-- <th>Batch ID</th> --}}
                                             <th>Contact</th>
                                             <th>Email</th>
                                             <th>Parent Consent Form</th>
@@ -40,9 +40,9 @@
                                         @foreach ($candidate_data as $candidate)
                                             <tr>
                                                 <td>{{$loop->iteration}}</td>
-                                                <td>{{ $candidate->student_code }}</td>
+                                                <td>{{ $candidate->registrationCode->reg_code }}</td>
                                                 <td>{{ $candidate->name }}</td>
-                                                <td>{{ $candidate->batchCode->batch_code }}</td>
+                                                {{-- <td>{{ $candidate->batchCode->batch_code }}</td> --}}
                                                 <td>{{ $candidate->contact }}</td>
                                                 <td>{{ $candidate->email }}</td>
                                                 <td class="text-center"><input type="button" class="text-light btn btn-info" onclick="frames['frame'].print()" value="Print"></td>
