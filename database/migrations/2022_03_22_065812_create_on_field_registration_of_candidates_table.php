@@ -35,6 +35,7 @@ class CreateOnFieldRegistrationOfCandidatesTable extends Migration
             $table->enum('counselling_status', ['done', 'not done'])->default('not done');
             $table->string('doc_file',50)->nullable(true);
             $table->enum('remarks', ['wait', 'rejected', 'hold', 'proceed'])->default('wait');
+            $table->enum('enroll', ['yes', 'no'])->default('no');
             $table->integer('added_by')->unsigned()->nullable();   
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->rememberToken();

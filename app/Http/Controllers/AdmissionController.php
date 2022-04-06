@@ -12,6 +12,8 @@ use App\Models\FamilyDetail;
 use App\Models\CentreDetails;
 use App\Models\Doc1Type;
 use App\Models\Doc2Type;
+use App\Models\Qualification;
+use App\Models\ParentConsent;
 use Auth;
 use Image;
 
@@ -27,9 +29,10 @@ class AdmissionController extends Controller
     {  
         $state = State::all();
         $get_doc1_type = Doc1Type::all(); 
-        $reg_can = OnFieldRegistrationOfCandidate::where('added_by',Auth::user()->id)->get();
+        $get_qualifications = Qualification::all();
+        $reg_can = OnFieldRegistrationOfCandidate::where('enroll','no')->where('added_by',Auth::user()->id)->get();
         $centre = CentreDetails::where('added_by', Auth::user()->id)->get();
-        return view('admin.candidate_admission.candidate_admission_form', compact('centre','state','reg_can','get_doc1_type'));
+        return view('admin.candidate_admission.candidate_admission_form', compact('centre','state','reg_can','get_doc1_type','get_qualifications'));
     }
 
     public function postAdmission(Request $req)
@@ -171,6 +174,18 @@ class AdmissionController extends Controller
                 }
             }
         }
+
+        if($req->file('parent_consent_doc')->isValid()){
+            $file = $req->file('parent_consent_doc');               
+            $file_document = 'parent_consent_doc.'.$file->getClientOriginalExtension();
+            $par_con = new ParentConsent();                   
+            $par_con->candidate_id = $req->reg_id;
+            $par_con->consent_form_file = $file_document;     
+            $par_con->save(); 
+            $file->move($file_loc,$file_document);
+        }  
+        
+        OnFieldRegistrationOfCandidate::where('id',$req->reg_id)->update(['enroll'=>'yes']);
         
         return redirect()->route('admission_list')->with('alert_success','Admission done Successfully!');
     }
@@ -181,7 +196,7 @@ class AdmissionController extends Controller
     }
 
     public function dossierList(){
-        $candidate_data = Admission::with('batchCode')->orderByDesc("id")->get();      
+        $candidate_data = Admission::with('registrationCode')->orderByDesc("id")->get();      
         return view('admin.candidate_dossier.dossier_list', compact("candidate_data"));
     }
 

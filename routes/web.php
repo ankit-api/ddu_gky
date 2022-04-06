@@ -24,6 +24,7 @@ use App\Http\Controllers\MISController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PrintController;
 
 /*
 |--------------------------------------------------------------------------
@@ -174,7 +175,7 @@ Route::group(['middleware' => ['auth']], function() {
     //Print
     Route::view('/registration-print', 'print_layout/on_field_reg_of_candidate_print');
     Route::view('/addmission-print', 'print_layout/candidate_admission_form_print');
-    Route::view('/parent_consent_form_print', 'print_layout/parent_consent_form_print');
+    Route::get('/parent_consent_form_print/{id?}', [PrintController::class,'printParentConsent']);
     //Print-Layout Forms
     Route::get('/print_srlm_to_cert', [LetterController::class,'print_srlm_to_cert'])->name('print_srlm_to_cert');
     Route::get('/print_srlm_from_cert', [LetterController::class,'print_srlm_from_cert'])->name('print_srlm_from_cert');

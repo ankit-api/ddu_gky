@@ -18,8 +18,8 @@ class CreateParentConsentFormsTable extends Migration
             $table->string('candidate_id',40);
             $table->string('consent_form_file',50);
             $table->enum('status', ['active', 'inactive'])->default('active');
-            $table->timestamp('created_on')->nullable();
-            $table->timestamp('updated_on')->nullable();
+            $table->timestamp('created_on')->useCurrent();
+            $table->timestamp('updated_on')->useCurrent();
         });
     }
 

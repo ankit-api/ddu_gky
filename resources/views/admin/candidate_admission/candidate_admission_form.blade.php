@@ -113,7 +113,7 @@
             <div class="row">
             <div class="col-md-3">
                         <label for="" class="m-2">Contact</label><br>
-                        <input type="text" required class="number_validation form-control" name="contact" id="contact" required placeholder="Enter Contact ">
+                        <input type="text" class="number_validation form-control" name="contact" id="contact" required placeholder="Enter Contact ">
                 </div>
                 <div class="col-md-3">
                     <label for="" class="m-2">Alternative Contact</label><br>
@@ -132,7 +132,7 @@
                 <div class="col-md-6">
                         <label for="" class="m-2">Present Address</label><br>
                        
-                        <textarea name="pre_address"  placeholder="Enter Present Address" required rows="3" style="width:100%; border-radius: 4px; border:1px solid #dee2e6;padding-left: 10px; font-size: 14px;"> </textarea>
+                        <textarea name="pre_address"  required rows="3" style="width:100%; border-radius: 4px; border:1px solid #dee2e6;padding-left: 10px; font-size: 14px;" placeholder="Enter Present Address"> </textarea>
                 </div>
                 <div class="col-md-6">
                     <label for="" class="m-2">Permanent Address</label><br>
@@ -142,7 +142,13 @@
             <div class="row">
                 <div class="col-md-4">
                     <label for="" class="m-2">Education Qualification</label><br>
-                    <input type="text" name="qualification" class="form-control" placeholder="Enter Education Qualification ">
+                    <select name="qualification" id="qualification" class="form-control" style="background-color:white;" required>
+                        <option value="Not Selected">Select Qualification</option>
+                        @foreach($get_qualifications as $name)
+                            <option value="{{ $name->id }}">{{ $name->qualification_name }}</option>
+                        @endforeach
+                    </select>
+                    {{-- <input type="text" name="qualification" class="form-control" placeholder="Enter Education Qualification "> --}}
                 </div>
                 <div class="col-md-4">
                     <label for="" class="m-2">Religion</label><br>
@@ -419,7 +425,22 @@
            
             </div>
         </div>
-                <br>
+                <br><hr>
+
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <h4 for="" class="mt-2">Attach Parent Consent Form <span style="font-size: 14px;font-weight: 600;color: #ee1201;">(Document size should be less than 1MB)</span></h4><br>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <input type="file" name="parent_consent_doc" accept="image/jpeg,image/gif,image/png,application/pdf" class="form-control " style="background-color:white;" >
+                            </div>
+                            <div class="col-md-4">
+                                <span class="btn btn-info">Print</span>
+                            </div>
+                        </div>
+                    </div>
+                </div><br>
+
               <button type="submit" class="text-light btn btn-lg btn-success btn-icon-text">
                           <i class="ti-upload btn-icon-prepend"></i>
                           Submit
@@ -519,7 +540,7 @@
                         $("#contact").val(result.contact);
                         $("#can_gender").val(result.gender);
                         $("#category").val(result.category);
-                        $("#pwd").val(result.pwd);
+                        $("#qualification").val(result.high_edu);
                     }
                 });
             });
