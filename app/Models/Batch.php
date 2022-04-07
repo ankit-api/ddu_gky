@@ -19,4 +19,13 @@ class Batch extends Model
     public function trainerDetails(){
         return $this->hasOne(Trainer::class,'id','trainer_id');
     }
+
+    public function allotedCandidateCount(){
+        return $this->hasMany(BatchAllotment::class,'batch_id','id');
+    }
+
+    // public function allotedCandidateList(){
+    //     return $this->hasManyThrough( BatchAllotment::class,OnFieldRegistrationOfCandidate::class,'register_id','id');
+    // }
+
 }
