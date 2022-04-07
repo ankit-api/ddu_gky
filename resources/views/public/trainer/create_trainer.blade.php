@@ -323,7 +323,7 @@
                     var trainer_code = $('#trainer_code').val();
                     $.ajax({
                         type: "POST",
-                        url: "/trainer_check_duplicate",
+                        url: "{{url('trainer_check_duplicate')}}",
                         data: { trainer_code : trainer_code, _token: '{{csrf_token()}}' },
                         dataType: 'json',
                         success: function (data) {

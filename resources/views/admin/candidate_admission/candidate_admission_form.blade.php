@@ -22,7 +22,7 @@
                     </li>
                 </ol>
             </div>
-            <h4 class="text-center fw-bold">SF 6.2A3: Candidate application form</h4><br>
+            <h3 class="text-center fw-bold">SF 6.2A3: Candidate Application Form</h3><br>
             <form action="{{ route('post-candidate-admission')}}" method="post" enctype="multipart/form-data"> 
             @csrf
             <div class="row">  
@@ -52,11 +52,11 @@
                 
 
                 <div class="col-md-4">
-                    <label for="" class="m-2">Trade</label><br>
+                    <label for="" class="m-2">Trade <span style="font-size: 14px;font-weight: 600;color: #ee1201;">**</span></label><br>
                     <input name="trade" required type="text" placeholder="Enter Trade" class="form-control">
                 </div>            
                 <div class="col-md-4">
-                    <label for="" class="m-2">Training Duration<span style="font-size: 14px;font-weight: 600;color: #ee1201;"> (In months)</span></label><br>
+                    <label for="" class="m-2">Training Duration<span style="font-size: 14px;font-weight: 600;color: #ee1201;">** (In months)</span></label><br>
                     <input type="text" required name="duration" class="number_validation form-control" placeholder="Enter Training Duration" >
                 </div>
             </div><br> <br>
@@ -74,15 +74,15 @@
                     </select>       
                 </div>
                 <div class="col-md-3">
-                    <label for="" class="m-2">Name of Candidates</label><br>
+                    <label for="" class="m-2">Name of Candidates <span style="font-size: 14px;font-weight: 600;color: #ee1201;">**</span></label><br>
                     <input type="text" required class="form-control" name="name" id="name_of_can" placeholder="Enter Candidate Name">
                 </div>
                 <div class="col-md-3">
-                    <label for="" class="m-2">Father/Husband's Name</label><br>
+                    <label for="" class="m-2">Father/Husband's Name <span style="font-size: 14px;font-weight: 600;color: #ee1201;">**</span></label><br>
                     <input type="text" required class="form-control" name="father_husband_name" id="" placeholder="Enter Father/Husband's Name">
                 </div>
                 <div class="col-md-3">
-                    <label for="" class="m-2">Mother's Name</label><br>
+                    <label for="" class="m-2">Mother's Name <span style="font-size: 14px;font-weight: 600;color: #ee1201;">**</span></label><br>
                     <input type="text" required class="form-control" name="mother_name" id="" placeholder="Enter Mother's Name">
                 </div>
             </div><br>
@@ -97,22 +97,22 @@
                     </select>            
                 </div>
                 <div class="col-md-3">
-                    <label for="" class="m-2">Date of Birth</label><br>
+                    <label for="" class="m-2">Date of Birth <span style="font-size: 14px;font-weight: 600;color: #ee1201;">**</span></label><br>
                     <input type="date" required class="form-control" name="dob" max="{{date("Y-m-d")}}" id="dob" >
                 </div>
                 <div class="col-md-3">
-                        <label for="" class="m-2">Age</label><br>
+                        <label for="" class="m-2">Age <span style="font-size: 14px;font-weight: 600;color: #ee1201;">**</span></label><br>
                         <input type="text" required class="number_validation form-control" name="age" id="age" placeholder="Enter Age">
                 </div>                 
                 <div class="col-md-3">
-                        <label for="" class="m-2">Individual Identity No.</label><br>
+                        <label for="" class="m-2">Individual Identity No. <span style="font-size: 14px;font-weight: 600;color: #ee1201;">**</span></label><br>
                         <input type="text" required class="form-control" name="identity_no" id="" placeholder="Enter Individual Identity No.">
                 </div>               
             </div><br>
           
             <div class="row">
             <div class="col-md-3">
-                        <label for="" class="m-2">Contact</label><br>
+                        <label for="" class="m-2">Contact <span style="font-size: 14px;font-weight: 600;color: #ee1201;">**</span></label><br>
                         <input type="text" class="number_validation form-control" name="contact" id="contact" required placeholder="Enter Contact ">
                 </div>
                 <div class="col-md-3">
@@ -130,7 +130,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                        <label for="" class="m-2">Present Address</label><br>
+                        <label for="" class="m-2">Present Address <span style="font-size: 14px;font-weight: 600;color: #ee1201;">**</span></label><br>
                        
                         <textarea name="pre_address"  required rows="3" style="width:100%; border-radius: 4px; border:1px solid #dee2e6;padding-left: 10px; font-size: 14px;" placeholder="Enter Present Address"> </textarea>
                 </div>
@@ -141,7 +141,7 @@
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <label for="" class="m-2">Education Qualification</label><br>
+                    <label for="" class="m-2">Education Qualification <span style="font-size: 14px;font-weight: 600;color: #ee1201;">**</span></label><br>
                     <select name="qualification" id="qualification" class="form-control" style="background-color:white;" required>
                         <option value="Not Selected">Select Qualification</option>
                         @foreach($get_qualifications as $name)
@@ -255,19 +255,19 @@
                <hr>
             <div class="row">   
                 <div class="col-md-3">
-                <label for="" class="m-2">Name of the head of family</label><br><br>
+                <label for="" class="m-2">Name of the head of family <span style="font-size: 14px;font-weight: 600;color: #ee1201;">**</span></label><br><br>
                     <input type="text" name="h_name" required class="form-control" placeholder="Name of the head of family" >    
                 </div>    
                 <div class="col-md-3">
-                    <label for="" class="m-2">Highest education of the head of family</label><br>
+                    <label for="" class="m-2">Highest education of the head of family <span style="font-size: 14px;font-weight: 600;color: #ee1201;">**</span></label><br>
                     <input type="text" name="h_qualification" required class="form-control" placeholder="Enter Highest education of the head of family">
                 </div>
                 <div class="col-md-3">
-                <label for="" class="m-2">Yearly Income of the family(Rs.)</label><br>
+                <label for="" class="m-2">Yearly Income of the family(Rs.) <span style="font-size: 14px;font-weight: 600;color: #ee1201;">**</span></label><br>
                     <input type="text" name="fam_income" required class="form-control" placeholder="Enter Yearly Income of the family(Rs.)" >    
                 </div> 
                 <div class="col-md-3">
-                    <label for="" class="m-2">Number of member in the family </label><br>
+                    <label for="" class="m-2">Number of member in the family <span style="font-size: 14px;font-weight: 600;color: #ee1201;">**</span></label><br>
                     <input type="number" name="fam_mem_no" required class="number_validation form-control" placeholder="Enter Number of member in the family" > </option>
                     </select>
                 </div>                
@@ -275,7 +275,7 @@
             <h5>Family Member Details</h5><hr>
             <div class="row">
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>S NO.</th>
@@ -288,6 +288,7 @@
                                 <th>Source of Income/Occupation</th>
                                 <th>Is SHG member</th>
                                 <th>SHG ID</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody id="member-div">
@@ -385,7 +386,7 @@
           
                <div class="row">
                 <div class="table-responsive" >
-                    <table class="table ">
+                    <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th style="padding-right: 200px;">Document Category</th>
@@ -511,7 +512,7 @@
                   
                     // sno = parseInt(sno)+1;
                     no2 = no2+1;
-                    $('#member-div').append(' <tr><td><label>'+no2+'</label></td><td><td> <input type="text" name="m_name[]" placeholder="Enter member name" class="form-control" ></td><td><select name="relation[]" id="" class="form-control" style="background-color:white;"><option value="father">Father</option><option value="mother">Mother</option><option value="grand-father">Grand Father</option><option value="grand-mother">Grand Mother</option><option value="husband">Husband</option><option value="wife">Wife</option><option value="brother">Brother</option><option value="sister">Sister</option><option value="son">Son</option><option value="daughter">Daughter</option><option value="brother-in-law">Brother-in-law</option><option value="sister-in-law">Sister-in-law</option></select></td><td> <input type="number" name="m_age[]" class="form-control" ></td><td><select name="m_gender[]" id="" class="form-control" style="background-color:white;"><option value="female">Female</option><option value="male">Male</option><option value="other">Others</option></select></td><td><select name="m_status[]" id="" class="form-control" style="background-color:white;"><option value="single">Single</option><option value="married">Married</option><option value="widowed">Widowed</option><option value="separated">Separated</option><option value="divorced">Divorced</option></select></td><td><select name="m_earn[]" id="" class="form-control" style="background-color:white;"><option value="no">No</option><option value="yes">Yes</option></select></td><td> <input type="text" name="m_occupation[]" placeholder="Enter member occupation" > class="form-control" ></td><td><select name="m_shg[]" id="" class="form-control" style="background-color:white;"><option value="no">No</option><option value="yes">Yes</option></select></td><td> <input type="text" name="m_shg_id[]" placeholder="Enter SHG Id" class="form-control" ></td><td> <button type="button" class="btn btn-danger text-white rem_doc2" data-id="'+no2+'" name="remove" data-target="tr">Remove</button></td></tr>');
+                    $('#member-div').append(' <tr id="'+no2+'"><td><label>'+no2+'</label></td><td><input type="text" name="m_name[]" placeholder="Enter member name" class="form-control" ></td><td><select name="relation[]" id="" class="form-control" style="background-color:white;"><option value="father">Father</option><option value="mother">Mother</option><option value="grand-father">Grand Father</option><option value="grand-mother">Grand Mother</option><option value="husband">Husband</option><option value="wife">Wife</option><option value="brother">Brother</option><option value="sister">Sister</option><option value="son">Son</option><option value="daughter">Daughter</option><option value="brother-in-law">Brother-in-law</option><option value="sister-in-law">Sister-in-law</option></select></td><td> <input type="number" name="m_age[]" class="form-control" ></td><td><select name="m_gender[]" id="" class="form-control" style="background-color:white;"><option value="female">Female</option><option value="male">Male</option><option value="other">Others</option></select></td><td><select name="m_status[]" id="" class="form-control" style="background-color:white;"><option value="single">Single</option><option value="married">Married</option><option value="widowed">Widowed</option><option value="separated">Separated</option><option value="divorced">Divorced</option></select></td><td><select name="m_earn[]" id="" class="form-control" style="background-color:white;"><option value="no">No</option><option value="yes">Yes</option></select></td><td> <input type="text" name="m_occupation[]" placeholder="Enter member occupation" class="form-control" ></td><td><select name="m_shg[]" id="" class="form-control" style="background-color:white;"><option value="no">No</option><option value="yes">Yes</option></select></td><td> <input type="text" name="m_shg_id[]" placeholder="Enter SHG Id" class="form-control" ></td><td> <button type="button" class="btn btn-danger text-white rem_doc2" data-id="'+no2+'" name="remove" data-target="tr">Remove</button></td></tr>');
 
                    
                     $('.rem_doc2').click(function(e){

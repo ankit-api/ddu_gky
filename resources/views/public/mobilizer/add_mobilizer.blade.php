@@ -147,7 +147,7 @@
         var mob_code = $('#mob_code').val();
         $.ajax({
             type: "POST",
-            url: "/mob_check_duplicate",
+            url: "{{url('mob_check_duplicate')}}",
             data: { mob_code : mob_code, _token: '{{csrf_token()}}' },
             dataType: 'json',
             success: function (data) {

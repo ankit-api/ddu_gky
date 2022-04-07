@@ -109,7 +109,7 @@
         var centreinch_code = $('#centreinch_code').val();
         $.ajax({
             type: "POST",
-            url: "/centreinch_check_duplicate",
+            url: "{{url('centreinch_check_duplicate')}}",
             data: { centreinch_code : centreinch_code, _token: '{{csrf_token()}}' },
             dataType: 'json',
             success: function (data) {

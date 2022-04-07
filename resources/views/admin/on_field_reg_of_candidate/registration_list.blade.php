@@ -47,7 +47,7 @@
                                 </ol>
 
                             </div>
-                            <h3 class="text-center fw-bold">SF 6.1C: Candidate Registration List</h3><br>
+                            <h3 class="text-center fw-bold">SF 6.1C: On Field Registration Of Candidates List</h3><br>
                             @if (session('alert_success'))
                                 <h6 class="alert alert-success mx-4 fw-bold fs-6">{{ session('alert_success') }}</h6>
                             @endif
@@ -107,9 +107,9 @@
                             <div class="col-md-10">
                                 <span style="font-weight:bold;" data-placement="right" title="Project Name">Select Remark :</span><br>
                                 <input type="radio" id="rejected" name="remark_name" value="rejected">
-                                <label for="rejected">Rejected</label>
+                                <label for="rejected">Rejected</label>&nbsp;&nbsp;
                                 <input type="radio" id="hold" name="remark_name" value="hold">
-                                <label for="hold">On Hold</label>
+                                <label for="hold">On Hold</label>&nbsp;&nbsp;
                                 <input type="radio" id="proceed" name="remark_name" value="proceed">
                                 <label for="proceed">Proceed</label>
                             </div>

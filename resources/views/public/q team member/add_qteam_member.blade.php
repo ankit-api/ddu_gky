@@ -103,7 +103,7 @@
         var qteam_code = $('#qteam_code').val();
         $.ajax({
             type: "POST",
-            url: "/qteam_check_duplicate",
+            url: "{{url('qteam_check_duplicate')}}",
             data: { qteam_code : qteam_code, _token: '{{csrf_token()}}' },
             dataType: 'json',
             success: function (data) {

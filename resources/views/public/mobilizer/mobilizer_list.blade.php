@@ -52,9 +52,9 @@
                                 @foreach($mobilizer_data as $mobilizer)
                                 <tr>
                                 <td>{{$loop->iteration}}</td>
-                                <td>{{ $mobilizer->getSanctionOrder->sanction_order_no }}</td>  
-                                <td>{{ $mobilizer->getCentreName->centre_code }}</td> 
-                                <td>{{ $mobilizer->getCentreName->centre_name }}</td> 
+                                <td>{{ !empty($mobilizer->getSanctionOrder->sanction_order_no) ?  $mobilizer->getSanctionOrder->sanction_order_no : '' }}</td>  
+                                <td>{{ !empty($mobilizer->getCentreName->centre_code) ?  $mobilizer->getCentreName->centre_code : '' }}</td> 
+                                <td>{{ !empty($mobilizer->getCentreName->centre_name) ?  $mobilizer->getCentreName->centre_name : '' }}</td> 
                                 <td>{{ $mobilizer->mob_id }}</td>
                                 <td>{{ $mobilizer->name }}</td>
                                 <td>

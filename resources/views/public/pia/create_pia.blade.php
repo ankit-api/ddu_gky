@@ -87,7 +87,7 @@
         var pia_code = $('#pia_code').val();
         $.ajax({
             type: "POST",
-            url: "/pia_check_duplicate",
+            url: "{{url('pia_check_duplicate')}}",
             data: { pia_code : pia_code, _token: '{{csrf_token()}}' },
             dataType: 'json',
             success: function (data) {

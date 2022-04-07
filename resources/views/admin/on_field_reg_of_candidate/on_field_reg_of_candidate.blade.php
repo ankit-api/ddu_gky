@@ -22,7 +22,7 @@
                     </li>
                 </ol>
             </div> 
-                <h3 class="text-center fw-bold">SF 6.1C: On field registration of candidates</h3><br>
+                <h3 class="text-center fw-bold">SF 6.1C: On Field Registration Of Candidates</h3><br>
         <form action="{{ route('post-candidate-register') }}" method="post" enctype="multipart/form-data">
             @csrf
 
@@ -36,7 +36,7 @@
             </div>                  
             <div class="row">            
                 <div class="col-md-4">
-                    <label for="" class="m-2">Centre Name</label><br>
+                    <label for="" class="m-2">Centre Name <span style="font-size: 14px;font-weight: 600;color: #ee1201;">**</span></label><br>
                     <select name="" id="centre_id" name="gender" class="form-control" style="background-color:white;" required>
                         <option value="Not Selected">Select Centre Name</option>
                     @foreach($get_centre as $centre)
@@ -49,7 +49,7 @@
                     <input name ="reg_code" type="text" class="form-control" id="reg_code" placeholder="Enter Registration Code">
                 </div> 
                 <div class="col-md-4">
-                    <label for="" class="m-2">Counselling</label><br>
+                    <label for="" class="m-2">Counselling <span style="font-size: 14px;font-weight: 600;color: #ee1201;">**</span></label><br>
                     <select id="" name="counsel" class="form-control" style="background-color:white;" required>
                         <option value="Not Selected">Select Counselling Status</option>
                         <option value="not done">Not Done</option>
@@ -59,7 +59,7 @@
             </div>    
             <div class="row">            
                 <div class="col-md-4">
-                    <label for="" class="m-2">Name of Candidates</label><br>
+                    <label for="" class="m-2">Name of Candidates <span style="font-size: 14px;font-weight: 600;color: #ee1201;">**</span></label><br>
                     <input type="text" class="form-control" name="name" id="" placeholder="Enter Candidate Name" required>
                 </div>
                 {{-- <div class="col-md-4">
@@ -67,7 +67,7 @@
                     <textarea class="form-control" name="village" required></textarea>
                 </div> --}}
                 <div class="col-md-4">
-                    <label for="" class="m-2">Village/GP/Block</label><br>
+                    <label for="" class="m-2">Village/GP/Block <span style="font-size: 14px;font-weight: 600;color: #ee1201;">**</span></label><br>
                     <select name="village" id="village" class="form-control" required
                         style="background-color:white;">
                         <option value="Not Selected">Select Block Name</option>
@@ -77,13 +77,13 @@
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <label for="" class="m-2">Date of mobilization</label><br>
+                    <label for="" class="m-2">Date of mobilization <span style="font-size: 14px;font-weight: 600;color: #ee1201;">**</span></label><br>
                     <input type="date" class="form-control" name="dom" id="" max="{{date("Y-m-d")}}" required>
                 </div>
             </div><br>
             <div class="row">
                 <div class="col-md-4">
-                    <label for="" class="m-2">Gender</label><br>
+                    <label for="" class="m-2">Gender <span style="font-size: 14px;font-weight: 600;color: #ee1201;">**</span></label><br>
                     <select id="" name="gender" class="form-control" style="background-color:white;" required>
                         <option value="Not Selected">Select Gender</option>
                         <option value="male">Male</option>
@@ -92,18 +92,18 @@
                     </select>            
                 </div>
                 <div class="col-md-4">
-                    <label for="" class="m-2">Date of Birth</label><br>
+                    <label for="" class="m-2">Date of Birth <span style="font-size: 14px;font-weight: 600;color: #ee1201;">**</span></label><br>
                     <input type="date" class="form-control" name="dob" max="{{date("Y-m-d")}}" id="" required>
                 </div>
                 <div class="col-md-4">
-                        <label for="" class="m-2">Age</label><br>
+                        <label for="" class="m-2">Age <span style="font-size: 14px;font-weight: 600;color: #ee1201;">**</span></label><br>
                         <input type="text" class="number_validation form-control" name="age"  required placeholder="Enter Age" >
                 </div>                          
             </div><br>
           
             <div class="row">
                 <div class="col-md-4">
-                    <label for="" class="m-2">Category</label><br>
+                    <label for="" class="m-2">Category <span style="font-size: 14px;font-weight: 600;color: #ee1201;">**</span></label><br>
                     <select name="category" id="" class="form-control"  style="background-color:white;" required>
                         <option value="Not Selected">Select Category</option>
                         <option value="gn">General</option>
@@ -117,7 +117,7 @@
                     <input type="text" class="form-control" name="pwd" id=""  placeholder="Enter PWD Type">
                 </div>
                 <div class="col-md-4">
-                <label for="" class="m-2">Minority</label><br>
+                <label for="" class="m-2">Minority <span style="font-size: 14px;font-weight: 600;color: #ee1201;">**</span></label><br>
                     <select name="minority" id="" class="form-control"  required style="background-color:white;" >
                         <option value="Not Selected">Select Minority</option>
                         <option value="no">No</option>
@@ -127,7 +127,7 @@
             </div><br>
             <div class="row">
                 <div class="col-md-4">
-                    <label for="" class="m-2">Highest Education</label><br>
+                    <label for="" class="m-2">Highest Education <span style="font-size: 14px;font-weight: 600;color: #ee1201;">**</span></label><br>
                     <select name="qualification" id="" class="form-control" style="background-color:white;" required>
                         <option value="Not Selected">Select Qualification</option>
                         @foreach($get_qualifications as $name)
@@ -137,12 +137,12 @@
                     {{-- <input type="text" name="qualification" required class="form-control" placeholder="Enter Highest Education"> --}}
                 </div>
                 <div class="col-md-4">
-                    <label for="" class="m-2">Contact</label><br>
+                    <label for="" class="m-2">Contact <span style="font-size: 14px;font-weight: 600;color: #ee1201;">**</span></label><br>
                     <input type="text" class="number_validation form-control" required name="contact"   placeholder="Enter Contact">
                 </div>
                 <div class="col-md-4">
                 <label for="" class="m-2">Referring Stakeholder</label><br>
-                    <select name="ref" id="ref" class="form-control" required
+                    <select name="ref" id="ref" class="form-control"
                         style="background-color:white;">
                         <option value="Not Selected">Select Referring Stakeholder</option>
                         @foreach ($get_mobi as $mobi)
@@ -158,12 +158,12 @@
                 </div>
                 <div class="col-md-6">
                     <label for="" class="m-2">Attach Document <span style="font-size: 14px;font-weight: 600;color: #ee1201;">(Image size should be less than 1MB)</span></label><br>
-                    <input type="file" name="doc_file" class="form-control " style="background-color:white;" >
+                    <input type="file" name="doc_file" accept="image/jpeg,image/gif,image/png,application/pdf" class="form-control " style="background-color:white;" >
                 </div>
             </div><br>
             <div class="row">
             <div class="col-md-6">
-                <label for="" class="m-2">Address</label><br>
+                <label for="" class="m-2">Address <span style="font-size: 14px;font-weight: 600;color: #ee1201;">**</span></label><br>
                     <textarea name="address" id="" required placeholder="Enter Address" rows="3" style="width:100%; border-radius: 4px; border:1px solid #dee2e6;padding-left: 10px; font-size: 14px;"></textarea>  
                 </div> 
                {{-- <div class="col-md-6">
