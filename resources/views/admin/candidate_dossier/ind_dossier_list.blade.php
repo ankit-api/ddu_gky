@@ -10,7 +10,7 @@
         <div class="content-wrapper">
             <div class="row">
                 <div class="col-sm-12">
-                <div class="col-sm-5 ml-2 mb-4">
+                <div class="col-sm-5 ml-2 mb-4 d-print-none">
                         <ol class="breadcrumb float-sm-right" style="background-color: #6b8ed6;border-radius: 5px;margin-left: 52px;">
                             <li class="breadcrumb-item"><a  style="color:#fff; text-decoration: none;" href="{{ route('home') }}" aria-expanded="false" aria-controls="ui-basic"><i class="fa-solid fa-house"></i></a></li>
                                 <li class="breadcrumb-item" ><a  style="color:#fff; text-decoration: none;"data-bs-toggle="collapse" href="#ui-basic26" aria-expanded="false" aria-controls="ui-basic26">Candidate Dossier</a></li>
@@ -23,8 +23,8 @@
                         <div class="container col-sm-12 mx-auto">
                             <h3 class="text-center fw-bold">SF 5.1G1: Index of individual Candidate Dossier</h3><br>
                             <div class="container col-sm-12 mx-auto" >
-                                <h5>Name of Candidate: <u><pre style="display:inline;font-size:18px;">   {{ $cand_data->name }}      </pre></u></h5>
-                                <table class="table table-bordered" id="">
+                                <h5>Name of Candidate: <u><pre style="display:inline;font-size:18px;">   {{ $cand_data->name }}      </pre></u> <span class="btn btn-primary d-print-none float-end" onclick="window.print();">Print</span></h5>
+                                <table class="table table-bordered">
                                     <thead>
                                         <tr>
                                             <th>S.No.</th>

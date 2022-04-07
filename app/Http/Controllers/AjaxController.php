@@ -168,8 +168,8 @@ class AjaxController extends Controller
 
     public function fetchEnrollCandidate(Request $req)
     {
-        // $unenroll_can_count = 35 - (BatchAllotment::where('batch_id', $req->batch_id)->count());
-         $unenroll_can_count = 2 - (BatchAllotment::where('batch_id', $req->batch_id)->count());
+        $unenroll_can_count = 35 - (BatchAllotment::where('batch_id', $req->batch_id)->count());
+        //  $unenroll_can_count = 2 - (BatchAllotment::where('batch_id', $req->batch_id)->count());
         $msg="";
         if($req->count > $unenroll_can_count){
             $msg = "Only ".$unenroll_can_count." more candiadte can be enrolled !";
