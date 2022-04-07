@@ -431,11 +431,11 @@
                     <div class="col-md-6">
                         <h4 for="" class="mt-2">Attach Parent Consent Form <span style="font-size: 14px;font-weight: 600;color: #ee1201;">(Document size should be less than 1MB)</span></h4><br>
                         <div class="row">
+                            <div class="col-md-4">
+                                <span class="btn btn-info" onclick="frames['frame'].print()">Download Parent Consent Form</span>
+                            </div>
                             <div class="col-md-8">
                                 <input type="file" name="parent_consent_doc" accept="image/jpeg,image/gif,image/png,application/pdf" class="form-control " style="background-color:white;" >
-                            </div>
-                            <div class="col-md-4">
-                                <span class="btn btn-info">Print</span>
                             </div>
                         </div>
                     </div>
@@ -449,6 +449,7 @@
             </div> 
           </div>
         </div>
+        <iframe src="" id="parent_iframe" style="display:none;" name="frame"></iframe>
         @endsection   
 
 
@@ -541,6 +542,7 @@
                         $("#can_gender").val(result.gender);
                         $("#category").val(result.category);
                         $("#qualification").val(result.high_edu);
+                        $('#parent_iframe').attr('src','parent_consent_form_print?id='+reg_id);
                     }
                 });
             });

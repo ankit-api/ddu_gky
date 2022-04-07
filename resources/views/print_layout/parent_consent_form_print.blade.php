@@ -15,7 +15,7 @@
             <span style="font-weight: bold">Candidate's mother's name ___________________________</span> <br>
             <span style="font-weight: bold">Basic information</span> <br><br>
             a) The DDU-GKY programme is run by the Ministry of Rural Development, Government of India with to train and place rural poor youth in the age group of 18-35 years.<br>
-            b) Under the DDU-GKY programme, ____________________________ (Name of PIA) will provide skills training in ______________________(Name of courses) for __________________________ (duration of courses in hours). <br>
+            b) Under the DDU-GKY programme, <u>&nbsp;{{ $pia_details->pia_name }}&nbsp;</u> (Name of PIA) will provide skills training in ______________________(Name of courses) for <u>&nbsp; 700 &nbsp;</u> (duration of courses in hours). <br>
             c)  On completion of the training, the PIA will assist to place him/her in a job as per his/her proficiency for a monthly minimum salary of ₹. 6,000 per month. <br>
             d) During training, your ward will be trained on the course specific skills; soft skills, life skills, and computer handling skills. <br>
             <span style="font-weight: bold;text-align:center;">Entitlements</span> <br>
@@ -33,9 +33,9 @@
             6) All candidates will be assessed free of cost and those who pass will be given Training Certificate as per ________________ (NCVT/SSC) guidelines and assessed by ___________________ (assessing agency). <br>
             7) At the time of placement, candidate will be given a Preliminary Offer Letter from the PIA which lists down the expected remuneration and terms and conditions of employment. The candidate will receive this before leaving his/her native place for the job.<br>
             8) All candidates will receive training material free of cost including work books, note books and other study materials.<br>
-            9) If a candidate has not received the above entitlements, he/she can call or SMS the Helpline at ______________________ to register their complaints.<br>
+            9) If a candidate has not received the above entitlements, he/she can call or SMS the Helpline at <u>&nbsp;{{ $pia_details->landline_no }}&nbsp;</u> to register their complaints.<br>
             <span style="font-weight: bold;text-align:center;">Your consent <br>
-                If you agree to admit your child in the training programme offered by __________________ (Name of PIA) please sign below.
+                If you agree to admit your child in the training programme offered by <u>&nbsp;{{ $pia_details->pia_name }}&nbsp;</u> (Name of PIA) please sign below.
                 </span><br>
                 Parent signature _________________________ <br>
                 Date: ______________________ <br>

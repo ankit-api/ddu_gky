@@ -21,7 +21,7 @@
                                 </li>
                             </ol>
                         </div>
-                            <h3 class="text-center fw-bold">Candidate Admission List</h3><br>
+                            <h3 class="text-center fw-bold">SF 6.2A3: Candidate Admission List</h3><br>
                             @if (session('alert_success'))
                             <h6 class="alert alert-success mx-4 fw-bold fs-6">{{ session('alert_success') }}</h6>
                             @endif     

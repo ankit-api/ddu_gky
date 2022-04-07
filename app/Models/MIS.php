@@ -16,5 +16,9 @@ class MIS extends Model
         return $this->hasOne(Role::class,'id','mis_type');
     }
 
+    // function getPiaDetails(){
+    //     return $this->hasOneThrough(PIA::class, Project::class,  'project_id', 'id');
+    // }
+
 
 }
