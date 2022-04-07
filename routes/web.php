@@ -141,6 +141,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/fetch_batch_by_centre', [AjaxController::class,'fetchBatchByCentre']);
     Route::post('/fetch_can_for_allot', [AjaxController::class,'fetchCanForAllot']);
     Route::post('/fetch_enroll_can', [AjaxController::class,'fetchEnrollCandidate']);
+    Route::get('/can_list_in_batch/{id?}', [BatchController::class,'canListInBatch']);
 
     //MIS Route
     Route::get('/mis_form', [MISController::class,'misForm'])->name('mis_form');

@@ -11,4 +11,11 @@ class BatchAllotment extends Model
 
     protected $table = 'batch_allotment_details';
     public $timestamps = false;
+
+    public function allotedCandidateList(){
+        return $this->hasOne(OnFieldRegistrationOfCandidate::class,'id','register_id');
+    }
+    public function batchCode(){
+        return $this->hasOne(Batch::class,'id','batch_id');
+    }
 }

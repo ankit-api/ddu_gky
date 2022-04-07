@@ -113,7 +113,7 @@ class BatchController extends Controller
     }
 
     public function batchList(){
-        $batch_data = Batch::all()->sortByDesc("id");      
+        $batch_data = Batch::withCount('allotedCandidateCount')->where('added_by',Auth::user()->id)->get();      
         return view('admin.create_batch.batch_list', compact("batch_data"));
     }
 
@@ -155,10 +155,11 @@ class BatchController extends Controller
         } else {
             return redirect()->route('batch_allotment')->with('alert_success','Please Select Candidate !');
         }
-
-
+    }
         
-
-       
+        public function canListInBatch(Request $req){
+        $candidate_data = BatchAllotment::with('allotedCandidateList')->where('batch_id',$req->id)->where('added_by',Auth::user()->id)->get();   
+        return view('admin.create_batch.show_candidate_list', compact('candidate_data'));
+          
     }
 }
